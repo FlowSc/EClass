@@ -17,7 +17,6 @@
 		45A57FAE1F357C56001F5C1A /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A57FAD1F357C56001F5C1A /* ProfileTableViewCell.swift */; };
 		45A57FB01F357C5D001F5C1A /* DetailChangeUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A57FAF1F357C5D001F5C1A /* DetailChangeUserInfoViewController.swift */; };
 		45A57FB21F357C6F001F5C1A /* DetailLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A57FB11F357C6F001F5C1A /* DetailLogInViewController.swift */; };
-		75D1B20A1F3575F80068C20C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1B2091F3575F80068C20C /* AppDelegate.swift */; };
 		75D1B2111F3575F80068C20C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75D1B2101F3575F80068C20C /* Assets.xcassets */; };
 		75D1B2141F3575F80068C20C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D1B2121F3575F80068C20C /* LaunchScreen.storyboard */; };
 		75D1B21C1F357C2A0068C20C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D1B21B1F357C2A0068C20C /* Main.storyboard */; };
@@ -39,6 +38,7 @@
 		75D1B29B1F357C8D0068C20C /* LocationSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1B2951F357C8D0068C20C /* LocationSelectViewController.swift */; };
 		75D1B29E1F357CB40068C20C /* pac-man-logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 75D1B29C1F357CB40068C20C /* pac-man-logo.gif */; };
 		75D1B29F1F357CB40068C20C /* five.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 75D1B29D1F357CB40068C20C /* five.jpg */; };
+		75D1B2A11F3581D10068C20C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1B2A01F3581D10068C20C /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,7 +53,6 @@
 		45A57FAF1F357C5D001F5C1A /* DetailChangeUserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailChangeUserInfoViewController.swift; sourceTree = "<group>"; };
 		45A57FB11F357C6F001F5C1A /* DetailLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailLogInViewController.swift; sourceTree = "<group>"; };
 		75D1B2061F3575F80068C20C /* EClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		75D1B2091F3575F80068C20C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75D1B2101F3575F80068C20C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75D1B2131F3575F80068C20C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75D1B2151F3575F80068C20C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +75,7 @@
 		75D1B2951F357C8D0068C20C /* LocationSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSelectViewController.swift; sourceTree = "<group>"; };
 		75D1B29C1F357CB40068C20C /* pac-man-logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "pac-man-logo.gif"; sourceTree = "<group>"; };
 		75D1B29D1F357CB40068C20C /* five.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = five.jpg; sourceTree = "<group>"; };
+		75D1B2A01F3581D10068C20C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,10 +130,10 @@
 		75D1B2081F3575F80068C20C /* EClass */ = {
 			isa = PBXGroup;
 			children = (
-				75D1B2091F3575F80068C20C /* AppDelegate.swift */,
 				75D1B21B1F357C2A0068C20C /* Main.storyboard */,
 				75D1B21D1F357C3C0068C20C /* MainTableViewController.swift */,
 				75D1B27E1F357C6A0068C20C /* MainPage.storyboard */,
+				75D1B2A01F3581D10068C20C /* AppDelegate.swift */,
 				75D1B27F1F357C6A0068C20C /* RecommendCollectionViewCell.swift */,
 				75D1B2801F357C6A0068C20C /* RecommendTableViewCell.swift */,
 				75D1B2811F357C6A0068C20C /* CategoryTableViewCell.swift */,
@@ -246,7 +246,6 @@
 				75D1B2871F357C6A0068C20C /* RecommendTableViewCell.swift in Sources */,
 				75D1B28A1F357C6A0068C20C /* LocationTableViewCell.swift in Sources */,
 				75D1B21E1F357C3C0068C20C /* MainTableViewController.swift in Sources */,
-				75D1B20A1F3575F80068C20C /* AppDelegate.swift in Sources */,
 				75D1B29B1F357C8D0068C20C /* LocationSelectViewController.swift in Sources */,
 				75D1B29A1F357C8D0068C20C /* SearchViewController.swift in Sources */,
 				75D1B28B1F357C6A0068C20C /* LocationCollectionViewCell.swift in Sources */,
@@ -261,7 +260,7 @@
 				45A57FAE1F357C56001F5C1A /* ProfileTableViewCell.swift in Sources */,
 				45A57FA01F357BB0001F5C1A /* DataCenter.swift in Sources */,
 				45A57FA81F357C26001F5C1A /* ChangeUserInfomationViewController.swift in Sources */,
-				75D1B20A1F3575F80068C20C /* AppDelegate.swift in Sources */,
+				75D1B2A11F3581D10068C20C /* AppDelegate.swift in Sources */,
 				45A57FB01F357C5D001F5C1A /* DetailChangeUserInfoViewController.swift in Sources */,
 				45A57FA61F357C1D001F5C1A /* SignUpViewController.swift in Sources */,
 			);
