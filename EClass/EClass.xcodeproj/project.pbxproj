@@ -17,6 +17,11 @@
 		45A57FAE1F357C56001F5C1A /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A57FAD1F357C56001F5C1A /* ProfileTableViewCell.swift */; };
 		45A57FB01F357C5D001F5C1A /* DetailChangeUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A57FAF1F357C5D001F5C1A /* DetailChangeUserInfoViewController.swift */; };
 		45A57FB21F357C6F001F5C1A /* DetailLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A57FB11F357C6F001F5C1A /* DetailLogInViewController.swift */; };
+		45A57FE71F35800C001F5C1A /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 45A57FE61F35800C001F5C1A /* 0.png */; };
+		45A57FE91F358016001F5C1A /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 45A57FE81F358016001F5C1A /* 1.png */; };
+		45A57FEB1F35801F001F5C1A /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 45A57FEA1F35801F001F5C1A /* 2.png */; };
+		45A57FED1F358028001F5C1A /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 45A57FEC1F358028001F5C1A /* 3.png */; };
+		75D1B20A1F3575F80068C20C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1B2091F3575F80068C20C /* AppDelegate.swift */; };
 		75D1B2111F3575F80068C20C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75D1B2101F3575F80068C20C /* Assets.xcassets */; };
 		75D1B2141F3575F80068C20C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D1B2121F3575F80068C20C /* LaunchScreen.storyboard */; };
 		75D1B21C1F357C2A0068C20C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D1B21B1F357C2A0068C20C /* Main.storyboard */; };
@@ -54,6 +59,10 @@
 		45A57FAF1F357C5D001F5C1A /* DetailChangeUserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailChangeUserInfoViewController.swift; sourceTree = "<group>"; };
 		45A57FB11F357C6F001F5C1A /* DetailLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailLogInViewController.swift; sourceTree = "<group>"; };
 		575D7D2BB1253DC83223CD2A /* Pods-EClass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EClass.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EClass/Pods-EClass.debug.xcconfig"; sourceTree = "<group>"; };
+		45A57FE61F35800C001F5C1A /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
+		45A57FE81F358016001F5C1A /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		45A57FEA1F35801F001F5C1A /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		45A57FEC1F358028001F5C1A /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
 		75D1B2061F3575F80068C20C /* EClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D1B2101F3575F80068C20C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75D1B2131F3575F80068C20C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -178,6 +187,10 @@
 				75D1B29C1F357CB40068C20C /* pac-man-logo.gif */,
 				75D1B29D1F357CB40068C20C /* five.jpg */,
 				45A57F9F1F357BB0001F5C1A /* DataCenter.swift */,
+				45A57FE61F35800C001F5C1A /* 0.png */,
+				45A57FEA1F35801F001F5C1A /* 2.png */,
+				45A57FE81F358016001F5C1A /* 1.png */,
+				45A57FEC1F358028001F5C1A /* 3.png */,
 				45A57FB31F357C89001F5C1A /* LogInViewControllers */,
 				45A57FA11F357BE5001F5C1A /* Main2.storyboard */,
 				45A57FB41F357C9D001F5C1A /* ChangeUserInformationVIewCOntrollers */,
@@ -248,10 +261,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45A57FED1F358028001F5C1A /* 3.png in Resources */,
+				45A57FE71F35800C001F5C1A /* 0.png in Resources */,
 				75D1B29E1F357CB40068C20C /* pac-man-logo.gif in Resources */,
+				45A57FEB1F35801F001F5C1A /* 2.png in Resources */,
 				75D1B29F1F357CB40068C20C /* five.jpg in Resources */,
 				75D1B2851F357C6A0068C20C /* MainPage.storyboard in Resources */,
 				75D1B28E1F357C810068C20C /* DetailPage.storyboard in Resources */,
+				45A57FE91F358016001F5C1A /* 1.png in Resources */,
 				75D1B21C1F357C2A0068C20C /* Main.storyboard in Resources */,
 				75D1B2971F357C8D0068C20C /* LocationSelect.storyboard in Resources */,
 				75D1B2961F357C8D0068C20C /* SearchPage.storyboard in Resources */,
