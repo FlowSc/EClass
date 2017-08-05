@@ -12,7 +12,7 @@ class LocationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView:UICollectionView!
     
-    var locationStrings:[String] = ["강남", "강동", "강서", "강북", "관악", "광진", "구로", "금천", "노원"]
+    var locationStrings:[String] = ["강남", "강동", "강서", "강북", "관악", "광진", "구로", "금천", "노원", "은평"]
 
     override func awakeFromNib() {
         super.awakeFromNib()
