@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< HEAD
+
 
         print("sungChanBabo")
 
@@ -20,14 +20,15 @@ class ViewController: UIViewController {
         print("aa")
         
 
-=======
+
         print("sungChanBabo")
         
         print("aa")
         
         print("AAAA")
+
         
->>>>>>> 1a10fe00dc3dc9f49bfe4ae2daea10004138dddf
+        print("bbbb")
         // Do any additional setup after loading the view, typically from a nib.
     }
 
