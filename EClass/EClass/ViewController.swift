@@ -29,6 +29,14 @@ class ViewController: UIViewController {
 
         
         print("bbbb")
+        
+        
+        
+        print("AFASFNASJKFHASFKJA")
+        
+        print("ASGAKGJALDGJALK")
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
