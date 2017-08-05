@@ -7,8 +7,8 @@
 //
 
 import UIKit
-//import Alamofire
-//import SwiftyJSON
+import Alamofire
+import SwiftyJSON
 
 class DetailLogInViewController: UIViewController, UITextFieldDelegate{
     
