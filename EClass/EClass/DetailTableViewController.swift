@@ -14,6 +14,10 @@ class DetailTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        myTableView.estimatedRowHeight = 100
+        myTableView.rowHeight = 300
+        myTableView.reloadData()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -42,7 +46,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "IntroductionCell", for: indexPath) as! IntroductionTableViewCell
         
         return cell
         
@@ -51,9 +55,6 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        myTableView.estimatedRowHeight = 100
-        myTableView.rowHeight = UITableViewAutomaticDimension
-        
-        
+       
     }
 }

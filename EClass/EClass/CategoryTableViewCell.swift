@@ -57,16 +57,16 @@ extension CategoryTableViewCell:UICollectionViewDelegate, UICollectionViewDataSo
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellsAcross: CGFloat = 2
-        var widthRemainingForCellContent = collectionView.bounds.width
-        if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
-            let borderSize: CGFloat = flowLayout.sectionInset.left + flowLayout.sectionInset.right
-            widthRemainingForCellContent -= borderSize + ((cellsAcross - 1) * flowLayout.minimumInteritemSpacing)
-        }
-        let cellWidth = widthRemainingForCellContent / cellsAcross
-        return CGSize(width: cellWidth, height: (cellWidth / 2.5))
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let cellsAcross: CGFloat = 2
+//        var widthRemainingForCellContent = collectionView.bounds.width
+//        if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
+//            let borderSize: CGFloat = flowLayout.sectionInset.left + flowLayout.sectionInset.right
+//            widthRemainingForCellContent -= borderSize + ((cellsAcross - 1) * flowLayout.minimumInteritemSpacing)
+//        }
+//        let cellWidth = widthRemainingForCellContent / cellsAcross
+//        return CGSize(width: cellWidth, height: (cellWidth / 2.5))
+//    }
 
 
     

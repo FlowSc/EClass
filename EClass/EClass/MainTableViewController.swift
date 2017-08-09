@@ -24,6 +24,8 @@ class MainTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.myMainTableView.reloadData()
+        self.myMainTableView.register(UINib.init(nibName: "LectureTableViewCell"
+            , bundle: nil), forCellReuseIdentifier: "LectureCell")
 
         
         
@@ -94,12 +96,12 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource {
         
         
         if indexPath.section == 1 {
-            return 180
+            return 200
         }else if indexPath.section == 2{
             return 370
         }
         
-        return 180
+        return 200
     }
     
     
