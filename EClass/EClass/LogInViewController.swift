@@ -9,8 +9,8 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-
-
+import FacebookLogin
+import FacebookCore
 
 class LogInViewController: UIViewController {
 
@@ -23,9 +23,25 @@ class LogInViewController: UIViewController {
     }
     @IBAction func faceBookLoginButtonTouched(_ sender: UIButton) {
         
-        print("2")
-        print("1")
-        print("facebooklogin")
+        let loginManager = LoginManager()
+        
+        loginManager.logIn([.publicProfile], viewController: self) { (result) in
+            switch result {
+            case .failed(let error):
+                print(error.localizedDescription)
+            case .cancelled:
+                print("cancelled")
+            case .success(_, _, let userInfo):
+                
+                print("\(userInfo.authenticationToken)")
+                print("\(userInfo.appId)")
+                print("\(userInfo.userId!)")
+                let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
+                let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "MainTableViewController")
+                self.present(pushMainView, animated: true, completion: nil)
+            }
+        }
+        
     }
     @IBAction func signUpButtonTouched(_ sender: UIButton) {
         
