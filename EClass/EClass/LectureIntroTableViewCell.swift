@@ -24,12 +24,13 @@ class LectureIntroTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setDetail(_ short:String, _ long:String) {
-        self.shortDetail.text = short
-        self.longDetail.text = long
+    
+    func setValues(_ Lecture:LectureInfo) {
+        self.shortDetail.text = Lecture.shortDescription
+        self.longDetail.text = Lecture.longDescription
+        let detailshwon = Lecture.detailShown
+        self.longDetail.isHidden = !detailshwon
         
-        let detailShown = false
-        self.longDetail.isHidden = !detailShown
-        self.expandableCell.text = detailShown ? "더보기" : "줄이기"
+        self.expandableCell.text = detailshwon ? "그만보기" : "더보기"
     }
 }

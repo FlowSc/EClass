@@ -11,12 +11,13 @@ import UIKit
 class DetailTableViewController: UIViewController {
     @IBOutlet weak var myTableView: UITableView!
 
+    var myData = LectureGenerator.getLecture()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         myTableView.estimatedRowHeight = 100
         myTableView.rowHeight = UITableViewAutomaticDimension
-        myTableView.allowsSelection = false
         myTableView.reloadData()
         myTableView.register(UINib.init(nibName: "TutorDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "tutorDetailInfoCell")
         myTableView.register(UINib.init(nibName: "LectureIntroTableViewCell", bundle: nil), forCellReuseIdentifier: "LectureIntroTableViewCell")
@@ -78,18 +79,54 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource {
             
             return cell
             
-        }else{
+        }else if indexPath.row == 4{
             let cell = tableView.dequeueReusableCell(withIdentifier: "LectureIntroTableViewCell", for: indexPath) as! LectureIntroTableViewCell
+            
+            cell.setValues(myData[indexPath.row - 4])
             
             return cell
         }
+        
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 4{
+        if indexPath.row == 4{
+            
+            let longD = myData[indexPath.row - 4]
+            let detailShown = myData[indexPath.row - 4].detailShown
+            longD.detailShown = !detailShown
             
             myTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            
+            print("A")
 
         }
+    }
+}
+
+class LectureInfo {
+    
+    var title:String?
+    var shortDescription:String?
+    var longDescription:String?
+    var detailShown = false
+    
+    init(title:String, shortDescription:String, longDescription:String) {
+        self.title = title
+        self.shortDescription = shortDescription
+        self.longDescription = longDescription
+    }
+}
+
+class LectureGenerator {
+    
+    static func getLecture() -> [LectureInfo] {
+        
+        var allLecture = [LectureInfo]()
+        
+        allLecture.append(LectureInfo(title: "팩맨", shortDescription: "좋아요!", longDescription: "이젠 괜찮니 너무 힘들었잖아 우리 그 마무리가..... 고작 이별뿐인건데 우린 참 어려웠어... 잘지낸다고 전해들었어 가끔 벌써 참 좋은 사람 만나 잘 지내고있어 굳이 내게 전하더라...잘했어 넌 못참았을거야 그 허전함을 견뎌내기엔 좋으니 사랑해서 사랑을 시작 할 때에 니가 얼마나 예쁜 지 모르지 그 모습을 아직도 못잊어 헤어나오지 못해 니 소식들린 날은 더 좋으니 그 사람 솔직히 견디기 버거워 니가 조금더 힘들면 좋겠어 진짜 조금 내 십분의 일 만이라도 아프다.................행복해줘"))
+        
+        return allLecture
     }
 }
