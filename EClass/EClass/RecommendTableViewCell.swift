@@ -34,14 +34,9 @@ extension RecommendTableViewCell:UICollectionViewDataSource, UICollectionViewDel
         
 //        let myData = lectureList?[indexPath.item] 이건 나중에 데이터 받으면 각각 쏴주는걸로..
         
-        cell.lectureName.text = "스타 ㄲ"
-        cell.lectureInfo.text = "3만원"
-        cell.lectureImage.image = #imageLiteral(resourceName: "five.jpg")
-        cell.tutorImage.image = #imageLiteral(resourceName: "five.jpg")
-        cell.tutorName.text = "나나"
-        cell.tutorNickname.text = "한량"
+       
+        cell.setLecture(#imageLiteral(resourceName: "five.jpg"), "성찬이의 팩맨 특강", "30,000", #imageLiteral(resourceName: "five.jpg"), "성찬", "a.k.a. king of pacman")
         cell.tutorImage.layer.cornerRadius = (cell.tutorImage.image?.size.width)! / 2
-        cell.tutorImage.backgroundColor = .red
         cell.tutorImage.layer.borderWidth = 1
 
         
@@ -51,5 +46,9 @@ extension RecommendTableViewCell:UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.item)
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (self.window?.bounds.size.width)!, height: 250)
     }
 }
