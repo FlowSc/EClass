@@ -190,6 +190,7 @@
 		75BC38201F3AC6D000AA9E96 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				75D1B21D1F357C3C0068C20C /* MainTableViewController.swift */,
 				75D1B27E1F357C6A0068C20C /* MainPage.storyboard */,
 				75D1B2A01F3581D10068C20C /* AppDelegate.swift */,
 				75D1B27F1F357C6A0068C20C /* RecommendCollectionViewCell.swift */,
@@ -224,7 +225,6 @@
 			isa = PBXGroup;
 			children = (
 				75D1B21B1F357C2A0068C20C /* Main.storyboard */,
-				75D1B21D1F357C3C0068C20C /* MainTableViewController.swift */,
 				75D1B2121F3575F80068C20C /* LaunchScreen.storyboard */,
 				75BC38201F3AC6D000AA9E96 /* MainPage */,
 				75D1B2101F3575F80068C20C /* Assets.xcassets */,
