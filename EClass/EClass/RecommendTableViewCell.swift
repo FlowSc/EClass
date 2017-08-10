@@ -43,7 +43,6 @@ extension RecommendTableViewCell:UICollectionViewDataSource, UICollectionViewDel
         cell.tutorImage.layer.cornerRadius = (cell.tutorImage.image?.size.width)! / 2
         cell.tutorImage.backgroundColor = .red
         cell.tutorImage.layer.borderWidth = 1
-        cell.backgroundColor = .red
 
         
         return cell
@@ -53,10 +52,4 @@ extension RecommendTableViewCell:UICollectionViewDataSource, UICollectionViewDel
         print(indexPath.item)
         
     }
-    
-
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 414, height: 170)
-//    }
-    
 }
