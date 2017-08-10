@@ -34,16 +34,18 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
         
         if !(emailTextFieldOutlet.text?.isEmpty)! && !(passwordTextFieldOutlet.text?.isEmpty)!
         {
-            
-            Alamofire.request("http://localhost/1337").responseJSON(completionHandler: { (response) in
-                
-                let responseData = JSON(response.result.value!)
-                
-                for userData in responseData
-                {
-                    
-                }
-            })
+            let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
+            let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "MainTableViewController")
+            self.present(pushMainView, animated: true, completion: nil)
+//            Alamofire.request("http://localhost/1337").responseJSON(completionHandler: { (response) in
+//                
+//                let responseData = JSON(response.result.value!)
+//                
+//                for userData in responseData
+//                {
+//                    
+//                }
+//            })
             print("login")
         }
     }
