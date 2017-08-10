@@ -18,6 +18,12 @@ class ChangeUserInfomationViewController: UIViewController, UITableViewDataSourc
 //    }
     
 //  
+
+    @IBAction func modifyButtonTouched(_ sender: UIBarButtonItem) {
+        let storyBoard2 = UIStoryboard(name: "Main2", bundle: nil)
+        let changeView2 = storyBoard2.instantiateViewController(withIdentifier: "DetailChangeUserInfoViewController") as! DetailChangeUserInfoViewController
+        self.navigationController?.pushViewController(changeView2, animated: true)
+    }
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         print("scroll")
     }
@@ -52,25 +58,28 @@ class ChangeUserInfomationViewController: UIViewController, UITableViewDataSourc
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let main2StoryBoard = UIStoryboard(name: "Main2", bundle: nil)
-        
-//        let changeVIew = main2StoryBoard.instantiateViewController(withIdentifier: "SelfDescriptionTableViewCell") as! SelfDescriptionTableViewCell
-//        self.navigationController?.pushViewController(changeVIew, animated: true)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let main2StoryBoard = UIStoryboard(name: "Main2", bundle: nil)
+//        
+////        let changeVIew = main2StoryBoard.instantiateViewController(withIdentifier: "SelfDescriptionTableViewCell") as! SelfDescriptionTableViewCell
+////        self.navigationController?.pushViewController(changeVIew, animated: true)
+//    }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let modifyAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "수정") { (action, indexPath) in
-            let storyBoard2 = UIStoryboard(name: "Main2", bundle: nil)
-            let changeView2 = storyBoard2.instantiateViewController(withIdentifier: "DetailChangeUserInfoViewController") as! DetailChangeUserInfoViewController
-            self.navigationController?.pushViewController(changeView2, animated: true)
-            
-        }
-        modifyAction.backgroundColor = .gray
-        
-        
-        return [modifyAction]
-    }
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        let modifyAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "수정") { (action, indexPath) in
+//            let storyBoard2 = UIStoryboard(name: "Main2", bundle: nil)
+//            let changeView2 = storyBoard2.instantiateViewController(withIdentifier: "DetailChangeUserInfoViewController") as! DetailChangeUserInfoViewController
+//            self.navigationController?.pushViewController(changeView2, animated: true)
+//            
+//        }
+//        modifyAction.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
+////        modifyAction.backgroundColor = UIColor(colorLiteralRed: 125, green: 83, blue: 107, alpha: 1)
+////        modifyAction.backgroundColor = UIColor()
+//        
+//        
+//        return [modifyAction]
+//    }
+    
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

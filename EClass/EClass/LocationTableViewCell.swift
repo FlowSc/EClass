@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LocationTableViewCell: UITableViewCell {
+class LocationTableViewCell: UITableViewCell{
     
     @IBOutlet weak var collectionView:UICollectionView!
     
