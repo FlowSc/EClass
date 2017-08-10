@@ -87,20 +87,8 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 4{
-         
-            
-            let myData = tableView.dictionaryWithValues(forKeys: [LectureIntroTableViewCell])
             
             myTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            
-            myTableView.reloadData()
-            
-            
-            self.tableView(tableView.allowsMultipleSelection, cellForRowAt: indexPath.row)
-            
-            
-            return tableView(UITableView, cellForRowAt: indexPath)
-            
 
         }
     }
