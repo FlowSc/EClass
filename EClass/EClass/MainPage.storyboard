@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5L7-LV-3lz">
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LjJ-Hm-hqe">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
@@ -14,7 +15,7 @@
         <!--Main Table View Controller-->
         <scene sceneID="h5h-NP-1q4">
             <objects>
-                <viewController id="DVA-Yo-qJn" customClass="MainTableViewController" customModule="EClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainTableViewController" id="DVA-Yo-qJn" customClass="MainTableViewController" customModule="EClass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YXy-s4-GSs"/>
                         <viewControllerLayoutGuide type="bottom" id="T5K-nq-X9l"/>
@@ -35,7 +36,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="y28-6P-AWs">
-                                                    <rect key="frame" x="0.0" y="-1" width="414" height="172"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="htS-Vw-U0x">
                                                         <size key="itemSize" width="330" height="150"/>
@@ -46,10 +47,19 @@
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LocationCell" id="M9v-1y-mRZ" customClass="LocationCollectionViewCell" customModule="EClass" customModuleProvider="target">
 <<<<<<< HEAD
+<<<<<<< HEAD
                                                             <rect key="frame" x="0.0" y="10.5" width="330" height="150"/>
 =======
                                                             <rect key="frame" x="0.0" y="11" width="330" height="150"/>
 >>>>>>> 3ec4d4a7e1d7339a5052988d7fa56beb679abb9d
+=======
+                                                            <rect key="frame" x="0.0" y="10" width="330" height="150"/>
+
+                                                            <rect key="frame" x="0.0" y="10.5" width="330" height="150"/>
+
+                                                            <rect key="frame" x="0.0" y="11" width="330" height="150"/>
+
+>>>>>>> b8ade5756fc40ed5c54086367eecdbabca2312ab
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="330" height="150"/>
@@ -102,7 +112,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HWy-aJ-Sgp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="213"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="212"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <inset key="scrollIndicatorInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="b9n-51-PhZ">
@@ -173,15 +183,24 @@
                                                         <size key="itemSize" width="361" height="149"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecommendCell" id="Wbj-ls-Pe5" customClass="RecommendCollectionViewCell" customModule="EClass" customModuleProvider="target">
+<<<<<<< HEAD
 <<<<<<< HEAD
                                                             <rect key="frame" x="10" y="11.333333333333334" width="361" height="149"/>
 =======
                                                             <rect key="frame" x="0.0" y="9" width="361" height="149"/>
 >>>>>>> 3ec4d4a7e1d7339a5052988d7fa56beb679abb9d
+=======
+                                                            <rect key="frame" x="10" y="9" width="361" height="149"/>
+
+                                                            <rect key="frame" x="10" y="11.333333333333334" width="361" height="149"/>
+
+                                                            <rect key="frame" x="0.0" y="9" width="361" height="149"/>
+
+>>>>>>> b8ade5756fc40ed5c54086367eecdbabca2312ab
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="149"/>
@@ -292,6 +311,7 @@
                             <constraint firstItem="vrP-Yb-3ny" firstAttribute="top" secondItem="YXy-s4-GSs" secondAttribute="bottom" id="g5Z-xZ-JSE"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="UlM-tT-FFn"/>
                     <navigationItem key="navigationItem" id="YUf-pp-hwE"/>
                     <connections>
                         <outlet property="myMainTableView" destination="vrP-Yb-3ny" id="hZU-Tb-NVL"/>
@@ -307,6 +327,7 @@
                 <viewControllerPlaceholder storyboardName="SearchPage" id="ia6-wu-oIW" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iOo-e8-7Hn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1621.7391304347827" y="-34.646739130434788"/>
             <point key="canvasLocation" x="1621.0144927536232" y="-34.239130434782609"/>
         </scene>
         <!--DetailPage-->
@@ -315,6 +336,15 @@
                 <viewControllerPlaceholder storyboardName="DetailPage" id="u7h-vk-plA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJc-55-lCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1615.217391304348" y="280.84239130434787"/>
+        </scene>
+        <!--NavCon-->
+        <scene sceneID="5f7-fN-X0F">
+            <objects>
+                <navigationController storyboardIdentifier="NavCon" title="NavCon" automaticallyAdjustsScrollViewInsets="NO" id="5L7-LV-3lz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QeE-uf-hFg">
+
             <point key="canvasLocation" x="1614.4927536231885" y="280.43478260869568"/>
         </scene>
         <!--MainTableViewController-->
@@ -328,6 +358,10 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
+                        <segue destination="DVA-Yo-qJn" kind="relationship" relationship="rootViewController" id="WlB-GZ-KY2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o1D-Dp-T2i" userLabel="First Responder" sceneMemberID="firstResponder"/>
                         <segue destination="DVA-Yo-qJn" kind="relationship" relationship="rootViewController" id="ZER-pz-wYP"/>
                     </connections>
                 </navigationController>

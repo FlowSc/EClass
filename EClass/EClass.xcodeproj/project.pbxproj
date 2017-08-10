@@ -85,7 +85,7 @@
 		75BC38271F3ADF6500AA9E96 /* TutorInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorInfoTableViewCell.swift; sourceTree = "<group>"; };
 		75BC382B1F3AF36600AA9E96 /* TutorDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorDetailTableViewCell.swift; sourceTree = "<group>"; };
 		75BC382C1F3AF36600AA9E96 /* TutorDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorDetailTableViewCell.xib; sourceTree = "<group>"; };
-		75BC382F1F3AF56500AA9E96 /* SimpleImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleImageTableViewCell.swift; sourceTree = "<group>"; };
+		75BC382F1F3AF56500AA9E96 /* SimpleImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleImageTableViewCell.swift; sourceTree = "<group>"; }
 		75D1B2061F3575F80068C20C /* EClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D1B2101F3575F80068C20C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75D1B2131F3575F80068C20C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -209,6 +209,7 @@
 		75BC38201F3AC6D000AA9E96 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				75D1B21D1F357C3C0068C20C /* MainTableViewController.swift */,
 				75D1B27E1F357C6A0068C20C /* MainPage.storyboard */,
 				75D1B2A01F3581D10068C20C /* AppDelegate.swift */,
 				75D1B27F1F357C6A0068C20C /* RecommendCollectionViewCell.swift */,
@@ -243,7 +244,6 @@
 			isa = PBXGroup;
 			children = (
 				75D1B21B1F357C2A0068C20C /* Main.storyboard */,
-				75D1B21D1F357C3C0068C20C /* MainTableViewController.swift */,
 				75D1B2121F3575F80068C20C /* LaunchScreen.storyboard */,
 				75BC38201F3AC6D000AA9E96 /* MainPage */,
 				75D1B2101F3575F80068C20C /* Assets.xcassets */,

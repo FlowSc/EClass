@@ -30,6 +30,7 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
         print("searchpassword")
         
     }
+    
     @IBAction func logInButtonTouched(_ sender: UIButton) {
         
         if !(emailTextFieldOutlet.text?.isEmpty)! && !(passwordTextFieldOutlet.text?.isEmpty)!
@@ -52,6 +53,8 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
             
             self.present(storyRootView, animated: true, completion: nil)
             print("login")
+            
+            
         }
     }
     @IBOutlet weak var logInButtonOutlet: UIButton!
