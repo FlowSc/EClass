@@ -14,6 +14,11 @@ class DetailTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        myTableView.estimatedRowHeight = 100
+        myTableView.rowHeight = UITableViewAutomaticDimension
+        myTableView.allowsSelection = false
+        myTableView.reloadData()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -37,23 +42,32 @@ class DetailTableViewController: UIViewController {
 
 extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MainImageCell", for: indexPath) as! SimpleImageTableViewCell
+            
+            cell.settingMyImage(#imageLiteral(resourceName: "pac-man-logo.gif"))
+            
+            return cell
+            
+        }else if indexPath.row == 1{
+        let cell = tableView.dequeueReusableCell(withIdentifier: "IntroductionCell", for: indexPath) as! IntroductionTableViewCell
+            
+            cell.setLectureInfo("팩맨", "5.0", "서울 강서구 공항오피스텔", "4명", "50000원", "주 2회", "총 8회 16시간")
         
-        return cell
+            return cell}
         
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "tutorInfoCell", for: indexPath) as! TutorInfoTableViewCell
+            
+            cell.setTutor(#imageLiteral(resourceName: "pac-man-logo.gif"), "성찬", tutorComment: "하이하이 \n 이거 많이 쓰면 늘어나는거 팩트입니까? 항ㄴ훈이훈이후니우히나위 저는 IOS 개발자인데 팩맨 겁나 잘하구여 그 똥망한 영화 픽셀도 개즐겁게 본 진성 너드입니다")
+            
+            return cell
         
-        myTableView.estimatedRowHeight = 100
-        myTableView.rowHeight = UITableViewAutomaticDimension
-        
-        
+        }
     }
 }
