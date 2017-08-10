@@ -45,7 +45,7 @@ extension CategoryTableViewCell:UICollectionViewDelegate, UICollectionViewDataSo
         cell.categoryLabel.text = categoryStrings[indexPath.item]
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 3
-        cell.backgroundColor = UIColor.orange
+        cell.backgroundColor = UIColor.white
         
         return cell
         
