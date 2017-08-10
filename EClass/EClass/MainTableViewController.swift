@@ -26,6 +26,7 @@ class MainTableViewController: UIViewController {
         self.myMainTableView.reloadData()
         self.myMainTableView.register(UINib.init(nibName: "LectureTableViewCell"
             , bundle: nil), forCellReuseIdentifier: "LectureCell")
+        myMainTableView.allowsSelection = false
 
         
         

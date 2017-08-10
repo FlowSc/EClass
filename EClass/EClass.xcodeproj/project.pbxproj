@@ -22,6 +22,13 @@
 		45A57FEB1F35801F001F5C1A /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 45A57FEA1F35801F001F5C1A /* 2.png */; };
 		45A57FED1F358028001F5C1A /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 45A57FEC1F358028001F5C1A /* 3.png */; };
 		75BC381E1F39DCE200AA9E96 /* IntroductionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC381D1F39DCE200AA9E96 /* IntroductionTableViewCell.swift */; };
+		75BC38221F3ACDC000AA9E96 /* MainImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC38211F3ACDC000AA9E96 /* MainImageTableViewCell.swift */; };
+		75BC38251F3AD74100AA9E96 /* MainImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC38231F3AD74100AA9E96 /* MainImageCollectionViewCell.swift */; };
+		75BC38261F3AD74100AA9E96 /* MainImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75BC38241F3AD74100AA9E96 /* MainImageCollectionViewCell.xib */; };
+		75BC38281F3ADF6500AA9E96 /* TutorInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC38271F3ADF6500AA9E96 /* TutorInfoTableViewCell.swift */; };
+		75BC382D1F3AF36600AA9E96 /* TutorDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC382B1F3AF36600AA9E96 /* TutorDetailTableViewCell.swift */; };
+		75BC382E1F3AF36600AA9E96 /* TutorDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75BC382C1F3AF36600AA9E96 /* TutorDetailTableViewCell.xib */; };
+		75BC38301F3AF56500AA9E96 /* SimpleImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC382F1F3AF56500AA9E96 /* SimpleImageTableViewCell.swift */; };
 		75D1B2111F3575F80068C20C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75D1B2101F3575F80068C20C /* Assets.xcassets */; };
 		75D1B2141F3575F80068C20C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D1B2121F3575F80068C20C /* LaunchScreen.storyboard */; };
 		75D1B21C1F357C2A0068C20C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D1B21B1F357C2A0068C20C /* Main.storyboard */; };
@@ -64,6 +71,13 @@
 		45A57FEC1F358028001F5C1A /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
 		575D7D2BB1253DC83223CD2A /* Pods-EClass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EClass.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EClass/Pods-EClass.debug.xcconfig"; sourceTree = "<group>"; };
 		75BC381D1F39DCE200AA9E96 /* IntroductionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionTableViewCell.swift; sourceTree = "<group>"; };
+		75BC38211F3ACDC000AA9E96 /* MainImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainImageTableViewCell.swift; sourceTree = "<group>"; };
+		75BC38231F3AD74100AA9E96 /* MainImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		75BC38241F3AD74100AA9E96 /* MainImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		75BC38271F3ADF6500AA9E96 /* TutorInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorInfoTableViewCell.swift; sourceTree = "<group>"; };
+		75BC382B1F3AF36600AA9E96 /* TutorDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorDetailTableViewCell.swift; sourceTree = "<group>"; };
+		75BC382C1F3AF36600AA9E96 /* TutorDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorDetailTableViewCell.xib; sourceTree = "<group>"; };
+		75BC382F1F3AF56500AA9E96 /* SimpleImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleImageTableViewCell.swift; sourceTree = "<group>"; };
 		75D1B2061F3575F80068C20C /* EClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D1B2101F3575F80068C20C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75D1B2131F3575F80068C20C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -160,7 +174,14 @@
 			isa = PBXGroup;
 			children = (
 				75D1B28C1F357C810068C20C /* DetailPage.storyboard */,
+				75BC382F1F3AF56500AA9E96 /* SimpleImageTableViewCell.swift */,
+				75BC382B1F3AF36600AA9E96 /* TutorDetailTableViewCell.swift */,
+				75BC382C1F3AF36600AA9E96 /* TutorDetailTableViewCell.xib */,
+				75BC38271F3ADF6500AA9E96 /* TutorInfoTableViewCell.swift */,
+				75BC38231F3AD74100AA9E96 /* MainImageCollectionViewCell.swift */,
+				75BC38241F3AD74100AA9E96 /* MainImageCollectionViewCell.xib */,
 				75D1B28D1F357C810068C20C /* DetailTableViewController.swift */,
+				75BC38211F3ACDC000AA9E96 /* MainImageTableViewCell.swift */,
 				75BC381D1F39DCE200AA9E96 /* IntroductionTableViewCell.swift */,
 			);
 			name = DetailPage;
@@ -292,6 +313,7 @@
 				75D1B29E1F357CB40068C20C /* pac-man-logo.gif in Resources */,
 				45A57FEB1F35801F001F5C1A /* 2.png in Resources */,
 				75D1B29F1F357CB40068C20C /* five.jpg in Resources */,
+				75BC382E1F3AF36600AA9E96 /* TutorDetailTableViewCell.xib in Resources */,
 				75D1B2851F357C6A0068C20C /* MainPage.storyboard in Resources */,
 				75D1B28E1F357C810068C20C /* DetailPage.storyboard in Resources */,
 				45A57FE91F358016001F5C1A /* 1.png in Resources */,
@@ -302,6 +324,7 @@
 				75D1B2981F357C8D0068C20C /* CategorySelect.storyboard in Resources */,
 				75D1B2111F3575F80068C20C /* Assets.xcassets in Resources */,
 				45A57FA21F357BE5001F5C1A /* Main2.storyboard in Resources */,
+				75BC38261F3AD74100AA9E96 /* MainImageCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,7 +384,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				75D1B2991F357C8D0068C20C /* CategorySelectViewController.swift in Sources */,
+				75BC38251F3AD74100AA9E96 /* MainImageCollectionViewCell.swift in Sources */,
 				75D1B2871F357C6A0068C20C /* RecommendTableViewCell.swift in Sources */,
+				75BC38281F3ADF6500AA9E96 /* TutorInfoTableViewCell.swift in Sources */,
 				75D1B28A1F357C6A0068C20C /* LocationTableViewCell.swift in Sources */,
 				75D1B21E1F357C3C0068C20C /* MainTableViewController.swift in Sources */,
 				75D1B29B1F357C8D0068C20C /* LocationSelectViewController.swift in Sources */,
@@ -369,13 +394,16 @@
 				75D1B28B1F357C6A0068C20C /* LocationCollectionViewCell.swift in Sources */,
 				75D1B28F1F357C810068C20C /* DetailTableViewController.swift in Sources */,
 				75D1B2861F357C6A0068C20C /* RecommendCollectionViewCell.swift in Sources */,
+				75BC38301F3AF56500AA9E96 /* SimpleImageTableViewCell.swift in Sources */,
 				75D1B2891F357C6A0068C20C /* CategoryCollectionViewCell.swift in Sources */,
 				75D1B2881F357C6A0068C20C /* CategoryTableViewCell.swift in Sources */,
 				45A57FAA1F357C45001F5C1A /* SelfDescriptionTableViewCell.swift in Sources */,
 				45A57FB21F357C6F001F5C1A /* DetailLogInViewController.swift in Sources */,
 				75BC381E1F39DCE200AA9E96 /* IntroductionTableViewCell.swift in Sources */,
 				45A57FAC1F357C4C001F5C1A /* ProfileImageTableViewCell.swift in Sources */,
+				75BC38221F3ACDC000AA9E96 /* MainImageTableViewCell.swift in Sources */,
 				45A57FA41F357C12001F5C1A /* LogInViewController.swift in Sources */,
+				75BC382D1F3AF36600AA9E96 /* TutorDetailTableViewCell.swift in Sources */,
 				45A57FAE1F357C56001F5C1A /* ProfileTableViewCell.swift in Sources */,
 				45A57FA01F357BB0001F5C1A /* DataCenter.swift in Sources */,
 				45A57FA81F357C26001F5C1A /* ChangeUserInfomationViewController.swift in Sources */,
