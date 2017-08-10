@@ -18,12 +18,13 @@ class LogInViewController: UIViewController {
         
         let detailLoginViewController = storyboard?.instantiateViewController(withIdentifier: "DetailLogInViewController") as! DetailLogInViewController
         self.navigationController?.pushViewController(detailLoginViewController, animated: true)
+        
 
     }
     @IBAction func faceBookLoginButtonTouched(_ sender: UIButton) {
         
-        
-        
+        print("2")
+        print("1")
         print("facebooklogin")
     }
     @IBAction func signUpButtonTouched(_ sender: UIButton) {
