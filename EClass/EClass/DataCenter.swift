@@ -18,6 +18,19 @@ extension UIImageView
     }
 }
 
+//extension UIColor
+//{
+////    let globalPink:UIColor
+////    {
+////        return UIColor(red: 255/255, green: 83/255, blue: 107/255, alpha: 1)
+////    }
+//    
+//    func globalPink() -> UIColor
+//    {
+//        return self(red: 255/255, green: 83/255, blue: 107/255, alpha: 1)
+//    }
+//}
+
 
 //전역 변수 & 함수
 

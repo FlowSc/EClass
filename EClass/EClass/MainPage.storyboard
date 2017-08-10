@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="DVA-Yo-qJn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LjJ-Hm-hqe">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vrP-Yb-3ny">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationTableCell" rowHeight="171" id="aDP-jh-VKz" customClass="LocationTableViewCell" customModule="EClass" customModuleProvider="target">
@@ -45,7 +45,11 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LocationCell" id="M9v-1y-mRZ" customClass="LocationCollectionViewCell" customModule="EClass" customModuleProvider="target">
+
+                                                            <rect key="frame" x="0.0" y="10.5" width="330" height="150"/>
+
                                                             <rect key="frame" x="0.0" y="11" width="330" height="150"/>
+
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="330" height="150"/>
@@ -173,7 +177,11 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecommendCell" id="Wbj-ls-Pe5" customClass="RecommendCollectionViewCell" customModule="EClass" customModuleProvider="target">
+
+                                                            <rect key="frame" x="10" y="11.333333333333334" width="361" height="149"/>
+
                                                             <rect key="frame" x="0.0" y="9" width="361" height="149"/>
+
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="149"/>
@@ -284,13 +292,14 @@
                             <constraint firstItem="vrP-Yb-3ny" firstAttribute="top" secondItem="YXy-s4-GSs" secondAttribute="bottom" id="g5Z-xZ-JSE"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="YUf-pp-hwE"/>
                     <connections>
                         <outlet property="myMainTableView" destination="vrP-Yb-3ny" id="hZU-Tb-NVL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5oq-lK-Ew5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2.8985507246376816" y="54.619565217391312"/>
+            <point key="canvasLocation" x="904.34782608695662" y="54.619565217391312"/>
         </scene>
         <!--SearchPage-->
         <scene sceneID="wor-Sf-5MX">
@@ -298,7 +307,7 @@
                 <viewControllerPlaceholder storyboardName="SearchPage" id="ia6-wu-oIW" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iOo-e8-7Hn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="715" y="-34"/>
+            <point key="canvasLocation" x="1621.0144927536232" y="-34.239130434782609"/>
         </scene>
         <!--DetailPage-->
         <scene sceneID="Csy-AR-cgg">
@@ -306,7 +315,25 @@
                 <viewControllerPlaceholder storyboardName="DetailPage" id="u7h-vk-plA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJc-55-lCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="708" y="281"/>
+            <point key="canvasLocation" x="1614.4927536231885" y="280.43478260869568"/>
+        </scene>
+        <!--MainTableViewController-->
+        <scene sceneID="oYd-xu-lZX">
+            <objects>
+                <navigationController storyboardIdentifier="MainTableViewController" title="MainTableViewController" automaticallyAdjustsScrollViewInsets="NO" id="LjJ-Hm-hqe" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="itS-6O-tQO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="DVA-Yo-qJn" kind="relationship" relationship="rootViewController" id="ZER-pz-wYP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HMr-mn-2kY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2.8985507246376816" y="54.619565217391312"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

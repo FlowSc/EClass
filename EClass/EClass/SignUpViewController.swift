@@ -20,6 +20,12 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         passwordCheckTextField.text == passwordTextField.text
         {
             
+            let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
+            let storyRootView = mainStoryBoard.instantiateViewController(withIdentifier: "MainTableViewController")
+
+        
+            self.present(storyRootView, animated: true, completion: nil)
+            
             let postUserData = JSON(["id":emailTextField.text!,"password":passwordTextField.text!,"name":lastNameTextField.text! + firstNameTextField.text!])
             
             
