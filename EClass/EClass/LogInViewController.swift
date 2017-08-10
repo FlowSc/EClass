@@ -23,7 +23,7 @@ class LogInViewController: UIViewController {
     }
     @IBAction func faceBookLoginButtonTouched(_ sender: UIButton) {
         
-        
+        print("2")
         print("1")
         print("facebooklogin")
     }
