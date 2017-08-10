@@ -18,6 +18,8 @@ class DetailTableViewController: UIViewController {
         myTableView.rowHeight = UITableViewAutomaticDimension
         myTableView.allowsSelection = false
         myTableView.reloadData()
+        myTableView.register(UINib.init(nibName: "TutorDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "tutorDetailInfoCell")
+        myTableView.register(UINib.init(nibName: "LectureIntroTableViewCell", bundle: nil), forCellReuseIdentifier: "LectureIntroTableViewCell")
         
         // Do any additional setup after loading the view.
     }
@@ -42,7 +44,7 @@ class DetailTableViewController: UIViewController {
 
 extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -61,13 +63,45 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource {
         
             return cell}
         
-        else {
+        else if indexPath.row == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "tutorInfoCell", for: indexPath) as! TutorInfoTableViewCell
             
             cell.setTutor(#imageLiteral(resourceName: "pac-man-logo.gif"), "성찬", tutorComment: "하이하이 \n 이거 많이 쓰면 늘어나는거 팩트입니까? 항ㄴ훈이훈이후니우히나위 저는 IOS 개발자인데 팩맨 겁나 잘하구여 그 똥망한 영화 픽셀도 개즐겁게 본 진성 너드입니다")
             
             return cell
         
+        }else if indexPath.row == 3{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "tutorDetailInfoCell", for: indexPath) as! TutorDetailTableViewCell
+            
+    cell.tutorBasicInfo.text = "인하대학교"
+    cell.tutorDetailInfo.text = "jsakdnaksjfbldsakfbsdkfblasdkjfbadsjkbflakjdsfbadsjkfbasjdkfbsjdk\n bfljksdfbasdjkfbadjskfbdkasfbjkdasfblajkdsfbjaldsfbl\n aksdjfbsajldkfbalsjdkfblasdjkfblasdkjfbaslkdfbaljkdsfbald\n sjfblksdjafbaksd\n fblasdkfblaskdjfblaskjdfbalsjdfbasl\n jdfblasdjkfbadlsjkfbladskfbasldjkfblasdjfb\n jadbflj"
+            
+            return cell
+            
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LectureIntroTableViewCell", for: indexPath) as! LectureIntroTableViewCell
+            
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 4{
+         
+            
+            let myData = tableView.dictionaryWithValues(forKeys: [LectureIntroTableViewCell])
+            
+            myTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            
+            myTableView.reloadData()
+            
+            
+            self.tableView(tableView.allowsMultipleSelection, cellForRowAt: indexPath.row)
+            
+            
+            return tableView(UITableView, cellForRowAt: indexPath)
+            
+
         }
     }
 }
