@@ -57,6 +57,15 @@ extension CategoryTableViewCell:UICollectionViewDelegate, UICollectionViewDataSo
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        
+        return CGSize(width: 170, height: 80)
+        
+    }
+    
+    
+    
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        let cellsAcross: CGFloat = 2
 //        var widthRemainingForCellContent = collectionView.bounds.width
