@@ -35,8 +35,8 @@ extension RecommendTableViewCell:UICollectionViewDataSource, UICollectionViewDel
 //        let myData = lectureList?[indexPath.item] 이건 나중에 데이터 받으면 각각 쏴주는걸로..
         
        
-        cell.setLecture(#imageLiteral(resourceName: "five.jpg"), "성찬이의 팩맨 특강", "30,000", #imageLiteral(resourceName: "five.jpg"), "성찬", "a.k.a. king of pacman")
-        cell.tutorImage.layer.cornerRadius = (cell.tutorImage.image?.size.width)! / 2
+        cell.setLecture(#imageLiteral(resourceName: "five.jpg"), "성찬이의 팩맨 특강", "30,000", #imageLiteral(resourceName: "default-user-image"), "성찬", "a.k.a. king of pacman")
+        cell.tutorImage.layer.cornerRadius = 25
         cell.tutorImage.layer.borderWidth = 1
 
         

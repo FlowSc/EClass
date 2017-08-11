@@ -21,6 +21,7 @@ class MainImageTableViewCell: UITableViewCell {
         
         myCollectionView.register(UINib.init(nibName: "MainImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MainImageCollectionViewCell")
         
+        
         if let flowLayout = myCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = .init(width: 1, height: 1)
         }
