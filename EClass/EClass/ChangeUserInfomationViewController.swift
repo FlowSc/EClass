@@ -52,25 +52,42 @@ class ChangeUserInfomationViewController: UIViewController, UITableViewDataSourc
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let main2StoryBoard = UIStoryboard(name: "Main2", bundle: nil)
+    @IBAction func popupTouched(_ sender: UIBarButtonItem) {
         
-//        let changeVIew = main2StoryBoard.instantiateViewController(withIdentifier: "SelfDescriptionTableViewCell") as! SelfDescriptionTableViewCell
-//        self.navigationController?.pushViewController(changeVIew, animated: true)
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let modifyAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "수정") { (action, indexPath) in
-            let storyBoard2 = UIStoryboard(name: "Main2", bundle: nil)
-            let changeView2 = storyBoard2.instantiateViewController(withIdentifier: "DetailChangeUserInfoViewController") as! DetailChangeUserInfoViewController
-            self.navigationController?.pushViewController(changeView2, animated: true)
-            
+        let popUpView2:UserInformationPopupView = UserInformationPopupView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width - 128, height: self.view.frame.size.height), searchLectureTouchedHandler: { (popview) in
+            print("popok")
+        }, lectureListTouchedHandler: { (popview) in
+            print("popok")
+        }, requestLectureTouchedHandler: { (popview) in
+            print("popok")
+        }) { (popview) in
+            print("popok")
         }
-        modifyAction.backgroundColor = .gray
         
+
+        popUpView2.popUp(on: self.view)
+        sender.isEnabled = false
         
-        return [modifyAction]
     }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let main2StoryBoard = UIStoryboard(name: "Main2", bundle: nil)
+//        
+////        let changeVIew = main2StoryBoard.instantiateViewController(withIdentifier: "SelfDescriptionTableViewCell") as! SelfDescriptionTableViewCell
+////        self.navigationController?.pushViewController(changeVIew, animated: true)
+//    }
+//    
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        let modifyAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "수정") { (action, indexPath) in
+//            let storyBoard2 = UIStoryboard(name: "Main2", bundle: nil)
+//            let changeView2 = storyBoard2.instantiateViewController(withIdentifier: "DetailChangeUserInfoViewController") as! DetailChangeUserInfoViewController
+//            self.navigationController?.pushViewController(changeView2, animated: true)
+//            
+//        }
+//        modifyAction.backgroundColor = .gray
+//        
+//        
+//        return [modifyAction]
+//    }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

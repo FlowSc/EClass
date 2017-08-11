@@ -1,5 +1,5 @@
 //
-//  InputUserDataTableViewCell.swift
+//  inputUserGenderTableViewCell.swift
 //  EClass
 //
 //  Created by 김태형 on 2017. 8. 10..
@@ -8,13 +8,10 @@
 
 import UIKit
 
-class InputUserDataTableViewCell: UITableViewCell {
+class InputUserGenderTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var userSettingPropertyLabel: UILabel!
-    @IBOutlet weak var userDataTextField: UITextField!
     override func awakeFromNib() {
         super.awakeFromNib()
-        userDataTextField.text = "수정"
         // Initialization code
     }
     
@@ -24,8 +21,11 @@ class InputUserDataTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func userDataSet(_ data:String)
-    {
-        userSettingPropertyLabel.text = data
-    }
+    //    func genderSet()
+    //    {
+    //        
+    //    }
+    
 }
+
+
