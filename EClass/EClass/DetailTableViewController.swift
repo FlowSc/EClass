@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class DetailTableViewController: UIViewController {
     @IBOutlet weak var myTableView: UITableView!
@@ -21,7 +22,9 @@ class DetailTableViewController: UIViewController {
         myTableView.reloadData()
         myTableView.register(UINib.init(nibName: "TutorDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "tutorDetailInfoCell")
         myTableView.register(UINib.init(nibName: "LectureIntroTableViewCell", bundle: nil), forCellReuseIdentifier: "LectureIntroTableViewCell")
-        
+        myTableView.register(UINib.init(nibName: "MapLocationTableViewCell", bundle: nil), forCellReuseIdentifier: "MapLocationTableViewCell")
+        myTableView.register(UINib.init(nibName: "LectureReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "LectureReviewTableViewCell")
+
         // Do any additional setup after loading the view.
     }
 
@@ -45,7 +48,7 @@ class DetailTableViewController: UIViewController {
 
 extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 7
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,6 +72,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource {
             
             cell.setTutor(#imageLiteral(resourceName: "pac-man-logo.gif"), "성찬", tutorComment: "하이하이 \n 이거 많이 쓰면 늘어나는거 팩트입니까? 항ㄴ훈이훈이후니우히나위 저는 IOS 개발자인데 팩맨 겁나 잘하구여 그 똥망한 영화 픽셀도 개즐겁게 본 진성 너드입니다")
             
+            
             return cell
         
         }else if indexPath.row == 3{
@@ -83,6 +87,15 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LectureIntroTableViewCell", for: indexPath) as! LectureIntroTableViewCell
             
             cell.setValues(myData[indexPath.row - 4])
+            
+            return cell
+        }else if indexPath.row == 5{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MapLocationTableViewCell", for: indexPath) as! MapLocationTableViewCell
+            
+            
+            return cell
+        }else if indexPath.row == 6{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LectureReviewTableViewCell", for: indexPath) as! LectureReviewTableViewCell
             
             return cell
         }
@@ -102,8 +115,28 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource {
             print("A")
 
         }
+        
+        print(indexPath)
+        
     }
+//    
+//    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+//        if section == 0 {
+//            
+//            let collectionView = UICollectionView()
+//            let layout = UICollectionViewFlowLayout()
+//            layout.scrollDirection = .horizontal
+//            layout.estimatedItemSize = CGSize(width: 414, height: 180)
+//            
+//            view.addSubview(collectionView)
+//        }
+//    }
+    
 }
+//
+//extension DetailTableViewController:UICollectionViewDelegate, UICollectionViewDataSource {
+//    
+//}
 
 class LectureInfo {
     
