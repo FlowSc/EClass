@@ -41,7 +41,9 @@ extension LocationTableViewCell:UICollectionViewDataSource, UICollectionViewDele
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationCell", for: indexPath) as! LocationCollectionViewCell
         
         cell.locationLabel.text = locationStrings[indexPath.row]
-        cell.image.image = #imageLiteral(resourceName: "pac-man-logo.gif")
+//        cell.image.image = #imageLiteral(resourceName: "pac-man-logo.gif")
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 3
 
         
         return cell

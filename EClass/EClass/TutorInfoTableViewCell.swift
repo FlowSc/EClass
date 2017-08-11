@@ -32,7 +32,8 @@ class TutorInfoTableViewCell: UITableViewCell {
     }
     
     func setTutor(_ image:UIImage, _ tutorName:String, tutorComment:String) {
-        self.tutorImage.setBackgroundImage(image, for: .normal)
+        self.tutorImage.setBackgroundImage(image, for: UIControlState.normal)
+        self.tutorImage.setImage(image, for: .normal)
         self.tutorName.text = tutorName
         self.tutorComent.text = tutorComment
         
