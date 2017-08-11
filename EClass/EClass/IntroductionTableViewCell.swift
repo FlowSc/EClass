@@ -16,6 +16,7 @@ class IntroductionTableViewCell: UITableViewCell {
     }
     @IBOutlet weak var lectureName: UILabel!
     @IBOutlet weak var lectureReviewLabel: UILabel!
+    @IBOutlet weak var LectureReviewScore: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var attendanceLabel: UILabel!
@@ -30,7 +31,7 @@ class IntroductionTableViewCell: UITableViewCell {
     func setLectureInfo(_ lectureName:String, _ lectureReview:String, _ location:String, _ attandance:String, _ price:String, _ time:String, _ basicInfo:String) {
         
         self.lectureName.text = lectureName
-        self.lectureReviewLabel.text = lectureReview
+        self.LectureReviewScore.text = lectureReview
         self.locationLabel.text = location
         self.priceLabel.text = price
         self.attendanceLabel.text = attandance

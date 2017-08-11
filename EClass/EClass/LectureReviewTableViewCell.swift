@@ -1,21 +1,19 @@
 //
-//  TutorDetailTableViewCell.swift
+//  LectureReviewTableViewCell.swift
 //  EClass
 //
-//  Created by Kang Seongchan on 2017. 8. 9..
+//  Created by Kang Seongchan on 2017. 8. 11..
 //  Copyright © 2017년 Kang Seongchan. All rights reserved.
 //
 
 import UIKit
 
-class TutorDetailTableViewCell: UITableViewCell {
+class LectureReviewTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    @IBOutlet weak var tutorBasicInfo: UILabel!
-    @IBOutlet weak var tutorDetailInfo: UILabel!
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
