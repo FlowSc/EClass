@@ -1,5 +1,5 @@
 //
-//  MainTableViewController.swift
+//  MainTableViewControlSWRevealViewControllerSegueSetControllerler.swift
 //
 //
 //  Created by Kang Seongchan on 2017. 8. 1..
@@ -7,6 +7,46 @@
 //
 
 import UIKit
+let view1 = UIView()
+
+extension SWRevealViewController
+{
+    
+    func addView()
+    {
+        let storyBoard = UIStoryboard(name: "MainPage", bundle: nil)
+        let rearViewController = storyBoard.instantiateViewController(withIdentifier: "RearUserInfoViewController") as! RearUserInfoViewController
+        self.rearViewController = rearViewController
+        
+        self.revealToggle(animated: true)
+        
+        view1.isUserInteractionEnabled = true
+        view1.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        view1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissFunc(_:))))
+        self.view.addSubview(view1)
+        view1.frame = CGRect(x: self.rearViewRevealWidth, y: 0, width: self.view.frame.size.width - self.rearViewRevealWidth, height: self.view.frame.size.height)
+        view1.alpha = 0
+        UIView.animate(withDuration: 0.5, animations: {
+            view1.alpha = 0.5
+        })
+        
+    }
+    func dismissFunc(_ sender:UITapGestureRecognizer)
+    {
+        //        print("dismiss")
+        self.revealToggle(animated: true)
+        
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            print("dismiss")
+        }) { (bool) in
+            
+            view1.removeFromSuperview()
+            
+        }
+        
+    }
+}
 
 class MainTableViewController: UIViewController {
     
@@ -23,6 +63,8 @@ class MainTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sideMenus()
+        customizeNavBar()
         self.myMainTableView.reloadData()
         self.myMainTableView.register(UINib.init(nibName: "LectureTableViewCell"
             , bundle: nil), forCellReuseIdentifier: "LectureCell")
@@ -32,12 +74,40 @@ class MainTableViewController: UIViewController {
         
         
         self.automaticallyAdjustsScrollViewInsets = false
+        
+        
 
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBOutlet weak var userInfoSlideOutlet: UIBarButtonItem!
+    func sideMenus()
+    {
+        if revealViewController() != nil
+        {
+            userInfoSlideOutlet.target = revealViewController()
+            userInfoSlideOutlet.action = #selector(SWRevealViewController.addView)
+            
+            
+            
+            revealViewController().rearViewRevealWidth = 300
+//            revealViewController().rightViewRevealWidth = 160
+            
+            
+            view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+    }
+    
+    
+    func customizeNavBar()
+    {
+        navigationController?.navigationBar.tintColor = UIColor(colorLiteralRed: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
     }
     
 }
@@ -182,6 +252,9 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource {
 //            }
 //        }
 //    }
+    
+    
+    
 }
 //
 //
