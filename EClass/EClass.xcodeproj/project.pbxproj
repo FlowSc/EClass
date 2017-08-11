@@ -28,6 +28,8 @@
 		759155991F3CA8740010686B /* MapLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 759155971F3CA8740010686B /* MapLocationTableViewCell.xib */; };
 		7591559C1F3CB9CD0010686B /* LectureReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7591559A1F3CB9CD0010686B /* LectureReviewTableViewCell.swift */; };
 		7591559D1F3CB9CD0010686B /* LectureReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7591559B1F3CB9CD0010686B /* LectureReviewTableViewCell.xib */; };
+		759155A41F3D8CD60010686B /* LectureImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759155A21F3D8CD60010686B /* LectureImageCollectionViewCell.swift */; };
+		759155A51F3D8CD60010686B /* LectureImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 759155A31F3D8CD60010686B /* LectureImageCollectionViewCell.xib */; };
 		75BC381E1F39DCE200AA9E96 /* IntroductionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC381D1F39DCE200AA9E96 /* IntroductionTableViewCell.swift */; };
 		75BC38221F3ACDC000AA9E96 /* MainImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC38211F3ACDC000AA9E96 /* MainImageTableViewCell.swift */; };
 		75BC38251F3AD74100AA9E96 /* MainImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC38231F3AD74100AA9E96 /* MainImageCollectionViewCell.swift */; };
@@ -83,6 +85,8 @@
 		759155971F3CA8740010686B /* MapLocationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapLocationTableViewCell.xib; sourceTree = "<group>"; };
 		7591559A1F3CB9CD0010686B /* LectureReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureReviewTableViewCell.swift; sourceTree = "<group>"; };
 		7591559B1F3CB9CD0010686B /* LectureReviewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LectureReviewTableViewCell.xib; sourceTree = "<group>"; };
+		759155A21F3D8CD60010686B /* LectureImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		759155A31F3D8CD60010686B /* LectureImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LectureImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		75BC381D1F39DCE200AA9E96 /* IntroductionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionTableViewCell.swift; sourceTree = "<group>"; };
 		75BC38211F3ACDC000AA9E96 /* MainImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainImageTableViewCell.swift; sourceTree = "<group>"; };
 		75BC38231F3AD74100AA9E96 /* MainImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -200,6 +204,8 @@
 				75BC38231F3AD74100AA9E96 /* MainImageCollectionViewCell.swift */,
 				75BC38241F3AD74100AA9E96 /* MainImageCollectionViewCell.xib */,
 				75D1B28D1F357C810068C20C /* DetailTableViewController.swift */,
+				759155A21F3D8CD60010686B /* LectureImageCollectionViewCell.swift */,
+				759155A31F3D8CD60010686B /* LectureImageCollectionViewCell.xib */,
 				75BC38211F3ACDC000AA9E96 /* MainImageTableViewCell.swift */,
 				75BC381D1F39DCE200AA9E96 /* IntroductionTableViewCell.swift */,
 			);
@@ -327,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				759155911F3C62C80010686B /* LectureIntroTableViewCell.xib in Resources */,
+				759155A51F3D8CD60010686B /* LectureImageCollectionViewCell.xib in Resources */,
 				45A57FED1F358028001F5C1A /* 3.png in Resources */,
 				45A57FE71F35800C001F5C1A /* 0.png in Resources */,
 				759155991F3CA8740010686B /* MapLocationTableViewCell.xib in Resources */,
@@ -416,6 +423,7 @@
 				75D1B28F1F357C810068C20C /* DetailTableViewController.swift in Sources */,
 				7591559C1F3CB9CD0010686B /* LectureReviewTableViewCell.swift in Sources */,
 				75D1B2861F357C6A0068C20C /* RecommendCollectionViewCell.swift in Sources */,
+				759155A41F3D8CD60010686B /* LectureImageCollectionViewCell.swift in Sources */,
 				75BC38301F3AF56500AA9E96 /* SimpleImageTableViewCell.swift in Sources */,
 				75D1B2891F357C6A0068C20C /* CategoryCollectionViewCell.swift in Sources */,
 				75D1B2881F357C6A0068C20C /* CategoryTableViewCell.swift in Sources */,

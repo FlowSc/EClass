@@ -146,11 +146,11 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLN-Hu-5IH">
                                                 <rect key="frame" x="0.0" y="0.0" width="227.5" height="30"/>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="리뷰 더 보기"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qpd-Cr-PaI">
                                                 <rect key="frame" x="227.5" y="0.0" width="227.5" height="30"/>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="리뷰 등록하기"/>
                                             </button>
                                         </subviews>
                                         <constraints>
