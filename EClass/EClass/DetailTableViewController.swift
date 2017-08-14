@@ -97,7 +97,8 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         }else if indexPath.row == 5{
             let cell = tableView.dequeueReusableCell(withIdentifier: "LectureReviewTableViewCell", for: indexPath) as! LectureReviewTableViewCell
             cell.selectionStyle = .none
-            cell.moveReviewAddB.addTarget(self, action: #selector(aaaaa), for: .touchUpInside)
+            cell.moveToreviewButton.addTarget(self, action: #selector(moveToReviewTableView), for: .touchUpInside)
+            cell.moveReviewAddB.addTarget(self, action: #selector(moveToReviewAddView), for: .touchUpInside)
 
             return cell
         }
@@ -105,8 +106,23 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         return UITableViewCell()
     }
     
-    func aaaaa(){
-        print("AGFSGAS")
+    func moveToReviewAddView(){
+        
+        let storybd = UIStoryboard(name: "DetailPage", bundle: nil)
+        
+        let addVc = storybd.instantiateViewController(withIdentifier: "ReviewAddViewController")
+        
+        self.navigationController?.pushViewController(addVc, animated: true)
+    }
+    
+    func moveToReviewTableView(){
+        
+
+        let storybd = UIStoryboard(name: "DetailPage", bundle: nil)
+        
+        let reviewVc = storybd.instantiateViewController(withIdentifier: "ReviewShowTableViewController")
+        
+        self.navigationController?.pushViewController(reviewVc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -164,8 +180,6 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         
         cell.lectureImage.image = myLectureData[indexPath.item]
 
-        
-        
         return cell
     }
     
