@@ -97,6 +97,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         }else if indexPath.row == 5{
             let cell = tableView.dequeueReusableCell(withIdentifier: "LectureReviewTableViewCell", for: indexPath) as! LectureReviewTableViewCell
             cell.selectionStyle = .none
+            cell.moveReviewAddB.addTarget(self, action: #selector(aaaaa), for: .touchUpInside)
 
             return cell
         }
@@ -104,8 +105,12 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         return UITableViewCell()
     }
     
+    func aaaaa(){
+        print("AGFSGAS")
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 4{
+        if indexPath.row == 3{
             
             let longD = myData[indexPath.row - 3]
             let detailShown = myData[indexPath.row - 3].detailShown
@@ -135,6 +140,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         layout.itemSize = CGSize.init(width: 414, height: 180)
         headerView.isPagingEnabled = true
         headerView.register(UINib.init(nibName: "LectureImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LectureImageCollectionViewCell")
+    
         
         headerView.delegate = self
         headerView.dataSource = self
