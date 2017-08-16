@@ -16,7 +16,6 @@ class LocationTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         // Initialization code
@@ -27,6 +26,17 @@ class LocationTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+//    func setCollectionViewDataSourceDelegate
+//        <D: UICollectionViewDataSource & UICollectionViewDelegate>
+//        (dataSourceDelegate: D, forRow row: Int) {
+//        
+//        collectionView.delegate = dataSourceDelegate
+//        collectionView.dataSource = dataSourceDelegate
+//        collectionView.tag = row
+//        collectionView.reloadData()
+//    }
+//
 
 }
 
@@ -41,7 +51,6 @@ extension LocationTableViewCell:UICollectionViewDataSource, UICollectionViewDele
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationCell", for: indexPath) as! LocationCollectionViewCell
         
         cell.locationLabel.text = locationStrings[indexPath.row]
-//        cell.image.image = #imageLiteral(resourceName: "pac-man-logo.gif")
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 3
 

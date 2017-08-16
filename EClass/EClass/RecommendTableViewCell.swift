@@ -16,39 +16,26 @@ class RecommendTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
-    }
-
-   }
-
-extension RecommendTableViewCell:UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCell", for: indexPath) as! RecommendCollectionViewCell
-        
-//        let myData = lectureList?[indexPath.item] 이건 나중에 데이터 받으면 각각 쏴주는걸로..
-        
-       
-        cell.setLecture(#imageLiteral(resourceName: "five.jpg"), "성찬이의 팩맨 특강", "30,000", #imageLiteral(resourceName: "five.jpg"), "성찬", "a.k.a. king of pacman")
-        cell.tutorImage.layer.cornerRadius = (cell.tutorImage.image?.size.width)! / 2
-        cell.tutorImage.layer.borderWidth = 1
-
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (self.window?.bounds.size.width)!, height: 250)
-    }
 }
+
+extension RecommendTableViewCell {
+
+    
+    func setCollectionViewDataSourceDelegate
+        <D: UICollectionViewDataSource & UICollectionViewDelegate>
+        (dataSourceDelegate: D, forRow row: Int) {
+        
+        collectionView.delegate = dataSourceDelegate
+        collectionView.dataSource = dataSourceDelegate
+        collectionView.tag = row
+        collectionView.reloadData()
+    }
+    
+    
+}
+
+
+
+

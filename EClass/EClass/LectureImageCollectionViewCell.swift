@@ -13,6 +13,8 @@ class LectureImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var lectureImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        lectureImage.contentMode = .scaleAspectFit
         // Initialization code
     }
 
