@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Xgx-Je-25B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cKP-v9-kNS">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,6 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="nET-WC-bLK"/>
                     <connections>
                         <segue destination="Xr9-LL-ZR5" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="bTn-7Z-MGg"/>
                         <segue destination="uAl-ML-gSf" kind="custom" identifier="rw_rear" customClass="SWRevealViewControllerSegueSetController" id="0tf-wy-QNK"/>
@@ -31,7 +32,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dCj-zg-lF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="825" y="-834"/>
+            <point key="canvasLocation" x="2639.130434782609" y="-834.78260869565224"/>
         </scene>
         <!--Main Table View Controller-->
         <scene sceneID="h5h-NP-1q4">
@@ -469,6 +470,14 @@
             </objects>
             <point key="canvasLocation" x="792.75362318840587" y="56.250000000000007"/>
         </scene>
+        <!--ChangeUserInfomationViewController-->
+        <scene sceneID="ftr-a3-BPL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main2" referencedIdentifier="ChangeUserInfomationViewController" id="ZOA-df-kdW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wlF-SE-iia" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="596" y="608"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="7ug-KS-K5e">
             <objects>
@@ -504,6 +513,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ja-BV-P4U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-114.49275362318842" y="56.250000000000007"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="K3h-2h-XmS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cKP-v9-kNS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jw5-Xi-gcd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Xgx-Je-25B" kind="relationship" relationship="rootViewController" id="BlW-qr-dcQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ft9-Mt-RSN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1731.8840579710147" y="-834.78260869565224"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

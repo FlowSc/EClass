@@ -15,6 +15,9 @@ class RearProfileImageTableViewCell: UITableViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        userProfileImageOutlet.layer.borderWidth = 1
+        userProfileImageOutlet.layer.cornerRadius = 20
+        userProfileImageOutlet.clipsToBounds = true
         userProfileImageOutlet.image = UIImage(named: "0.png")
         // Initialization code
     }

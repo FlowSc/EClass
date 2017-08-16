@@ -701,6 +701,7 @@ const int FrontViewPositionNone = 0xff;
     
     // load any defined front/rear controllers from the storyboard before
     [self loadStoryboardControllers];
+    self.navigationController.navigationBarHidden = true;
     
     // This is what Apple used to tell us to set as the initial frame, which is of course totally irrelevant
     // with view controller containment patterns, let's leave it for the sake of it!
