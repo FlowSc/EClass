@@ -5,16 +5,16 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Reveal View Controller-->
+        <!--reveal-->
         <scene sceneID="cUm-fC-z4S">
             <objects>
-                <viewController id="Xgx-Je-25B" customClass="SWRevealViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="reveal" title="reveal" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Xgx-Je-25B" customClass="SWRevealViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qNt-4h-gh0"/>
                         <viewControllerLayoutGuide type="bottom" id="pSg-cf-qvp"/>

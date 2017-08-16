@@ -306,7 +306,6 @@
 				75D1B2151F3575F80068C20C /* Info.plist */,
 				75D1B29C1F357CB40068C20C /* pac-man-logo.gif */,
 				75D1B29D1F357CB40068C20C /* five.jpg */,
-				45A57F9F1F357BB0001F5C1A /* DataCenter.swift */,
 				45A57FE61F35800C001F5C1A /* 0.png */,
 				45264BBE1F3DB3BD00933C50 /* AssignLecture.storyboard */,
 				45A57FEA1F35801F001F5C1A /* 2.png */,
@@ -316,6 +315,7 @@
 				45264B741F3C972B00933C50 /* SWRevealViewController.m */,
 				45A57FB31F357C89001F5C1A /* LogInViewControllers */,
 				45A57FA11F357BE5001F5C1A /* Main2.storyboard */,
+				45A57F9F1F357BB0001F5C1A /* DataCenter.swift */,
 				45264B6C1F3C857500933C50 /* UserInformationPopupView.swift */,
 				45264B6D1F3C857500933C50 /* UserInformationPopupView.xib */,
 				45A57FB41F357C9D001F5C1A /* ChangeUserInformationVIewCOntrollers */,
@@ -474,7 +474,6 @@
 			files = (
 				75D1B2991F357C8D0068C20C /* CategorySelectViewController.swift in Sources */,
 				45264BC41F3F573D00933C50 /* FAQTableViewCell.swift in Sources */,
-				75BC38251F3AD74100AA9E96 /* MainImageCollectionViewCell.swift in Sources */,
 				75D1B2871F357C6A0068C20C /* RecommendTableViewCell.swift in Sources */,
 				75BC38281F3ADF6500AA9E96 /* TutorInfoTableViewCell.swift in Sources */,
 				75D1B28A1F357C6A0068C20C /* LocationTableViewCell.swift in Sources */,

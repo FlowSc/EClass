@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fme-BT-Czl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="oXw-gn-nfd">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -421,7 +421,7 @@
                                             <constraint firstAttribute="height" constant="60" id="bg9-Gc-iZn"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이메일" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XxI-N5-2g2">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="아이디" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XxI-N5-2g2">
                                         <rect key="frame" x="0.0" y="149.5" width="250" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -460,29 +460,12 @@
                                             <constraint firstAttribute="height" constant="20" id="1uh-Iu-bJ0"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Llt-jx-A4k">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이메일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3p8-W7-jAq">
                                         <rect key="frame" x="0.0" y="299.5" width="250" height="30"/>
-                                        <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="성" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hud-Ov-GWg">
-                                                <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이름" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a8i-0e-y7R">
-                                                <rect key="frame" x="90" y="0.0" width="160" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="160" id="xWq-wK-u31"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="HkP-Vr-qlv"/>
-                                        </constraints>
-                                    </stackView>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nz2-eC-f5p" userLabel="MarginView20">
                                         <rect key="frame" x="0.0" y="329.5" width="250" height="20"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -521,12 +504,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="emailTextField" destination="XxI-N5-2g2" id="TXC-OM-XK6"/>
-                        <outlet property="firstNameTextField" destination="a8i-0e-y7R" id="UqR-N6-J6q"/>
-                        <outlet property="lastNameTextField" destination="Hud-Ov-GWg" id="kZS-5Z-nds"/>
+                        <outlet property="emailTextField" destination="3p8-W7-jAq" id="vzZ-AK-Tup"/>
                         <outlet property="passwordCheckTextField" destination="b0z-V0-xL9" id="heD-pL-4r8"/>
                         <outlet property="passwordTextField" destination="bfC-KC-wOz" id="8ML-Kw-dgt"/>
                         <outlet property="signUpButtonOutlet" destination="Lk0-1E-mOD" id="T0M-oy-Zvk"/>
+                        <outlet property="userNameTextField" destination="XxI-N5-2g2" id="ACm-ZA-7OI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xQw-k7-CLe" userLabel="First Responder" sceneMemberID="firstResponder"/>
