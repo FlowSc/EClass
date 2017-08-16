@@ -24,10 +24,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJJ-jI-r1t">
-                                <rect key="frame" x="0.0" y="44" width="414" height="30"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mxp-Zr-gcJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="207" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="207" height="40"/>
                                         <state key="normal" title="수업별 검색"/>
                                         <connections>
                                             <action selector="categorySelectButtonTouched:" destination="Mw2-t1-58C" eventType="touchUpInside" id="P5P-sv-F5X"/>
@@ -35,7 +35,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQA-50-fmS">
-                                        <rect key="frame" x="207" y="0.0" width="207" height="30"/>
+                                        <rect key="frame" x="207" y="0.0" width="207" height="40"/>
                                         <state key="normal" title="지역별 검색"/>
                                         <connections>
                                             <action selector="locationSelectButtonTouched:" destination="Mw2-t1-58C" eventType="touchUpInside" id="x00-xX-6o7"/>
@@ -45,10 +45,11 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Mxp-Zr-gcJ" firstAttribute="width" secondItem="fQA-50-fmS" secondAttribute="width" id="4Ck-3C-ZPE"/>
+                                    <constraint firstAttribute="height" constant="40" id="8mb-tX-lew"/>
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OB6-wO-TWt">
-                                <rect key="frame" x="0.0" y="74" width="414" height="662"/>
+                                <rect key="frame" x="0.0" y="84" width="414" height="652"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IbG-ue-ACq">
                                     <size key="itemSize" width="343" height="169"/>
