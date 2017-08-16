@@ -48,20 +48,13 @@ class DetailTableViewController: UIViewController {
 
 extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MainImageCell", for: indexPath) as! SimpleImageTableViewCell
-            
-            cell.settingMyImage(#imageLiteral(resourceName: "pac-man-logo.gif"))
-            cell.selectionStyle = .none
-            
-            return cell
-            
-        }else if indexPath.row == 1{
+        
+        if indexPath.row == 0{
         let cell = tableView.dequeueReusableCell(withIdentifier: "IntroductionCell", for: indexPath) as! IntroductionTableViewCell
             
             cell.setLectureInfo("팩맨", "5.0", "서울 강서구 공항오피스텔", "4명", "50000원", "주 2회", "총 8회 16시간")
@@ -70,7 +63,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         
             return cell}
         
-        else if indexPath.row == 2{
+        else if indexPath.row == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "tutorInfoCell", for: indexPath) as! TutorInfoTableViewCell
             
             cell.setTutor(#imageLiteral(resourceName: "default-user-image"), "성찬", tutorComment: "하이하이 \n 이거 많이 쓰면 늘어나는거 팩트입니까? 항ㄴ훈이훈이후니우히나위 저는 IOS 개발자인데 팩맨 겁나 잘하구여 그 똥망한 영화 픽셀도 개즐겁게 본 진성 너드입니다")
@@ -79,7 +72,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             
             return cell
         
-        }else if indexPath.row == 3{
+        }else if indexPath.row == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "tutorDetailInfoCell", for: indexPath) as! TutorDetailTableViewCell
             
     cell.tutorBasicInfo.text = "인하대학교"
@@ -88,22 +81,24 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
 
             return cell
             
-        }else if indexPath.row == 4{
+        }else if indexPath.row == 3{
             let cell = tableView.dequeueReusableCell(withIdentifier: "LectureIntroTableViewCell", for: indexPath) as! LectureIntroTableViewCell
             cell.selectionStyle = .none
 
-            cell.setValues(myData[indexPath.row - 4])
+            cell.setValues(myData[indexPath.row - 3])
             
             return cell
-        }else if indexPath.row == 5{
+        }else if indexPath.row == 4{
             let cell = tableView.dequeueReusableCell(withIdentifier: "MapLocationTableViewCell", for: indexPath) as! MapLocationTableViewCell
             
             cell.selectionStyle = .none
 
             return cell
-        }else if indexPath.row == 6{
+        }else if indexPath.row == 5{
             let cell = tableView.dequeueReusableCell(withIdentifier: "LectureReviewTableViewCell", for: indexPath) as! LectureReviewTableViewCell
             cell.selectionStyle = .none
+            cell.moveToreviewButton.addTarget(self, action: #selector(moveToReviewTableView), for: .touchUpInside)
+            cell.moveReviewAddB.addTarget(self, action: #selector(moveToReviewAddView), for: .touchUpInside)
 
             return cell
         }
@@ -111,11 +106,30 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         return UITableViewCell()
     }
     
+    func moveToReviewAddView(){
+        
+        let storybd = UIStoryboard(name: "DetailPage", bundle: nil)
+        
+        let addVc = storybd.instantiateViewController(withIdentifier: "ReviewAddViewController")
+        
+        self.navigationController?.pushViewController(addVc, animated: true)
+    }
+    
+    func moveToReviewTableView(){
+        
+
+        let storybd = UIStoryboard(name: "DetailPage", bundle: nil)
+        
+        let reviewVc = storybd.instantiateViewController(withIdentifier: "ReviewShowTableViewController")
+        
+        self.navigationController?.pushViewController(reviewVc, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 4{
+        if indexPath.row == 3{
             
-            let longD = myData[indexPath.row - 4]
-            let detailShown = myData[indexPath.row - 4].detailShown
+            let longD = myData[indexPath.row - 3]
+            let detailShown = myData[indexPath.row - 3].detailShown
             longD.detailShown = !detailShown
             
             myTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
@@ -139,9 +153,10 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
-//        layout.itemSize = CGSize.init(width: (headerView.window?.bounds.width)!, height: (headerView.window?.bounds.height)!)
+        layout.itemSize = CGSize.init(width: 414, height: 180)
         headerView.isPagingEnabled = true
         headerView.register(UINib.init(nibName: "LectureImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LectureImageCollectionViewCell")
+    
         
         headerView.delegate = self
         headerView.dataSource = self
@@ -164,9 +179,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LectureImageCollectionViewCell", for: indexPath) as! LectureImageCollectionViewCell
         
         cell.lectureImage.image = myLectureData[indexPath.item]
-        
-        
-        
+
         return cell
     }
     

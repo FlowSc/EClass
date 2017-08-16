@@ -51,15 +51,10 @@ extension SWRevealViewController
 class MainTableViewController: UIViewController {
     
     @IBOutlet weak var myMainTableView: UITableView!
-    
-    var tableViewSectionIndex1:Int?
-    var tableViewSectionIndex2:Int?
-    var tableViewSectionIndex3:Int?
-
-
-    
     var locationStrings:[String] = ["강남", "강동", "강서", "강북", "관악", "광진", "구로", "금천", "노원", "AA"]
+
     var categoryStrings = ["헬스&뷰티", "외국어", "컴퓨터", "음악, 미술", "스포츠", "전공/취업", "이색취미", "전체수업보기"]
+    var tableViewIndex:Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,15 +63,10 @@ class MainTableViewController: UIViewController {
         self.myMainTableView.reloadData()
         self.myMainTableView.register(UINib.init(nibName: "LectureTableViewCell"
             , bundle: nil), forCellReuseIdentifier: "LectureCell")
+    
         myMainTableView.allowsSelection = false
 
-        
-        
-        
         self.automaticallyAdjustsScrollViewInsets = false
-        
-        
-
     }
     
     override func didReceiveMemoryWarning() {
@@ -112,7 +102,8 @@ class MainTableViewController: UIViewController {
     
 }
 
-extension MainTableViewController:UITableViewDelegate, UITableViewDataSource {
+extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
@@ -120,8 +111,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        //section 0 부분은 타이틀 보여주는 곳이라 cell 이 필요 없어서 0임
-        
+
         self.myMainTableView.rowHeight = UITableViewAutomaticDimension
         self.myMainTableView.estimatedRowHeight = 170
 
@@ -142,26 +132,124 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "LocationTableCell", for: indexPath) as! LocationTableViewCell
-            tableViewSectionIndex1 = indexPath.section
+//            tableViewIndex = indexPath.section
+//            cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
+////            cell.collectionView.register(LocationCollectionViewCell.self, forCellWithReuseIdentifier: "LocationCell")
+//            cell.collectionView.reloadData()
+//
             return cell
 
         case 2:
             let cell2 = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
-            tableViewSectionIndex2 = indexPath.section
             cell2.layer.cornerRadius = 3
-            
-            return cell2
+            cell2.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
+            cell2.collectionView.reloadData()
 
+            tableViewIndex = indexPath.section
+
+
+            return cell2
+            
         case 3:
-            let cell3 = tableView.dequeueReusableCell(withIdentifier: "RecommendCell", for: indexPath) as! RecommendTableViewCell
-            tableViewSectionIndex3 = indexPath.section
-            return cell3
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendCell", for: indexPath) as! RecommendTableViewCell
+            
+            cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
+            tableViewIndex = indexPath.section
+            cell.collectionView.reloadData()
+
+
+
+            
+            return cell
 
         default:
             return UITableViewCell()
         }
 
     }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch tableViewIndex! {
+//        case 1:
+//            return locationStrings.count
+        case 2:
+            return categoryStrings.count
+        case 3:
+            return 4
+        default:
+            return 4
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        switch tableViewIndex!{
+        
+//        case 1:
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationCell", for: indexPath) as! LocationCollectionViewCell
+//            
+//
+//            cell.locationLabel.text = locationStrings[indexPath.row]
+//            cell.layer.borderWidth = 1
+//            cell.layer.cornerRadius = 3
+//
+//            cell.reloadInputViews()
+//            
+//            return cell
+
+        case 2:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCollectionViewCell
+            
+            cell.categoryLabel.text = categoryStrings[indexPath.item]
+            cell.layer.borderWidth = 1
+            cell.layer.cornerRadius = 3
+            cell.backgroundColor = UIColor.white
+            cell.reloadInputViews()
+
+//            myMainTableView.reloadData()
+
+            return cell
+        
+        case 3:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCollectionViewCell", for: indexPath) as! RecommendCollectionViewCell
+            
+            //        let myData = lectureList?[indexPath.item] 이건 나중에 데이터 받으면 각각 쏴주는걸로..
+            
+//            myMainTableView.reloadData()
+
+            cell.setLecture(#imageLiteral(resourceName: "five.jpg"), "성찬이의 팩맨 특강", "30,000", #imageLiteral(resourceName: "default-user-image"), "성찬", "a.k.a. king of pacman")
+            cell.tutorImage.layer.cornerRadius = 25
+            cell.tutorImage.layer.borderWidth = 1
+            cell.tag = indexPath.item
+            cell.reloadInputViews()
+
+            
+            return cell
+        default:
+            return UICollectionViewCell()
+            
+        }
+        
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+//        let moveCell = collectionView.cellForItem(at: indexPath) as! RecommendCollectionViewCell
+//        
+//        print(moveCell.tag)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch tableViewIndex!{
+        case 2:
+            return CGSize.init(width: 190, height: 80)
+        default:
+            return CGSize(width: 412, height: 250)
+        }
+    }
+
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -174,22 +262,6 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource {
         
         return 200
     }
-    
-    
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        
-//        print(UITableViewAutomaticDimension)
-//        
-//        return UITableViewAutomaticDimension
-//    }
-//    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        
-//        print(UITableViewAutomaticDimension)
-//
-//        return UITableViewAutomaticDimension
-//    }
-    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -221,113 +293,4 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource {
             return 20
         }
     }
-    
-
-
-    
-    
-    
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        
-//              if indexPath.section == 1{
-//            if let cell = cell as? LocationTableViewCell {
-//                cell.collectionView.dataSource = self
-//                cell.collectionView.delegate = self
-//            }
-//            
-//        }
-//        else if indexPath.section == 2{
-//            if let cell2 = cell as? CategoryTableViewCell {
-//                cell2.collectionView.dataSource = self
-//                cell2.collectionView.delegate = self
-//            }
-//            
-//            
-//        }
-//        
-//        else{
-//            if let cell3 = cell as? RecommendTableViewCell {
-//                cell3.collectionView.dataSource = self
-//                cell3.collectionView.delegate = self
-//            }
-//        }
-//    }
-    
-    
-    
 }
-//
-//
-//extension MainTableViewController:UICollectionViewDataSource, UICollectionViewDelegate {
-//    
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        
-//        
-//        if tableViewSectionIndex1 == 1{
-//            return locationStrings.count
-//        }
-//        
-//        if tableViewSectionIndex2 == 2 {
-//            return categoryStrings.count
-//        }
-//        if tableViewSectionIndex3 == 3{
-//            return 4
-//        }else{
-//            return 0
-//        }
-//        
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        
-//        if tableViewSectionIndex1 == 1{
-//            
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationCell", for: indexPath) as! LocationCollectionViewCell
-//            
-//            cell.locationLabel?.text = locationStrings[indexPath.item]
-//            cell.layer.borderWidth = 1
-//            
-//            
-//            return cell
-//            
-//        }
-//        if tableViewSectionIndex2 == 2{
-//            let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCollectionViewCell
-//            
-//            cell2.categoryLabel?.text = categoryStrings[indexPath.item]
-//            cell2.layer.borderWidth = 1
-//            
-//            return cell2
-//        }
-//        if tableViewSectionIndex3 == 3{
-//            
-//            let cell3 = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCell", for: indexPath) as! RecommendCollectionViewCell
-//            
-//            //        let myData = lectureList?[indexPath.item] 이건 나중에 데이터 받으면 각각 쏴주는걸로..
-//            
-//            cell3.lectureName.text = "스타 ㄲ"
-//            cell3.lectureInfo.text = "3만원"
-//            cell3.lectureImage.image = #imageLiteral(resourceName: "five.jpg")
-//            cell3.tutorImage.image = #imageLiteral(resourceName: "five.jpg")
-//            cell3.tutorName.text = "나나"
-//            cell3.tutorNickname.text = "한량"
-//            cell3.tutorImage.layer.cornerRadius = (cell3.tutorImage.image?.size.width)! / 2
-//            cell3.tutorImage.backgroundColor = .red
-//            cell3.tutorImage.layer.borderWidth = 1
-//            cell3.layer.borderWidth = 1
-//            
-//            
-//            return cell3
-//        }else{
-//            return UICollectionViewCell()
-//        }
-//        
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print(indexPath.item)
-//        print(tableViewSectionIndex1)
-//        print(tableViewSectionIndex2)
-//        print(tableViewSectionIndex3)
-//    }
-//}
