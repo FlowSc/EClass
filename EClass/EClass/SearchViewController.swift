@@ -29,6 +29,9 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        categorySelectButton.layer.borderWidth = 1
+        locationSelectButton.layer.borderWidth = 1
+        
         NotificationCenter.default.addObserver(forName:  NSNotification.Name.init(rawValue: "CategoryName"), object: nil, queue: nil) { (noti) in
             
             self.changedTitleforCategory = noti.userInfo?["categoryName"]! as! String
