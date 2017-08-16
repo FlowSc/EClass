@@ -514,10 +514,10 @@
             </objects>
             <point key="canvasLocation" x="-114.49275362318842" y="56.250000000000007"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--reveal1-->
         <scene sceneID="K3h-2h-XmS">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cKP-v9-kNS" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="reveal1" title="reveal1" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cKP-v9-kNS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jw5-Xi-gcd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

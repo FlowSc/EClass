@@ -460,11 +460,11 @@
                                             <constraint firstAttribute="height" constant="20" id="1uh-Iu-bJ0"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이메일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3p8-W7-jAq">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이메일" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3p8-W7-jAq">
                                         <rect key="frame" x="0.0" y="299.5" width="250" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nz2-eC-f5p" userLabel="MarginView20">
                                         <rect key="frame" x="0.0" y="329.5" width="250" height="20"/>
@@ -515,10 +515,10 @@
             </objects>
             <point key="canvasLocation" x="4554.3999999999996" y="622.93853073463276"/>
         </scene>
-        <!--Detail Log In View Controller-->
+        <!--DetailLogInViewController-->
         <scene sceneID="DnJ-Wq-pOX">
             <objects>
-                <viewController storyboardIdentifier="DetailLogInViewController" id="5Ei-14-vRM" customClass="DetailLogInViewController" customModule="EClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailLogInViewController" title="DetailLogInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Ei-14-vRM" customClass="DetailLogInViewController" customModule="EClass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KsK-kW-eDL"/>
                         <viewControllerLayoutGuide type="bottom" id="mNk-U4-gxR"/>
@@ -549,7 +549,7 @@
                                             <constraint firstAttribute="height" constant="60" id="lMH-44-H82"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이메일" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HTE-Sf-MJT">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="아이디" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HTE-Sf-MJT">
                                         <rect key="frame" x="0.0" y="149.5" width="250" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -615,9 +615,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="emailTextFieldOutlet" destination="HTE-Sf-MJT" id="FNB-Yu-QFq"/>
                         <outlet property="logInButtonOutlet" destination="Tbt-Oh-kkm" id="zYI-Bf-Xz7"/>
-                        <outlet property="passwordTextFieldOutlet" destination="N3r-1X-3h5" id="3We-IM-MFx"/>
+                        <outlet property="passWordTextField" destination="N3r-1X-3h5" id="8VU-bx-sX9"/>
+                        <outlet property="userNameTextField" destination="HTE-Sf-MJT" id="VQG-Cv-N6X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPn-Nn-uSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
