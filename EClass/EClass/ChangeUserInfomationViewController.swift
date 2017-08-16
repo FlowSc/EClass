@@ -52,23 +52,13 @@ class ChangeUserInfomationViewController: UIViewController, UITableViewDataSourc
         }
     }
     
-    @IBAction func popupTouched(_ sender: UIBarButtonItem) {
-        
-        let popUpView2:UserInformationPopupView = UserInformationPopupView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width - 128, height: self.view.frame.size.height), searchLectureTouchedHandler: { (popview) in
-            print("popok")
-        }, lectureListTouchedHandler: { (popview) in
-            print("popok")
-        }, requestLectureTouchedHandler: { (popview) in
-            print("popok")
-        }) { (popview) in
-            print("popok")
-        }
-        
-
-        popUpView2.popUp(on: self.view)
-        sender.isEnabled = false
-        
-    }
+//    @IBAction func goBackButtonTouched(_ sender: UIBarButtonItem) {
+//        
+////        self.navigationController?.popViewController(animated: true)
+//        self.dismiss(animated: true, completion: nil)
+//        print("1")
+//        
+//    }
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let main2StoryBoard = UIStoryboard(name: "Main2", bundle: nil)
 //        

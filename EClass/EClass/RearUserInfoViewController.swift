@@ -64,12 +64,23 @@ class RearUserInfoViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 50
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        performSegue(withIdentifier: "userInfo", sender: nil)
+        let storyBoard1 = UIStoryboard(name: "Main2", bundle: nil)
+        let nextVC = storyBoard1.instantiateViewController(withIdentifier: "user") as! ChangeUserInfomationViewController
+//        self.navigationController?.pushViewController(nextVC, animated: true)
+        
+        self.navigationController?.pushViewController(nextVC, animated: true)
+        self.navigationController?.isNavigationBarHidden = false
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell0", for: indexPath) as! RearProfileImageTableViewCell
             cell.selectionStyle = .none
+//            cell.backgroundColor = UIColor(white: 0, alpha: 0.1)
             return cell
         }else
         {
@@ -84,6 +95,7 @@ class RearUserInfoViewController: UIViewController, UITableViewDelegate, UITable
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tv.reloadData()
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     override func viewDidLoad() {

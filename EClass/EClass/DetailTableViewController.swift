@@ -120,6 +120,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             
             myTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             
+            
             print("A")
 
         }
