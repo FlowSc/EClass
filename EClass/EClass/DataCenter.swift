@@ -26,8 +26,10 @@ var currentUserPrimaryKey:Int = 0
 
 //JSON([String:Any]) Post 함수
 func postDicToUserInfo(params:[String:String])
+    
 {
-    Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/signup/", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+    
+    Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/signup/", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
         print("여기서부터")
         print(response)
         print("~~~~~~~~")
@@ -45,6 +47,34 @@ func postDicToReviewList(params:[String:Any])
 {
     Alamofire.request("http://localhost:1337/User", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
         print(response)
+    }
+}
+
+func checkUserInfo(params:[String:String])
+{
+    Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/login/", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+        guard let data = response.result.value else
+        {
+            return
+        }
+        let jsonData = JSON(data)
+        print(jsonData)
+        if params["username"] == jsonData["user"]["username"].stringValue
+        {
+            
+//            let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
+//            let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
+//            self.present(pushMainView, animated: true, completion: nil)
+//            let mainStoryBoard2 = UIStoryboard(name: "Main2", bundle: nil)
+//            let pushMainView2 = mainStoryBoard2.instantiateViewController(withIdentifier: "DetailLogInViewController") as! DetailLogInViewController
+            
+            print("same")
+            loginSuccess = true
+            print("samesame")
+            
+            
+            
+        }
     }
 }
 

@@ -10,14 +10,16 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+var loginSuccess:Bool = false
+
 class DetailLogInViewController: UIViewController, UITextFieldDelegate{
     
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        if textField == emailTextFieldOutlet
+        if textField == userNameTextField
         {
-            passwordTextFieldOutlet.becomeFirstResponder()
+            passWordTextField.becomeFirstResponder()
         }else{
             logInButtonTouched(logInButtonOutlet)
         }
@@ -32,30 +34,36 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
     }
     @IBAction func logInButtonTouched(_ sender: UIButton) {
         
-        if !(emailTextFieldOutlet.text?.isEmpty)! && !(passwordTextFieldOutlet.text?.isEmpty)!
+        if !(userNameTextField.text?.isEmpty)! && !(passWordTextField.text?.isEmpty)!
         {
-            let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
-            let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "MainTableViewController")
-            self.present(pushMainView, animated: true, completion: nil)
-//            Alamofire.request("http://localhost/1337").responseJSON(completionHandler: { (response) in
-//                
-//                let responseData = JSON(response.result.value!)
-//                
-//                for userData in responseData
-//                {
-//                    
-//                }
-//            })
+            let params = ["username":userNameTextField.text!,"password":passWordTextField.text!]
+            Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/login/", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+                guard let data = response.result.value else
+                {
+                    return
+                }
+                
+                if response.result.isSuccess
+                {
+                    print("go")
+                    let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
+                    let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
+                    self.present(pushMainView, animated: true, completion: nil)
+                }
+
+            }
+
             print("login")
+
         }
     }
     @IBOutlet weak var logInButtonOutlet: UIButton!
-    @IBOutlet weak var passwordTextFieldOutlet: UITextField!
-    @IBOutlet weak var emailTextFieldOutlet: UITextField!
+    @IBOutlet weak var passWordTextField: UITextField!
+    @IBOutlet weak var userNameTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        passwordTextFieldOutlet.delegate = self
-        emailTextFieldOutlet.delegate = self
+        passWordTextField.delegate = self
+        userNameTextField.delegate = self
         
         
 
@@ -66,7 +74,7 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        emailTextFieldOutlet.becomeFirstResponder()
+        userNameTextField.becomeFirstResponder()
         
     }
 

@@ -25,32 +25,10 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
             
             postDicToUserInfo(params: ["username":"\(userNameTextField.text!)","password":passwordTextField.text!, "email":emailTextField.text!])
             let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
-            let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal") as! SWRevealViewController
+            let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
             self.present(pushMainView, animated: true, completion: nil)
         }
     }
-    
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        if textField == userNameTextField
-//        {
-//            passwordTextField.becomeFirstResponder()
-//        }else if textField == passwordTextField
-//        {
-//            passwordCheckTextField.becomeFirstResponder()
-//        }else if textField == passwordCheckTextField
-//        {
-//            lastNameTextField.becomeFirstResponder()
-//        }else if textField == lastNameTextField
-//        {
-//            firstNameTextField.becomeFirstResponder()
-//        }else
-//        {
-//            signUpButtonTouched(signUpButtonOutlet)
-//        }
-//        return true
-//    }
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         userNameTextField.delegate = self
@@ -71,6 +49,25 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    //        if textField == userNameTextField
+    //        {
+    //            passwordTextField.becomeFirstResponder()
+    //        }else if textField == passwordTextField
+    //        {
+    //            passwordCheckTextField.becomeFirstResponder()
+    //        }else if textField == passwordCheckTextField
+    //        {
+    //            lastNameTextField.becomeFirstResponder()
+    //        }else if textField == lastNameTextField
+    //        {
+    //            firstNameTextField.becomeFirstResponder()
+    //        }else
+    //        {
+    //            signUpButtonTouched(signUpButtonOutlet)
+    //        }
+    //        return true
+    //    }
     
 
     /*
