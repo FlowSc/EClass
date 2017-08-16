@@ -12,64 +12,59 @@ import SwiftyJSON
 
 class SignUpViewController: UIViewController,UITextFieldDelegate {
 
-    @IBOutlet weak var firstNameTextField: UITextField!
-    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var passwordCheckTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+
     @IBOutlet weak var signUpButtonOutlet: UIButton!
     @IBAction func signUpButtonTouched(_ sender: UIButton) {
-        if !(emailTextField.text?.isEmpty)! && !(passwordTextField.text?.isEmpty)! && !(passwordCheckTextField.text?.isEmpty)! && !(lastNameTextField.text?.isEmpty)! && !(firstNameTextField.text?.isEmpty)! &&
+        if !(userNameTextField.text?.isEmpty)! && !(passwordTextField.text?.isEmpty)! && !(passwordCheckTextField.text?.isEmpty)! && !(emailTextField.text?.isEmpty)! &&
         passwordCheckTextField.text == passwordTextField.text
         {
             
+            postDicToUserInfo(params: ["username":"\(userNameTextField.text!)","password":passwordTextField.text!, "email":emailTextField.text!])
             let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
-            let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "MainTableViewController")
+            let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal") as! SWRevealViewController
             self.present(pushMainView, animated: true, completion: nil)
-            let postUserData = JSON(["id":emailTextField.text!,"password":passwordTextField.text!,"name":lastNameTextField.text! + firstNameTextField.text!])
-            
-            
         }
-        
-        
-        
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailTextField
-        {
-            passwordTextField.becomeFirstResponder()
-        }else if textField == passwordTextField
-        {
-            passwordCheckTextField.becomeFirstResponder()
-        }else if textField == passwordCheckTextField
-        {
-            lastNameTextField.becomeFirstResponder()
-        }else if textField == lastNameTextField
-        {
-            firstNameTextField.becomeFirstResponder()
-        }else
-        {
-            signUpButtonTouched(signUpButtonOutlet)
-        }
-        return true
-    }
-    
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        if textField == userNameTextField
+//        {
+//            passwordTextField.becomeFirstResponder()
+//        }else if textField == passwordTextField
+//        {
+//            passwordCheckTextField.becomeFirstResponder()
+//        }else if textField == passwordCheckTextField
+//        {
+//            lastNameTextField.becomeFirstResponder()
+//        }else if textField == lastNameTextField
+//        {
+//            firstNameTextField.becomeFirstResponder()
+//        }else
+//        {
+//            signUpButtonTouched(signUpButtonOutlet)
+//        }
+//        return true
+//    }
 
-    @IBOutlet weak var passwordCheckTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailTextField.delegate = self
+        userNameTextField.delegate = self
         passwordTextField.delegate = self
         passwordCheckTextField.delegate = self
-        lastNameTextField.delegate = self
-        firstNameTextField.delegate = self
+        emailTextField.delegate = self
+        userNameTextField.becomeFirstResponder()
 
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        emailTextField.becomeFirstResponder()
+        userNameTextField.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {

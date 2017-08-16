@@ -27,11 +27,11 @@ class FAQTableViewCell: UITableViewCell {
     {
         if let data = data1
         {
-            questionLabel.text = data.short[data3]
+            questionLabel.text = data.long[data3]
            
         }else
         {
-            questionLabel.text = data2?.short[data3]
+            questionLabel.text = data2?.long[data3]
         }
         
     }

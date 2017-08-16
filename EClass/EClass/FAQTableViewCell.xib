@@ -19,9 +19,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="287" height="141.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whc-ta-rNp">
-                        <rect key="frame" x="12" y="5" width="255" height="128.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whc-ta-rNp">
+                        <rect key="frame" x="20" y="5" width="247" height="128.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -30,7 +30,7 @@
                     <constraint firstAttribute="trailing" secondItem="Whc-ta-rNp" secondAttribute="trailing" constant="20" id="Dze-bT-gxU"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Whc-ta-rNp" secondAttribute="bottom" id="agg-OC-mSg"/>
                     <constraint firstItem="Whc-ta-rNp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="hxo-Gz-XMh"/>
-                    <constraint firstItem="Whc-ta-rNp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="sGe-eX-ADZ"/>
+                    <constraint firstItem="Whc-ta-rNp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="sGe-eX-ADZ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

@@ -91,11 +91,16 @@ class RearUserInfoViewController: UIViewController, UITableViewDelegate, UITable
         }
         
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        view1.isHidden = true
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tv.reloadData()
         self.navigationController?.isNavigationBarHidden = true
+//        self.view.addSubview(view1)
     }
     
     override func viewDidLoad() {
