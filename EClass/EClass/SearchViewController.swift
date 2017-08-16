@@ -26,17 +26,14 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     var changedTitleforCategory:String!
     var changedTitleforLocation:String!
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(forName:  NSNotification.Name.init(rawValue: "CategoryName"), object: nil, queue: nil) { (noti) in
             
-            
             self.changedTitleforCategory = noti.userInfo?["categoryName"]! as! String
             self.categorySelectButton.setTitle(self.changedTitleforCategory, for: .normal)
 
-            
             print(self.changedTitleforCategory)
         }
         
@@ -69,9 +66,11 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         cell.lectureName.text = "스타 ㄲ"
         cell.lectureInfo.text = "3만원"
         cell.lectureImage.image = #imageLiteral(resourceName: "five.jpg")
-        cell.tutorImage.image = #imageLiteral(resourceName: "five.jpg")
+        cell.tutorImage.image = #imageLiteral(resourceName: "default-user-image")
         cell.tutorName.text = "나나"
-        cell.tutorImage.layer.cornerRadius = (cell.tutorImage.image?.size.width)! / 2
+        cell.tutorImage.layer.cornerRadius = 25
+        cell.tutorImage.clipsToBounds = true
+        cell.layer.borderWidth = 1
         cell.tutorNickname.text = "한량"
 
         

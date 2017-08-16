@@ -132,11 +132,11 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         switch indexPath.section {
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "LocationTableCell", for: indexPath) as! LocationTableViewCell
-            tableViewIndex = indexPath.section
-            cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
-//            cell.collectionView.register(LocationCollectionViewCell.self, forCellWithReuseIdentifier: "LocationCell")
-            cell.collectionView.reloadData()
-
+//            tableViewIndex = indexPath.section
+//            cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
+////            cell.collectionView.register(LocationCollectionViewCell.self, forCellWithReuseIdentifier: "LocationCell")
+//            cell.collectionView.reloadData()
+//
             return cell
 
         case 2:
@@ -170,8 +170,8 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch tableViewIndex! {
-        case 1:
-            return locationStrings.count
+//        case 1:
+//            return locationStrings.count
         case 2:
             return categoryStrings.count
         case 3:
@@ -185,17 +185,17 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         
         switch tableViewIndex!{
         
-        case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationCell", for: indexPath) as! LocationCollectionViewCell
-            
-
-            cell.locationLabel.text = locationStrings[indexPath.row]
-            cell.layer.borderWidth = 1
-            cell.layer.cornerRadius = 3
-
-            cell.reloadInputViews()
-            
-            return cell
+//        case 1:
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationCell", for: indexPath) as! LocationCollectionViewCell
+//            
+//
+//            cell.locationLabel.text = locationStrings[indexPath.row]
+//            cell.layer.borderWidth = 1
+//            cell.layer.cornerRadius = 3
+//
+//            cell.reloadInputViews()
+//            
+//            return cell
 
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCollectionViewCell
@@ -244,7 +244,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch tableViewIndex!{
         case 2:
-            return CGSize.init(width: 170, height: 80)
+            return CGSize.init(width: 190, height: 80)
         default:
             return CGSize(width: 412, height: 250)
         }
