@@ -8,9 +8,12 @@
 
 import UIKit
 import MapKit
+import SwiftyJSON
 
 class DetailTableViewController: UIViewController {
     @IBOutlet weak var myTableView: UITableView!
+    
+    var detailData:JSON!
 
     var myData = LectureGenerator.getLecture()
     var myLectureData:[UIImage] = [#imageLiteral(resourceName: "pac-man-logo.gif"), #imageLiteral(resourceName: "default-user-image"),#imageLiteral(resourceName: "whiteStar")]
@@ -25,7 +28,6 @@ class DetailTableViewController: UIViewController {
         myTableView.register(UINib.init(nibName: "MapLocationTableViewCell", bundle: nil), forCellReuseIdentifier: "MapLocationTableViewCell")
         myTableView.register(UINib.init(nibName: "LectureReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "LectureReviewTableViewCell")
 
-        // Do any additional setup after loading the view.
     }
 
     
@@ -34,16 +36,6 @@ class DetailTableViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -58,7 +50,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         if indexPath.row == 0{
         let cell = tableView.dequeueReusableCell(withIdentifier: "IntroductionCell", for: indexPath) as! IntroductionTableViewCell
             
-            cell.setLectureInfo("팩맨", "5.0", "서울 강서구 공항오피스텔", "4명", "50000원", "주 2회", "총 8회 16시간")
+            cell.setLectureInfo(self.detailData["title"].stringValue, "5.0",self.detailData["locations"][0]["location2"].stringValue, "\(self.detailData["max_member"].stringValue) 명", "회 당 \(self.detailData["price"].stringValue) 원", "주 \(self.detailData["basic_class_time"]) 회", "총 8회 16시간")
             cell.selectionStyle = .none
 
         
@@ -185,26 +177,6 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         return cell
     }
     
-    
-    
-//    
-//    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-//        if section == 0 {
-//            
-//            let collectionView = UICollectionView()
-//            let layout = UICollectionViewFlowLayout()
-//            layout.scrollDirection = .horizontal
-//            layout.estimatedItemSize = CGSize(width: 414, height: 180)
-//            
-//            view.addSubview(collectionView)
-//        }
-//    }
-    
-}
-//
-//extension DetailTableViewController:UICollectionViewDelegate, UICollectionViewDataSource {
-//    
-//}
 
 class LectureInfo {
     

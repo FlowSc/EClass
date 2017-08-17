@@ -9,6 +9,8 @@
 import UIKit
 import FacebookLogin
 import FacebookCore
+import Alamofire
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +21,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         // Override point for customization after application launch.
+        
+            Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/list/", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+                guard let data = response.result.value else{return}
+                
+                let lectureData = JSON(data)
+                
+                LectureList.lectureList = lectureData
+                            
+                for eachData in lectureData{
+                    //
+                    //                print("~~~~~~~~~~~~")
+                    //                print(eachData.1["class_intro"].stringValue)
+                    //                print("~~~~~~~~~~~~")
+                    //                print(eachData.1["title"].stringValue)
+                    //                print("~~~~~~~~~~~~")
+                    //                print(eachData.0)
+                    
+                }
+            }
+
         return true
     }
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {

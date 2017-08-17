@@ -154,6 +154,9 @@ final class DataCenter
     }
 }
 
+struct LectureList {
+    static var lectureList:JSON!
+}
 // 강의 정보
 struct Lecture {
     
@@ -163,6 +166,7 @@ struct Lecture {
     var region:String
     var reviews:[String]?
     var score:Int?
+    
 
     init(with json:JSON)
     {

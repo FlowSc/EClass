@@ -7,28 +7,45 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class SearchViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var categorySelectButton:UIButton!
     @IBOutlet weak var locationSelectButton:UIButton!
+    @IBOutlet weak var myCollectionView:UICollectionView!
     
     
     @IBAction func categorySelectButtonTouched(_ sender: Any) {
         print("Category")
+        let firstShowList = recommendLectureList.array
+
+        self.lectureShowList = firstShowList
+
         
     }
     
     @IBAction func locationSelectButtonTouched(_ sender: Any) {
         print("Location")
+        let firstShowList = recommendLectureList.array
+
+        self.lectureShowList = firstShowList
+
     }
     
     var changedTitleforCategory:String!
     var changedTitleforLocation:String!
+    var recommendLectureList:JSON!
+    var lectureShowList:[JSON]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        recommendLectureList = LectureList.lectureList
         
+        
+        lectureShowList = recommendLectureList.array
+
+
         categorySelectButton.layer.borderWidth = 1
         locationSelectButton.layer.borderWidth = 1
         
@@ -36,9 +53,32 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
             
             self.changedTitleforCategory = noti.userInfo?["categoryName"]! as! String
             self.categorySelectButton.setTitle(self.changedTitleforCategory, for: .normal)
+            
+            
+            if self.changedTitleforCategory == "이색취미" {
+      
+            let filterListforHobby:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                myData["category"].stringValue == "hobby"
+            })
 
+            self.lectureShowList = filterListforHobby
+            
+            }
+            
+            if self.changedTitleforCategory == "헬스&뷰티" {
+                
+                let filterListforHobby:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["category"].stringValue == "hbn"
+                })
+                
+                self.lectureShowList = filterListforHobby
+
+            }
+            self.myCollectionView.reloadData()
+            
             print(self.changedTitleforCategory)
         }
+        
         
         NotificationCenter.default.addObserver(forName:  NSNotification.Name.init(rawValue: "LocationName"), object: nil, queue: nil) { (noti) in
             
@@ -60,49 +100,47 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return lectureShowList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCell", for: indexPath) as! RecommendCollectionViewCell
         
-        cell.lectureName.text = "스타 ㄲ"
-        cell.lectureInfo.text = "3만원"
-        cell.lectureImage.image = #imageLiteral(resourceName: "five.jpg")
-        cell.tutorImage.image = #imageLiteral(resourceName: "default-user-image")
-        cell.tutorName.text = "나나"
+        
+        let myData = lectureShowList[indexPath.item]
+        print("XXXXXXX")
+                    print("data 시작점 \(myData)")
+        print("~~~~~~~~~~")
+        
+        cell.setLecture(nil, myData["title"].stringValue, myData["target_intro"].stringValue, myData["cover_photo"].stringValue, myData["tutor"].stringValue, myData["tutor_intro"].stringValue)
         cell.tutorImage.layer.cornerRadius = 25
         cell.tutorImage.clipsToBounds = true
-        cell.layer.borderWidth = 1
-        cell.tutorNickname.text = "한량"
+        //            cell.tutorImage.layer.borderWidth = 1
+        cell.tag = indexPath.item
 
+        
         
         return cell
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let detailStb = UIStoryboard.init(name: "DetailPage", bundle: nil)
+        
+        let mvc = detailStb.instantiateViewController(withIdentifier: "DetailTableViewController") as! DetailTableViewController
+        print("START!!")
+        mvc.detailData = lectureShowList[indexPath.item]
+        
+        
+        self.navigationController?.pushViewController(mvc, animated: true)
+        
+        
+    
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellsAcross: CGFloat = 1
-        var widthRemainingForCellContent = collectionView.bounds.width
-        if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
-            let borderSize: CGFloat = flowLayout.sectionInset.left + flowLayout.sectionInset.right
-            widthRemainingForCellContent -= borderSize + ((cellsAcross - 1) * flowLayout.minimumInteritemSpacing)
-        }
-        let cellWidth = widthRemainingForCellContent / cellsAcross
-        return CGSize(width: cellWidth, height: (cellWidth / 2))
+                return CGSize(width: 412, height: 250)
     }
-    
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

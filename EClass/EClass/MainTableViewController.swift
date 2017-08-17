@@ -7,7 +7,12 @@
 //
 
 import UIKit
+import  Alamofire
+import SwiftyJSON
+
 let view1 = UIView()
+
+
 
 extension SWRevealViewController
 {
@@ -55,7 +60,15 @@ class MainTableViewController: UIViewController {
 
     var categoryStrings = ["헬스&뷰티", "외국어", "컴퓨터", "음악, 미술", "스포츠", "전공/취업", "이색취미", "전체수업보기"]
     var tableViewIndex:Int?
+    var recommendLectureList:JSON!
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        myMainTableView.reloadData()
+    }
     
+   
+
     override func viewDidLoad() {
         super.viewDidLoad()
         sideMenus()
@@ -65,8 +78,14 @@ class MainTableViewController: UIViewController {
             , bundle: nil), forCellReuseIdentifier: "LectureCell")
     
         myMainTableView.allowsSelection = false
+        
+        recommendLectureList = LectureList.lectureList
+        
+        
 
         self.automaticallyAdjustsScrollViewInsets = false
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -100,7 +119,7 @@ class MainTableViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
     }
     
-}
+   }
 
 extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -132,7 +151,6 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             tableViewIndex = indexPath.section
             cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
 //            cell.collectionView.register(LocationCollectionViewCell.self, forCellWithReuseIdentifier: "LocationCell")
-            cell.collectionView.reloadData()
 //
             return cell
 
@@ -140,7 +158,6 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             let cell2 = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
             cell2.layer.cornerRadius = 3
             cell2.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
-            cell2.collectionView.reloadData()
 
             tableViewIndex = indexPath.section
 
@@ -152,7 +169,6 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             
             cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
             tableViewIndex = indexPath.section
-            cell.collectionView.reloadData()
 
 
 
@@ -172,7 +188,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         case 2:
             return categoryStrings.count
         case 3:
-            return 4
+            return recommendLectureList.count
         default:
             return 4
         }
@@ -191,7 +207,6 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             cell.layer.borderWidth = 1
             cell.layer.cornerRadius = 3
 
-            cell.reloadInputViews()
             
             return cell
 
@@ -202,24 +217,27 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             cell.layer.borderWidth = 1
             cell.layer.cornerRadius = 3
             cell.backgroundColor = UIColor.white
-            cell.reloadInputViews()
 
-//            myMainTableView.reloadData()
 
             return cell
         
         case 3:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCollectionViewCell", for: indexPath) as! RecommendCollectionViewCell
             
-            //        let myData = lectureList?[indexPath.item] 이건 나중에 데이터 받으면 각각 쏴주는걸로..
             
-//            myMainTableView.reloadData()
+            let myData = recommendLectureList[indexPath.item]
 
-            cell.setLecture(#imageLiteral(resourceName: "five.jpg"), "성찬이의 팩맨 특강", "30,000", #imageLiteral(resourceName: "default-user-image"), "성찬", "a.k.a. king of pacman")
+//            print(myData)
+            
+
+            cell.setLecture(nil, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, myData["tutor"].stringValue, myData["tutor_intro"].stringValue)
             cell.tutorImage.layer.cornerRadius = 25
-            cell.tutorImage.layer.borderWidth = 1
+//            cell.tutorImage.layer.borderWidth = 1
             cell.tag = indexPath.item
-            cell.reloadInputViews()
+            
+            print(cell.tag)
+            print("~~~~~~~~~~~~")
+            print(myData["title"].stringValue)
 
             
             return cell
@@ -293,4 +311,6 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             return 20
         }
     }
+    
+    
 }
