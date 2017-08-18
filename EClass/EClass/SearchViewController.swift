@@ -32,18 +32,26 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         self.lectureShowList = firstShowList
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
         recommendLectureList = LectureList.lectureList
         
-        
-        lectureShowList = recommendLectureList.array
 
         categorySelectButton.layer.borderWidth = 1
         locationSelectButton.layer.borderWidth = 1
         
+        self.categorySelectButton.setTitle(self.changedTitleforCategory, for: .normal)
+        
         NotificationCenter.default.addObserver(forName:  NSNotification.Name.init(rawValue: "CategoryName"), object: nil, queue: nil) { (noti) in
+            
+    
+            self.lectureShowList = self.recommendLectureList.array
             
             self.changedTitleforCategory = noti.userInfo?["categoryName"]! as! String
             self.categorySelectButton.setTitle(self.changedTitleforCategory, for: .normal)
@@ -51,23 +59,86 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
             
             if self.changedTitleforCategory == "이색취미" {
       
-            let filterListforHobby:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+            let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
                 myData["category"].stringValue == "hobby"
             })
 
-            self.lectureShowList = filterListforHobby
+            self.lectureShowList = filterList
             
             }
             
             if self.changedTitleforCategory == "헬스&뷰티" {
                 
-                let filterListforHobby:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
                     myData["category"].stringValue == "hbn"
                 })
                 
-                self.lectureShowList = filterListforHobby
+                self.lectureShowList = filterList
 
             }
+            
+            if self.changedTitleforCategory == "외국어" {
+                
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["category"].stringValue == "lang"
+                })
+                
+                self.lectureShowList = filterList
+                
+            }
+            
+            if self.changedTitleforCategory == "컴퓨터" {
+                
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["category"].stringValue == "com"
+                })
+                
+                self.lectureShowList = filterList
+                
+            }
+            
+            
+            if self.changedTitleforCategory == "음악/미술" {
+                
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["category"].stringValue == "mna"
+                })
+                
+                self.lectureShowList = filterList
+                
+            }
+            
+            
+            if self.changedTitleforCategory == "스포츠" {
+                
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["category"].stringValue == "sports"
+                })
+                
+                self.lectureShowList = filterList
+                
+            }
+            
+            
+            if self.changedTitleforCategory == "진로/취업" {
+                
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["category"].stringValue == "major"
+                })
+                
+                self.lectureShowList = filterList
+                
+            }
+            
+            
+            if self.changedTitleforCategory == "전체수업보기" {
+                
+                let filterList:[JSON] = self.lectureShowList
+                
+                self.lectureShowList = filterList
+                
+            }
+
             self.myCollectionView.reloadData()
             
             print(self.changedTitleforCategory)

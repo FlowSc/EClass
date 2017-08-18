@@ -58,7 +58,7 @@ class MainTableViewController: UIViewController {
     @IBOutlet weak var myMainTableView: UITableView!
     var locationStrings:[String] = ["강남", "강동", "강서", "강북", "관악", "광진", "구로", "금천", "노원"]
 
-    var categoryStrings = ["헬스&뷰티", "외국어", "컴퓨터", "음악, 미술", "스포츠", "전공/취업", "이색취미", "전체수업보기"]
+    var categoryStrings = ["헬스&뷰티", "외국어", "컴퓨터", "음악/미술", "스포츠", "진로/취업", "이색취미", "전체수업보기"]
     var tableViewIndex:Int?
     var recommendLectureList:JSON!
     var lectureShowList:[JSON]!
@@ -148,7 +148,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             return cell
 
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.location, for: indexPath) as! CategoryTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.category, for: indexPath) as! CategoryTableViewCell
             cell.makeCornerRound3()
             cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
 
@@ -206,6 +206,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             
             cell.categoryLabel.text = categoryStrings[indexPath.item]
             cell.makeCornerRound3()
+            cell.tag = indexPath.item
             cell.backgroundColor = UIColor.white
 
 
@@ -314,8 +315,86 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             
             let destination = segue.destination as! SearchViewController
             
+            print(categoryStrings[indexPath])
+            destination.changedTitleforCategory = categoryStrings[indexPath]
             
-            destination.categorySelectButton.setTitle(categoryStrings[indexPath], for: .normal)
+            if categoryStrings[indexPath] == "이색취미" {
+                
+                let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                    myData["category"].stringValue == "hobby"
+                })
+                
+                destination.lectureShowList = filterList
+            }
+            
+            if categoryStrings[indexPath] == "헬스&뷰티" {
+                
+                let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                    myData["category"].stringValue == "hbn"
+                })
+                print(filterList)
+                
+                destination.lectureShowList = filterList
+            }
+            
+            if categoryStrings[indexPath] == "외국어" {
+                
+                let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                    myData["category"].stringValue == "lang"
+                })
+                
+                destination.lectureShowList = filterList
+            }
+
+            
+            if categoryStrings[indexPath] == "컴퓨터" {
+                
+                let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                    myData["category"].stringValue == "com"
+                })
+                
+                destination.lectureShowList = filterList
+            }
+
+            
+            if categoryStrings[indexPath] == "음악/미술" {
+                
+                let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                    myData["category"].stringValue == "mna"
+                })
+                
+                destination.lectureShowList = filterList
+            }
+
+            
+            if categoryStrings[indexPath] == "스포츠" {
+                
+                let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                    myData["category"].stringValue == "sports"
+                })
+                
+                destination.lectureShowList = filterList
+            }
+
+            
+            if categoryStrings[indexPath] == "진로/취업" {
+                
+                let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                    myData["category"].stringValue == "major"
+                })
+                
+                destination.lectureShowList = filterList
+                print(destination.lectureShowList)
+            }
+
+            
+            if categoryStrings[indexPath] == "전체수업보기" {
+                
+                let filterList:[JSON] = lectureShowList
+                
+                destination.lectureShowList = filterList
+            }
+
             
             
             }

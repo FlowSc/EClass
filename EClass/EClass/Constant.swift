@@ -44,6 +44,6 @@ struct NibFile {
     static let tutorDetail = "TutorDetailTableViewCell"
     static let lectureIntro = "LectureIntroTableViewCell"
     static let mapLocation = "MapLocationTableViewCell"
-    static let lectureReivew = "LectureReviewCell"
+    static let lectureReivew = "LectureReviewTableViewCell"
     static let lectureImage = "LectureImageCollectionViewCell"
 }
