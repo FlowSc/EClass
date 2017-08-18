@@ -61,6 +61,7 @@ class MainTableViewController: UIViewController {
     var categoryStrings = ["헬스&뷰티", "외국어", "컴퓨터", "음악, 미술", "스포츠", "전공/취업", "이색취미", "전체수업보기"]
     var tableViewIndex:Int?
     var recommendLectureList:JSON!
+    var lectureShowList:[JSON]!
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -80,7 +81,8 @@ class MainTableViewController: UIViewController {
         myMainTableView.allowsSelection = false
         
         recommendLectureList = LectureList.lectureList
-        
+        lectureShowList = recommendLectureList.array
+
         
 
         self.automaticallyAdjustsScrollViewInsets = false
@@ -121,7 +123,7 @@ class MainTableViewController: UIViewController {
     
    }
 
-extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CategoryMoveDelegate {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -140,6 +142,10 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             return 1
         }
         
+    }
+    
+    func moveTocategory() {
+        print("AAA")
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -230,15 +236,11 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
 //            print(myData)
             
 
-            cell.setLecture(nil, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, myData["tutor"].stringValue, myData["tutor_intro"].stringValue)
+            cell.setLecture(myData["cover_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, myData["tutor"].stringValue, myData["tutor_intro"].stringValue)
             cell.tutorImage.layer.cornerRadius = 25
 //            cell.tutorImage.layer.borderWidth = 1
             cell.tag = indexPath.item
             
-            print(cell.tag)
-            print("~~~~~~~~~~~~")
-            print(myData["title"].stringValue)
-
             
             return cell
         default:
@@ -249,13 +251,37 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-//        let moveCell = collectionView.cellForItem(at: indexPath) as! RecommendCollectionViewCell
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        
-//        print(moveCell.tag)
-        
-    }
+//        switch tableViewIndex! {
+//        case 1:
+//            let searchStb = UIStoryboard.init(name: "SearchPage", bundle: nil)
+//            
+//            let mvc = searchStb.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+//            
+//            self.navigationController?.pushViewController(mvc, animated: true)
+//        case 2:
+//            let searchStb = UIStoryboard.init(name: "SearchPage", bundle: nil)
+//            
+//            let mvc = searchStb.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+//            
+//            self.navigationController?.pushViewController(mvc, animated: true)
+//            
+//        case 3:
+//            let detailStb = UIStoryboard.init(name: "DetailPage", bundle: nil)
+//            
+//            let mvc = detailStb.instantiateViewController(withIdentifier: "DetailTableViewController") as! DetailTableViewController
+//            print("START!!")
+//            mvc.detailData = lectureShowList[indexPath.item]
+//            
+//            
+//            self.navigationController?.pushViewController(mvc, animated: true)
+//
+//        default:
+//            return
+//        }
+    
+
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch tableViewIndex!{
@@ -312,5 +338,20 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "DetailPageSegue" {
+           
+            if let cell = sender as? RecommendCollectionViewCell {
+            
+            let indexPath = cell.tag
+            let destination = segue.destination as! DetailTableViewController
+                
+                destination.detailData = lectureShowList[indexPath]
+            
+                print(indexPath)
+            }
+        }
+    }
     
 }

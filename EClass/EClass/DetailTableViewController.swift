@@ -27,7 +27,9 @@ class DetailTableViewController: UIViewController {
         myTableView.register(UINib.init(nibName: "LectureIntroTableViewCell", bundle: nil), forCellReuseIdentifier: "LectureIntroTableViewCell")
         myTableView.register(UINib.init(nibName: "MapLocationTableViewCell", bundle: nil), forCellReuseIdentifier: "MapLocationTableViewCell")
         myTableView.register(UINib.init(nibName: "LectureReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "LectureReviewTableViewCell")
+        print(detailData["locations"][0]["location2"].stringValue)
 
+        // Do any additional setup after loading the view.
     }
 
     
@@ -36,6 +38,16 @@ class DetailTableViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
 }
 
@@ -127,9 +139,6 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             
             myTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             
-            
-            print("A")
-
         }
         
         print(indexPath)
@@ -171,12 +180,14 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LectureImageCollectionViewCell", for: indexPath) as! LectureImageCollectionViewCell
+        let myImagesUrl:URL = URL(string: detailData["lecture_photos"][indexPath.item]["photo"].stringValue)!
+
+        cell.lectureImage.kf.setImage(with: myImagesUrl)
         
-        cell.lectureImage.image = myLectureData[indexPath.item]
 
         return cell
     }
-    
+}
 
 class LectureInfo {
     

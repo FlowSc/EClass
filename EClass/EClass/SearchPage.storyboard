@@ -14,7 +14,7 @@
         <!--Search View Controller-->
         <scene sceneID="Nmr-BV-tAo">
             <objects>
-                <viewController id="Mw2-t1-58C" customClass="SearchViewController" customModule="EClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" id="Mw2-t1-58C" customClass="SearchViewController" customModule="EClass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iYN-8z-4PX"/>
                         <viewControllerLayoutGuide type="bottom" id="tcx-2k-yFo"/>
@@ -208,14 +208,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10k-mL-CId" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="930" y="-117"/>
-        </scene>
-        <!--DetailPage-->
-        <scene sceneID="fev-06-Ftm">
-            <objects>
-                <viewControllerPlaceholder storyboardName="DetailPage" id="kc8-fa-Bps" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D1k-Og-xpn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="910" y="72"/>
         </scene>
         <!--LocationSelect-->
         <scene sceneID="Eat-ms-AoA">
