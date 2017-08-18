@@ -258,4 +258,17 @@ struct ReviewList {
     }
 }
 
+extension UIView {
+    
+    func makeCircle(){
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 25
+        self.clipsToBounds = true
+    }
+    
+    func makeCornerRound3() {
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 3
+    }
+}
 

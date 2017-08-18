@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        // Override point for customization after application launch.
-        
+
+        //최초 강의 리스트 전량 받아오기
             Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/list/", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
                 guard let data = response.result.value else{return}
                 
@@ -29,17 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 LectureList.lectureList = lectureData
                             
-                for eachData in lectureData{
-                    //
-                    //                print("~~~~~~~~~~~~")
-                    //                print(eachData.1["class_intro"].stringValue)
-                    //                print("~~~~~~~~~~~~")
-                    //                print(eachData.1["title"].stringValue)
-                    //                print("~~~~~~~~~~~~")
-                    //                print(eachData.0)
-                    
                 }
-            }
 
         return true
     }

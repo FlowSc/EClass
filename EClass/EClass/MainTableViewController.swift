@@ -75,18 +75,15 @@ class MainTableViewController: UIViewController {
         sideMenus()
         customizeNavBar()
         self.myMainTableView.reloadData()
-        self.myMainTableView.register(UINib.init(nibName: "LectureTableViewCell"
-            , bundle: nil), forCellReuseIdentifier: "LectureCell")
+//        self.myMainTableView.register(UINib.init(nibName: "LectureTableViewCell"
+//            , bundle: nil), forCellReuseIdentifier: "LectureCell")
     
         myMainTableView.allowsSelection = false
         
         recommendLectureList = LectureList.lectureList
         lectureShowList = recommendLectureList.array
-
         
-
         self.automaticallyAdjustsScrollViewInsets = false
-        
         
     }
     
@@ -102,12 +99,7 @@ class MainTableViewController: UIViewController {
         {
             userInfoSlideOutlet.target = revealViewController()
             userInfoSlideOutlet.action = #selector(SWRevealViewController.addView)
-            
-            
-            
             revealViewController().rearViewRevealWidth = 300
-//            revealViewController().rightViewRevealWidth = 160
-            
             
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
@@ -123,7 +115,7 @@ class MainTableViewController: UIViewController {
     
    }
 
-extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CategoryMoveDelegate {
+extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -144,34 +136,29 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         
     }
     
-    func moveTocategory() {
-        print("AAA")
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
         switch indexPath.section {
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LocationTableCell", for: indexPath) as! LocationTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.location, for: indexPath) as! LocationTableViewCell
             tableViewIndex = indexPath.section
             cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
-//            cell.collectionView.register(LocationCollectionViewCell.self, forCellWithReuseIdentifier: "LocationCell")
-//
+
             return cell
 
         case 2:
-            let cell2 = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
-            cell2.layer.cornerRadius = 3
-            cell2.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
+            let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.location, for: indexPath) as! CategoryTableViewCell
+            cell.makeCornerRound3()
+            cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
 
             tableViewIndex = indexPath.section
 
 
-            return cell2
+            return cell
             
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendCell", for: indexPath) as! RecommendTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.lectureDetail, for: indexPath) as! RecommendTableViewCell
             
             cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
             tableViewIndex = indexPath.section
@@ -205,30 +192,27 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         switch tableViewIndex!{
         
         case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationCell", for: indexPath) as! LocationCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.location, for: indexPath) as! LocationCollectionViewCell
             
             
 
             cell.locationLabel.text = locationStrings[indexPath.row]
-            cell.layer.borderWidth = 1
-            cell.layer.cornerRadius = 3
-
+            cell.makeCornerRound3()
             
             return cell
 
         case 2:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.category, for: indexPath) as! CategoryCollectionViewCell
             
             cell.categoryLabel.text = categoryStrings[indexPath.item]
-            cell.layer.borderWidth = 1
-            cell.layer.cornerRadius = 3
+            cell.makeCornerRound3()
             cell.backgroundColor = UIColor.white
 
 
             return cell
         
         case 3:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCollectionViewCell", for: indexPath) as! RecommendCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.lectureDetail, for: indexPath) as! RecommendCollectionViewCell
             
             
             let myData = recommendLectureList[indexPath.item]
@@ -237,8 +221,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             
 
             cell.setLecture(myData["cover_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, myData["tutor"].stringValue, myData["tutor_intro"].stringValue)
-            cell.tutorImage.layer.cornerRadius = 25
-//            cell.tutorImage.layer.borderWidth = 1
+            cell.tutorImage.makeCircle()
             cell.tag = indexPath.item
             
             
@@ -250,38 +233,6 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         
         
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        
-//        switch tableViewIndex! {
-//        case 1:
-//            let searchStb = UIStoryboard.init(name: "SearchPage", bundle: nil)
-//            
-//            let mvc = searchStb.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-//            
-//            self.navigationController?.pushViewController(mvc, animated: true)
-//        case 2:
-//            let searchStb = UIStoryboard.init(name: "SearchPage", bundle: nil)
-//            
-//            let mvc = searchStb.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-//            
-//            self.navigationController?.pushViewController(mvc, animated: true)
-//            
-//        case 3:
-//            let detailStb = UIStoryboard.init(name: "DetailPage", bundle: nil)
-//            
-//            let mvc = detailStb.instantiateViewController(withIdentifier: "DetailTableViewController") as! DetailTableViewController
-//            print("START!!")
-//            mvc.detailData = lectureShowList[indexPath.item]
-//            
-//            
-//            self.navigationController?.pushViewController(mvc, animated: true)
-//
-//        default:
-//            return
-//        }
-    
-
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch tableViewIndex!{
@@ -339,8 +290,11 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
         
-        if segue.identifier == "DetailPageSegue" {
+        
+        
+        if segue.identifier == SegueIdentifier.detailSegue {
            
             if let cell = sender as? RecommendCollectionViewCell {
             
@@ -350,6 +304,20 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
                 destination.detailData = lectureShowList[indexPath]
             
                 print(indexPath)
+            }
+        }else if segue.identifier == SegueIdentifier.categoryFilterSegue {
+        
+        if let cell = sender as? CategoryCollectionViewCell {
+            
+            let indexPath = cell.tag
+            
+            
+            let destination = segue.destination as! SearchViewController
+            
+            
+            destination.categorySelectButton.setTitle(categoryStrings[indexPath], for: .normal)
+            
+            
             }
         }
     }

@@ -10,41 +10,35 @@ import UIKit
 import SwiftyJSON
 
 class SearchViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
+    var changedTitleforCategory:String!
+    var changedTitleforLocation:String!
+    var recommendLectureList:JSON!
+    var lectureShowList:[JSON]!
     @IBOutlet weak var categorySelectButton:UIButton!
     @IBOutlet weak var locationSelectButton:UIButton!
     @IBOutlet weak var myCollectionView:UICollectionView!
     
     
     @IBAction func categorySelectButtonTouched(_ sender: Any) {
-        print("Category")
         let firstShowList = recommendLectureList.array
 
         self.lectureShowList = firstShowList
-
         
     }
     
     @IBAction func locationSelectButtonTouched(_ sender: Any) {
-        print("Location")
         let firstShowList = recommendLectureList.array
 
         self.lectureShowList = firstShowList
-
     }
     
-    var changedTitleforCategory:String!
-    var changedTitleforLocation:String!
-    var recommendLectureList:JSON!
-    var lectureShowList:[JSON]!
-
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         recommendLectureList = LectureList.lectureList
         
         
         lectureShowList = recommendLectureList.array
-
 
         categorySelectButton.layer.borderWidth = 1
         locationSelectButton.layer.borderWidth = 1
@@ -132,11 +126,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         print("START!!")
         mvc.detailData = lectureShowList[indexPath.item]
         
-        
         self.navigationController?.pushViewController(mvc, animated: true)
-        
-        
-    
         
     }
     
