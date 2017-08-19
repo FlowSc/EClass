@@ -14,10 +14,12 @@ import FacebookCore
 
 class LogInViewController: UIViewController {
 
+    @IBOutlet weak var loginImageView: UIImageView!
     @IBAction func emailLoginButtonTouched(_ sender: UIButton) {
         
         let detailLoginViewController = storyboard?.instantiateViewController(withIdentifier: "DetailLogInViewController") as! DetailLogInViewController
         self.navigationController?.pushViewController(detailLoginViewController, animated: true)
+        self.navigationController?.navigationBar.isHidden = false
         
 
     }
@@ -36,9 +38,46 @@ class LogInViewController: UIViewController {
                 print("\(userInfo.authenticationToken)")
                 print("\(userInfo.appId)")
                 print("\(userInfo.userId!)")
-                let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
-                let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "MainTableViewController")
-                self.present(pushMainView, animated: true, completion: nil)
+                
+                let params = ["username":userInfo.userId,"password":userInfo.authenticationToken]
+                Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/login/facebook/", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+                    
+                    
+                    if response.result.isSuccess
+                    {
+                        print(response.description)
+                        print("response")
+                        print(response)
+                        print("data")
+                        print(JSON(response.value))
+                        print("data끝")
+                        print(JSON(response.data))
+                        print(response.timeline)
+                        print(response.metrics)
+                        print(response.request)
+                        print(response.response)
+                        
+                        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/\(userInfo.userId)/", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization":"\(response.data)"]).responseJSON(completionHandler: { (response) in
+                            guard let data = response.result.value else
+                            {
+                                return
+                            }
+                            let jsonData = JSON(data)
+                            print("여기서부터제이슨")
+                            print(jsonData)
+                            print("여기까지")
+                        })
+                        print("go")
+                        let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
+                        let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
+                        self.present(pushMainView, animated: true, completion: nil)
+                    }else
+                    {
+                        print(response.result)
+                    }
+                    
+                }
+                
             }
         }
         
@@ -47,17 +86,25 @@ class LogInViewController: UIViewController {
         
         let signUpViewController = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
         self.navigationController?.pushViewController(signUpViewController, animated: true)
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     @IBOutlet weak var emailLoginButtonOutlet: UIButton!
     @IBOutlet weak var faceBookLoginButtonOutlet: UIButton!
     
     
+    @IBOutlet weak var marginView2: UIView!
+    @IBOutlet weak var marginView1: UIView!
     override func viewDidLoad() {
+        self.navigationController?.navigationBar.isHidden = true
         super.viewDidLoad()
         
-//        self.navigationController?.navigationBar.isHidden = true
-        logInButtonOutletSet()
+
+        outletSet()
         
         
 
@@ -69,11 +116,20 @@ class LogInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func logInButtonOutletSet()
+    func outletSet()
     {
+        marginView1.backgroundColor = .clear
+        marginView2.backgroundColor = .clear
+        
+        
+        
+        loginImageView.image = UIImage(named: "passion0.png")
+        loginImageView.isUserInteractionEnabled = false
+        loginImageView.alpha = 0.9
+        loginImageView.clipsToBounds = true
         faceBookLoginButtonOutlet.layer.cornerRadius = 5
         emailLoginButtonOutlet.layer.cornerRadius = 5
-        emailLoginButtonOutlet.layer.borderColor = UIColor.black.cgColor
+        emailLoginButtonOutlet.layer.borderColor = UIColor.white.cgColor
         emailLoginButtonOutlet.layer.borderWidth = 1
     }
     

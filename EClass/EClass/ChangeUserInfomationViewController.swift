@@ -34,20 +34,20 @@ class ChangeUserInfomationViewController: UIViewController, UITableViewDataSourc
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! ProfileTableViewCell
-            cell.setIcon(data: indexPath.row)
+            cell.setIcon(data: indexPath.row + 6)
             cell.selectionStyle = .none
             return cell
-        case 2:
+        default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! SelfDescriptionTableViewCell
             cell.setSelected(true, animated: false)
             
             
             return cell
-        default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell4", for: indexPath)
-            cell.selectionStyle = .none
-            
-            return cell
+//        default:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "cell4", for: indexPath)
+//            cell.selectionStyle = .none
+//            
+//            return cell
             
         }
     }
@@ -86,10 +86,10 @@ class ChangeUserInfomationViewController: UIViewController, UITableViewDataSourc
             return 180
         case 1:
             return 50
-        case 2:
-            return 80
+//        case 2:
+//            return 80
         default:
-            return 50
+            return 100
         }
     }
     
@@ -133,13 +133,14 @@ class ChangeUserInfomationViewController: UIViewController, UITableViewDataSourc
         }else if section == 1
         {
             return "유저 정보"
-        }else if section == 2
-        {
-            return "자기 소개"
         }else
         {
-            return "부가 정보"
+            return "자기 소개"
         }
+//        }else
+//        {
+//            return "부가 정보"
+//        }
     }
 
     
@@ -161,15 +162,16 @@ class ChangeUserInfomationViewController: UIViewController, UITableViewDataSourc
             return 1
         case 1:
             return 4
-        case 2:
-            return 1
+//        case 2:
+//            return 1
         default:
             return 1
         }
         
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+//        return 4
+        return 3
     }
     func goChangeUserViewController(_ sender:UITapGestureRecognizer)
     {
