@@ -58,6 +58,8 @@ extension CategorySelectViewController:UICollectionViewDelegate, UICollectionVie
         print(categoryStrings[indexPath.item])
        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "CategoryName"), object: nil, userInfo:["categoryName":categoryStrings[indexPath.item]])
         
+        
+        
         self.navigationController?.popViewController(animated: true)
     }
     

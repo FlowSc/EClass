@@ -30,6 +30,7 @@ func postDicToUserInfo(params:[String:String])
 {
 
     Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/signup/", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+
         print("여기서부터")
         print(response)
         print("~~~~~~~~")
@@ -153,6 +154,9 @@ final class DataCenter
     }
 }
 
+struct LectureList {
+    static var lectureList:JSON!
+}
 // 강의 정보
 struct Lecture {
     
@@ -162,6 +166,7 @@ struct Lecture {
     var region:String
     var reviews:[String]?
     var score:Int?
+    
 
     init(with json:JSON)
     {
@@ -253,4 +258,17 @@ struct ReviewList {
     }
 }
 
+extension UIView {
+    
+    func makeCircle(){
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 25
+        self.clipsToBounds = true
+    }
+    
+    func makeCornerRound3() {
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 3
+    }
+}
 

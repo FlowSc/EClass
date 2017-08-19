@@ -8,9 +8,12 @@
 
 import UIKit
 import MapKit
+import SwiftyJSON
 
 class DetailTableViewController: UIViewController {
     @IBOutlet weak var myTableView: UITableView!
+    
+    var detailData:JSON!
 
     var myData = LectureGenerator.getLecture()
     var myLectureData:[UIImage] = [#imageLiteral(resourceName: "pac-man-logo.gif"), #imageLiteral(resourceName: "default-user-image"),#imageLiteral(resourceName: "whiteStar")]
@@ -20,10 +23,10 @@ class DetailTableViewController: UIViewController {
         myTableView.estimatedRowHeight = 100
         myTableView.rowHeight = UITableViewAutomaticDimension
         myTableView.reloadData()
-        myTableView.register(UINib.init(nibName: "TutorDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "tutorDetailInfoCell")
-        myTableView.register(UINib.init(nibName: "LectureIntroTableViewCell", bundle: nil), forCellReuseIdentifier: "LectureIntroTableViewCell")
-        myTableView.register(UINib.init(nibName: "MapLocationTableViewCell", bundle: nil), forCellReuseIdentifier: "MapLocationTableViewCell")
-        myTableView.register(UINib.init(nibName: "LectureReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "LectureReviewTableViewCell")
+        myTableView.register(UINib.init(nibName: NibFile.tutorDetail, bundle: nil), forCellReuseIdentifier: CustomsTableViewCell.tutorDetail)
+        myTableView.register(UINib.init(nibName: NibFile.lectureIntro, bundle: nil), forCellReuseIdentifier: CustomsTableViewCell.lectureIntro)
+        myTableView.register(UINib.init(nibName: NibFile.mapLocation, bundle: nil), forCellReuseIdentifier: CustomsTableViewCell.mapLocation)
+        myTableView.register(UINib.init(nibName: NibFile.lectureReivew, bundle: nil), forCellReuseIdentifier: CustomsTableViewCell.lectureReview)
 
         // Do any additional setup after loading the view.
     }
@@ -33,18 +36,7 @@ class DetailTableViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+ 
 }
 
 extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -56,16 +48,16 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         
         
         if indexPath.row == 0{
-        let cell = tableView.dequeueReusableCell(withIdentifier: "IntroductionCell", for: indexPath) as! IntroductionTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.lectureBasicInfo, for: indexPath) as! IntroductionTableViewCell
             
-            cell.setLectureInfo("팩맨", "5.0", "서울 강서구 공항오피스텔", "4명", "50000원", "주 2회", "총 8회 16시간")
+            cell.setLectureInfo(self.detailData["title"].stringValue, "5.0",self.detailData["locations"][0]["location2"].stringValue, "\(self.detailData["max_member"].stringValue) 명", "회 당 \(self.detailData["price"].stringValue) 원", "주 \(self.detailData["basic_class_time"]) 회", "총 8회 16시간")
             cell.selectionStyle = .none
 
         
             return cell}
         
         else if indexPath.row == 1{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "tutorInfoCell", for: indexPath) as! TutorInfoTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.tutorBasicInfo, for: indexPath) as! TutorInfoTableViewCell
             
             cell.setTutor(#imageLiteral(resourceName: "default-user-image"), "성찬", tutorComment: "하이하이 \n 이거 많이 쓰면 늘어나는거 팩트입니까? 항ㄴ훈이훈이후니우히나위 저는 IOS 개발자인데 팩맨 겁나 잘하구여 그 똥망한 영화 픽셀도 개즐겁게 본 진성 너드입니다")
             cell.selectionStyle = .none
@@ -74,7 +66,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             return cell
         
         }else if indexPath.row == 2{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "tutorDetailInfoCell", for: indexPath) as! TutorDetailTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.tutorDetail, for: indexPath) as! TutorDetailTableViewCell
             
     cell.tutorBasicInfo.text = "인하대학교"
     cell.tutorDetailInfo.text = "jsakdnaksjfbldsakfbsdkfblasdkjfbadsjkbflakjdsfbadsjkfbasjdkfbsjdk\n bfljksdfbasdjkfbadjskfbdkasfbjkdasfblajkdsfbjaldsfbl\n aksdjfbsajldkfbalsjdkfblasdjkfblasdkjfbaslkdfbaljkdsfbald\n sjfblksdjafbaksd\n fblasdkfblaskdjfblaskjdfbalsjdfbasl\n jdfblasdjkfbadlsjkfbladskfbasldjkfblasdjfb\n jadbflj"
@@ -83,20 +75,20 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             return cell
             
         }else if indexPath.row == 3{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LectureIntroTableViewCell", for: indexPath) as! LectureIntroTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.lectureIntro, for: indexPath) as! LectureIntroTableViewCell
             cell.selectionStyle = .none
 
             cell.setValues(myData[indexPath.row - 3])
             
             return cell
         }else if indexPath.row == 4{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MapLocationTableViewCell", for: indexPath) as! MapLocationTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.mapLocation, for: indexPath) as! MapLocationTableViewCell
             
             cell.selectionStyle = .none
 
             return cell
         }else if indexPath.row == 5{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LectureReviewTableViewCell", for: indexPath) as! LectureReviewTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.lectureReview, for: indexPath) as! LectureReviewTableViewCell
             cell.selectionStyle = .none
             cell.moveToreviewButton.addTarget(self, action: #selector(moveToReviewTableView), for: .touchUpInside)
             cell.moveReviewAddB.addTarget(self, action: #selector(moveToReviewAddView), for: .touchUpInside)
@@ -109,7 +101,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
     
     func moveToReviewAddView(){
         
-        let storybd = UIStoryboard(name: "DetailPage", bundle: nil)
+        let storybd = UIStoryboard(name: StoryBoardConstant.detailPage, bundle: nil)
         
         let addVc = storybd.instantiateViewController(withIdentifier: "ReviewAddViewController")
         
@@ -119,7 +111,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
     func moveToReviewTableView(){
         
 
-        let storybd = UIStoryboard(name: "DetailPage", bundle: nil)
+        let storybd = UIStoryboard(name: StoryBoardConstant.detailPage, bundle: nil)
         
         let reviewVc = storybd.instantiateViewController(withIdentifier: "ReviewShowTableViewController")
         
@@ -135,9 +127,6 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             
             myTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             
-            
-            print("A")
-
         }
         
         print(indexPath)
@@ -157,7 +146,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
         layout.itemSize = CGSize.init(width: 414, height: 180)
         headerView.isPagingEnabled = true
-        headerView.register(UINib.init(nibName: "LectureImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LectureImageCollectionViewCell")
+        headerView.register(UINib.init(nibName: NibFile.lectureImage, bundle: nil), forCellWithReuseIdentifier: CustomCollectionViewCell.lectureImage)
     
         
         headerView.delegate = self
@@ -178,33 +167,15 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LectureImageCollectionViewCell", for: indexPath) as! LectureImageCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.lectureImage, for: indexPath) as! LectureImageCollectionViewCell
+        let myImagesUrl:URL = URL(string: detailData["lecture_photos"][indexPath.item]["photo"].stringValue)!
+
+        cell.lectureImage.kf.setImage(with: myImagesUrl)
         
-        cell.lectureImage.image = myLectureData[indexPath.item]
 
         return cell
     }
-    
-    
-    
-//    
-//    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-//        if section == 0 {
-//            
-//            let collectionView = UICollectionView()
-//            let layout = UICollectionViewFlowLayout()
-//            layout.scrollDirection = .horizontal
-//            layout.estimatedItemSize = CGSize(width: 414, height: 180)
-//            
-//            view.addSubview(collectionView)
-//        }
-//    }
-    
 }
-//
-//extension DetailTableViewController:UICollectionViewDelegate, UICollectionViewDataSource {
-//    
-//}
 
 class LectureInfo {
     
