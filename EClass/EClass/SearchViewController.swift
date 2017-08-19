@@ -13,7 +13,6 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var categorySelectButton:UIButton!
     @IBOutlet weak var locationSelectButton:UIButton!
     
-    
     @IBAction func categorySelectButtonTouched(_ sender: Any) {
         print("Category")
         
@@ -66,6 +65,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCell", for: indexPath) as! RecommendCollectionViewCell
         
+
         cell.lectureName.text = "스타 ㄲ"
         cell.lectureInfo.text = "3만원"
         cell.lectureImage.image = #imageLiteral(resourceName: "five.jpg")

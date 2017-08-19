@@ -28,18 +28,21 @@ var currentUserPrimaryKey:Int = 0
 func postDicToUserInfo(params:[String:String])
     
 {
-    
-    Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/signup/", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
+
+    Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/signup/", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
         print("여기서부터")
         print(response)
         print("~~~~~~~~")
-        print(response.result)
+        print(response.result.value)
         print("~~~~~~~~")
         print(response.data)
         print("~~~~~~~~")
         print(response.description)
         print("~~~~~~~~")
         print(response.value)
+        print(params)
+        print(response.error)
+    
     }
 }
 

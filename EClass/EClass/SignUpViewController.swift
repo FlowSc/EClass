@@ -23,7 +23,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         passwordCheckTextField.text == passwordTextField.text
         {
             
-            postDicToUserInfo(params: ["username":"\(userNameTextField.text!)","password":passwordTextField.text!, "email":emailTextField.text!])
+            postDicToUserInfo(params: ["username":"\(userNameTextField.text!)","password":passwordTextField.text!, "email":emailTextField.text!, "confirm_password":"\(passwordCheckTextField.text!)"])
             let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
             let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
             self.present(pushMainView, animated: true, completion: nil)

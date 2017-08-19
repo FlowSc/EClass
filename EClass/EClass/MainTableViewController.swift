@@ -51,7 +51,7 @@ extension SWRevealViewController
 class MainTableViewController: UIViewController {
     
     @IBOutlet weak var myMainTableView: UITableView!
-    var locationStrings:[String] = ["강남", "강동", "강서", "강북", "관악", "광진", "구로", "금천", "노원", "AA"]
+    var locationStrings:[String] = ["강남", "강동", "강서", "강북", "관악", "광진", "구로", "금천", "노원"]
 
     var categoryStrings = ["헬스&뷰티", "외국어", "컴퓨터", "음악, 미술", "스포츠", "전공/취업", "이색취미", "전체수업보기"]
     var tableViewIndex:Int?
@@ -110,12 +110,10 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
 
         self.myMainTableView.rowHeight = UITableViewAutomaticDimension
         self.myMainTableView.estimatedRowHeight = 170
 
-        
         if section == 0 {
             return 0
         }else{
@@ -125,17 +123,16 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
         switch indexPath.section {
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "LocationTableCell", for: indexPath) as! LocationTableViewCell
-//            tableViewIndex = indexPath.section
-//            cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
-////            cell.collectionView.register(LocationCollectionViewCell.self, forCellWithReuseIdentifier: "LocationCell")
-//            cell.collectionView.reloadData()
+            tableViewIndex = indexPath.section
+            cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
+//            cell.collectionView.register(LocationCollectionViewCell.self, forCellWithReuseIdentifier: "LocationCell")
+            cell.collectionView.reloadData()
 //
             return cell
 
@@ -170,8 +167,8 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch tableViewIndex! {
-//        case 1:
-//            return locationStrings.count
+        case 1:
+            return locationStrings.count
         case 2:
             return categoryStrings.count
         case 3:
@@ -185,22 +182,25 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         
         switch tableViewIndex!{
         
-//        case 1:
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationCell", for: indexPath) as! LocationCollectionViewCell
-//            
-//
-//            cell.locationLabel.text = locationStrings[indexPath.row]
-//            cell.layer.borderWidth = 1
-//            cell.layer.cornerRadius = 3
-//
-//            cell.reloadInputViews()
-//            
-//            return cell
+        case 1:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationCell", for: indexPath) as! LocationCollectionViewCell
+            
+            
+            cell.image.image = UIImage(named: "location" + "\(indexPath.item)")
+            cell.locationLabel.text = locationStrings[indexPath.row]
+            cell.layer.borderWidth = 1
+            cell.layer.cornerRadius = 3
+
+            cell.reloadInputViews()
+            
+            return cell
 
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCollectionViewCell
             
             cell.categoryLabel.text = categoryStrings[indexPath.item]
+
+            cell.image.image = UIImage(named: "category" + "\(indexPath.item)")
             cell.layer.borderWidth = 1
             cell.layer.cornerRadius = 3
             cell.backgroundColor = UIColor.white
@@ -238,11 +238,15 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
 //        let moveCell = collectionView.cellForItem(at: indexPath) as! RecommendCollectionViewCell
 //        
 //        print(moveCell.tag)
+
+        
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch tableViewIndex!{
+        case 1:
+            return CGSize(width: 410, height: 200)
         case 2:
             return CGSize.init(width: 190, height: 80)
         default:
