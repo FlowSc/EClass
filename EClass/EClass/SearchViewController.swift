@@ -18,7 +18,6 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var locationSelectButton:UIButton!
     @IBOutlet weak var myCollectionView:UICollectionView!
     
-    
     @IBAction func categorySelectButtonTouched(_ sender: Any) {
         let firstShowList = recommendLectureList.array
 
@@ -171,6 +170,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCell", for: indexPath) as! RecommendCollectionViewCell
         
+
         
         let myData = lectureShowList[indexPath.item]
         print("XXXXXXX")
