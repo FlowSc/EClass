@@ -18,12 +18,14 @@ PODS:
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.25.0):
     - FBSDKCoreKit
+  - Kingfisher (3.10.4)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
   - FacebookCore
   - FacebookLogin
+  - Kingfisher (~> 3.0)
   - SwiftyJSON (~> 3.1)
 
 SPEC CHECKSUMS:
@@ -33,8 +35,9 @@ SPEC CHECKSUMS:
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
   FBSDKCoreKit: 53e3f4bfb64e80c5f229dd30ae33ff57fbbbd2d1
   FBSDKLoginKit: f628c09684dae9c17f071cf90b014e886f5093ea
+  Kingfisher: dc3a4983e86d2dfa89513664983a82340c11a289
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: b5b6695fed4407f047cf8ad2ae3f7a1258b9bae9
+PODFILE CHECKSUM: 77c67a642475c50660e1ab13c675065a9ffc61df
 
 COCOAPODS: 1.2.1

@@ -14,6 +14,8 @@ class CategoryTableViewCell: UITableViewCell {
     
     var categoryStrings = ["헬스&뷰티", "외국어", "컴퓨터", "음악, 미술", "스포츠", "전공/취업", "이색취미", "전체수업보기"]
     var sectionIndex:Int?
+    var delegate:CategoryMoveDelegate?
+
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +26,9 @@ class CategoryTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
+        delegate?.moveTocategory()
+        
 
         // Configure the view for the selected state
     }
@@ -39,6 +44,10 @@ class CategoryTableViewCell: UITableViewCell {
     }
 
 
+}
+
+protocol CategoryMoveDelegate {
+    func moveTocategory()
 }
 
 //

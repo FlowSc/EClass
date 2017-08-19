@@ -14,7 +14,7 @@
         <!--Search View Controller-->
         <scene sceneID="Nmr-BV-tAo">
             <objects>
-                <viewController id="Mw2-t1-58C" customClass="SearchViewController" customModule="EClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" id="Mw2-t1-58C" customClass="SearchViewController" customModule="EClass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iYN-8z-4PX"/>
                         <viewControllerLayoutGuide type="bottom" id="tcx-2k-yFo"/>
@@ -59,26 +59,26 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecommendCell" id="pyn-gG-AOs" customClass="RecommendCollectionViewCell" customModule="EClass" customModuleProvider="target">
-                                        <rect key="frame" x="35.666666666666664" y="0.0" width="343" height="169"/>
+                                        <rect key="frame" x="36" y="0.0" width="343" height="169"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="169"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVL-V3-IdC">
-                                                    <rect key="frame" x="0.0" y="151" width="37.666666666666664" height="18"/>
+                                                    <rect key="frame" x="0.0" y="151" width="38" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ef7-O0-O94">
-                                                    <rect key="frame" x="0.0" y="126.66666666666669" width="39.666666666666664" height="19.333333333333314"/>
+                                                    <rect key="frame" x="0.0" y="126" width="40" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2mw-nk-aJ5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="126.66666666666667"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="126"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7of-Gg-Yak">
                                                     <rect key="frame" x="240" y="70" width="94" height="89"/>
@@ -143,7 +143,6 @@
                                             <outlet property="tutorImage" destination="NfX-Vm-s15" id="fWb-M3-KTQ"/>
                                             <outlet property="tutorName" destination="fXu-x9-obZ" id="CMw-ad-mRf"/>
                                             <outlet property="tutorNickname" destination="FF2-rX-kLb" id="6pI-CX-IRP"/>
-                                            <segue destination="kc8-fa-Bps" kind="show" identifier="DetailSegue" id="tUt-YV-L8Y"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -187,6 +186,7 @@
                     <connections>
                         <outlet property="categorySelectButton" destination="Mxp-Zr-gcJ" id="ka8-tY-SXp"/>
                         <outlet property="locationSelectButton" destination="fQA-50-fmS" id="zrO-Lf-2H3"/>
+                        <outlet property="myCollectionView" destination="OB6-wO-TWt" id="fPh-mM-FRz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qKF-Wh-Cr1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -208,14 +208,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10k-mL-CId" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="930" y="-117"/>
-        </scene>
-        <!--DetailPage-->
-        <scene sceneID="fev-06-Ftm">
-            <objects>
-                <viewControllerPlaceholder storyboardName="DetailPage" id="kc8-fa-Bps" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D1k-Og-xpn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="910" y="72"/>
         </scene>
         <!--LocationSelect-->
         <scene sceneID="Eat-ms-AoA">

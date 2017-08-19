@@ -154,6 +154,9 @@ final class DataCenter
     }
 }
 
+struct LectureList {
+    static var lectureList:JSON!
+}
 // 강의 정보
 struct Lecture {
     
@@ -163,6 +166,7 @@ struct Lecture {
     var region:String
     var reviews:[String]?
     var score:Int?
+    
 
     init(with json:JSON)
     {
@@ -254,4 +258,17 @@ struct ReviewList {
     }
 }
 
+extension UIView {
+    
+    func makeCircle(){
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 25
+        self.clipsToBounds = true
+    }
+    
+    func makeCornerRound3() {
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 3
+    }
+}
 

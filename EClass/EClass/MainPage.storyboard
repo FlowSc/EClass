@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -50,7 +50,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationTableCell" rowHeight="171" id="aDP-jh-VKz" customClass="LocationTableViewCell" customModule="EClass" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="171" id="aDP-jh-VKz" customClass="LocationTableViewCell" customModule="EClass" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="171"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aDP-jh-VKz" id="aB2-8s-zM3">
@@ -58,7 +58,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="y28-6P-AWs">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="171"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="htS-Vw-U0x">
                                                         <size key="itemSize" width="330" height="150"/>
@@ -67,8 +67,8 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LocationCell" id="M9v-1y-mRZ" customClass="LocationCollectionViewCell" customModule="EClass" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="11" width="330" height="150"/>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LocationCollectionViewCell" id="M9v-1y-mRZ" customClass="LocationCollectionViewCell" customModule="EClass" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="10" width="330" height="150"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="330" height="150"/>
@@ -96,7 +96,7 @@
                                                             <connections>
                                                                 <outlet property="image" destination="3bi-5y-cHa" id="YTX-Wh-h5b"/>
                                                                 <outlet property="locationLabel" destination="L1b-AQ-gC7" id="SBq-Y0-94V"/>
-                                                                <segue destination="ia6-wu-oIW" kind="show" id="IL8-b0-QEj"/>
+                                                                <segue destination="ia6-wu-oIW" kind="show" identifier="LocationFilterSegue" id="IL8-b0-QEj"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -121,7 +121,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HWy-aJ-Sgp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="213"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="212"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <inset key="scrollIndicatorInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="b9n-51-PhZ">
@@ -131,7 +131,7 @@
                                                         <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="2dV-Be-ZdV" customClass="CategoryCollectionViewCell" customModule="EClass" customModuleProvider="target">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCollectionViewCell" id="2dV-Be-ZdV" customClass="CategoryCollectionViewCell" customModule="EClass" customModuleProvider="target">
                                                             <rect key="frame" x="10" y="10" width="185" height="70"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -160,7 +160,7 @@
                                                             <connections>
                                                                 <outlet property="categoryLabel" destination="fTo-HD-JTX" id="rpU-CY-NgN"/>
                                                                 <outlet property="image" destination="Ora-k4-SjD" id="0cH-8V-LoZ"/>
-                                                                <segue destination="ia6-wu-oIW" kind="show" id="9Ko-Sd-hOp"/>
+                                                                <segue destination="ia6-wu-oIW" kind="show" identifier="CategoryFilterSegue" id="9Ko-Sd-hOp"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -185,8 +185,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="246"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QIu-bH-uoe">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="245.66666666666666"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" bounces="NO" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QIu-bH-uoe">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="245"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ob6-nT-6er">
                                                         <size key="itemSize" width="361" height="216.66666666666666"/>
@@ -196,10 +196,10 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecommendCollectionViewCell" id="Wbj-ls-Pe5" customClass="RecommendCollectionViewCell" customModule="EClass" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="14.666666666666666" width="361" height="216.66666666666666"/>
+                                                            <rect key="frame" x="0.0" y="14.333333333333334" width="361" height="216.66666666666666"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                <rect key="frame" x="0.0" y="0.0" width="361" height="216.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="361" height="217"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZCJ-pF-rca">
@@ -212,7 +212,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="re7-Qt-Z8x">
-                                                                        <rect key="frame" x="240" y="99.999999999999986" width="112" height="106.66666666666664"/>
+                                                                        <rect key="frame" x="240" y="100" width="112" height="107"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="obT-Oe-bd4">
                                                                                 <rect key="frame" x="37" y="5" width="50" height="50"/>
@@ -246,7 +246,7 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0N-mk-PoT">
-                                                                        <rect key="frame" x="10" y="162" width="37.666666666666664" height="18"/>
+                                                                        <rect key="frame" x="10" y="162" width="38" height="18"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -274,7 +274,7 @@
                                                                 <outlet property="tutorImage" destination="obT-Oe-bd4" id="Avb-5B-3eE"/>
                                                                 <outlet property="tutorName" destination="dAY-ez-zvT" id="7qf-Zr-T4e"/>
                                                                 <outlet property="tutorNickname" destination="pwm-qr-nbs" id="nRD-gQ-mns"/>
-                                                                <segue destination="u7h-vk-plA" kind="show" identifier="DetailPageSegue" id="hKi-u0-omc"/>
+                                                                <segue destination="u7h-vk-plA" kind="show" identifier="DetailPageSegue" id="EO2-sV-jcC"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -379,7 +379,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OgI-Nv-BqI">
-                                                    <rect key="frame" x="157" y="69.666666666666671" width="40" height="40"/>
+                                                    <rect key="frame" x="157" y="69" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="5B7-3V-k2e"/>
                                                         <constraint firstAttribute="width" secondItem="OgI-Nv-BqI" secondAttribute="height" multiplier="1:1" id="Ugf-61-PaZ"/>
@@ -534,6 +534,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="IL8-b0-QEj"/>
+        <segue reference="9Ko-Sd-hOp"/>
     </inferredMetricsTieBreakers>
 </document>
