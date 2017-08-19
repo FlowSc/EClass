@@ -41,6 +41,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         super.viewDidLoad()
         recommendLectureList = LectureList.lectureList
         
+        lectureShowList = recommendLectureList.array
 
         categorySelectButton.layer.borderWidth = 1
         locationSelectButton.layer.borderWidth = 1
@@ -177,7 +178,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                     print("data 시작점 \(myData)")
         print("~~~~~~~~~~")
         
-        cell.setLecture(nil, myData["title"].stringValue, myData["target_intro"].stringValue, myData["cover_photo"].stringValue, myData["tutor"].stringValue, myData["tutor_intro"].stringValue)
+        cell.setLecture(myData["cover_photo"].stringValue, myData["title"].stringValue, myData["target_intro"].stringValue, myData["cover_photo"].stringValue, myData["tutor"].stringValue, myData["tutor_intro"].stringValue)
         cell.tutorImage.layer.cornerRadius = 25
         cell.tutorImage.clipsToBounds = true
         //            cell.tutorImage.layer.borderWidth = 1

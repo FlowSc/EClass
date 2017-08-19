@@ -104,6 +104,7 @@
 		45A57FEB1F35801F001F5C1A /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 45A57FEA1F35801F001F5C1A /* 2.png */; };
 		45A57FED1F358028001F5C1A /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 45A57FEC1F358028001F5C1A /* 3.png */; };
 		7518F5141F468FB50088ED19 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518F5131F468FB50088ED19 /* Constant.swift */; };
+		7518F51A1F489E610088ED19 /* LetureRegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518F5191F489E610088ED19 /* LetureRegistViewController.swift */; };
 		759155901F3C62C80010686B /* LectureIntroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7591558E1F3C62C80010686B /* LectureIntroTableViewCell.swift */; };
 		759155911F3C62C80010686B /* LectureIntroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7591558F1F3C62C80010686B /* LectureIntroTableViewCell.xib */; };
 		759155981F3CA8740010686B /* MapLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759155961F3CA8740010686B /* MapLocationTableViewCell.swift */; };
@@ -246,6 +247,7 @@
 		45A57FEC1F358028001F5C1A /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
 		575D7D2BB1253DC83223CD2A /* Pods-EClass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EClass.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EClass/Pods-EClass.debug.xcconfig"; sourceTree = "<group>"; };
 		7518F5131F468FB50088ED19 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		7518F5191F489E610088ED19 /* LetureRegistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetureRegistViewController.swift; sourceTree = "<group>"; };
 		7591558E1F3C62C80010686B /* LectureIntroTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureIntroTableViewCell.swift; sourceTree = "<group>"; };
 		7591558F1F3C62C80010686B /* LectureIntroTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LectureIntroTableViewCell.xib; sourceTree = "<group>"; };
 		759155961F3CA8740010686B /* MapLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLocationTableViewCell.swift; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 			isa = PBXGroup;
 			children = (
 				75D1B28C1F357C810068C20C /* DetailPage.storyboard */,
+				7518F5191F489E610088ED19 /* LetureRegistViewController.swift */,
 				759155AC1F417CE90010686B /* ReviewAddViewController.swift */,
 				759155AA1F414A390010686B /* ReviewShowTableViewController.swift */,
 				7591559A1F3CB9CD0010686B /* LectureReviewTableViewCell.swift */,
@@ -787,6 +790,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7518F51A1F489E610088ED19 /* LetureRegistViewController.swift in Sources */,
 				75D1B2991F357C8D0068C20C /* CategorySelectViewController.swift in Sources */,
 				45264BC41F3F573D00933C50 /* FAQTableViewCell.swift in Sources */,
 				75D1B2871F357C6A0068C20C /* RecommendTableViewCell.swift in Sources */,

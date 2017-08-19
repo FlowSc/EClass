@@ -163,17 +163,33 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return myLectureData.count
+        print(detailData["lecture_photos"].count)
+        return detailData["lecture_photos"].count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.lectureImage, for: indexPath) as! LectureImageCollectionViewCell
-        let myImagesUrl:URL = URL(string: detailData["lecture_photos"][indexPath.item]["photo"].stringValue)!
+        let myImagesUrl:URL = URL(string: detailData["lecture_photos"][indexPath.item]["lecture_photo"].stringValue)!
+        
+        print("URLLOG")
+        print(myImagesUrl)
+        print("AAAAAA")
+        print(detailData["lecture_photos"])
+        print("BBBBBBB")
 
         cell.lectureImage.kf.setImage(with: myImagesUrl)
         
 
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LectureRegisterSegue" {
+            
+            let mv = segue.destination as! LetureRegistViewController
+            
+            mv.detailData = detailData
+        }
     }
 }
 
