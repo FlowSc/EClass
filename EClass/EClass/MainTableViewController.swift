@@ -57,27 +57,27 @@ class MainTableViewController: UIViewController {
     
     @IBOutlet weak var myMainTableView: UITableView!
     var locationStrings:[String] = ["강남", "강동", "강서", "강북", "관악", "광진", "구로", "금천", "노원"]
-
+    
     var categoryStrings = ["헬스&뷰티", "외국어", "컴퓨터", "음악/미술", "스포츠", "진로/취업", "이색취미", "전체수업보기"]
     var tableViewIndex:Int?
     var recommendLectureList:JSON!
     var lectureShowList:[JSON]!
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         myMainTableView.reloadData()
     }
     
-   
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sideMenus()
         customizeNavBar()
         self.myMainTableView.reloadData()
-//        self.myMainTableView.register(UINib.init(nibName: "LectureTableViewCell"
-//            , bundle: nil), forCellReuseIdentifier: "LectureCell")
-    
+        //        self.myMainTableView.register(UINib.init(nibName: "LectureTableViewCell"
+        //            , bundle: nil), forCellReuseIdentifier: "LectureCell")
+        
         myMainTableView.allowsSelection = false
         
         recommendLectureList = LectureList.lectureList
@@ -113,7 +113,7 @@ class MainTableViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
     }
     
-   }
+}
 
 extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -123,10 +123,10 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         self.myMainTableView.rowHeight = UITableViewAutomaticDimension
         self.myMainTableView.estimatedRowHeight = 170
-
+        
         if section == 0 {
             return 0
         }else{
@@ -144,17 +144,17 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.location, for: indexPath) as! LocationTableViewCell
             tableViewIndex = indexPath.section
             cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
-
+            
             return cell
-
+            
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.category, for: indexPath) as! CategoryTableViewCell
             cell.makeCornerRound3()
             cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
-
+            
             tableViewIndex = indexPath.section
-
-
+            
+            
             return cell
             
         case 3:
@@ -162,16 +162,16 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             
             cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
             tableViewIndex = indexPath.section
-
-
-
+            
+            
+            
             
             return cell
-
+            
         default:
             return UITableViewCell()
         }
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -190,17 +190,17 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         switch tableViewIndex!{
-        
+            
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.location, for: indexPath) as! LocationCollectionViewCell
             
             
-
+            
             cell.locationLabel.text = locationStrings[indexPath.row]
             cell.makeCornerRound3()
             
             return cell
-
+            
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.category, for: indexPath) as! CategoryCollectionViewCell
             
@@ -208,19 +208,19 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             cell.makeCornerRound3()
             cell.tag = indexPath.item
             cell.backgroundColor = UIColor.white
-
-
+            
+            
             return cell
-        
+            
         case 3:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.lectureDetail, for: indexPath) as! RecommendCollectionViewCell
             
             
             let myData = recommendLectureList[indexPath.item]
-
-//            print(myData)
             
-
+            //            print(myData)
+            
+            
             cell.setLecture(myData["cover_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, myData["tutor"].stringValue, myData["tutor_intro"].stringValue)
             cell.tutorImage.makeCircle()
             cell.tag = indexPath.item
@@ -245,7 +245,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             return CGSize(width: 412, height: 250)
         }
     }
-
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -266,7 +266,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         
         if section == 0 {
             let image = UIImageView()
-
+            
             image.image = #imageLiteral(resourceName: "pac-man-logo.gif")
             
             return image
@@ -291,112 +291,110 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        
         
         
         
         if segue.identifier == SegueIdentifier.detailSegue {
-           
-            if let cell = sender as? RecommendCollectionViewCell {
             
-            let indexPath = cell.tag
-            let destination = segue.destination as! DetailTableViewController
+            if let cell = sender as? RecommendCollectionViewCell {
+                
+                let indexPath = cell.tag
+                let destination = segue.destination as! DetailTableViewController
                 
                 destination.detailData = lectureShowList[indexPath]
-            
+                
                 print(indexPath)
             }
         }else if segue.identifier == SegueIdentifier.categoryFilterSegue {
-        
-        if let cell = sender as? CategoryCollectionViewCell {
             
-            let indexPath = cell.tag
-            
-            
-            let destination = segue.destination as! SearchViewController
-            
-            print(categoryStrings[indexPath])
-            destination.changedTitleforCategory = categoryStrings[indexPath]
-            
-            if categoryStrings[indexPath] == "이색취미" {
+            if let cell = sender as? CategoryCollectionViewCell {
                 
-                let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
-                    myData["category"].stringValue == "hobby"
-                })
+                let indexPath = cell.tag
                 
-                destination.lectureShowList = filterList
-            }
-            
-            if categoryStrings[indexPath] == "헬스&뷰티" {
                 
-                let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
-                    myData["category"].stringValue == "hbn"
-                })
-                print(filterList)
+                let destination = segue.destination as! SearchViewController
                 
-                destination.lectureShowList = filterList
-            }
-            
-            if categoryStrings[indexPath] == "외국어" {
+                print(categoryStrings[indexPath])
+                destination.changedTitleforCategory = categoryStrings[indexPath]
                 
-                let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
-                    myData["category"].stringValue == "lang"
-                })
+                if categoryStrings[indexPath] == "이색취미" {
+                    
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["category"].stringValue == "hobby"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }
                 
-                destination.lectureShowList = filterList
-            }
-
-            
-            if categoryStrings[indexPath] == "컴퓨터" {
+                if categoryStrings[indexPath] == "헬스&뷰티" {
+                    
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["category"].stringValue == "hbn"
+                    })
+                    print(filterList)
+                    
+                    destination.lectureShowList = filterList
+                }
                 
-                let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
-                    myData["category"].stringValue == "com"
-                })
+                if categoryStrings[indexPath] == "외국어" {
+                    
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["category"].stringValue == "lang"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }
                 
-                destination.lectureShowList = filterList
-            }
-
-            
-            if categoryStrings[indexPath] == "음악/미술" {
                 
-                let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
-                    myData["category"].stringValue == "mna"
-                })
+                if categoryStrings[indexPath] == "컴퓨터" {
+                    
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["category"].stringValue == "com"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }
                 
-                destination.lectureShowList = filterList
-            }
-
-            
-            if categoryStrings[indexPath] == "스포츠" {
                 
-                let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
-                    myData["category"].stringValue == "sports"
-                })
+                if categoryStrings[indexPath] == "음악/미술" {
+                    
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["category"].stringValue == "mna"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }
                 
-                destination.lectureShowList = filterList
-            }
-
-            
-            if categoryStrings[indexPath] == "진로/취업" {
                 
-                let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
-                    myData["category"].stringValue == "major"
-                })
+                if categoryStrings[indexPath] == "스포츠" {
+                    
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["category"].stringValue == "sports"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }
                 
-                destination.lectureShowList = filterList
-                print(destination.lectureShowList)
-            }
-
-            
-            if categoryStrings[indexPath] == "전체수업보기" {
                 
-                let filterList:[JSON] = lectureShowList
+                if categoryStrings[indexPath] == "진로/취업" {
+                    
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["category"].stringValue == "major"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                    print(destination.lectureShowList)
+                }
                 
-                destination.lectureShowList = filterList
-            }
-
-            
-            
+                
+                if categoryStrings[indexPath] == "전체수업보기" {
+                    
+                    let filterList:[JSON] = lectureShowList
+                    
+                    destination.lectureShowList = filterList
+                }
+                
             }
         }
     }
