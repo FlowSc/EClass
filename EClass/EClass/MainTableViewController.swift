@@ -57,6 +57,7 @@ class MainTableViewController: UIViewController {
     
     @IBOutlet weak var myMainTableView: UITableView!
     var locationStrings:[String] = ["강남", "강동", "강서", "강북", "관악", "광진", "구로", "금천", "노원"]
+
     
     var categoryStrings = ["헬스&뷰티", "외국어", "컴퓨터", "음악/미술", "스포츠", "진로/취업", "이색취미", "전체수업보기"]
     var tableViewIndex:Int?
@@ -123,6 +124,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         
         self.myMainTableView.rowHeight = UITableViewAutomaticDimension
         self.myMainTableView.estimatedRowHeight = 170
@@ -141,6 +143,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         
         switch indexPath.section {
         case 1:
+
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.location, for: indexPath) as! LocationTableViewCell
             tableViewIndex = indexPath.section
             cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
@@ -190,12 +193,14 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         switch tableViewIndex!{
+
             
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.location, for: indexPath) as! LocationCollectionViewCell
             
             
-            
+            cell.image.image = UIImage(named: "location" + "\(indexPath.item)")
+
             cell.locationLabel.text = locationStrings[indexPath.row]
             cell.makeCornerRound3()
             
@@ -205,6 +210,9 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.category, for: indexPath) as! CategoryCollectionViewCell
             
             cell.categoryLabel.text = categoryStrings[indexPath.item]
+
+            cell.image.image = UIImage(named: "category" + "\(indexPath.item)")
+            
             cell.makeCornerRound3()
             cell.tag = indexPath.item
             cell.backgroundColor = UIColor.white
@@ -235,6 +243,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         
     }
     
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch tableViewIndex!{
         case 1:
