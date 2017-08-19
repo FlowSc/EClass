@@ -10,7 +10,7 @@ import UIKit
 
 class RearSettingTableViewCell: UITableViewCell {
 
-    let settingLabelList = ["수업 검색","수업 목록","FAQ","수업 신청"]
+    let settingLabelList = ["수업 검색","수업 목록","FAQ","수업 등록"]
     @IBOutlet weak var settingLabel: UILabel!
     @IBOutlet weak var settingIconOutlet: UIImageView!
     override func awakeFromNib() {
@@ -20,7 +20,12 @@ class RearSettingTableViewCell: UITableViewCell {
     
     func set(_ data:Int)
     {
-        settingLabel.text = settingLabelList[data]
+        settingLabel.text = settingLabelList[data - 1]
+        settingIconOutlet.layer.cornerRadius = 15
+        settingIconOutlet.clipsToBounds = true
+        settingIconOutlet.backgroundColor = .white
+//        settingIconOutlet.layer.borderColor = UIColor.black.cgColor
+//        settingIconOutlet.layer.borderWidth = 0.5
         settingIconOutlet.image = UIImage(named: "\(data).png")
     }
 

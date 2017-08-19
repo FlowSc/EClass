@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class SignUpViewController: UIViewController,UITextFieldDelegate {
 
+    @IBOutlet weak var loginImageView: UIImageView!
     @IBOutlet weak var passwordCheckTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
@@ -31,6 +32,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        outletSet()
         userNameTextField.delegate = self
         passwordTextField.delegate = self
         passwordCheckTextField.delegate = self
@@ -48,6 +50,35 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    @IBOutlet weak var marginView6: UIView!
+    @IBOutlet weak var marginView7: UIView!
+    
+    @IBOutlet weak var marginView5: UIView!
+    @IBOutlet weak var marginView4: UIView!
+    @IBOutlet weak var marginView3: UIView!
+    @IBOutlet weak var marginView2: UIView!
+    @IBOutlet weak var marginView1: UIView!
+    func outletSet()
+    {
+        loginImageView.image = UIImage(named: "passion2.png")
+        loginImageView.clipsToBounds = true
+        loginImageView.alpha = 0.9
+        marginView1.backgroundColor = .clear
+        marginView2.backgroundColor = .clear
+        marginView3.backgroundColor = .clear
+        marginView4.backgroundColor = .clear
+        marginView5.backgroundColor = .clear
+        marginView6.backgroundColor = .clear
+        marginView7.backgroundColor = .clear
+        signUpButtonOutlet.layer.borderColor = UIColor.white.cgColor
+        signUpButtonOutlet.layer.cornerRadius = 5
+        signUpButtonOutlet.layer.borderWidth = 1
+        self.navigationController?.navigationBar.alpha = 0.5
+        self.navigationItem.leftBarButtonItem?.tintColor = .black
+        
+        
+        
     }
     //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     //        if textField == userNameTextField

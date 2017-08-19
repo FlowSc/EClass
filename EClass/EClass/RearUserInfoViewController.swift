@@ -24,55 +24,65 @@ class RearUserInfoViewController: UIViewController, UITableViewDelegate, UITable
             return 50
         }
     }
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        
-        let footerView:UIView =
-        {
-            
-            let label:UILabel =
-            {
-                let lb = UILabel()
-                lb.text = "수업 등록하기"
-                lb.textColor = .white
-                
-                return lb
-                
-            }()
-            
-            
-            let view = UIView()
-            view.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
-            view.isUserInteractionEnabled = true
-            view.addSubview(label)
-            label.translatesAutoresizingMaskIntoConstraints = false
-            view.centerXAnchor.constraint(equalTo: label.centerXAnchor, constant: 30).isActive = true
-            view.centerYAnchor.constraint(equalTo: label.centerYAnchor).isActive = true
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(registerLectureButtonTouched(_:)))
-            view.addGestureRecognizer(tapGesture)
-            
-            return view
-        }()
-        
-        return footerView
-
-    }
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        
+//        let footerView:UIView =
+//        {
+//            
+//            let label:UILabel =
+//            {
+//                let lb = UILabel()
+//                lb.text = "수업 등록하기"
+//                lb.textColor = .white
+//                
+//                return lb
+//                
+//            }()
+//            
+//            
+//            let view = UIView()
+//            view.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
+//            view.isUserInteractionEnabled = true
+//            view.addSubview(label)
+//            label.translatesAutoresizingMaskIntoConstraints = false
+//            view.centerXAnchor.constraint(equalTo: label.centerXAnchor, constant: 30).isActive = true
+//            view.centerYAnchor.constraint(equalTo: label.centerYAnchor).isActive = true
+//            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(registerLectureButtonTouched(_:)))
+//            view.addGestureRecognizer(tapGesture)
+//            
+//            return view
+//        }()
+//        
+//        return footerView
+//
+//    }
     
     func registerLectureButtonTouched(_:UIGestureRecognizer)
     {
         print("tap")
     }
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 50
-    }
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 50
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        performSegue(withIdentifier: "userInfo", sender: nil)
-        let storyBoard1 = UIStoryboard(name: "Main2", bundle: nil)
-        let nextVC = storyBoard1.instantiateViewController(withIdentifier: "user") as! ChangeUserInfomationViewController
+        if indexPath.row == 3
+        {
+            let storyBoard1 = UIStoryboard(name: "FAQViewController", bundle: nil)
+            let nextVC = storyBoard1.instantiateViewController(withIdentifier: "FAQ") as! FAQViewController
+            self.navigationController?.pushViewController(nextVC, animated: true)
+            self.navigationController?.isNavigationBarHidden = false
+        }else{
+            let storyBoard1 = UIStoryboard(name: "Main2", bundle: nil)
+            let nextVC = storyBoard1.instantiateViewController(withIdentifier: "user") as! ChangeUserInfomationViewController
+            self.navigationController?.pushViewController(nextVC, animated: true)
+            self.navigationController?.isNavigationBarHidden = false
+        }
+        
 //        self.navigationController?.pushViewController(nextVC, animated: true)
         
-        self.navigationController?.pushViewController(nextVC, animated: true)
-        self.navigationController?.isNavigationBarHidden = false
+        
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -85,7 +95,8 @@ class RearUserInfoViewController: UIViewController, UITableViewDelegate, UITable
         }else
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! RearSettingTableViewCell
-            cell.set(indexPath.row - 1)
+            cell.set(indexPath.row)
+            tv.tableFooterView = UIView(frame: CGRect.zero)
             cell.selectionStyle = .none
             return cell
         }

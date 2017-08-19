@@ -45,6 +45,18 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                 
                 if response.result.isSuccess
                 {
+                    print(response.description)
+                    print("response")
+                    print(response)
+                    print("data")
+                    print(JSON(response.value))
+                    print("data끝")
+                    print(JSON(response.data))
+                    print(response.timeline)
+                    print(response.metrics)
+                    print(response.request)
+                    print(response.response)
+
                     print("go")
                     let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
                     let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
@@ -57,11 +69,17 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
 
         }
     }
+    @IBOutlet weak var marginView4: UIView!
+    @IBOutlet weak var marginView3: UIView!
+    @IBOutlet weak var marginView2: UIView!
+    @IBOutlet weak var detailLoginImageView: UIImageView!
+    @IBOutlet weak var marginView1: UIView!
     @IBOutlet weak var logInButtonOutlet: UIButton!
     @IBOutlet weak var passWordTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        outletSet()
         passWordTextField.delegate = self
         userNameTextField.delegate = self
         
@@ -70,7 +88,23 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
         // Do any additional setup after loading the view.
     }
     
-    
+    func outletSet()
+    {
+        detailLoginImageView.image = UIImage(named: "passion1.png")
+        detailLoginImageView.clipsToBounds = true
+        detailLoginImageView.alpha = 0.8
+        self.navigationController?.navigationBar.alpha = 0.5
+        self.navigationItem.leftBarButtonItem?.tintColor = .black
+//        self.navigationController?.navigationItem.backBarButtonItem?.tintColor = .black
+        logInButtonOutlet.layer.borderColor = UIColor.white.cgColor
+        logInButtonOutlet.layer.cornerRadius = 5
+        logInButtonOutlet.layer.borderWidth = 1
+        marginView1.backgroundColor = .clear
+        marginView2.backgroundColor = .clear
+        marginView3.backgroundColor = .clear
+        marginView4.backgroundColor = .clear
+        
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
