@@ -13,8 +13,8 @@ let tutor = TutorFAQList()
 var studentSelectRow:[Bool] = [true,true,true,true,true,true,true,true]
 var tutorSelectRow:[Bool] = [true,true,true,true,true]
 
-class FAQViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate {
-    
+class FAQViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, UIGestureRecognizerDelegate {
+
     func numberOfSections(in tableView: UITableView) -> Int {
         if isStudentOrTutor
         {
@@ -45,8 +45,13 @@ class FAQViewController: UIViewController, UITableViewDataSource, UITableViewDel
         return 1
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        tableView.headerView(forSection: section)?.tag = section
+        tableView.headerView(forSection: section)?.isUserInteractionEnabled = true
+        tableView.tableHeaderView?.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(reloadCell(_:)))
         tableView.headerView(forSection: section)?.addGestureRecognizer(tapGesture)
+        tableView.tableHeaderView?.addGestureRecognizer(tapGesture)
+
         if isStudentOrTutor
         {
             return student.short[section]
@@ -56,11 +61,13 @@ class FAQViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         tableView.tableHeaderView?.backgroundColor = .red
         tableView.headerView(forSection: section)?.backgroundColor = .red
         return 44
     }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if isStudentOrTutor
         {
@@ -69,7 +76,7 @@ class FAQViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 return 0
             }else
             {
-                return 44
+                return UITableViewAutomaticDimension
             }
         }else
         {
@@ -78,9 +85,13 @@ class FAQViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 return 0
             }else
             {
-                return 44
+                return UITableViewAutomaticDimension
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
 
 
@@ -97,56 +108,11 @@ class FAQViewController: UIViewController, UITableViewDataSource, UITableViewDel
         {
             cell.set(nil, data2: tutor, data3: indexPath.section)
         }
-//        if indexPath.row % 2 == 1
-//        {
-//            
-//            cell.questionLabel.alpha = 0.9
-//            cell.questionLabel.textColor = .gray
-////            cell.isHidden = true
-//            cell.removeFromSuperview()
-//            cell.autoresizingMask = UIViewAutoresizing.flexibleHeight
-//            
-////            cell.questionLabel.font = UIFont.init(name: "system", size: 14)
-////            cell.questionLabel.text?
-////            tv.separatorColor = .clear
-//        }else
-//        {
-////            tv.separatorColor = .clear
-//        }
-//        cell.removeFromSuperview()
-//        tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-        tv.estimatedRowHeight = 180
-        tv.rowHeight = UITableViewAutomaticDimension
         tv.tableFooterView = UIView(frame: CGRect.zero)
-        tv.tableHeaderView?.backgroundColor = .red
-        tv.headerView(forSection: indexPath.section)?.backgroundColor = .red
-//        cell.autoresizesSubviews
         
         return cell
         
     }
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableViewAutomaticDimension
-//    }
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 180
-//    }
-    
-    
-//    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-//        if isStudentOrTutor
-//        {
-//            studentSelectRow[indexPath.row] = !studentSelectRow[indexPath.row]
-//        }else
-//        {
-//            tutorSelectRow[indexPath.row] = !tutorSelectRow[indexPath.row]
-//        }
-//        return indexPath
-//        
-//        
-//    }
-    
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if isStudentOrTutor
         {
@@ -156,8 +122,8 @@ class FAQViewController: UIViewController, UITableViewDataSource, UITableViewDel
             tutorSelectRow[indexPath.row] = !tutorSelectRow[indexPath.row]
         }
         
-        tv.separatorColor = .clear
-        tv.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+//        tv.separatorColor = .clear
+//        tv.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -168,40 +134,23 @@ class FAQViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     func reloadCell(_ data:UITapGestureRecognizer)
     {
-        let vIndex = tv.indexPathForRow(at: data.location(in: self.view))
-        print("1")
+
         if isStudentOrTutor
         {
-            if studentSelectRow[(vIndex?.section)!]
-            {
-                tv.insertRows(at: [vIndex!], with: UITableViewRowAnimation.automatic)
-            }else
-            {
-                tv.deleteRows(at: [vIndex!], with: UITableViewRowAnimation.automatic)
-            }
+            studentSelectRow[(tv.indexPathForRow(at: data.location(in: tv)) ?? IndexPath(row: 0, section: 0)).section] = !studentSelectRow[(tv.indexPathForRow(at: data.location(in: tv)) ?? IndexPath(row: 0, section: 0)).section]
         }else
         {
-            if tutorSelectRow[(vIndex?.section)!]
-            {
-                tv.insertRows(at: [vIndex!], with: UITableViewRowAnimation.automatic)
-            }else
-            {
-                tv.deleteRows(at: [vIndex!], with: UITableViewRowAnimation.automatic)
-            }
+            tutorSelectRow[(tv.indexPathForRow(at: data.location(in: tv)) ?? IndexPath(row: 0, section: 0)).section] = !tutorSelectRow[(tv.indexPathForRow(at: data.location(in: tv)) ?? IndexPath(row: 0, section: 0)).section]
         }
-        
-        
-        
+        tv.reloadRows(at: [tv.indexPathForRow(at: data.location(in: tv)) ?? IndexPath(row: 0, section: 0)], with: UITableViewRowAnimation.automatic)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(reloadCell(_:)))
-        tv.headerView(forSection: 0)?.addGestureRecognizer(tapGesture)
-        tv.tableHeaderView?.addGestureRecognizer(tapGesture)
-//        tv.tableHeaderView?.backgroundColor = .white
+        tv.addGestureRecognizer(tapGesture)
         
-        
+
         studentOrTutorTabBar.selectedItem = studentItem
         tv.register(UINib(nibName: "FAQTableViewCell", bundle: nil), forCellReuseIdentifier: "FAQTableViewCell")
         
@@ -230,7 +179,7 @@ class FAQViewController: UIViewController, UITableViewDataSource, UITableViewDel
 struct StudentFAQList {
     var shortOrLong:Bool = true
     
-    let short = ["Q1 수업 신청 후 절차가 어떻게 되나요?","Q2 수업료는 어떻게 결제하나요?", "Q3 수업 장소와 시간은 어떻게 되나요?","Q4 튜터들의 수업 퀄리티를 신뢰할 수 있을까요?","Q5첫 수업 시작 전에 급한 일이 생겼습니다.","Q6 수업 취소는 어떻게 할 수 있나요?","Q7 환불 금액은 언제 입금되나요?","Q8 수업 중간에 사정이 생겨 그만 둘 경우엔 어떻게 하나요?"]
+    let short = ["Q1 수업 신청 후 절차가 어떻게 되나요?","Q2 수업료는 어떻게 결제하나요?", "Q3 수업 장소와 시간은 어떻게 되나요?","Q4 튜터들의 수업 퀄리티를 신뢰할 수 있을까요?","Q5첫 수업 시작 전에 급한 일이 생겼습니다.","Q6 수업 취소는 어떻게 할 수 있나요?","Q7 환불 금액은 언제 입금되나요?","Q8 수업 중 사정이 생겨 그만둘 경우엔 어떻게 하나요?"]
     
     let long = ["수업 신청을 하시면 연결담당자가 연락을 드립니다^^ 연결담당자가 튜터와 연결해드리면 일정을 조율하여 첫 수업날짜를 잡아보세요.","연결담당자의 설명에 따라서 첫 1회 수업료를 EClass에 선 결제하시면 튜터분과 연결됩니다. 튜터분과 첫 수업을 가져보시고, 향후 수업료는 튜터에게 직접 전달해주시면 됩니다. (수업료는 계좌이체 등으로 송금 근거를 남겨 두시길 권장합니다.)","수업소개에 수업장소와 시간이 명시되어 있습니다. 자세히 명시 되어있지 않은 수업의 경우 튜터와 조율하여 유동적으로 결정할 수 있습니다. 튜터에게 문의하여 시간을 조율해보세요. 개개인의 스케줄에 딱 맞는 시간을 조율할 수 있다는 것이 EClass의 가장 큰 장점이니까요.","EClass에서 튜터에 대한 철저한 사전검증을 하게 되며, 프로필 상의 경력과 자격증에 대한 검수확인 과정을 거치게 됩니다. 또한 실제 수업을 들었던 수강생의 리뷰와 피드백을 통해 튜터의 평판을 지속적으로 관리합니다. EClass는 계속해서 튜터들의 신뢰도를 높일 수 있는 검증 시스템을 만들어 갈 것임을 약속드립니다.","첫 수업 이전에는 결제된 수업료가 100% 환불됩니다. 첫 수업을 진행하신 이후에는 결제금액의 환불이 불가합니다. 자세한 사안은 환불규정을 참고하세요!","첫 수업이 시작하기 전 신청 취소는 자유롭게 가능합니다.카카오 EClasshelp를 통해 취소 여부를 알려주시면 됩니다.","수업 환불은 신청자의 환불 신청일에 따라 환불규정이 적용되며, EClass 상담원이 확인 후 즉시 환불절차를 진행해 드립니다. 신용카드 결제의 경우 카드사의 사정에 따라 최대 10일이 소요될 수 있는 점 양해바랍니다.","첫 수업 이후 환불에 대해서는, 회원가입 및 수업 결제 시 수강생이 동의한 EClass 환불규정에 따라 튜터와 수강생이 개별적으로 진행해주셔야 합니다."]
 }
