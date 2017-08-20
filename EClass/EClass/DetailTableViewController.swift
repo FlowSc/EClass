@@ -115,7 +115,9 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
 
         let storybd = UIStoryboard(name: StoryBoardConstant.detailPage, bundle: nil)
         
-        let reviewVc = storybd.instantiateViewController(withIdentifier: "ReviewShowTableViewController")
+        let reviewVc = storybd.instantiateViewController(withIdentifier: "ReviewShowTableViewController") as! ReviewShowTableViewController
+        
+        reviewVc.detailData = detailData
         
         self.navigationController?.pushViewController(reviewVc, animated: true)
     }
@@ -191,7 +193,6 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             let mv = segue.destination as! LetureRegistViewController
             
             mv.detailData = detailData
-            mv.userData = userData
         }
     }
 }
