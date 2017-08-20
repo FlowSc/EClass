@@ -39,6 +39,9 @@ class LetureRegistViewController: UIViewController, UITextViewDelegate{
         tutorCommentLb.makeCornerRound3()
         userCommentTfv.makeCornerRound3()
         userCommentTfv.delegate = self
+        registButtonOutlet.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
+        registButtonOutlet.setTitleColor(.white, for: .normal)
+
         // Do any additional setup after loading the view.
     }
 

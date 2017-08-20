@@ -23,5 +23,9 @@ class MapLocationTableViewCell: UITableViewCell {
     }
     @IBOutlet weak var locationMap: MKMapView!
     
+    @IBOutlet weak var dayIndicateBt: UIButton!
     @IBOutlet weak var tutorComment: UILabel!
+    @IBOutlet weak var timeLb: UILabel!
+    @IBOutlet weak var locationLb: UILabel!
+    @IBOutlet weak var additionalCgLb: UILabel!
 }

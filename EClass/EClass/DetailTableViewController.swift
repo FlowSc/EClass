@@ -61,7 +61,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         else if indexPath.row == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.tutorBasicInfo, for: indexPath) as! TutorInfoTableViewCell
             
-            cell.setTutor(#imageLiteral(resourceName: "default-user-image"), "성찬", tutorComment: "하이하이 \n 이거 많이 쓰면 늘어나는거 팩트입니까? 항ㄴ훈이훈이후니우히나위 저는 IOS 개발자인데 팩맨 겁나 잘하구여 그 똥망한 영화 픽셀도 개즐겁게 본 진성 너드입니다")
+            cell.setTutor(#imageLiteral(resourceName: "default-user-image"), detailData["tutor_info"]["nickname"].stringValue, tutorComment: "하이하이 \n 이거 많이 쓰면 늘어나는거 팩트입니까? 항ㄴ훈이훈이후니우히나위 저는 IOS 개발자인데 팩맨 겁나 잘하구여 그 똥망한 영화 픽셀도 개즐겁게 본 진성 너드입니다")
             cell.selectionStyle = .none
 
             
@@ -86,14 +86,62 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         }else if indexPath.row == 4{
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.mapLocation, for: indexPath) as! MapLocationTableViewCell
             
+            let cellData = detailData["locations"][0]
+            
+            cell.additionalCgLb.text = detailData["locations"][0]["location_etc_text"].stringValue + " 원"
+            cell.locationLb.text = detailData["locations"][0]["location_detail"].stringValue
+            cell.tutorComment.text = detailData["notice"].stringValue
+            cell.timeLb.text = detailData["locations"][0]["class_time"].stringValue + "시"
+            
+            if cellData["class_weekday"].stringValue == "sun" {
+            cell.dayIndicateBt.setTitle("일", for: .normal)
+            }
+            cell.dayIndicateBt.makeCornerRound3()
+            cell.dayIndicateBt.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
+            cell.dayIndicateBt.setTitleColor(.white, for: .normal)
+
+            
+            
             cell.selectionStyle = .none
 
             return cell
         }else if indexPath.row == 5{
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.lectureReview, for: indexPath) as! LectureReviewTableViewCell
+            
+            let representativeReviewData = detailData["reviews"][0]
+            
+            print(representativeReviewData)
             cell.selectionStyle = .none
+
+            
+            if detailData["review_count"].intValue == 0 {
+                cell.firstReviewButton.isHidden = false
+                cell.firstReviewRequestLb.isHidden = false
+                
+                cell.firstReviewRequestLb.text = "아직 등록된 리뷰가 없습니다. \n 첫번째 리뷰의 주인공이 되어보세요! \n \n \n 리뷰 등록하러 가기"
+                cell.firstReviewRequestLb.textColor = .white
+
+                cell.firstReviewButton.backgroundColor =  UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
+
+                cell.firstReviewButton.addTarget(self, action: #selector(moveToReviewAddView), for: .touchUpInside)
+                cell.noReview()
+
+            }else{
+            
             cell.moveToreviewButton.addTarget(self, action: #selector(moveToReviewTableView), for: .touchUpInside)
             cell.moveReviewAddB.addTarget(self, action: #selector(moveToReviewAddView), for: .touchUpInside)
+                
+            cell.reviewContents.text = representativeReviewData["content"].stringValue
+            cell.countLb.text = "총 \(detailData["review_count"].intValue) 개"
+            cell.reviewScoreLb.text = " " + String(Double(representativeReviewData["curriculum_rate"].intValue))
+                
+            var date = detailData["modify_date"].stringValue
+                
+                date.characters.removeLast(17)
+                
+            cell.reviewCreateDate.text = date
+
+            }
 
             return cell
         }

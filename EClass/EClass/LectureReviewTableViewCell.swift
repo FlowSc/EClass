@@ -12,8 +12,12 @@ class LectureReviewTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        firstReviewButton.isHidden = true
+        firstReviewRequestLb.isHidden = true
+        
     }
+    @IBOutlet weak var firstReviewButton: UIButton!
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -26,6 +30,24 @@ class LectureReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var reviewCreateDate: UILabel!
     @IBOutlet weak var reviewerName: UILabel!
     @IBOutlet weak var reviewContents: UILabel!
+    @IBOutlet weak var titleLb: UILabel!
+    @IBOutlet weak var starView: UIStackView!
+    @IBOutlet weak var countLb: UILabel!
+    @IBOutlet weak var reviewScoreLb: UILabel!
+    @IBOutlet weak var firstReviewRequestLb: UILabel!
+    
+    func noReview(){
+        
+        reviewerName.isHidden = true
+        moveReviewAddB.isHidden = true
+        moveToreviewButton.isHidden = true
+        reviewCreateDate.isHidden = true
+        reviewContents.isHidden = true
+        reviewerImage.isHidden = true
+        titleLb.isHidden = true
+        countLb.isHidden = true
+        starView.isHidden = true
+    }
     
 }
 
