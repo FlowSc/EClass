@@ -92,7 +92,7 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
     {
         detailLoginImageView.image = UIImage(named: "passion1.png")
         detailLoginImageView.clipsToBounds = true
-        detailLoginImageView.alpha = 0.8
+        detailLoginImageView.alpha = 0.6
         self.navigationController?.navigationBar.alpha = 0.5
         self.navigationItem.leftBarButtonItem?.tintColor = .black
 //        self.navigationController?.navigationItem.backBarButtonItem?.tintColor = .black
