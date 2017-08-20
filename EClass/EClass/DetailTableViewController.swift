@@ -16,6 +16,7 @@ class DetailTableViewController: UIViewController {
     var detailData:JSON!
     var userData:JSON!
 
+    @IBOutlet weak var lectureRegistBt: UIButton!
     var myData = LectureGenerator.getLecture()
     var myLectureData:[UIImage] = [#imageLiteral(resourceName: "pac-man-logo.gif"), #imageLiteral(resourceName: "default-user-image"),#imageLiteral(resourceName: "whiteStar")]
     override func viewDidLoad() {
@@ -29,6 +30,7 @@ class DetailTableViewController: UIViewController {
         myTableView.register(UINib.init(nibName: NibFile.mapLocation, bundle: nil), forCellReuseIdentifier: CustomsTableViewCell.mapLocation)
         myTableView.register(UINib.init(nibName: NibFile.lectureReivew, bundle: nil), forCellReuseIdentifier: CustomsTableViewCell.lectureReview)
         print(userData)
+        lectureRegistBt.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
 
         // Do any additional setup after loading the view.
     }

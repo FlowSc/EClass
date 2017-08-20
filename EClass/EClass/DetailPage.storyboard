@@ -25,15 +25,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="77" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="CXm-pa-Wy0">
-                                <rect key="frame" x="-0.5" y="-0.5" width="375" height="617.5"/>
+                                <rect key="frame" x="-0.5" y="-0.5" width="375" height="647.5"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IntroductionCell" rowHeight="419" id="xrP-pQ-mJB" customClass="IntroductionTableViewCell" customModule="EClass" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="419"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="419"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xrP-pQ-mJB" id="ZZk-Bd-zHC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="418.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="419"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qh8-Xp-2g2">
@@ -252,10 +252,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tutorInfoCell" rowHeight="238" id="GVh-dK-XbH" customClass="TutorInfoTableViewCell" customModule="EClass" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="474.5" width="375" height="238"/>
+                                        <rect key="frame" x="0.0" y="475" width="375" height="238"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GVh-dK-XbH" id="EXi-fi-nge">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="237.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="238"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nKc-Zu-qkP">
@@ -319,17 +319,22 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B21-de-UgP">
                                         <rect key="frame" x="0.0" y="0.0" width="235" height="50"/>
-                                        <state key="normal" title="수업신청하기"/>
+                                        <state key="normal" title="수업신청하기">
+                                            <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <segue destination="K8p-2w-bH0" kind="show" identifier="LectureRegisterSegue" id="BBd-vK-gER"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFi-vb-tQ2">
                                         <rect key="frame" x="245" y="0.0" width="130" height="50"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="130" id="ffK-C1-xds"/>
                                         </constraints>
-                                        <state key="normal" title="튜터에게 문의하기"/>
+                                        <state key="normal" title="튜터에게 문의하기">
+                                            <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -352,11 +357,12 @@
                             <constraint firstAttribute="trailing" secondItem="2Fl-yf-lr7" secondAttribute="trailing" id="QJd-wQ-4lZ"/>
                             <constraint firstItem="CXm-pa-Wy0" firstAttribute="top" secondItem="zYW-wv-spH" secondAttribute="top" id="dOA-i9-arH"/>
                             <constraint firstItem="CXm-pa-Wy0" firstAttribute="leading" secondItem="zYW-wv-spH" secondAttribute="leading" id="gFZ-0L-B7V"/>
-                            <constraint firstItem="2Fl-yf-lr7" firstAttribute="top" secondItem="CXm-pa-Wy0" secondAttribute="bottom" id="mr4-8i-9pp"/>
+                            <constraint firstItem="2Fl-yf-lr7" firstAttribute="top" secondItem="CXm-pa-Wy0" secondAttribute="bottom" constant="-30" id="mr4-8i-9pp"/>
                             <constraint firstItem="2Fl-yf-lr7" firstAttribute="leading" secondItem="zYW-wv-spH" secondAttribute="leading" id="xaW-4R-uQx"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lectureRegistBt" destination="B21-de-UgP" id="eXI-Fi-f3a"/>
                         <outlet property="myTableView" destination="CXm-pa-Wy0" id="Aq7-mg-p62"/>
                     </connections>
                 </viewController>

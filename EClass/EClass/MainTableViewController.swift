@@ -55,7 +55,7 @@ class MainTableViewController: UIViewController {
     
     @IBOutlet weak var myMainTableView: UITableView!
     var locationStrings:[String] = ["강남", "강동", "강서", "강북", "관악", "광진", "구로", "금천", "노원"]
-
+    
     
     var categoryStrings = ["헬스&뷰티", "외국어", "컴퓨터", "음악/미술", "스포츠", "진로/취업", "이색취미", "전체수업보기"]
     var tableViewIndex:Int?
@@ -65,11 +65,11 @@ class MainTableViewController: UIViewController {
     var currentUserName:String!
     var currentUserPK:Int!
     var currentUserNickname:String?
-
+    
     
     
     var userData:JSON!
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         myMainTableView.reloadData()
@@ -80,7 +80,7 @@ class MainTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         sideMenus()
-//        customizeNavBar()
+        //        customizeNavBar()
         self.myMainTableView.reloadData()
         
         currentUserToken = UserDefaults.standard.string(forKey: "UserToken")
@@ -92,13 +92,13 @@ class MainTableViewController: UIViewController {
         print(currentUserToken)
         
         
-       
+        
         //        self.myMainTableView.register(UINib.init(nibName: "LectureTableViewCell"
         //            , bundle: nil), forCellReuseIdentifier: "LectureCell")
         
         print("USERTOKEN!!!!!!")
         
-
+        
         
         
         print("##########")
@@ -131,12 +131,12 @@ class MainTableViewController: UIViewController {
     }
     
     
-//    func customizeNavBar()
-//    {
-//        navigationController?.navigationBar.tintColor = UIColor(colorLiteralRed: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-//        navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
-//        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-//    }
+    //    func customizeNavBar()
+    //    {
+    //        navigationController?.navigationBar.tintColor = UIColor(colorLiteralRed: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+    //        navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
+    //        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+    //    }
     
 }
 
@@ -148,7 +148,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         
         self.myMainTableView.rowHeight = UITableViewAutomaticDimension
         self.myMainTableView.estimatedRowHeight = 170
@@ -167,7 +167,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         
         switch indexPath.section {
         case 1:
-
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.location, for: indexPath) as! LocationTableViewCell
             tableViewIndex = indexPath.section
             cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
@@ -208,7 +208,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         case 2:
             return categoryStrings.count
         case 3:
-            return recommendLectureList.count
+            return 7
         default:
             return 4
         }
@@ -217,24 +217,25 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         switch tableViewIndex!{
-
+            
             
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.location, for: indexPath) as! LocationCollectionViewCell
             
             
             cell.image.image = UIImage(named: "location" + "\(indexPath.item)")
-
+            
             cell.locationLabel.text = locationStrings[indexPath.row]
             cell.makeCornerRound3()
-            
+            cell.tag = indexPath.item
+
             return cell
             
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.category, for: indexPath) as! CategoryCollectionViewCell
             
             cell.categoryLabel.text = categoryStrings[indexPath.item]
-
+            
             cell.image.image = UIImage(named: "category" + "\(indexPath.item)")
             
             cell.makeCornerRound3()
@@ -250,11 +251,13 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             
             let myData = recommendLectureList[indexPath.item]
             
-            //            print(myData)
+            print(myData)
             
             
-            cell.setLecture(myData["cover_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, myData["tutor"].stringValue, myData["tutor_intro"].stringValue)
+            cell.setLecture(myData["lecture_photos"][0]["lecture_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, myData["target_intro"].stringValue, myData["tutor_info"]["nickname"].stringValue)
             cell.tutorImage.makeCircle()
+            
+            
             cell.tag = indexPath.item
             
             
@@ -267,7 +270,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         
     }
     
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch tableViewIndex!{
         case 1:
@@ -340,7 +343,8 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
                 
                 print(indexPath)
             }
-        }else if segue.identifier == SegueIdentifier.categoryFilterSegue {
+        }
+        else if segue.identifier == SegueIdentifier.categoryFilterSegue {
             
             if let cell = sender as? CategoryCollectionViewCell {
                 
@@ -351,6 +355,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
                 
                 print(categoryStrings[indexPath])
                 destination.changedTitleforCategory = categoryStrings[indexPath]
+                destination.changedTitleforLocation = "전체선택"
                 
                 if categoryStrings[indexPath] == "이색취미" {
                     
@@ -430,6 +435,36 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
                 }
                 
             }
+        }
+        else{
+            if let cell = sender as? LocationCollectionViewCell {
+                
+                let indexPath = cell.tag
+                
+                
+                let destination = segue.destination as! SearchViewController
+                print(locationStrings[indexPath])
+                   destination.changedTitleforCategory = "전체선택"
+                destination.changedTitleforLocation = locationStrings[indexPath]
+
+                
+                if locationStrings[indexPath] == "관악"             {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "관악"
+                    })
+                    
+                    destination.lectureShowList = filterList
+
+                }else{
+                
+                    let filterList:[JSON] = lectureShowList
+                    
+                    destination.lectureShowList = filterList
+                    
+                }
+                
+            }
+            
         }
     }
     
