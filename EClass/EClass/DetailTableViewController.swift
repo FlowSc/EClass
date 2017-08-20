@@ -14,6 +14,7 @@ class DetailTableViewController: UIViewController {
     @IBOutlet weak var myTableView: UITableView!
     
     var detailData:JSON!
+    var userData:JSON!
 
     var myData = LectureGenerator.getLecture()
     var myLectureData:[UIImage] = [#imageLiteral(resourceName: "pac-man-logo.gif"), #imageLiteral(resourceName: "default-user-image"),#imageLiteral(resourceName: "whiteStar")]
@@ -27,6 +28,7 @@ class DetailTableViewController: UIViewController {
         myTableView.register(UINib.init(nibName: NibFile.lectureIntro, bundle: nil), forCellReuseIdentifier: CustomsTableViewCell.lectureIntro)
         myTableView.register(UINib.init(nibName: NibFile.mapLocation, bundle: nil), forCellReuseIdentifier: CustomsTableViewCell.mapLocation)
         myTableView.register(UINib.init(nibName: NibFile.lectureReivew, bundle: nil), forCellReuseIdentifier: CustomsTableViewCell.lectureReview)
+        print(userData)
 
         // Do any additional setup after loading the view.
     }
@@ -189,6 +191,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             let mv = segue.destination as! LetureRegistViewController
             
             mv.detailData = detailData
+            mv.userData = userData
         }
     }
 }

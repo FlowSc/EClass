@@ -12,8 +12,6 @@ import SwiftyJSON
 
 let view1 = UIView()
 
-
-
 extension SWRevealViewController
 {
     
@@ -63,7 +61,15 @@ class MainTableViewController: UIViewController {
     var tableViewIndex:Int?
     var recommendLectureList:JSON!
     var lectureShowList:[JSON]!
+    var currentUserToken:String!
+    var currentUserName:String!
+    var currentUserPK:Int!
+    var currentUserNickname:String?
+
     
+    
+    var userData:JSON!
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         myMainTableView.reloadData()
@@ -76,8 +82,26 @@ class MainTableViewController: UIViewController {
         sideMenus()
 //        customizeNavBar()
         self.myMainTableView.reloadData()
+        
+        currentUserToken = UserDefaults.standard.string(forKey: "UserToken")
+        currentUserPK = UserDefaults.standard.integer(forKey: "UserPK")
+        currentUserName = UserDefaults.standard.string(forKey: "UserName")
+        currentUserNickname = UserDefaults.standard.string(forKey: "UserNickname") ?? "Default"
+        
+        print(currentUserNickname)
+        print(currentUserToken)
+        
+        
+       
         //        self.myMainTableView.register(UINib.init(nibName: "LectureTableViewCell"
         //            , bundle: nil), forCellReuseIdentifier: "LectureCell")
+        
+        print("USERTOKEN!!!!!!")
+        
+
+        
+        
+        print("##########")
         
         myMainTableView.allowsSelection = false
         
@@ -312,6 +336,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
                 let destination = segue.destination as! DetailTableViewController
                 
                 destination.detailData = lectureShowList[indexPath]
+                destination.userData = userData
                 
                 print(indexPath)
             }
