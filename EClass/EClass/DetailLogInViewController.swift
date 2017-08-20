@@ -14,7 +14,7 @@ var loginSuccess:Bool = false
 
 class DetailLogInViewController: UIViewController, UITextFieldDelegate{
     
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if textField == userNameTextField
@@ -25,14 +25,15 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
         }
         return true
     }
-
-
-
+    
+    
+    
     @IBAction func searchPasswordButtonTouched(_ sender: UIButton) {
         print("searchpassword")
         
     }
     @IBAction func logInButtonTouched(_ sender: UIButton) {
+        
         
         if !(userNameTextField.text?.isEmpty)! && !(passWordTextField.text?.isEmpty)!
         {
@@ -43,30 +44,42 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                     return
                 }
                 
-                if response.result.isSuccess
-                {
-                    print(response.description)
-                    print("response")
-                    print(response)
-                    print("data")
-                    print(JSON(response.value))
-                    print("data끝")
-                    print(JSON(response.data))
-                    print(response.timeline)
-                    print(response.metrics)
-                    print(response.request)
-                    print(response.response)
+                let result = JSON(response.value)
+                
+                var userToken = result["token"].stringValue
+                var userName = result["user"]["username"].stringValue
+                var userPk = result["user"]["user_pk"].intValue
+                var userNickname = result["user"]["nickname"].stringValue
+                
+                
+                UserDefaults.standard.set(userToken, forKey: "UserToken")
+                UserDefaults.standard.set(userName, forKey: "UserName")
+                UserDefaults.standard.set(userPk, forKey: "UserPK")
+                UserDefaults.standard.set(userNickname, forKey: "UserNickname")
 
-                    print("go")
+
+
+                print("TOKENVALUE \(userToken)")
+
+                
+                
+                if !(userToken == ""){
+                    
                     let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
                     let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
+                    let mainVc = mainStoryBoard.instantiateViewController(withIdentifier: "MainTableViewController") as! MainTableViewController
+                    
+                    mainVc.currentUserToken = userToken
+                    mainVc.userData = result
+                    
+
                     self.present(pushMainView, animated: true, completion: nil)
-                }
-
-            }
-
+                                      
+                                   }
+                       }
+            
             print("login")
-
+            
         }
     }
     @IBOutlet weak var marginView4: UIView!
@@ -84,7 +97,7 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
         userNameTextField.delegate = self
         
         
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -95,7 +108,7 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
         detailLoginImageView.alpha = 0.8
         self.navigationController?.navigationBar.alpha = 0.5
         self.navigationItem.leftBarButtonItem?.tintColor = .black
-//        self.navigationController?.navigationItem.backBarButtonItem?.tintColor = .black
+        //        self.navigationController?.navigationItem.backBarButtonItem?.tintColor = .black
         logInButtonOutlet.layer.borderColor = UIColor.white.cgColor
         logInButtonOutlet.layer.cornerRadius = 5
         logInButtonOutlet.layer.borderWidth = 1
@@ -111,21 +124,21 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
         userNameTextField.becomeFirstResponder()
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

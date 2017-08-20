@@ -200,6 +200,7 @@ struct User
     var tutorAuthorize:Bool = false
     var registeredLecture:[Lecture]?
     var careerDescription:String?
+    var token:String?
 
     init(with json:JSON)
     {

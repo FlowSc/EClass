@@ -89,11 +89,6 @@
 		45264C731F47097C00933C50 /* sports6.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C6A1F47097C00933C50 /* sports6.png */; };
 		45264C741F47097C00933C50 /* sports7.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C6B1F47097C00933C50 /* sports7.png */; };
 		45264C751F47097C00933C50 /* sports8.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C6C1F47097C00933C50 /* sports8.png */; };
-		45264C821F47DD2100933C50 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C811F47DD2100933C50 /* 3.png */; };
-		45264C841F47DD3300933C50 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C831F47DD3300933C50 /* 1.png */; };
-		45264C861F47DD5000933C50 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C851F47DD5000933C50 /* 0.png */; };
-		45264C881F47DD7E00933C50 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C871F47DD7E00933C50 /* 2.png */; };
-		45264C8A1F47DD8700933C50 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C891F47DD8700933C50 /* 4.png */; };
 		45264C901F47E67A00933C50 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C8C1F47E67A00933C50 /* 6.png */; };
 		45264C911F47E67A00933C50 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C8D1F47E67A00933C50 /* 7.png */; };
 		45264C921F47E67A00933C50 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C8E1F47E67A00933C50 /* 8.png */; };
@@ -241,11 +236,6 @@
 		45264C6A1F47097C00933C50 /* sports6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports6.png; sourceTree = "<group>"; };
 		45264C6B1F47097C00933C50 /* sports7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports7.png; sourceTree = "<group>"; };
 		45264C6C1F47097C00933C50 /* sports8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports8.png; sourceTree = "<group>"; };
-		45264C811F47DD2100933C50 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
-		45264C831F47DD3300933C50 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
-		45264C851F47DD5000933C50 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
-		45264C871F47DD7E00933C50 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
-		45264C891F47DD8700933C50 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
 		45264C8C1F47E67A00933C50 /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
 		45264C8D1F47E67A00933C50 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
 		45264C8E1F47E67A00933C50 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
@@ -452,11 +442,6 @@
 		45264C761F47D71800933C50 /* icon */ = {
 			isa = PBXGroup;
 			children = (
-				45264C851F47DD5000933C50 /* 0.png */,
-				45264C831F47DD3300933C50 /* 1.png */,
-				45264C871F47DD7E00933C50 /* 2.png */,
-				45264C811F47DD2100933C50 /* 3.png */,
-				45264C891F47DD8700933C50 /* 4.png */,
 			);
 			path = icon;
 			sourceTree = "<group>";
@@ -707,7 +692,6 @@
 				45264C061F47095300933C50 /* computer3.png in Resources */,
 				45264C5E1F47097700933C50 /* hobby3.png in Resources */,
 				45264C4B1F47097200933C50 /* major1.png in Resources */,
-				45264C841F47DD3300933C50 /* 1.png in Resources */,
 				45264C2C1F47096600933C50 /* health6.png in Resources */,
 				45264C3F1F47096B00933C50 /* music7.png in Resources */,
 				45264C4F1F47097200933C50 /* major5.png in Resources */,
@@ -723,7 +707,6 @@
 				45264C911F47E67A00933C50 /* 7.png in Resources */,
 				75D1B29E1F357CB40068C20C /* pac-man-logo.gif in Resources */,
 				45264C6E1F47097C00933C50 /* sports1.png in Resources */,
-				45264C881F47DD7E00933C50 /* 2.png in Resources */,
 				45264C2B1F47096600933C50 /* health5.png in Resources */,
 				45264C621F47097700933C50 /* hobby7.png in Resources */,
 				45264C4D1F47097200933C50 /* major3.png in Resources */,
@@ -733,9 +716,7 @@
 				45264C2D1F47096600933C50 /* health7.png in Resources */,
 				75BC382E1F3AF36600AA9E96 /* TutorDetailTableViewCell.xib in Resources */,
 				45264C721F47097C00933C50 /* sports5.png in Resources */,
-				45264C861F47DD5000933C50 /* 0.png in Resources */,
 				45264C511F47097200933C50 /* major7.png in Resources */,
-				45264C821F47DD2100933C50 /* 3.png in Resources */,
 				75D1B2851F357C6A0068C20C /* MainPage.storyboard in Resources */,
 				45264C191F47096100933C50 /* language4.png in Resources */,
 				75FB7F071F42E5C2002A422F /* MainSearchStoryboard.storyboard in Resources */,
@@ -781,7 +762,6 @@
 				45264C0B1F47095300933C50 /* computer8.png in Resources */,
 				45264B6F1F3C857500933C50 /* UserInformationPopupView.xib in Resources */,
 				45A57FA21F357BE5001F5C1A /* Main2.storyboard in Resources */,
-				45264C8A1F47DD8700933C50 /* 4.png in Resources */,
 				45264C611F47097700933C50 /* hobby6.png in Resources */,
 				45264CBB1F48850400933C50 /* passion0.png in Resources */,
 				45264C091F47095300933C50 /* computer6.png in Resources */,
