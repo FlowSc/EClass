@@ -59,10 +59,15 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                     
                     let result = JSON(response.value!)
                     
+
                     let userToken = result["token"].stringValue
                     let userName = result["user"]["username"].stringValue
                     let userPk = result["user"]["user_pk"].intValue
                     let userNickname = result["user"]["nickname"].stringValue
+
+                    let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
+                    let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
+
                     
                     
                     UserDefaults.standard.set(userToken, forKey: "UserToken")
