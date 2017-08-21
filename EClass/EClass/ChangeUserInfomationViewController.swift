@@ -8,9 +8,16 @@
 
 import UIKit
 
+var currentUserData = DataCenter.shared.realUser
+//func refreshCurrentUserData()
+//{
+//    currenUserData = DataCenter.shared.realUser
+//}
+
 class ChangeUserInfomationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
 
+    var userData = DataCenter.shared.realUser
 //    func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
 //        scrollView.delegate = self
 //        scrollView.alwaysBounceVertical = false
@@ -28,21 +35,36 @@ class ChangeUserInfomationViewController: UIViewController, UITableViewDataSourc
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! ProfileImageTableViewCell
+            cell.userNameLabel.text = userData?.userName
+            cell.profileImageOutlet.image = currentUserData?.profileImage
             cell.selectionStyle = .none
             
            
             return cell
-        case 1:
+        default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! ProfileTableViewCell
             cell.setIcon(data: indexPath.row + 6)
+            if indexPath.row == 0
+            {
+                cell.setUserInfoLabel(data: (currentUserData?.name) ?? "이름을 알려주세요")
+            }else if indexPath.row == 1
+            {
+                cell.setUserInfoLabel(data: (currentUserData?.nickName) ?? "닉네임을 알려주세요")
+            }else if indexPath.row == 2
+            {
+                cell.setUserInfoLabel(data: (currentUserData?.email) ?? "이메일을 알려주세요")
+            }else
+            {
+                cell.setUserInfoLabel(data: (currentUserData?.phone) ?? "휴대폰 번호를 알려주세요")
+            }
             cell.selectionStyle = .none
             return cell
-        default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! SelfDescriptionTableViewCell
-            cell.setSelected(true, animated: false)
-            
-            
-            return cell
+//        default:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! SelfDescriptionTableViewCell
+//            cell.setSelected(true, animated: false)
+//            
+//            
+//            return cell
 //        default:
 //            let cell = tableView.dequeueReusableCell(withIdentifier: "cell4", for: indexPath)
 //            cell.selectionStyle = .none
@@ -84,12 +106,8 @@ class ChangeUserInfomationViewController: UIViewController, UITableViewDataSourc
         switch indexPath.section {
         case 0:
             return 180
-        case 1:
-            return 50
-//        case 2:
-//            return 80
         default:
-            return 100
+            return 50
         }
     }
     
@@ -160,23 +178,29 @@ class ChangeUserInfomationViewController: UIViewController, UITableViewDataSourc
         switch section {
         case 0:
             return 1
-        case 1:
-            return 4
-//        case 2:
-//            return 1
         default:
-            return 1
+            return 4
         }
         
     }
     func numberOfSections(in tableView: UITableView) -> Int {
 //        return 4
-        return 3
+        return 2
     }
     func goChangeUserViewController(_ sender:UITapGestureRecognizer)
     {
         let changeVIew = storyboard?.instantiateViewController(withIdentifier: "DetailChangeUserInfoViewController") as! DetailLogInViewController
         self.navigationController?.pushViewController(changeVIew, animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        userData = DataCenter.shared.realUser
+        tv.reloadData()
+        
+        print("viewwillappear")
+        print(currentUserData)
+        
     }
 
     override func viewDidLoad() {
