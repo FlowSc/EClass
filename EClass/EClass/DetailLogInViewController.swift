@@ -47,13 +47,18 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                     return
                 }
                 
-                
-                    
-                    
-                    
-                    
 
-                
+                if response.result.isSuccess
+                {
+                    let realData = JSON(data)
+                    currentUserPrimaryKey = realData["user"]["user_pk"].intValue
+                    print(currentUserPrimaryKey)
+                    currentUserToken = realData["token"].stringValue
+                    DataCenter.shared.realUser = User(with: realData)
+                    print(currentUserToken)
+                    print("go")
+
+                    
                 let result = JSON(response.value!)
                 
                 let userToken = result["token"].stringValue
@@ -76,8 +81,9 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                     
                     let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
                     let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
-                    mainVc.currentUserToken = userToken
-                    mainVc.userData = result
+//                    mainVc.currentUserToken = userToken
+//                    mainVc.userData = result
+                    
                     let realData = JSON(data)
                     currentUserPrimaryKey = realData["user"]["user_pk"].intValue
                     
@@ -96,9 +102,10 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                 
             }
             
-        
+            }
         }
     }
+    
     @IBOutlet weak var marginView4: UIView!
     @IBOutlet weak var marginView3: UIView!
     @IBOutlet weak var marginView2: UIView!

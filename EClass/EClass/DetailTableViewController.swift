@@ -22,6 +22,7 @@ class DetailTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.title = self.detailData["title"].stringValue
         myTableView.estimatedRowHeight = 100
         myTableView.rowHeight = UITableViewAutomaticDimension
         myTableView.reloadData()
