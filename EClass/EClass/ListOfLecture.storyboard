@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jtg-yr-ARm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vxM-Vj-C4i">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,10 +12,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--수업 목록-->
+        <!--ListList-->
         <scene sceneID="vDz-jY-9l1">
             <objects>
-                <viewController id="l7L-Or-rey" customClass="ListOfLectureViewController" customModule="EClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ListList" title="ListList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="l7L-Or-rey" customClass="ListOfLectureViewController" customModule="EClass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gAe-82-9SX"/>
                         <viewControllerLayoutGuide type="bottom" id="oU2-hG-Y4Y"/>
@@ -28,9 +28,16 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <tabBarItem systemItem="favorites" id="FsB-Kz-YXC"/>
-                                    <tabBarItem systemItem="more" id="sZ1-Ic-rYT"/>
+                                    <tabBarItem title="수강목록" id="FsB-Kz-YXC">
+                                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-15"/>
+                                    </tabBarItem>
+                                    <tabBarItem title="위시리스트" id="sZ1-Ic-rYT">
+                                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-15"/>
+                                    </tabBarItem>
                                 </items>
+                                <connections>
+                                    <outlet property="delegate" destination="l7L-Or-rey" id="kml-6a-mhy"/>
+                                </connections>
                             </tabBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="282" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fKH-al-k0K">
                                 <rect key="frame" x="0.0" y="113" width="375" height="554"/>
@@ -43,7 +50,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="281.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GZy-DG-47Y">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GZy-DG-47Y">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="140" id="IBq-kR-6Uf"/>
@@ -55,13 +62,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKn-HM-V33">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKn-HM-V33">
                                                     <rect key="frame" x="23" y="201" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0eL-hS-jIv">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0eL-hS-jIv">
                                                     <rect key="frame" x="312" y="120" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="l5a-U7-ldc"/>
@@ -82,11 +89,17 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="introduceOfLectureLabel" destination="HiY-2X-npJ" id="kap-OD-vQA"/>
                                             <outlet property="lectureImage" destination="GZy-DG-47Y" id="hhm-aH-8wN"/>
+                                            <outlet property="priceOfLectureLabel" destination="gKn-HM-V33" id="KYO-rv-UCB"/>
                                             <outlet property="tutorProfileImage" destination="0eL-hS-jIv" id="8us-aK-kn4"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="l7L-Or-rey" id="cfc-ys-d9H"/>
+                                    <outlet property="delegate" destination="l7L-Or-rey" id="ucL-Tr-1Xa"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -100,37 +113,35 @@
                             <constraint firstItem="pcL-cE-RxI" firstAttribute="leading" secondItem="sC8-xg-uM5" secondAttribute="leading" id="kg7-us-zdh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="수업 목록" id="bGX-hL-7GS">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="4yc-Yg-yLN"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="수업 목록" id="bGX-hL-7GS"/>
                     <connections>
-                        <outlet property="first" destination="FsB-Kz-YXC" id="NJ8-Qh-inU"/>
                         <outlet property="tabBarOutlet" destination="pcL-cE-RxI" id="KQI-CX-OZD"/>
+                        <outlet property="takeLectureList" destination="FsB-Kz-YXC" id="5Ga-8r-Ku0"/>
                         <outlet property="tv" destination="fKH-al-k0K" id="w8A-xr-99H"/>
                         <outlet property="wishList" destination="sZ1-Ic-rYT" id="DjP-iI-7eV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JrS-3T-w7E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="308" y="-1224.737631184408"/>
+            <point key="canvasLocation" x="1247.2" y="-1224.737631184408"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="jRB-3P-dsg">
+        <scene sceneID="BL0-MI-bPp">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jtg-yr-ARm" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vxM-Vj-C4i" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gGt-sU-4L2">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jkf-kj-igq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="l7L-Or-rey" kind="relationship" relationship="rootViewController" id="Efu-q0-Vxx"/>
+                        <segue destination="l7L-Or-rey" kind="relationship" relationship="rootViewController" id="vxN-Hd-sgL"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3ym-HI-2T9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d7c-Lt-NEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-631.20000000000005" y="-1224.737631184408"/>
+            <point key="canvasLocation" x="308" y="-1224.737631184408"/>
         </scene>
     </scenes>
 </document>

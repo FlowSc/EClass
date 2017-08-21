@@ -23,6 +23,7 @@ extension UIImageView
 
 //유저 primaryKey 회원 가입 시 +1 됨
 var currentUserPrimaryKey:Int = 0
+var currentUserToken:String = ""
 
 //JSON([String:Any]) Post 함수
 func postDicToUserInfo(params:[String:String])
@@ -92,66 +93,58 @@ func postDicToLectureInfo(params:[String:Any])
 
 final class DataCenter
 {
-//    var user:User
-//    {
-//        return realUser!
-//    }
-//    var classes:[Lecture]
-//    {
-//        return realLectures
-//    }
-//    var reviewList:ReviewList
-//    {
-//        return realReviewList!
-//    }
-    
-    var realReviewList:[ReviewList] = []
-    var realLectures:[Lecture] = []
+//    var realReviewList:[ReviewList] = []
+//    var realLectures:[Lecture] = []
     var realUser:User?
     static let shared = DataCenter()
     
     private init()
     {
 //유저 정보 GET
-        Alamofire.request("http://localhost/1337").responseJSON { (response) in
-            
+        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization":"Token " + "\(currentUserToken)"]).responseJSON { (response) in
             guard let data = response.result.value else
             {
                 return
             }
             let jsonData = JSON(data)
             
-// 여기를 잘 모르겠음. 일단 회원 추가 될 때마다 전역 변수 currentUserPrimaryKey 에 +1 해서 쌓인다고 보고 
-// 그게 유저 프라이머리 키로 봤는데 일단 지금 이 코드는 무조건 잘못 된 거고 어떻게 가져와야 될 지
-
-            self.realUser = User(with: jsonData[currentUserPrimaryKey])
+            self.realUser = User(with: jsonData)
         }
-        
-//강의 정보 GET
-        Alamofire.request("http://localhost/1338").responseJSON { (response) in
-            guard let data = response.result.value else
-            {
-                return
-            }
-            let jsonData = JSON(data)
-            for _ in jsonData
-            {
-                self.realLectures.append(Lecture(with: jsonData))
-            }
-        }
-// ReviewList GET
-        Alamofire.request("http://localhost/1338").responseJSON { (response) in
-            guard let data = response.result.value else
-            {
-                return
-            }
-            let jsonData = JSON(data)
-            for _ in jsonData
-            {
-                self.realReviewList.append(ReviewList(with: jsonData))
-            }
-        }
+//        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/").responseJSON { (response) in
+//            
+//            guard let data = response.result.value else
+//            {
+//                return
+//            }
+//            let jsonData = JSON(data)
+//
+//            self.realUser = User(with: jsonData)
+//        }
     }
+    
+//강의 정보 GET
+//        Alamofire.request("http://localhost/1338").responseJSON { (response) in
+//            guard let data = response.result.value else
+//            {
+//                return
+//            }
+//            let jsonData = JSON(data)
+//            for _ in jsonData
+//            {
+//                self.realLectures.append(Lecture(with: jsonData))
+//            }
+//        }
+//// ReviewList GET
+//        Alamofire.request("http://localhost/1338").responseJSON { (response) in
+//            guard let data = response.result.value else
+//            {
+//                return
+//            }
+//            let jsonData = JSON(data)
+//            for _ in jsonData
+//            {
+//                self.realReviewList.append(ReviewList(with: jsonData))
+//            }
 }
 
 struct LectureList {
@@ -188,29 +181,34 @@ struct Lecture {
 // 유저 정보
 struct User
 {
-    var id:String
-    var password:String
-    var name:String
-    var phoneNumber:String?
+    var userName:String
+    var nickName:String?
+    var password:String?
+    var email:String?
+    var name:String?
+    var phone:String?
     var profileImage:UIImage?
     var studiedLecture:[Lecture]?
     var selectedLecture:[Lecture]?
     var wishedLecture:[Lecture]?
-    var selfDescription:String
+    var selfDescription:String?
     var tutorAuthorize:Bool = false
     var registeredLecture:[Lecture]?
     var careerDescription:String?
+
     var token:String?
 
     init(with json:JSON)
     {
-        id = json["id"].stringValue
+        userName = json["username"].stringValue
+        nickName = json["nickname"].stringValue
+        email = json["email"].stringValue
         password = json["password"].stringValue
         name = json["name"].stringValue
-        phoneNumber = json["phonNumber"].stringValue
+        phone = json["phone"].stringValue
         
 //profileImage 바로 uiImage로 바꿔줌 감사해해라
-        if let url = URL(string: json["profileImage"].stringValue)
+        if let url = URL(string: json["my_photo"].stringValue)
         {
             do {
                 let data = try Data(contentsOf: url)

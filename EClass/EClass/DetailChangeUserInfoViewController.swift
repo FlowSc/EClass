@@ -7,16 +7,26 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
-class DetailChangeUserInfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    let propertyList = ["나이" , "이메일" , "휴대전화"]
+//protocol DetailChangeUserInfoViewControllerDelegate {
+//    func sendImage(data:UIImage, data1:UIImagePickerController)
+//}
+
+class DetailChangeUserInfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChangeSelfDescriptionTableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    let propertyList = ["이름","닉네임" , "이메일" , "휴대전화"]
+    var cell1:ChangeSelfDescriptionTableViewCell?
+    
+    var userData = DataCenter.shared.realUser
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0
         {
             return "유저 정보 변경"
         }else
         {
-            return "자기 소개 변경"
+            return "이미지 변경"
         }
         
     }
@@ -35,7 +45,14 @@ class DetailChangeUserInfoViewController: UIViewController, UITableViewDelegate,
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        if indexPath.section == 0
+        {
+            return 70
+        }else
+        {
+            return 146
+        }
+        
     }
     
     @IBOutlet weak var tv: UITableView!
@@ -112,42 +129,138 @@ class DetailChangeUserInfoViewController: UIViewController, UITableViewDelegate,
     func modifyCompletion(_ sender:UITapGestureRecognizer)
     {
         //        self.dismiss(animated: true, completion: nil)
-        self.navigationController?.popViewController(animated: true)
+        let cell0 = tv.cellForRow(at: IndexPath(row: 0, section: 0)) as! InputUserDataTableViewCell
+        let cell1 = tv.cellForRow(at: IndexPath(row: 1, section: 0)) as! InputUserDataTableViewCell
+        let cell2 = tv.cellForRow(at: IndexPath(row: 2, section: 0)) as! InputUserDataTableViewCell
+        let cell3 = tv.cellForRow(at: IndexPath(row: 3, section: 0)) as! InputUserDataTableViewCell
+        let cell4 = tv.cellForRow(at: IndexPath(row: 0, section: 1)) as! ChangeSelfDescriptionTableViewCell
+        
+        let image = cell4.imageOutlet.image
+        
+        let imageData = UIImagePNGRepresentation(image!)
+        let imageData2 = UIImageJPEGRepresentation(image!, 1)
+//        let baseString = imageData?.base64EncodedString()
+        
+        let baseString4 = imageData2?.base64EncodedString(options: Data.Base64EncodingOptions(rawValue:0))
+        
+        
+//        let baseString3 = JSONEncoding(options: JSONSerialization.WritingOptions)
+
+//        var params = [String:AnyObject]()
+//        params["content"] = "something" as AnyObject?
+//        params["location_id"] = "201" as AnyObject?
+        
+        // Grab your image from some variable or imageView. Here self.profileImage is a UIImage object
+//        if let profileImageData = image {
+//            if let imageData = UIImageJPEGRepresentation(profileImageData, 0.5) {
+//                params["my_photo"] = imageData as AnyObject?
+//                APIManager.apiMultipart(serviceName: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/", parameters: params, completionHandler: { (response:JSON?, error:NSError?) in
+//                    //Handle response
+//                    currentUserData = User(with: response!)
+//                    print(response)
+//                })
+//            } else {
+//                print("Image problem")
+//            }
+//        }
+        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/", method: .put, parameters: ["my_photo":baseString4], encoding: JSONEncoding.default, headers: ["Authorization":"Token " + "\(currentUserToken)"]).responseJSON { (response) in
+            print(JSON(response.result.value))
+            print("~~~~~~~~~~~~~")
+            print(response.result)
+        }
+        
+        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/", method: .put, parameters: ["name":"\(cell0.userDataTextField.text ?? "")","nickname":"\(cell1.userDataTextField.text ?? "")","email":"\(cell2.userDataTextField.text ?? "")","phone":"\(cell3.userDataTextField.text ?? "")"], encoding: JSONEncoding.default, headers: ["Authorization":"Token " + "\(currentUserToken)"]).responseJSON { (response) in
+            if response.result.isSuccess
+            {
+                print("!!!!!!!!!!!!!")
+                currentUserData = User(with: JSON(response.result.value))
+                
+                self.navigationController?.popViewController(animated: true)
+            }
+
+            print(response.result)
+        }
+        print(DataCenter.shared.realUser?.phone ?? "뭔가 안됨")
+//        self.navigationController?.popViewController(animated: true)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0
         {
+            
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! InputUserDataTableViewCell
+            cell.userDataSet(propertyList[indexPath.row])
             if indexPath.row == 0
             {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "cell0", for: indexPath) as! InputUserGenderTableViewCell
-                
-                return cell
+                cell.userDataTextField.text = currentUserData?.name ?? ""
+            }else if indexPath.row == 1
+            {
+                cell.userDataTextField.text = currentUserData?.nickName ?? ""
+            }else if indexPath.row == 2
+            {
+                cell.userDataTextField.text = currentUserData?.email ?? ""
             }else
             {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! InputUserDataTableViewCell
-                cell.userDataSet(propertyList[indexPath.row - 1])
-                cell.selectionStyle = .none
-                return cell
+                cell.userDataTextField.text = currentUserData?.phone ?? ""
             }
+            cell.selectionStyle = .none
+            return cell
+            
         }else
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChangeSelfDescriptionTableViewCell", for: indexPath) as! ChangeSelfDescriptionTableViewCell
+            cell1 = cell
+            cell.imageOutlet.image = profileImage ?? currentUserData?.profileImage
+
+            cell.selectionStyle = .none
+            cell.delegate = self
             
+//            cell.imageOutlet.image = currentUserData?.profileImage ?? UIImage(named: "0.png")
+            cell.userNameLabel.text = currentUserData?.userName
             return cell
         }
         
        
         
     }
-    
+    var profileImage:UIImage?
+    let picker = UIImagePickerController()
+//    func imageOutletTouch() {
+//        self.present(picker, animated: true, completion: nil)
+//    }
+    func imageOutletTouch()
+    {
+        self.present(picker, animated: true, completion: nil)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
 
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        print(info)
+        print("imagePick!!!!!!!!")
+        print(info)
+        guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else {
+            return
+            
+        }
+        print(image)
+        profileImage = image
+        cell1?.imageOutlet.image = image
+        self.dismiss(animated: true, completion: nil)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        userData = DataCenter.shared.realUser
         tv.reloadData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = false
         tv.delegate = self
         
         // Do any additional setup after loading the view.
@@ -170,3 +283,47 @@ class DetailChangeUserInfoViewController: UIViewController, UITableViewDelegate,
      */
     
 }
+
+//class APIManager: NSObject {
+//    
+//    class func apiMultipart(serviceName:String,parameters: [String:Any]?, completionHandler: @escaping (JSON?, NSError?) -> ()) {
+//        
+//        Alamofire.upload(multipartFormData: { (multipartFormData:MultipartFormData) in
+//            for (key, value) in parameters! {
+//                if key == "imageName" {
+//                    multipartFormData.append(
+//                        value as! Data,
+//                        withName: key,
+//                        fileName: "swift_file.jpg",
+//                        mimeType: "image/jpg"
+//                    )
+//                } else {
+//                    //Data other than image
+//                    multipartFormData.append((value as! String).data(using: .utf8)!, withName: key)
+//                }
+//            }
+//        }, usingThreshold: 1, to: serviceName, method: .put, headers: ["Authorization":"Token " + "\(currentUserToken)"]) { (encodingResult:SessionManager.MultipartFormDataEncodingResult) in
+//            
+//            switch encodingResult {
+//            case .success(let upload, _, _):
+//                upload.responseJSON { response in
+//                    if response.result.error != nil {
+//                        completionHandler(nil,response.result.error as NSError?)
+//                        return
+//                    }
+//                    print(response.result.value!)
+//                    if let data = response.result.value {
+//                        let json = JSON(data)
+//                        completionHandler(json,nil)
+//                    }
+//                }
+//                break
+//                
+//            case .failure(let encodingError):
+//                print(encodingError)
+//                completionHandler(nil,encodingError as NSError?)
+//                break
+//            }
+//        }
+//    }
+//}
