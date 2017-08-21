@@ -44,7 +44,16 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                     return
                 }
                 
-                print(data)
+                if response.result.isSuccess
+                {
+                    let realData = JSON(data)
+                    currentUserPrimaryKey = realData["user"]["user_pk"].intValue
+                    print(currentUserPrimaryKey)
+                    currentUserToken = realData["token"].stringValue
+                    DataCenter.shared.realUser = User(with: realData)
+                    print(currentUserToken)
+                    print("go")
+
                 
                 let result = JSON(response.value!)
                 

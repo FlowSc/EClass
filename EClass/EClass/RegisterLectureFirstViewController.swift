@@ -50,8 +50,7 @@ class RegisterLectureFirstViewController: UIViewController, UIImagePickerControl
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print(info)
-//        registerLectureCoverImage.image = UIImage(contentsOfFile: info["UIImagePickerControllerReferenceURL"] as! String)
-//        registerLectureCoverImage.image = UIImage(data: info["UIImagePickerControllerReferenceURL"] as! Data)
+
         guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else {
             return
         }

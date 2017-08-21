@@ -10,8 +10,12 @@ import UIKit
 
 class ListOfLectureViewController: UIViewController, UITabBarDelegate, UITableViewDelegate, UITableViewDataSource {
 
+
     var selectTabBar:Bool = true
-    
+    @IBOutlet weak var wishList: UITabBarItem!
+    @IBOutlet weak var takeLectureList: UITabBarItem!
+    @IBOutlet weak var tabBarOutlet: UITabBar!
+
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
         if item == takeLectureList
@@ -26,7 +30,8 @@ class ListOfLectureViewController: UIViewController, UITabBarDelegate, UITableVi
     
     @IBOutlet weak var tv: UITableView!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 0
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,14 +46,11 @@ class ListOfLectureViewController: UIViewController, UITabBarDelegate, UITableVi
         }
         
     }
-    @IBOutlet weak var wishList: UITabBarItem!
-    @IBOutlet weak var takeLectureList: UITabBarItem!
-    @IBOutlet weak var tabBarOutlet: UITabBar!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tabBarOutlet.delegate = self
-        tabBarOutlet.selectedItem = takeLectureList
+//        tabBarOutlet.selectedItem = takeLectureList
 
         // Do any additional setup after loading the view.
     }
