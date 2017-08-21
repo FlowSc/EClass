@@ -80,7 +80,7 @@ class MainTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         sideMenus()
-        //        customizeNavBar()
+        customizeNavBar()
         self.myMainTableView.reloadData()
         
         currentUserToken = UserDefaults.standard.string(forKey: "UserToken")
@@ -133,12 +133,12 @@ class MainTableViewController: UIViewController {
     }
     
     
-    //    func customizeNavBar()
-    //    {
-    //        navigationController?.navigationBar.tintColor = UIColor(colorLiteralRed: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-    //        navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
-    //        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-    //    }
+        func customizeNavBar()
+        {
+            navigationController?.navigationBar.tintColor = UIColor(colorLiteralRed: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+            navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
+            navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        }
     
 }
 

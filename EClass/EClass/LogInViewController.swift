@@ -123,7 +123,7 @@ class LogInViewController: UIViewController {
         
         
         
-        loginImageView.image = UIImage(named: "passion0.png")
+        loginImageView.image = UIImage(named: "passion2.png")
         loginImageView.isUserInteractionEnabled = false
         loginImageView.alpha = 0.9
         loginImageView.clipsToBounds = true

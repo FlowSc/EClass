@@ -63,7 +63,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var marginView1: UIView!
     func outletSet()
     {
-        loginImageView.image = UIImage(named: "passion2.png")
+        loginImageView.image = UIImage(named: "passion0.png")
         loginImageView.clipsToBounds = true
         loginImageView.alpha = 0.9
         marginView1.backgroundColor = .clear
