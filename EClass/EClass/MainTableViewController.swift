@@ -88,6 +88,8 @@ class MainTableViewController: UIViewController {
         currentUserName = UserDefaults.standard.string(forKey: "UserName")
         currentUserNickname = UserDefaults.standard.string(forKey: "UserNickname") ?? "Default"
         
+        
+        
         print(currentUserNickname)
         print(currentUserToken)
         

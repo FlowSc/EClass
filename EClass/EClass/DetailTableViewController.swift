@@ -156,7 +156,10 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         
         let storybd = UIStoryboard(name: StoryBoardConstant.detailPage, bundle: nil)
         
-        let addVc = storybd.instantiateViewController(withIdentifier: "ReviewAddViewController")
+        let addVc = storybd.instantiateViewController(withIdentifier: "ReviewAddViewController") as! ReviewAddViewController
+        
+        addVc.classData = detailData
+        addVc.loginUserData = userData
         
         self.navigationController?.pushViewController(addVc, animated: true)
     }
