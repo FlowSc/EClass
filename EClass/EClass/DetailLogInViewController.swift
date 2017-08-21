@@ -51,7 +51,9 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                     
                     
                     
-                    
+                let realData = JSON(data)
+                currentUserPrimaryKey = realData["user"]["user_pk"].intValue
+                currentUserToken = realData["token"].stringValue
 
                 
                 let result = JSON(response.value!)
@@ -76,12 +78,13 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                     
                     let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
                     let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
-                    mainVc.currentUserToken = userToken
-                    mainVc.userData = result
-                    let realData = JSON(data)
-                    currentUserPrimaryKey = realData["user"]["user_pk"].intValue
                     
-                    currentUserToken = realData["token"].stringValue
+//                    mainVc.currentUserToken = userToken
+//                    mainVc.userData = result
+                    
+                    
+                    currentUserData = DataCenter.shared.realUser
+                    
                     print("login")
 
                     self.present(pushMainView, animated: true, completion: nil)
