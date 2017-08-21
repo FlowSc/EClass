@@ -10,6 +10,7 @@ import UIKit
 
 class RearUserInfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+
     @IBOutlet weak var tv: UITableView!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
@@ -67,8 +68,14 @@ class RearUserInfoViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        performSegue(withIdentifier: "userInfo", sender: nil)
-        if indexPath.row == 3
+        
+        if indexPath.row == 2
         {
+            let storyBoard1 = UIStoryboard(name: "ListOfLecture", bundle: nil)
+            let nextVC = storyBoard1.instantiateViewController(withIdentifier: "ListList") as! ListOfLectureViewController
+            self.navigationController?.pushViewController(nextVC, animated: true)
+            self.navigationController?.isNavigationBarHidden = false
+        }else if indexPath.row == 3{
             let storyBoard1 = UIStoryboard(name: "FAQViewController", bundle: nil)
             let nextVC = storyBoard1.instantiateViewController(withIdentifier: "FAQ") as! FAQViewController
             self.navigationController?.pushViewController(nextVC, animated: true)
@@ -110,6 +117,8 @@ class RearUserInfoViewController: UIViewController, UITableViewDelegate, UITable
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tv.reloadData()
+//        userNameLabel.text = currentUserData?.userName
+//        emailLabel.text = currentUserData?.email
         self.navigationController?.isNavigationBarHidden = true
 //        self.view.addSubview(view1)
     }

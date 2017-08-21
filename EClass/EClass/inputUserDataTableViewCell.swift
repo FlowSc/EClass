@@ -12,9 +12,11 @@ class InputUserDataTableViewCell: UITableViewCell {
     
     @IBOutlet weak var userSettingPropertyLabel: UILabel!
     @IBOutlet weak var userDataTextField: UITextField!
+    let userData = DataCenter.shared.realUser
     override func awakeFromNib() {
         super.awakeFromNib()
-        userDataTextField.text = "수정"
+//        dump(userData)
+        
         // Initialization code
     }
     
@@ -27,5 +29,15 @@ class InputUserDataTableViewCell: UITableViewCell {
     func userDataSet(_ data:String)
     {
         userSettingPropertyLabel.text = data
+//        if userSettingPropertyLabel.text == "닉네임"
+//        {
+//            userDataTextField.text = userData?.nickName ?? ""
+//        }else if userSettingPropertyLabel.text == "이메일"
+//        {
+//            userDataTextField.text = userData?.email ?? ""
+//        }else
+//        {
+//            userDataTextField.text = userData?.phone ?? ""
+//        }
     }
 }

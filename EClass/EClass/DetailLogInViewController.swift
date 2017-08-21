@@ -45,18 +45,12 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                 
                 if response.result.isSuccess
                 {
-                    print(response.description)
-                    print("response")
-                    print(response)
-                    print("data")
-                    print(JSON(response.value))
-                    print("data끝")
-                    print(JSON(response.data))
-                    print(response.timeline)
-                    print(response.metrics)
-                    print(response.request)
-                    print(response.response)
-
+                    let realData = JSON(data)
+                    currentUserPrimaryKey = realData["user"]["user_pk"].intValue
+                    print(currentUserPrimaryKey)
+                    currentUserToken = realData["token"].stringValue
+                    DataCenter.shared.realUser = User(with: realData)
+                    print(currentUserToken)
                     print("go")
                     let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
                     let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")

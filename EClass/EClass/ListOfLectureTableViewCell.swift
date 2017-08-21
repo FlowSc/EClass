@@ -10,6 +10,8 @@ import UIKit
 
 class ListOfLectureTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var priceOfLectureLabel: UILabel!
+    @IBOutlet weak var introduceOfLectureLabel: UILabel!
     @IBOutlet weak var lectureImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
