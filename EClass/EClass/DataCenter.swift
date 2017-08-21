@@ -195,13 +195,8 @@ struct User
     var tutorAuthorize:Bool = false
     var registeredLecture:[Lecture]?
     var careerDescription:String?
-    
-//    "username": "thuksal20",
-//    "name": "",
-//    "nickname": "gamza",
-//    "email": "thuksal20@naver.com",
-//    "phone": "010-1234-5678",
-//    "my_photo": null
+
+    var token:String?
 
     init(with json:JSON)
     {
