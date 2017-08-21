@@ -81,8 +81,9 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                     
                     let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
                     let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
-                    mainVc.currentUserToken = userToken
-                    mainVc.userData = result
+//                    mainVc.currentUserToken = userToken
+//                    mainVc.userData = result
+                    
                     let realData = JSON(data)
                     currentUserPrimaryKey = realData["user"]["user_pk"].intValue
                     
@@ -101,9 +102,10 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                 
             }
             
-        
+            }
         }
     }
+    
     @IBOutlet weak var marginView4: UIView!
     @IBOutlet weak var marginView3: UIView!
     @IBOutlet weak var marginView2: UIView!
