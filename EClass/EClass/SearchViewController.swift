@@ -41,12 +41,15 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         super.viewDidLoad()
         recommendLectureList = LectureList.lectureList
         
-        lectureShowList = recommendLectureList.array
+        categorySelectButton.setBasicColor()
+        locationSelectButton.setBasicColor()
+        
 
         categorySelectButton.layer.borderWidth = 1
         locationSelectButton.layer.borderWidth = 1
         
         self.categorySelectButton.setTitle(self.changedTitleforCategory, for: .normal)
+        self.locationSelectButton.setTitle(self.changedTitleforLocation, for: .normal)
         
         NotificationCenter.default.addObserver(forName:  NSNotification.Name.init(rawValue: "CategoryName"), object: nil, queue: nil) { (noti) in
             

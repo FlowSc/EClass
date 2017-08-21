@@ -47,8 +47,10 @@ extension CategorySelectViewController:UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCollectionViewCell
-        
+//        cell.image.image = UIImage(named: "category" + "\(indexPath.item)")
+
         cell.categoryLabel.text = categoryStrings[indexPath.item]
+//        cell.categoryLabel.textColor = .white
         cell.layer.borderWidth = 1
         return cell
     }

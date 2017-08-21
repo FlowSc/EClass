@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="471" height="433"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="471" height="432.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="471" height="433"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wSZ-q9-6bk">
@@ -183,21 +183,45 @@
                             <constraint firstItem="554-rI-CxY" firstAttribute="top" secondItem="wSZ-q9-6bk" secondAttribute="top" constant="51" id="cQt-QJ-VHx"/>
                         </constraints>
                     </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGq-ID-9he">
+                        <rect key="frame" x="-0.5" y="-0.5" width="471" height="433"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymc-Y1-lFX">
+                        <rect key="frame" x="-0.5" y="0.0" width="471" height="433"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="wSZ-q9-6bk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="1C8-rG-Q78"/>
+                    <constraint firstItem="EGq-ID-9he" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="32r-Da-dT8"/>
+                    <constraint firstItem="ymc-Y1-lFX" firstAttribute="height" secondItem="EGq-ID-9he" secondAttribute="height" id="6ah-Q8-yH5"/>
+                    <constraint firstItem="EGq-ID-9he" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="DAk-8V-8Dw"/>
+                    <constraint firstItem="EGq-ID-9he" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="QAX-Np-D92"/>
+                    <constraint firstItem="EGq-ID-9he" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="SKs-Ir-3f6"/>
+                    <constraint firstItem="ymc-Y1-lFX" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="cnD-Er-5mZ"/>
                     <constraint firstAttribute="trailingMargin" secondItem="wSZ-q9-6bk" secondAttribute="trailing" id="dHF-IL-jHa"/>
+                    <constraint firstItem="ymc-Y1-lFX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="de2-Sm-NW3"/>
                     <constraint firstItem="wSZ-q9-6bk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="mys-u5-Weh"/>
+                    <constraint firstItem="ymc-Y1-lFX" firstAttribute="width" secondItem="EGq-ID-9he" secondAttribute="width" id="n6J-Rc-a2A"/>
                     <constraint firstAttribute="bottomMargin" secondItem="wSZ-q9-6bk" secondAttribute="bottom" id="ssW-xw-wQV"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="countLb" destination="554-rI-CxY" id="CFb-g9-2Rm"/>
+                <outlet property="firstReviewButton" destination="EGq-ID-9he" id="KFJ-0i-PtS"/>
+                <outlet property="firstReviewRequestLb" destination="ymc-Y1-lFX" id="Bv2-n2-7J1"/>
                 <outlet property="moveReviewAddB" destination="qpd-Cr-PaI" id="a9V-3i-Epn"/>
                 <outlet property="moveToreviewButton" destination="aLN-Hu-5IH" id="nMV-VS-iI2"/>
                 <outlet property="reviewContents" destination="FES-GS-eJy" id="rvm-NA-GCI"/>
                 <outlet property="reviewCreateDate" destination="lCW-jj-Its" id="kTT-yK-Aud"/>
+                <outlet property="reviewScoreLb" destination="2Iv-ZC-deJ" id="Shr-Dc-9Yq"/>
                 <outlet property="reviewerImage" destination="cUk-5e-gUH" id="exG-aY-d0p"/>
                 <outlet property="reviewerName" destination="ynW-LP-5Cn" id="OdT-Za-cZ4"/>
+                <outlet property="starView" destination="JJ5-fQ-WLD" id="753-3c-uJ8"/>
+                <outlet property="titleLb" destination="ZvD-IR-lOx" id="Upq-P4-Ocv"/>
             </connections>
             <point key="canvasLocation" x="109.5" y="170.5"/>
         </tableViewCell>

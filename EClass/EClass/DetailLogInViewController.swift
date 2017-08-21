@@ -53,12 +53,13 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                     
                     
 
-                let result = JSON(response.value)
                 
-                var userToken = result["token"].stringValue
-                var userName = result["user"]["username"].stringValue
-                var userPk = result["user"]["user_pk"].intValue
-                var userNickname = result["user"]["nickname"].stringValue
+                let result = JSON(response.value!)
+                
+                let userToken = result["token"].stringValue
+                let userName = result["user"]["username"].stringValue
+                let userPk = result["user"]["user_pk"].intValue
+                let userNickname = result["user"]["nickname"].stringValue
                 
                 
                 UserDefaults.standard.set(userToken, forKey: "UserToken")
@@ -66,28 +67,36 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                 UserDefaults.standard.set(userPk, forKey: "UserPK")
                 UserDefaults.standard.set(userNickname, forKey: "UserNickname")
 
-
-                if !(userToken == "")
-                {
+                
+                
+                print("TOKENVALUE \(userToken)")
+                
+                
+                if !(userToken == ""){
                     
                     let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
                     let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
-                    let mainVc = mainStoryBoard.instantiateViewController(withIdentifier: "MainTableViewController") as! MainTableViewController
-                    
                     mainVc.currentUserToken = userToken
                     mainVc.userData = result
                     let realData = JSON(data)
                     currentUserPrimaryKey = realData["user"]["user_pk"].intValue
                     
                     currentUserToken = realData["token"].stringValue
+                    print("login")
 
                     self.present(pushMainView, animated: true, completion: nil)
-                                      
+                    
                 }
+                let alertController = UIAlertController.init(title: "로그인 실패", message: "유저 정보가 일치하지 않습니다", preferredStyle: UIAlertControllerStyle.alert)
+                let alertAction = UIAlertAction.init(title: "다시 확인해주세요!", style: UIAlertActionStyle.cancel, handler: nil)
+                    
+                alertController.addAction(alertAction)
+                    
+                self.present(alertController, animated: true, completion: nil)
+                
             }
             
-            print("login")
-            
+        
         }
     }
     @IBOutlet weak var marginView4: UIView!
