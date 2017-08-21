@@ -216,6 +216,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        
         switch tableViewIndex!{
             
             
