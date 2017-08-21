@@ -15,7 +15,8 @@ var loginSuccess:Bool = false
 class DetailLogInViewController: UIViewController, UITextFieldDelegate{
     
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
         
         if textField == userNameTextField
         {
@@ -28,11 +29,13 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
     
     
     
-    @IBAction func searchPasswordButtonTouched(_ sender: UIButton) {
+    @IBAction func searchPasswordButtonTouched(_ sender: UIButton)
+    {
         print("searchpassword")
         
     }
-    @IBAction func logInButtonTouched(_ sender: UIButton) {
+    @IBAction func logInButtonTouched(_ sender: UIButton)
+    {
         
         
         if !(userNameTextField.text?.isEmpty)! && !(passWordTextField.text?.isEmpty)!
@@ -44,9 +47,7 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                     return
                 }
                 
-<<<<<<< HEAD
-                print(data)
-=======
+
                 if response.result.isSuccess
                 {
                     let realData = JSON(data)
@@ -57,9 +58,7 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                     print(currentUserToken)
                     print("go")
 
-                let result = JSON(response.value)
->>>>>>> 72b52e38cc1c2a409b58a169a5dafbddd42ac71e
-                
+                    
                 let result = JSON(response.value!)
                 
                 let userToken = result["token"].stringValue
@@ -72,7 +71,7 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                 UserDefaults.standard.set(userName, forKey: "UserName")
                 UserDefaults.standard.set(userPk, forKey: "UserPK")
                 UserDefaults.standard.set(userNickname, forKey: "UserNickname")
-                
+
                 
                 
                 print("TOKENVALUE \(userToken)")
@@ -82,18 +81,23 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                     
                     let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
                     let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
+                    mainVc.currentUserToken = userToken
+                    mainVc.userData = result
+                    let realData = JSON(data)
+                    currentUserPrimaryKey = realData["user"]["user_pk"].intValue
                     
+                    currentUserToken = realData["token"].stringValue
                     print("login")
 
                     self.present(pushMainView, animated: true, completion: nil)
                     
                 }
-                    let alertController = UIAlertController.init(title: "로그인 실패", message: "유저 정보가 일치하지 않습니다", preferredStyle: UIAlertControllerStyle.alert)
-                    let alertAction = UIAlertAction.init(title: "다시 확인해주세요!", style: UIAlertActionStyle.cancel, handler: nil)
+                let alertController = UIAlertController.init(title: "로그인 실패", message: "유저 정보가 일치하지 않습니다", preferredStyle: UIAlertControllerStyle.alert)
+                let alertAction = UIAlertAction.init(title: "다시 확인해주세요!", style: UIAlertActionStyle.cancel, handler: nil)
                     
-                    alertController.addAction(alertAction)
+                alertController.addAction(alertAction)
                     
-                    self.present(alertController, animated: true, completion: nil)
+                self.present(alertController, animated: true, completion: nil)
                 
             }
             
