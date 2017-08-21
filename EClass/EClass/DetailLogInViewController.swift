@@ -15,7 +15,8 @@ var loginSuccess:Bool = false
 class DetailLogInViewController: UIViewController, UITextFieldDelegate{
     
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
         
         if textField == userNameTextField
         {
@@ -28,11 +29,13 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
     
     
     
-    @IBAction func searchPasswordButtonTouched(_ sender: UIButton) {
+    @IBAction func searchPasswordButtonTouched(_ sender: UIButton)
+    {
         print("searchpassword")
         
     }
-    @IBAction func logInButtonTouched(_ sender: UIButton) {
+    @IBAction func logInButtonTouched(_ sender: UIButton)
+    {
         
         
         if !(userNameTextField.text?.isEmpty)! && !(passWordTextField.text?.isEmpty)!
@@ -44,15 +47,11 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                     return
                 }
                 
-                if response.result.isSuccess
-                {
-                    let realData = JSON(data)
-                    currentUserPrimaryKey = realData["user"]["user_pk"].intValue
-                    print(currentUserPrimaryKey)
-                    currentUserToken = realData["token"].stringValue
-                    DataCenter.shared.realUser = User(with: realData)
-                    print(currentUserToken)
-                    print("go")
+                
+                    
+                    
+                    
+                    
 
                 let result = JSON(response.value)
                 
@@ -68,12 +67,8 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                 UserDefaults.standard.set(userNickname, forKey: "UserNickname")
 
 
-
-                print("TOKENVALUE \(userToken)")
-
-                
-                
-                if !(userToken == ""){
+                if !(userToken == "")
+                {
                     
                     let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
                     let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
@@ -81,12 +76,15 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                     
                     mainVc.currentUserToken = userToken
                     mainVc.userData = result
+                    let realData = JSON(data)
+                    currentUserPrimaryKey = realData["user"]["user_pk"].intValue
                     
+                    currentUserToken = realData["token"].stringValue
 
                     self.present(pushMainView, animated: true, completion: nil)
                                       
-                                   }
-                       }
+                }
+            }
             
             print("login")
             
