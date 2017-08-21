@@ -46,73 +46,46 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                 {
                     return
                 }
-                
-<<<<<<< HEAD
-                
-                    
-                    
-                    
+
                 let realData = JSON(data)
                 currentUserPrimaryKey = realData["user"]["user_pk"].intValue
                 currentUserToken = realData["token"].stringValue
-=======
->>>>>>> c5c7c6136a770881b96424f69b7786df77ef12ae
+
 
                 if response.result.isSuccess
                 {
                     let realData = JSON(data)
-                    currentUserPrimaryKey = realData["user"]["user_pk"].intValue
-                    print(currentUserPrimaryKey)
-                    currentUserToken = realData["token"].stringValue
                     DataCenter.shared.realUser = User(with: realData)
-                    print(currentUserToken)
-                    print("go")
+                    
+                    let result = JSON(response.value!)
+                    
+                    let userToken = result["token"].stringValue
+                    let userName = result["user"]["username"].stringValue
+                    let userPk = result["user"]["user_pk"].intValue
+                    let userNickname = result["user"]["nickname"].stringValue
+                    
+                    
+                    UserDefaults.standard.set(userToken, forKey: "UserToken")
+                    UserDefaults.standard.set(userName, forKey: "UserName")
+                    UserDefaults.standard.set(userPk, forKey: "UserPK")
+                    UserDefaults.standard.set(userNickname, forKey: "UserNickname")
 
                     
-                let result = JSON(response.value!)
-                
-                let userToken = result["token"].stringValue
-                let userName = result["user"]["username"].stringValue
-                let userPk = result["user"]["user_pk"].intValue
-                let userNickname = result["user"]["nickname"].stringValue
-                
-                
-                UserDefaults.standard.set(userToken, forKey: "UserToken")
-                UserDefaults.standard.set(userName, forKey: "UserName")
-                UserDefaults.standard.set(userPk, forKey: "UserPK")
-                UserDefaults.standard.set(userNickname, forKey: "UserNickname")
-
-                
-                
-                print("TOKENVALUE \(userToken)")
-                
-                
-                if !(userToken == ""){
+                    if !(userToken == ""){
+                        
+                        let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
+                        let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
+                        self.present(pushMainView, animated: true, completion: nil)
+                        
+                    }
+                    let alertController = UIAlertController.init(title: "로그인 실패", message: "유저 정보가 일치하지 않습니다", preferredStyle: UIAlertControllerStyle.alert)
+                    let alertAction = UIAlertAction.init(title: "다시 확인해주세요!", style: UIAlertActionStyle.cancel, handler: nil)
                     
-                    let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
-                    let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
-
+                    alertController.addAction(alertAction)
                     
-                    let realData = JSON(data)
-                    currentUserPrimaryKey = realData["user"]["user_pk"].intValue
-
-                    
-                    
-                    currentUserData = DataCenter.shared.realUser
-                    
-                    print("login")
-
-                    self.present(pushMainView, animated: true, completion: nil)
+                    self.present(alertController, animated: true, completion: nil)
                     
                 }
-                let alertController = UIAlertController.init(title: "로그인 실패", message: "유저 정보가 일치하지 않습니다", preferredStyle: UIAlertControllerStyle.alert)
-                let alertAction = UIAlertAction.init(title: "다시 확인해주세요!", style: UIAlertActionStyle.cancel, handler: nil)
-                    
-                alertController.addAction(alertAction)
-                    
-                self.present(alertController, animated: true, completion: nil)
-                
-            }
             
             }
         }
