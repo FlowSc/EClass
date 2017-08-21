@@ -16,6 +16,7 @@ class ReviewAddViewController: UIViewController {
         super.viewDidLoad()
 
         registButton.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
+        registButton.setTitleColor(.white, for: .normal)
 
         
         // Do any additional setup after loading the view.

@@ -9,7 +9,8 @@ pod 'FacebookCore'
   pod 'Alamofire', '~> 4.5'
   pod 'SwiftyJSON', '~> 3.1'
   pod 'Kingfisher', '~> 3.0'
-
+  pod 'EmptyKit', '~> 3.1'
+ 
   # Pods for EClass
 
 end

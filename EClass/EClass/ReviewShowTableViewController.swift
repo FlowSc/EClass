@@ -7,16 +7,19 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class ReviewShowTableViewController: UITableViewController {
 
     @IBOutlet var myTableView: UITableView!
+    var detailData:JSON!
     override func viewDidLoad() {
         
+        self.navigationItem.title = "리뷰목록"
         myTableView.estimatedRowHeight = 200
         myTableView.rowHeight = UITableViewAutomaticDimension
         myTableView.reloadData()
-        myTableView.register(UINib.init(nibName: "LectureReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "LectureReviewTableViewCell")
+        myTableView.register(UINib.init(nibName: "ReviewShowTableViewCell", bundle: nil), forCellReuseIdentifier: "ReviewShowTableViewCell")
+        print(detailData)
         
         super.viewDidLoad()
 
@@ -38,15 +41,28 @@ class ReviewShowTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return detailData["reviews"].count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LectureReviewTableViewCell", for: indexPath) as! LectureReviewTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewShowTableViewCell", for: indexPath) as! ReviewShowTableViewCell
+        
+        let cellData = detailData["reviews"][indexPath.row]
+        
+        print("AAAAAAA")
+        print(cellData["modify_date"].stringValue)
+        print(cellData["content"].stringValue)
+        print("BBBBBBB")
+        
+        var showDate = cellData["modify_date"].stringValue
+        
+        showDate.characters.removeLast(17)
+        print(showDate)
 
-        // Configure the cell...
-
+        
+        cell.reviewContents(showDate, cellData["content"].stringValue)
+        
         return cell
     }
  

@@ -31,6 +31,19 @@ func postDicToUserInfo(params:[String:String])
 {
 
     Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/signup/", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        
+        let result = JSON(response.value!)
+        
+        let userToken = result["token"].stringValue
+        let userName = result["user"]["username"].stringValue
+        let userPk = result["user"]["user_pk"].intValue
+        let userNickname = result["user"]["nickname"].stringValue
+        
+        
+        UserDefaults.standard.set(userToken, forKey: "UserToken")
+        UserDefaults.standard.set(userName, forKey: "UserName")
+        UserDefaults.standard.set(userPk, forKey: "UserPK")
+        UserDefaults.standard.set(userNickname, forKey: "UserNickname")
 
         print("여기서부터")
         print(response)
@@ -262,12 +275,27 @@ extension UIView {
     func makeCircle(){
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 25
+        self.backgroundColor = .black
         self.clipsToBounds = true
     }
     
     func makeCornerRound3() {
-        self.layer.borderWidth = 1
+
         self.layer.cornerRadius = 3
     }
+    
 }
+
+extension UIButton {
+    
+    func setBasicColor(){
+        
+        self.setTitleColor(.white, for: .normal)
+        self.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
+    }
+
+    
+}
+
+
 

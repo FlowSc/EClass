@@ -43,7 +43,10 @@ extension LocationSelectViewController:UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationCell", for: indexPath) as! LocationCollectionViewCell
-        
+//        cell.image.image = UIImage(named: "location" + "\(indexPath.item)")
+//        cell.locationLabel.textColor = .white
+
+
         cell.locationLabel.text = locationStrings[indexPath.item]
         cell.layer.borderWidth = 1
         return cell
