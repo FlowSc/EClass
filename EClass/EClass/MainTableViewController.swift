@@ -312,7 +312,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         }else if section == 2 {
             basicView.text = "카테고리별 강의 보기"
         }else if section == 3 {
-            basicView.text = "추천강의"
+            basicView.text = "최근 등록된 강의"
         }
         
         return basicView

@@ -47,6 +47,7 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                     return
                 }
                 
+<<<<<<< HEAD
                 
                     
                     
@@ -54,8 +55,20 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                 let realData = JSON(data)
                 currentUserPrimaryKey = realData["user"]["user_pk"].intValue
                 currentUserToken = realData["token"].stringValue
+=======
+>>>>>>> c5c7c6136a770881b96424f69b7786df77ef12ae
 
-                
+                if response.result.isSuccess
+                {
+                    let realData = JSON(data)
+                    currentUserPrimaryKey = realData["user"]["user_pk"].intValue
+                    print(currentUserPrimaryKey)
+                    currentUserToken = realData["token"].stringValue
+                    DataCenter.shared.realUser = User(with: realData)
+                    print(currentUserToken)
+                    print("go")
+
+                    
                 let result = JSON(response.value!)
                 
                 let userToken = result["token"].stringValue
@@ -78,9 +91,11 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                     
                     let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
                     let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
+
                     
-//                    mainVc.currentUserToken = userToken
-//                    mainVc.userData = result
+                    let realData = JSON(data)
+                    currentUserPrimaryKey = realData["user"]["user_pk"].intValue
+
                     
                     
                     currentUserData = DataCenter.shared.realUser
@@ -99,9 +114,10 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                 
             }
             
-        
+            }
         }
     }
+    
     @IBOutlet weak var marginView4: UIView!
     @IBOutlet weak var marginView3: UIView!
     @IBOutlet weak var marginView2: UIView!
