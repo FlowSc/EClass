@@ -22,13 +22,14 @@ class IntroductionTableViewCell: UITableViewCell {
     @IBOutlet weak var attendanceLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var attendanceCount: UILabel!
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
-    func setLectureInfo(_ lectureName:String, _ lectureReview:String, _ location:String, _ attandance:String, _ price:String, _ time:String, _ basicInfo:String) {
+    func setLectureInfo(_ lectureName:String, _ lectureReview:String, _ location:String, _ attandance:String, _ price:String, _ time:String, _ basicInfo:String, _ attendanceCount:String) {
         
         self.lectureName.text = lectureName
         self.LectureReviewScore.text = lectureReview
@@ -37,6 +38,7 @@ class IntroductionTableViewCell: UITableViewCell {
         self.attendanceLabel.text = attandance
         self.timeLabel.text = time
         self.infoLabel.text = basicInfo
+        self.attendanceCount.text = attendanceCount
     }
 
 }

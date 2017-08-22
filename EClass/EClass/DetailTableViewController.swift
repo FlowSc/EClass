@@ -30,10 +30,14 @@ class DetailTableViewController: UIViewController {
         myTableView.register(UINib.init(nibName: NibFile.lectureIntro, bundle: nil), forCellReuseIdentifier: CustomsTableViewCell.lectureIntro)
         myTableView.register(UINib.init(nibName: NibFile.mapLocation, bundle: nil), forCellReuseIdentifier: CustomsTableViewCell.mapLocation)
         myTableView.register(UINib.init(nibName: NibFile.lectureReivew, bundle: nil), forCellReuseIdentifier: CustomsTableViewCell.lectureReview)
-        print(userData)
+        print("Detail Data Start!!")
+        print(detailData)
+        print("Detail Data End!!!!!!")
         lectureRegistBt.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
 
         // Do any additional setup after loading the view.
+        
+        
     }
 
     
@@ -51,12 +55,23 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        var attendanceCount = detailData["total_count"].stringValue
+        
+        if attendanceCount == "" {
+            attendanceCount = "0"
+        }
+
+        
         
         if indexPath.row == 0{
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.lectureBasicInfo, for: indexPath) as! IntroductionTableViewCell
             
-            cell.setLectureInfo(self.detailData["title"].stringValue, "5.0",self.detailData["locations"][0]["location2"].stringValue, "\(self.detailData["max_member"].stringValue) 명", "회 당 \(self.detailData["price"].stringValue) 원", "주 \(self.detailData["basic_class_time"]) 회", "총 8회 16시간")
+            cell.setLectureInfo(self.detailData["title"].stringValue, "5.0",self.detailData["locations"][0]["location2"].stringValue, "\(self.detailData["max_member"].stringValue) 명", "회 당 \(self.detailData["price"].stringValue) 원", "주 \(self.detailData["basic_class_time"]) 회", "총 8회 16시간", "\(attendanceCount) 명 참여중")
             cell.selectionStyle = .none
+            
+            cell.attendanceCount.layer.cornerRadius = 10
+            cell.attendanceCount.textColor = .white
+            cell.attendanceCount.setBasicColor()
 
         
             return cell}

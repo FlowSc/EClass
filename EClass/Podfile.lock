@@ -20,7 +20,10 @@ PODS:
   - FBSDKLoginKit (4.25.0):
     - FBSDKCoreKit
   - Kingfisher (3.11.0)
+  - SnapKit (3.2.0)
+  - StarReview (1.0.0)
   - SwiftyJSON (3.1.4)
+  - SwiftyStarRatingView (1.0.4)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
@@ -28,7 +31,10 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
   - Kingfisher (~> 3.0)
+  - SnapKit (~> 3.2)
+  - StarReview (~> 1.0)
   - SwiftyJSON (~> 3.1)
+  - SwiftyStarRatingView (~> 1.0)
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
@@ -39,8 +45,11 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 53e3f4bfb64e80c5f229dd30ae33ff57fbbbd2d1
   FBSDKLoginKit: f628c09684dae9c17f071cf90b014e886f5093ea
   Kingfisher: c8911a7672c6217dec8c0520fb6e76ec4b7e0780
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  StarReview: '0578f61607b89b3f0ad87ab417907818c1f39532'
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  SwiftyStarRatingView: a2b0057700e0adeb8e7442c55d99cb53b531d2f4
 
-PODFILE CHECKSUM: 826ecfce9e4d9a90f94a44f216337ae3fdbf7e44
+PODFILE CHECKSUM: d17f2cd717c7a3fece88f4159b092e6d43fd9d37
 
 COCOAPODS: 1.2.1

@@ -256,8 +256,15 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             
             print(myData)
             
+            var attendanceCount = myData["total_count"].stringValue
             
-            cell.setLecture(myData["lecture_photos"][0]["lecture_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, myData["target_intro"].stringValue, myData["tutor_info"]["nickname"].stringValue)
+            if attendanceCount == "" {
+                attendanceCount = "0"
+            }
+
+            
+            
+            cell.setLecture(myData["lecture_photos"][0]["lecture_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, "\(attendanceCount) 명 참여", myData["tutor_info"]["nickname"].stringValue)
             cell.tutorImage.makeCircle()
             
             
