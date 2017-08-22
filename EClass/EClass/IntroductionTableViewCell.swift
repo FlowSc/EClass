@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import SwiftyStarRatingView
 
 class IntroductionTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        reviewStar.isEnabled = false
+        
         // Initialization code
     }
     @IBOutlet weak var lectureName: UILabel!
@@ -23,16 +27,17 @@ class IntroductionTableViewCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var attendanceCount: UILabel!
+    @IBOutlet weak var reviewStar: SwiftyStarRatingView!
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
-    func setLectureInfo(_ lectureName:String, _ lectureReview:String, _ location:String, _ attandance:String, _ price:String, _ time:String, _ basicInfo:String, _ attendanceCount:String) {
+    func setLectureInfo(_ lectureName:String, _ lectureReview:Double, _ location:String, _ attandance:String, _ price:String, _ time:String, _ basicInfo:String, _ attendanceCount:String) {
         
         self.lectureName.text = lectureName
-        self.LectureReviewScore.text = lectureReview
+        self.LectureReviewScore.text = String(lectureReview)
         self.locationLabel.text = location
         self.priceLabel.text = price
         self.attendanceLabel.text = attandance

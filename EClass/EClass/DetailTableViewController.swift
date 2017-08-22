@@ -10,9 +10,12 @@ import UIKit
 import MapKit
 import SwiftyJSON
 import Alamofire
+import SwiftyStarRatingView
 
 class DetailTableViewController: UIViewController {
     
+    var averageReviewtotalScore:Double = 0.0
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -100,12 +103,28 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         if indexPath.row == 0{
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.lectureBasicInfo, for: indexPath) as! IntroductionTableViewCell
             
-            cell.setLectureInfo(self.detailData["title"].stringValue, "5.0",self.detailData["locations"][0]["location2"].stringValue, "\(self.detailData["max_member"].stringValue) 명", "회 당 \(self.detailData["price"].stringValue) 원", "주 \(self.detailData["basic_class_time"]) 회", "총 8회 16시간", "\(attendanceCount) 명 참여중")
-            cell.selectionStyle = .none
             
+            for (key, value) in detailData["review_average"].dictionaryValue {
+                
+                print(key, value)
+                
+
+                var averagePoint = value.doubleValue
+                
+                averageReviewtotalScore += averagePoint
+            
+                
+
+            }
+            
+            cell.setLectureInfo(self.detailData["title"].stringValue, (averageReviewtotalScore.roundToPlaces(places: 0) / 5), self.detailData["locations"][0]["location2"].stringValue, "\(self.detailData["max_member"].stringValue) 명", "회 당 \(self.detailData["price"].stringValue) 원", "주 \(self.detailData["basic_class_time"]) 회", "총 8회 16시간", "\(attendanceCount) 명 참여중")
+            cell.selectionStyle = .none
             cell.attendanceCount.layer.cornerRadius = 10
             cell.attendanceCount.textColor = .white
             cell.attendanceCount.setBasicColor()
+            cell.reviewStar.value = CGFloat((averageReviewtotalScore.roundToPlaces(places: 0) / 5))
+            
+            print(averageReviewtotalScore / 5)
 
         
             return cell}
@@ -185,13 +204,15 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
                 
             cell.reviewContents.text = representativeReviewData["content"].stringValue
             cell.countLb.text = "총 \(detailData["review_count"].intValue) 개"
-            cell.reviewScoreLb.text = " " + String(Double(representativeReviewData["curriculum_rate"].intValue))
+            cell.reviewScoreLb.text = " " + String(averageReviewtotalScore.roundToPlaces(places: 0) / 5)
             cell.reviewerName.text = representativeReviewData["author"]["username"].stringValue
             var date = representativeReviewData["modify_date"].stringValue
                 
                 date.characters.removeLast(16)
                 
             cell.reviewCreateDate.text = date
+            cell.reviewStar.value = CGFloat(averageReviewtotalScore.roundToPlaces(places: 0) / 5)
+            
 
             }
 
@@ -301,26 +322,29 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
     
     func loadDetailData(_ lectureId:Int) {
         
-        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/detail", method: .post, parameters: ["lecture_id":lectureId], encoding: JSONEncoding.default, headers: nil).responseJSON { (myData) in
-            print("~~~~~~~")
-            print(myData)
-            print(myData.result.value)
-            print("~~~~~~~")
-        }
-//
-        
 
-//        Alamofire.upload(multipartFormData: { (data) in
-//            
-//            data.append("\(lectureId)".data(using: .utf8)!, withName: "lecture_id")
-//        }, usingThreshold: UInt64.init(), to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/detail", method: .post, headers: nil) { (result) in
-//            print("HHHHHHH")
-//            
-//            print(result)
-//            
-//            print("|||||||||")
-//            
-//        }
+        Alamofire.upload(multipartFormData: { (data) in
+            
+            data.append("\(lectureId)".data(using: .utf8)!, withName: "lecture_id")
+        }, usingThreshold: UInt64.init(), to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/detail", method: .post, headers: ["Content-Type":"application/json"]) { (result) in
+            print("HHHHHHH")
+            
+            print(result)
+            
+            switch result {
+            case .success(let upload, _, _):
+                upload.responseJSON(completionHandler: { (response) in
+                    print("VALUE")
+                    print(response)
+                    print("AAA")
+                })
+            default :
+                print("Default")
+            }
+            
+            print("|||||||||")
+            
+        }
 
     }
 }

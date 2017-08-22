@@ -48,15 +48,15 @@ func postDicToUserInfo(params:[String:String])
         print("여기서부터")
         print(response)
         print("~~~~~~~~")
-        print(response.result.value)
+        print(response.result.value!)
         print("~~~~~~~~")
-        print(response.data)
+        print(response.data!)
         print("~~~~~~~~")
         print(response.description)
         print("~~~~~~~~")
-        print(response.value)
+        print(response.value!)
         print(params)
-        print(response.error)
+        print(response.error!)
     
     }
 }
@@ -301,6 +301,15 @@ extension UIButton {
 
     
 }
+
+extension Double { /// Rounds the double to decimal places value 
+    
+    mutating func roundToPlaces(places:Int) -> Double { let divisor = pow(10.0, Double(places))
+        
+        return Darwin.round(self * divisor) / divisor }
+
+}
+    
 
 
 

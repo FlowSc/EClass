@@ -17,6 +17,7 @@ class ReviewShowTableViewCell: UITableViewCell {
 
     @IBOutlet weak var reviewDate: UILabel!
     @IBOutlet weak var reviewContentLb: UILabel!
+    @IBOutlet weak var reviewName: UILabel!
     
     
     
@@ -26,10 +27,11 @@ class ReviewShowTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func reviewContents(_ reviewDate:String, _ reviewContentLb:String) {
+    func reviewContents(_ reviewDate:String, _ reviewContentLb:String, reviewName:String) {
         
         self.reviewDate.text = reviewDate
         self.reviewContentLb.text = reviewContentLb
+        self.reviewName.text = reviewName
     }
 
     

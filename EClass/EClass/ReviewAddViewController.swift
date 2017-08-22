@@ -111,21 +111,6 @@ class ReviewAddViewController: UIViewController, UITextViewDelegate {
         
         }
 
-        
-
-     
-        
-//        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/review/make/", method: HTTPMethod.post, parameters: nil, encoding: JSONEncoding.default, headers: token).responseJSON { (response) in
-//            
-//            print("response Start")
-//            print(response.result.value)
-//            print(response.response?.statusCode)
-//            
-//            print("response End")
-//            
-//            self.navigationController?.popViewController(animated: true)
-//        }
-//    }
     }
     func reviewScoreForKindness() {
         print(kindnessStar.value)

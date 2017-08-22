@@ -17,20 +17,26 @@
             <rect key="frame" x="0.0" y="0.0" width="435" height="271"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="435" height="270.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="435" height="271"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eQ7-tB-mGd">
                         <rect key="frame" x="8" y="8" width="419" height="254.5"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsC-Vr-Qm1">
+                                <rect key="frame" x="0.0" y="0.0" width="419" height="36.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUS-e1-XIA">
-                                <rect key="frame" x="0.0" y="0.0" width="419" height="42.5"/>
+                                <rect key="frame" x="0.0" y="36.5" width="419" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0l1-sd-tKH">
-                                <rect key="frame" x="0.0" y="42.5" width="419" height="212"/>
+                                <rect key="frame" x="0.0" y="72.5" width="419" height="182"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -38,6 +44,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="0l1-sd-tKH" firstAttribute="height" secondItem="KUS-e1-XIA" secondAttribute="height" multiplier="5" id="bzW-wL-0xf"/>
+                            <constraint firstItem="rsC-Vr-Qm1" firstAttribute="height" secondItem="KUS-e1-XIA" secondAttribute="height" id="zxs-FX-3cE"/>
                         </constraints>
                     </stackView>
                 </subviews>
@@ -51,6 +58,7 @@
             <connections>
                 <outlet property="reviewContentLb" destination="0l1-sd-tKH" id="l9o-LE-3wO"/>
                 <outlet property="reviewDate" destination="KUS-e1-XIA" id="ZeI-Hh-m06"/>
+                <outlet property="reviewName" destination="rsC-Vr-Qm1" id="WYD-0p-7aa"/>
             </connections>
             <point key="canvasLocation" x="23.5" y="18.5"/>
         </tableViewCell>
