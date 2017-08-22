@@ -166,6 +166,8 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        print(indexPath.row, indexPath.section)
+        
         
         switch indexPath.section {
         case 1:
@@ -191,8 +193,6 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             
             cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
             tableViewIndex = indexPath.section
-            
-            
             
             
             return cell

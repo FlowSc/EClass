@@ -137,10 +137,10 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             cell.reviewContents.text = representativeReviewData["content"].stringValue
             cell.countLb.text = "총 \(detailData["review_count"].intValue) 개"
             cell.reviewScoreLb.text = " " + String(Double(representativeReviewData["curriculum_rate"].intValue))
+            cell.reviewerName.text = representativeReviewData["author"]["username"].stringValue
+            var date = representativeReviewData["modify_date"].stringValue
                 
-            var date = detailData["modify_date"].stringValue
-                
-                date.characters.removeLast(17)
+                date.characters.removeLast(16)
                 
             cell.reviewCreateDate.text = date
 

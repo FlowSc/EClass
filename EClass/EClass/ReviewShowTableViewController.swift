@@ -57,7 +57,7 @@ class ReviewShowTableViewController: UITableViewController {
         
         var showDate = cellData["modify_date"].stringValue
         
-        showDate.characters.removeLast(17)
+        showDate.characters.removeLast(16)
         print(showDate)
 
         

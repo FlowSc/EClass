@@ -818,6 +818,9 @@
                                             <constraint firstAttribute="height" constant="60" id="FkB-3u-bKm"/>
                                         </constraints>
                                         <state key="normal" title="등록"/>
+                                        <connections>
+                                            <action selector="registButtonTouched:" destination="IA5-84-cND" eventType="touchUpInside" id="cno-eo-ZSp"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

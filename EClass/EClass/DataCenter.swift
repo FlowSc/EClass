@@ -114,6 +114,7 @@ final class DataCenter
     private init()
     {
 //유저 정보 GET
+        
         Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization":"Token " + "\(currentUserToken)"]).responseJSON { (response) in
             guard let data = response.result.value else
             {
@@ -284,11 +285,15 @@ extension UIView {
         self.layer.cornerRadius = 3
     }
     
+    func setBasicColor(){
+        self.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
+    }
+    
 }
 
 extension UIButton {
     
-    func setBasicColor(){
+    override func setBasicColor(){
         
         self.setTitleColor(.white, for: .normal)
         self.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
