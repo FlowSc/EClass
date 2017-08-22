@@ -9,18 +9,52 @@
 import UIKit
 import MapKit
 import SwiftyJSON
+import Alamofire
 
 class DetailTableViewController: UIViewController {
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        myTableView.reloadData()
+        
+        loadDetailData(detailData["id"].intValue)
+
+    }
     @IBOutlet weak var myTableView: UITableView!
     
     var detailData:JSON!
     var userData:JSON!
+    var reloadDetailData:JSON!
+
 
     @IBOutlet weak var lectureRegistBt: UIButton!
     var myData = LectureGenerator.getLecture()
     var myLectureData:[UIImage] = [#imageLiteral(resourceName: "pac-man-logo.gif"), #imageLiteral(resourceName: "default-user-image"),#imageLiteral(resourceName: "whiteStar")]
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/list/", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            guard let data = response.result.value else{return}
+            
+            let lectureData = JSON(data)
+            
+            LectureList.lectureList = lectureData
+            
+        }
+        
+        myTableView.reloadData()
+
+
+        print("Lecture ID")
+        
+//        print(reloadDetailData)
+        
+        
+        print("AAAA")
+        
+        
 
         self.navigationItem.title = self.detailData["title"].stringValue
         myTableView.estimatedRowHeight = 100
@@ -263,6 +297,31 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             
             mv.detailData = detailData
         }
+    }
+    
+    func loadDetailData(_ lectureId:Int) {
+        
+        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/detail", method: .post, parameters: ["lecture_id":lectureId], encoding: JSONEncoding.default, headers: nil).responseJSON { (myData) in
+            print("~~~~~~~")
+            print(myData)
+            print(myData.result.value)
+            print("~~~~~~~")
+        }
+//
+        
+
+//        Alamofire.upload(multipartFormData: { (data) in
+//            
+//            data.append("\(lectureId)".data(using: .utf8)!, withName: "lecture_id")
+//        }, usingThreshold: UInt64.init(), to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/detail", method: .post, headers: nil) { (result) in
+//            print("HHHHHHH")
+//            
+//            print(result)
+//            
+//            print("|||||||||")
+//            
+//        }
+
     }
 }
 

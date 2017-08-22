@@ -35,10 +35,8 @@ class ReviewAddViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func registButtonTouched(_ sender: Any) {
         
-        let myParameter = ["lecture_id":classData["id"].stringValue,"curriculum_rate":curriculumScore, "delivery_rate":deliveryScore, "preparation_rate":preparationScore, "kindness_rate":kindnessScore, "punctually_rate":punctuallyScore, "content":reviewContentTextView.text] as [String : Any]
-        print(myParameter)
         
-        addReview(params: myParameter)
+        addReview()
     }
     
     
@@ -50,6 +48,13 @@ class ReviewAddViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         
         reviewContentTextView.delegate = self
+        view.reloadInputViews()
+        
+        curriculumScore = 3
+        preparationScore = 3
+        deliveryScore = 3
+        kindnessScore = 3
+        punctuallyScore = 3
 
         
         
@@ -81,21 +86,47 @@ class ReviewAddViewController: UIViewController, UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func addReview(params:[String:Any]){
+    func addReview(){
         
         
-        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/review/make/", method: HTTPMethod.post, parameters: params, encoding: JSONEncoding.default, headers: ["Authorization":"Token \(loginToken!)"]).responseJSON { (response) in
-            
-            print("response Start")
-            print(response.result.value)
-            print(response.response?.statusCode)
-            
-            print("response End")
-            
-            self.navigationController?.popViewController(animated: true)
+        let myParameter = ["lecture_id":classData["id"].intValue,"curriculum_rate":Int(curriculumScore), "delivery_rate":Int(deliveryScore), "preparation_rate":Int(preparationScore), "kindness_rate":Int(kindnessScore), "punctually_rate":Int(punctuallyScore), "content":reviewContentTextView.text] as [String : Any]
+
+        
+        let token:HTTPHeaders = ["Authorization":"Token \(loginToken!)"]
+     
+        
+       Alamofire.upload(multipartFormData: { (data) in
+        for (key, value) in myParameter {
+            if value is String || value is Int {
+                data.append("\(value)".data(using: .utf8)!, withName: key)
+                print(data)
+                print(key, value)
+            }
         }
+       }, usingThreshold: UInt64.init(), to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/review/make/", method: .post, headers: token) { (result) in
+        
+            print(result)
+        
+        self.navigationController?.popViewController(animated: true)
+        
+        }
+
+        
+
+     
+        
+//        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/review/make/", method: HTTPMethod.post, parameters: nil, encoding: JSONEncoding.default, headers: token).responseJSON { (response) in
+//            
+//            print("response Start")
+//            print(response.result.value)
+//            print(response.response?.statusCode)
+//            
+//            print("response End")
+//            
+//            self.navigationController?.popViewController(animated: true)
+//        }
+//    }
     }
-    
     func reviewScoreForKindness() {
         print(kindnessStar.value)
         

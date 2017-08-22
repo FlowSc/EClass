@@ -78,6 +78,8 @@ class MainTableViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        
+
         super.viewDidLoad()
         sideMenus()
         customizeNavBar()
