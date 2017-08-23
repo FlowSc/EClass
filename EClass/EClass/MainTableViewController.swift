@@ -91,7 +91,7 @@ class MainTableViewController: UIViewController {
         }
         
         sideMenus()
-        customizeNavBar()
+//        customizeNavBar()
         self.myMainTableView.reloadData()
         
         currentUserToken = UserDefaults.standard.string(forKey: "UserToken")

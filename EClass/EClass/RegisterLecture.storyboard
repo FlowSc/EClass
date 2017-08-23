@@ -70,7 +70,7 @@
         <!--제목-->
         <scene sceneID="18l-33-gdm">
             <objects>
-                <viewController id="Mp3-D7-KAH" customClass="RegisterLectureFirstViewController" customModule="EClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="regilec" id="Mp3-D7-KAH" customClass="RegisterLectureFirstViewController" customModule="EClass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bTn-9G-9Vv"/>
                         <viewControllerLayoutGuide type="bottom" id="JfB-YN-kHq"/>
@@ -79,6 +79,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gyw-ua-e4S">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="수업제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Js5-qf-qiq">
                                 <rect key="frame" x="31" y="104" width="59" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -188,6 +191,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gyw-ua-e4S" firstAttribute="width" secondItem="mLH-la-6Qu" secondAttribute="width" id="6gR-16-iMV"/>
                             <constraint firstItem="2Po-iM-2AU" firstAttribute="leading" secondItem="nXd-oj-Lno" secondAttribute="leading" id="9f9-CF-Dcm"/>
                             <constraint firstItem="vlf-lo-O7b" firstAttribute="leading" secondItem="E7r-Sy-nog" secondAttribute="leading" id="CE0-IS-1Mj"/>
                             <constraint firstItem="eGi-3c-umS" firstAttribute="leading" secondItem="mLH-la-6Qu" secondAttribute="leadingMargin" constant="94" id="KKt-1y-U30"/>
@@ -195,6 +199,7 @@
                             <constraint firstItem="tqS-UV-87m" firstAttribute="leading" secondItem="8bO-B4-Csw" secondAttribute="leading" id="Oku-X4-2mo"/>
                             <constraint firstItem="n2x-6y-kny" firstAttribute="top" secondItem="tqS-UV-87m" secondAttribute="bottom" constant="40" id="PUd-WP-Vdr"/>
                             <constraint firstItem="KcG-qs-boY" firstAttribute="centerY" secondItem="8bO-B4-Csw" secondAttribute="centerY" id="RSp-mQ-UeU"/>
+                            <constraint firstItem="gyw-ua-e4S" firstAttribute="centerY" secondItem="mLH-la-6Qu" secondAttribute="centerY" id="TDF-WP-143"/>
                             <constraint firstAttribute="bottom" secondItem="C0b-SF-dMs" secondAttribute="bottom" id="VDv-q6-bqf"/>
                             <constraint firstItem="Js5-qf-qiq" firstAttribute="leading" secondItem="mLH-la-6Qu" secondAttribute="leadingMargin" constant="15" id="VNL-9A-WnW"/>
                             <constraint firstAttribute="trailing" secondItem="C0b-SF-dMs" secondAttribute="trailing" id="aUf-1W-aRg"/>
@@ -209,12 +214,15 @@
                             <constraint firstItem="8bO-B4-Csw" firstAttribute="leading" secondItem="Js5-qf-qiq" secondAttribute="leading" id="q1J-qN-w0t"/>
                             <constraint firstItem="tqS-UV-87m" firstAttribute="top" secondItem="8bO-B4-Csw" secondAttribute="bottom" constant="110" id="ql8-gr-F9t"/>
                             <constraint firstItem="E7r-Sy-nog" firstAttribute="leading" secondItem="Js5-qf-qiq" secondAttribute="trailing" constant="20" id="tlN-Uv-II6"/>
+                            <constraint firstItem="gyw-ua-e4S" firstAttribute="height" secondItem="mLH-la-6Qu" secondAttribute="height" id="viO-YI-KfF"/>
+                            <constraint firstItem="gyw-ua-e4S" firstAttribute="centerX" secondItem="mLH-la-6Qu" secondAttribute="centerX" id="xOu-MW-u1H"/>
                             <constraint firstItem="E7r-Sy-nog" firstAttribute="top" secondItem="bTn-9G-9Vv" secondAttribute="bottom" constant="40" id="yDn-kL-ZZe"/>
                             <constraint firstItem="KcG-qs-boY" firstAttribute="leading" secondItem="E7r-Sy-nog" secondAttribute="leading" id="yKF-Jb-ckk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="제목" id="tf4-i3-9eR"/>
                     <connections>
+                        <outlet property="backImage" destination="gyw-ua-e4S" id="F4Q-TZ-f9d"/>
                         <outlet property="categoryPicker" destination="eGi-3c-umS" id="Izp-bK-G6y"/>
                         <outlet property="categoryTextField" destination="KcG-qs-boY" id="51R-jc-sAD"/>
                         <outlet property="goNextButtonOutlet" destination="clm-FM-B7p" id="sDe-ZH-s1G"/>
@@ -226,6 +234,102 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LWg-x5-71U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1072.8" y="10.344827586206897"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="7JT-Sh-NKy">
+            <objects>
+                <viewController id="tX9-gV-297" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iQ8-OR-71H"/>
+                        <viewControllerLayoutGuide type="bottom" id="lDn-4v-3hE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2or-xI-fUI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="dN2-iH-3YM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ekz-O1-n7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-494" y="1788"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="4Cw-Qj-WH5">
+            <objects>
+                <viewController id="Ov0-kE-SaK" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ENh-gL-UBC"/>
+                        <viewControllerLayoutGuide type="bottom" id="MRV-1q-ucZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rTU-KN-zpf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="lDu-FJ-aNF"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GrJ-uh-UJj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="1685"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="aoE-sW-gE8">
+            <objects>
+                <viewController id="eSS-aa-fTA" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cM7-Ua-TCk"/>
+                        <viewControllerLayoutGuide type="bottom" id="zAM-7G-h9P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ee9-5b-kW2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="e8d-6a-4Vf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MTq-JC-EuV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="703" y="1294"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="cwY-2S-JtQ">
+            <objects>
+                <viewController id="u6a-db-lgM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h5l-qp-5Jo"/>
+                        <viewControllerLayoutGuide type="bottom" id="i4d-Qd-ItU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bOj-J2-feB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="ria-Hx-67c"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cou-rJ-EgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="703" y="638"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="jOs-5O-B5s">
+            <objects>
+                <tabBarController id="MXp-d1-NOF" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="JVT-aB-v2w">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="u6a-db-lgM" kind="relationship" relationship="viewControllers" id="x87-Zb-Tzc"/>
+                        <segue destination="eSS-aa-fTA" kind="relationship" relationship="viewControllers" id="hhZ-Ol-whg"/>
+                        <segue destination="Ov0-kE-SaK" kind="relationship" relationship="viewControllers" id="p6k-R9-NBV"/>
+                        <segue destination="tX9-gV-297" kind="relationship" relationship="viewControllers" id="DQn-4P-XZi"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="62e-nD-BMc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-254" y="967"/>
         </scene>
         <!--소개-->
         <scene sceneID="tLP-CY-sOo">

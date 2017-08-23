@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		451BC7FE1F4D519700D11AA6 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451BC7FD1F4D519700D11AA6 /* ChangePasswordViewController.swift */; };
+		451BC8001F4D52C400D11AA6 /* lock.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 451BC7FF1F4D52C400D11AA6 /* lock.jpeg */; };
+		451BC8021F4D5D8600D11AA6 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 451BC8011F4D5D8600D11AA6 /* 6.png */; };
+		451BC8041F4D64B700D11AA6 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 451BC8031F4D64B700D11AA6 /* 7.png */; };
+		451BC8091F4D68C700D11AA6 /* register0.png in Resources */ = {isa = PBXBuildFile; fileRef = 451BC8061F4D68C700D11AA6 /* register0.png */; };
+		451BC80A1F4D68C700D11AA6 /* register1.png in Resources */ = {isa = PBXBuildFile; fileRef = 451BC8071F4D68C700D11AA6 /* register1.png */; };
+		451BC80B1F4D68C700D11AA6 /* register2.png in Resources */ = {isa = PBXBuildFile; fileRef = 451BC8081F4D68C700D11AA6 /* register2.png */; };
+		451BC80D1F4D6ACC00D11AA6 /* noImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 451BC80C1F4D6ACC00D11AA6 /* noImage.png */; };
+		451BC80F1F4D733F00D11AA6 /* RegisterTutorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451BC80E1F4D733F00D11AA6 /* RegisterTutorViewController.swift */; };
+		451BC8111F4D734C00D11AA6 /* RegisterTutor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 451BC8101F4D734C00D11AA6 /* RegisterTutor.storyboard */; };
+		451BC8131F4D748A00D11AA6 /* RegisterTutorTableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451BC8121F4D748A00D11AA6 /* RegisterTutorTableViewCell1.swift */; };
+		451BC8151F4D758F00D11AA6 /* RegisterTutorTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451BC8141F4D758F00D11AA6 /* RegisterTutorTableViewCell2.swift */; };
+		451BC8171F4D813400D11AA6 /* RegisterTutorTableViewCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451BC8161F4D813400D11AA6 /* RegisterTutorTableViewCell3.swift */; };
+		451BC8191F4D935C00D11AA6 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 451BC8181F4D935C00D11AA6 /* 5.png */; };
 		45264B011F3C7DDB00933C50 /* InputUserGenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45264B001F3C7DDB00933C50 /* InputUserGenderTableViewCell.swift */; };
 		45264B031F3C7E5B00933C50 /* InputUserDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45264B021F3C7E5B00933C50 /* InputUserDataTableViewCell.swift */; };
 		45264B6E1F3C857500933C50 /* UserInformationPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45264B6C1F3C857500933C50 /* UserInformationPopupView.swift */; };
@@ -89,10 +103,10 @@
 		45264C731F47097C00933C50 /* sports6.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C6A1F47097C00933C50 /* sports6.png */; };
 		45264C741F47097C00933C50 /* sports7.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C6B1F47097C00933C50 /* sports7.png */; };
 		45264C751F47097C00933C50 /* sports8.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C6C1F47097C00933C50 /* sports8.png */; };
-		45264C901F47E67A00933C50 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C8C1F47E67A00933C50 /* 6.png */; };
-		45264C911F47E67A00933C50 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C8D1F47E67A00933C50 /* 7.png */; };
-		45264C921F47E67A00933C50 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C8E1F47E67A00933C50 /* 8.png */; };
-		45264C931F47E67A00933C50 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C8F1F47E67A00933C50 /* 9.png */; };
+		45264C901F47E67A00933C50 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C8C1F47E67A00933C50 /* 8.png */; };
+		45264C911F47E67A00933C50 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C8D1F47E67A00933C50 /* 9.png */; };
+		45264C921F47E67A00933C50 /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C8E1F47E67A00933C50 /* 10.png */; };
+		45264C931F47E67A00933C50 /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C8F1F47E67A00933C50 /* 11.png */; };
 		45264C951F47EA2C00933C50 /* ChangeSelfDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45264C941F47EA2C00933C50 /* ChangeSelfDescriptionTableViewCell.swift */; };
 		45264C971F47EEB600933C50 /* elass_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264C961F47EEB600933C50 /* elass_logo.png */; };
 		45264CB71F4884F700933C50 /* passion2.png in Resources */ = {isa = PBXBuildFile; fileRef = 45264CB61F4884F600933C50 /* passion2.png */; };
@@ -157,6 +171,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		451BC7FD1F4D519700D11AA6 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		451BC7FF1F4D52C400D11AA6 /* lock.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lock.jpeg; sourceTree = "<group>"; };
+		451BC8011F4D5D8600D11AA6 /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 6.png; path = ../6.png; sourceTree = "<group>"; };
+		451BC8031F4D64B700D11AA6 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 7.png; path = ../7.png; sourceTree = "<group>"; };
+		451BC8061F4D68C700D11AA6 /* register0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register0.png; sourceTree = "<group>"; };
+		451BC8071F4D68C700D11AA6 /* register1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register1.png; sourceTree = "<group>"; };
+		451BC8081F4D68C700D11AA6 /* register2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register2.png; sourceTree = "<group>"; };
+		451BC80C1F4D6ACC00D11AA6 /* noImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noImage.png; sourceTree = "<group>"; };
+		451BC80E1F4D733F00D11AA6 /* RegisterTutorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTutorViewController.swift; sourceTree = "<group>"; };
+		451BC8101F4D734C00D11AA6 /* RegisterTutor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegisterTutor.storyboard; sourceTree = "<group>"; };
+		451BC8121F4D748A00D11AA6 /* RegisterTutorTableViewCell1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTutorTableViewCell1.swift; sourceTree = "<group>"; };
+		451BC8141F4D758F00D11AA6 /* RegisterTutorTableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTutorTableViewCell2.swift; sourceTree = "<group>"; };
+		451BC8161F4D813400D11AA6 /* RegisterTutorTableViewCell3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTutorTableViewCell3.swift; sourceTree = "<group>"; };
+		451BC8181F4D935C00D11AA6 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 		45264B001F3C7DDB00933C50 /* InputUserGenderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputUserGenderTableViewCell.swift; sourceTree = "<group>"; };
 		45264B021F3C7E5B00933C50 /* InputUserDataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputUserDataTableViewCell.swift; sourceTree = "<group>"; };
 		45264B6C1F3C857500933C50 /* UserInformationPopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformationPopupView.swift; sourceTree = "<group>"; };
@@ -241,10 +269,10 @@
 		45264C6A1F47097C00933C50 /* sports6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports6.png; sourceTree = "<group>"; };
 		45264C6B1F47097C00933C50 /* sports7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports7.png; sourceTree = "<group>"; };
 		45264C6C1F47097C00933C50 /* sports8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports8.png; sourceTree = "<group>"; };
-		45264C8C1F47E67A00933C50 /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
-		45264C8D1F47E67A00933C50 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
-		45264C8E1F47E67A00933C50 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
-		45264C8F1F47E67A00933C50 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
+		45264C8C1F47E67A00933C50 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
+		45264C8D1F47E67A00933C50 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
+		45264C8E1F47E67A00933C50 /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10.png; sourceTree = "<group>"; };
+		45264C8F1F47E67A00933C50 /* 11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11.png; sourceTree = "<group>"; };
 		45264C941F47EA2C00933C50 /* ChangeSelfDescriptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeSelfDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		45264C961F47EEB600933C50 /* elass_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = elass_logo.png; sourceTree = "<group>"; };
 		45264CB61F4884F600933C50 /* passion2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = passion2.png; sourceTree = "<group>"; };
@@ -339,6 +367,17 @@
 				A54FF905BECFE602411DC250 /* Pods-EClass.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		451BC8051F4D68C700D11AA6 /* RegisterLectureImage */ = {
+			isa = PBXGroup;
+			children = (
+				451BC8061F4D68C700D11AA6 /* register0.png */,
+				451BC8071F4D68C700D11AA6 /* register1.png */,
+				451BC8081F4D68C700D11AA6 /* register2.png */,
+			);
+			name = RegisterLectureImage;
+			path = sports/RegisterLectureImage;
 			sourceTree = "<group>";
 		};
 		45264BF91F47095200933C50 /* computer */ = {
@@ -459,10 +498,13 @@
 		45264C8B1F47E67A00933C50 /* profileIcon */ = {
 			isa = PBXGroup;
 			children = (
-				45264C8C1F47E67A00933C50 /* 6.png */,
-				45264C8D1F47E67A00933C50 /* 7.png */,
-				45264C8E1F47E67A00933C50 /* 8.png */,
-				45264C8F1F47E67A00933C50 /* 9.png */,
+				451BC8011F4D5D8600D11AA6 /* 6.png */,
+				451BC8031F4D64B700D11AA6 /* 7.png */,
+				451BC8181F4D935C00D11AA6 /* 5.png */,
+				45264C8C1F47E67A00933C50 /* 8.png */,
+				45264C8D1F47E67A00933C50 /* 9.png */,
+				45264C8E1F47E67A00933C50 /* 10.png */,
+				45264C8F1F47E67A00933C50 /* 11.png */,
 			);
 			path = profileIcon;
 			sourceTree = "<group>";
@@ -483,6 +525,7 @@
 				45264C8B1F47E67A00933C50 /* profileIcon */,
 				45A57FA71F357C26001F5C1A /* ChangeUserInfomationViewController.swift */,
 				45A57FA91F357C45001F5C1A /* SelfDescriptionTableViewCell.swift */,
+				451BC7FD1F4D519700D11AA6 /* ChangePasswordViewController.swift */,
 				45264B701F3C962E00933C50 /* SlideOutMenu.storyboard */,
 				45A57FAB1F357C4C001F5C1A /* ProfileImageTableViewCell.swift */,
 				45264B021F3C7E5B00933C50 /* InputUserDataTableViewCell.swift */,
@@ -490,6 +533,11 @@
 				45A57FAD1F357C56001F5C1A /* ProfileTableViewCell.swift */,
 				45A57FAF1F357C5D001F5C1A /* DetailChangeUserInfoViewController.swift */,
 				45264C941F47EA2C00933C50 /* ChangeSelfDescriptionTableViewCell.swift */,
+				451BC8101F4D734C00D11AA6 /* RegisterTutor.storyboard */,
+				451BC8161F4D813400D11AA6 /* RegisterTutorTableViewCell3.swift */,
+				451BC8121F4D748A00D11AA6 /* RegisterTutorTableViewCell1.swift */,
+				451BC8141F4D758F00D11AA6 /* RegisterTutorTableViewCell2.swift */,
+				451BC80E1F4D733F00D11AA6 /* RegisterTutorViewController.swift */,
 			);
 			name = ChangeUserInformationVIewCOntrollers;
 			sourceTree = "<group>";
@@ -570,6 +618,7 @@
 				45264BC31F3F573D00933C50 /* FAQTableViewCell.xib */,
 				45264BAE1F3D85CF00933C50 /* RearProfileImageTableViewCell.swift */,
 				45264C761F47D71800933C50 /* icon */,
+				451BC8051F4D68C700D11AA6 /* RegisterLectureImage */,
 				45264C631F47097C00933C50 /* sports */,
 				45264C521F47097700933C50 /* hobby */,
 				45264C411F47097200933C50 /* major */,
@@ -621,6 +670,8 @@
 				45A57F9F1F357BB0001F5C1A /* DataCenter.swift */,
 				45264B6C1F3C857500933C50 /* UserInformationPopupView.swift */,
 				45264B6D1F3C857500933C50 /* UserInformationPopupView.xib */,
+				451BC80C1F4D6ACC00D11AA6 /* noImage.png */,
+				451BC7FF1F4D52C400D11AA6 /* lock.jpeg */,
 				45A57FB41F357C9D001F5C1A /* ChangeUserInformationVIewCOntrollers */,
 				45264B721F3C972A00933C50 /* EClass-Bridging-Header.h */,
 			);
@@ -701,12 +752,15 @@
 				45264C3D1F47096B00933C50 /* music5.png in Resources */,
 				45264C6D1F47097C00933C50 /* sports0.png in Resources */,
 				759155A51F3D8CD60010686B /* LectureImageCollectionViewCell.xib in Resources */,
+				451BC8041F4D64B700D11AA6 /* 7.png in Resources */,
 				45264C501F47097200933C50 /* major6.png in Resources */,
 				45264C751F47097C00933C50 /* sports8.png in Resources */,
 				45264C711F47097C00933C50 /* sports4.png in Resources */,
 				45264C6F1F47097C00933C50 /* sports2.png in Resources */,
 				45264C061F47095300933C50 /* computer3.png in Resources */,
+				451BC8091F4D68C700D11AA6 /* register0.png in Resources */,
 				45264C5E1F47097700933C50 /* hobby3.png in Resources */,
+				451BC8021F4D5D8600D11AA6 /* 6.png in Resources */,
 				45264C4B1F47097200933C50 /* major1.png in Resources */,
 				45264C2C1F47096600933C50 /* health6.png in Resources */,
 				45264C3F1F47096B00933C50 /* music7.png in Resources */,
@@ -720,7 +774,7 @@
 				45264C291F47096600933C50 /* health3.png in Resources */,
 				759155991F3CA8740010686B /* MapLocationTableViewCell.xib in Resources */,
 				45264C181F47096100933C50 /* language3.png in Resources */,
-				45264C911F47E67A00933C50 /* 7.png in Resources */,
+				45264C911F47E67A00933C50 /* 9.png in Resources */,
 				75D1B29E1F357CB40068C20C /* pac-man-logo.gif in Resources */,
 				45264C6E1F47097C00933C50 /* sports1.png in Resources */,
 				45264C2B1F47096600933C50 /* health5.png in Resources */,
@@ -730,24 +784,28 @@
 				75D1B29F1F357CB40068C20C /* five.jpg in Resources */,
 				45264BBF1F3DB3BD00933C50 /* AssignLecture.storyboard in Resources */,
 				45264C2D1F47096600933C50 /* health7.png in Resources */,
+				451BC8001F4D52C400D11AA6 /* lock.jpeg in Resources */,
 				75BC382E1F3AF36600AA9E96 /* TutorDetailTableViewCell.xib in Resources */,
 				45264C721F47097C00933C50 /* sports5.png in Resources */,
 				45264C511F47097200933C50 /* major7.png in Resources */,
 				75D1B2851F357C6A0068C20C /* MainPage.storyboard in Resources */,
+				451BC80D1F4D6ACC00D11AA6 /* noImage.png in Resources */,
 				45264C191F47096100933C50 /* language4.png in Resources */,
+				451BC80B1F4D68C700D11AA6 /* register2.png in Resources */,
 				75FB7F071F42E5C2002A422F /* MainSearchStoryboard.storyboard in Resources */,
 				75D1B28E1F357C810068C20C /* DetailPage.storyboard in Resources */,
 				45264C601F47097700933C50 /* hobby5.png in Resources */,
-				45264C921F47E67A00933C50 /* 8.png in Resources */,
+				45264C921F47E67A00933C50 /* 10.png in Resources */,
 				45264C4C1F47097200933C50 /* major2.png in Resources */,
 				45264BB31F3D982900933C50 /* ListOfLecture.storyboard in Resources */,
 				45264BC51F3F573D00933C50 /* FAQTableViewCell.xib in Resources */,
 				7518F5221F49585C0088ED19 /* ReviewShowTableViewCell.xib in Resources */,
 				45264B711F3C962E00933C50 /* SlideOutMenu.storyboard in Resources */,
-				45264C931F47E67A00933C50 /* 9.png in Resources */,
+				45264C931F47E67A00933C50 /* 11.png in Resources */,
 				45264C281F47096600933C50 /* health2.png in Resources */,
 				45264C3C1F47096B00933C50 /* music4.png in Resources */,
 				45264C151F47096100933C50 /* language0.png in Resources */,
+				451BC8111F4D734C00D11AA6 /* RegisterTutor.storyboard in Resources */,
 				45264C041F47095300933C50 /* computer1.png in Resources */,
 				45264C1C1F47096100933C50 /* language7.png in Resources */,
 				45264C381F47096B00933C50 /* music0.png in Resources */,
@@ -756,10 +814,12 @@
 				45264C971F47EEB600933C50 /* elass_logo.png in Resources */,
 				45264C701F47097C00933C50 /* sports3.png in Resources */,
 				45264C5C1F47097700933C50 /* hobby1.png in Resources */,
-				45264C901F47E67A00933C50 /* 6.png in Resources */,
+				451BC8191F4D935C00D11AA6 /* 5.png in Resources */,
+				45264C901F47E67A00933C50 /* 8.png in Resources */,
 				45264C261F47096600933C50 /* health0.png in Resources */,
 				45264C161F47096100933C50 /* language1.png in Resources */,
 				75D1B2971F357C8D0068C20C /* LocationSelect.storyboard in Resources */,
+				451BC80A1F4D68C700D11AA6 /* register1.png in Resources */,
 				75D1B2961F357C8D0068C20C /* SearchPage.storyboard in Resources */,
 				45264BD31F46FB4C00933C50 /* eclass.mp4 in Resources */,
 				45264C401F47096B00933C50 /* music8.png in Resources */,
@@ -846,6 +906,7 @@
 				75D1B2991F357C8D0068C20C /* CategorySelectViewController.swift in Sources */,
 				45264BC41F3F573D00933C50 /* FAQTableViewCell.swift in Sources */,
 				75D1B2871F357C6A0068C20C /* RecommendTableViewCell.swift in Sources */,
+				451BC8151F4D758F00D11AA6 /* RegisterTutorTableViewCell2.swift in Sources */,
 				75BC38281F3ADF6500AA9E96 /* TutorInfoTableViewCell.swift in Sources */,
 				75D1B28A1F357C6A0068C20C /* LocationTableViewCell.swift in Sources */,
 				45264BB51F3D9ADF00933C50 /* ListOfLectureTableViewCell.swift in Sources */,
@@ -859,6 +920,7 @@
 				45264BCF1F46C9EC00933C50 /* RegisterLectureThirdViewController.swift in Sources */,
 				7591559C1F3CB9CD0010686B /* LectureReviewTableViewCell.swift in Sources */,
 				45264BCD1F46245F00933C50 /* RegisterLectureSecondViewController.swift in Sources */,
+				451BC8131F4D748A00D11AA6 /* RegisterTutorTableViewCell1.swift in Sources */,
 				75D1B2861F357C6A0068C20C /* RecommendCollectionViewCell.swift in Sources */,
 				45264BBD1F3DAC5600933C50 /* ListOfLectureViewController.swift in Sources */,
 				45264BCB1F46245100933C50 /* RegisterLectureFirstViewController.swift in Sources */,
@@ -866,6 +928,7 @@
 				45264C951F47EA2C00933C50 /* ChangeSelfDescriptionTableViewCell.swift in Sources */,
 				45264B031F3C7E5B00933C50 /* InputUserDataTableViewCell.swift in Sources */,
 				759155A41F3D8CD60010686B /* LectureImageCollectionViewCell.swift in Sources */,
+				451BC80F1F4D733F00D11AA6 /* RegisterTutorViewController.swift in Sources */,
 				75BC38301F3AF56500AA9E96 /* SimpleImageTableViewCell.swift in Sources */,
 				7518F5141F468FB50088ED19 /* Constant.swift in Sources */,
 				75D1B2891F357C6A0068C20C /* CategoryCollectionViewCell.swift in Sources */,
@@ -880,7 +943,9 @@
 				45A57FA41F357C12001F5C1A /* LogInViewController.swift in Sources */,
 				75BC382D1F3AF36600AA9E96 /* TutorDetailTableViewCell.swift in Sources */,
 				45264BB11F3D85E900933C50 /* RearSettingTableViewCell.swift in Sources */,
+				451BC8171F4D813400D11AA6 /* RegisterTutorTableViewCell3.swift in Sources */,
 				45264B6E1F3C857500933C50 /* UserInformationPopupView.swift in Sources */,
+				451BC7FE1F4D519700D11AA6 /* ChangePasswordViewController.swift in Sources */,
 				45264B751F3C972B00933C50 /* SWRevealViewController.m in Sources */,
 				45A57FAE1F357C56001F5C1A /* ProfileTableViewCell.swift in Sources */,
 				45A57FA01F357BB0001F5C1A /* DataCenter.swift in Sources */,

@@ -43,7 +43,7 @@ class ChangeUserInfomationViewController: UIViewController, UITableViewDataSourc
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! ProfileTableViewCell
-            cell.setIcon(data: indexPath.row + 6)
+            cell.setIcon(data: indexPath.row + 8)
             if indexPath.row == 0
             {
                 cell.setUserInfoLabel(data: (currentUserData?.name) ?? "이름을 알려주세요")
