@@ -48,15 +48,15 @@ func postDicToUserInfo(params:[String:String])
         print("여기서부터")
         print(response)
         print("~~~~~~~~")
-        print(response.result.value)
+        print(response.result.value!)
         print("~~~~~~~~")
-        print(response.data)
+        print(response.data!)
         print("~~~~~~~~")
         print(response.description)
         print("~~~~~~~~")
-        print(response.value)
+        print(response.value!)
         print(params)
-        print(response.error)
+        print(response.error!)
     
     }
 }
@@ -114,6 +114,7 @@ final class DataCenter
     private init()
     {
 //유저 정보 GET
+        
         Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization":"Token " + "\(currentUserToken)"]).responseJSON { (response) in
             guard let data = response.result.value else
             {
@@ -284,11 +285,15 @@ extension UIView {
         self.layer.cornerRadius = 3
     }
     
+    func setBasicColor(){
+        self.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
+    }
+    
 }
 
 extension UIButton {
     
-    func setBasicColor(){
+    override func setBasicColor(){
         
         self.setTitleColor(.white, for: .normal)
         self.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
@@ -296,6 +301,15 @@ extension UIButton {
 
     
 }
+
+extension Double { /// Rounds the double to decimal places value 
+    
+    mutating func roundToPlaces(places:Int) -> Double { let divisor = pow(10.0, Double(places))
+        
+        return Darwin.round(self * divisor) / divisor }
+
+}
+    
 
 
 

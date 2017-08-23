@@ -114,6 +114,7 @@
 		7518F51E1F49505B0088ED19 /* LectureShowTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7518F51C1F49505B0088ED19 /* LectureShowTableCell.xib */; };
 		7518F5211F49585C0088ED19 /* ReviewShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518F51F1F49585C0088ED19 /* ReviewShowTableViewCell.swift */; };
 		7518F5221F49585C0088ED19 /* ReviewShowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7518F5201F49585C0088ED19 /* ReviewShowTableViewCell.xib */; };
+		758D9CB91F4C1D70005B858D /* StarReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D9CB81F4C1D70005B858D /* StarReview.swift */; };
 		759155901F3C62C80010686B /* LectureIntroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7591558E1F3C62C80010686B /* LectureIntroTableViewCell.swift */; };
 		759155911F3C62C80010686B /* LectureIntroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7591558F1F3C62C80010686B /* LectureIntroTableViewCell.xib */; };
 		759155981F3CA8740010686B /* MapLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759155961F3CA8740010686B /* MapLocationTableViewCell.swift */; };
@@ -266,6 +267,7 @@
 		7518F51C1F49505B0088ED19 /* LectureShowTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LectureShowTableCell.xib; sourceTree = "<group>"; };
 		7518F51F1F49585C0088ED19 /* ReviewShowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewShowTableViewCell.swift; sourceTree = "<group>"; };
 		7518F5201F49585C0088ED19 /* ReviewShowTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewShowTableViewCell.xib; sourceTree = "<group>"; };
+		758D9CB81F4C1D70005B858D /* StarReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarReview.swift; sourceTree = "<group>"; };
 		7591558E1F3C62C80010686B /* LectureIntroTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureIntroTableViewCell.swift; sourceTree = "<group>"; };
 		7591558F1F3C62C80010686B /* LectureIntroTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LectureIntroTableViewCell.xib; sourceTree = "<group>"; };
 		759155961F3CA8740010686B /* MapLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLocationTableViewCell.swift; sourceTree = "<group>"; };
@@ -541,6 +543,7 @@
 				45264BCE1F46C9EC00933C50 /* RegisterLectureThirdViewController.swift */,
 				45264BCA1F46245100933C50 /* RegisterLectureFirstViewController.swift */,
 				45264BD01F46C9FC00933C50 /* RegisterLectureFourthViewController.swift */,
+				758D9CB81F4C1D70005B858D /* StarReview.swift */,
 			);
 			name = DetailPage;
 			sourceTree = "<group>";
@@ -888,6 +891,7 @@
 				7518F51D1F49505B0088ED19 /* LectureShowTableCell.swift in Sources */,
 				759155981F3CA8740010686B /* MapLocationTableViewCell.swift in Sources */,
 				45A57FB01F357C5D001F5C1A /* DetailChangeUserInfoViewController.swift in Sources */,
+				758D9CB91F4C1D70005B858D /* StarReview.swift in Sources */,
 				45264BC11F3F546B00933C50 /* FAQViewController.swift in Sources */,
 				45264BAD1F3D842500933C50 /* RearUserInfoViewController.swift in Sources */,
 				45A57FA61F357C1D001F5C1A /* SignUpViewController.swift in Sources */,

@@ -9,20 +9,56 @@
 import UIKit
 import MapKit
 import SwiftyJSON
+import Alamofire
+import SwiftyStarRatingView
 
 class DetailTableViewController: UIViewController {
-    @IBOutlet weak var myTableView: UITableView!
     
+    var averageReviewtotalScore:Double = 0.0
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        myTableView.reloadData()
+        
+        print(detailData["id"].stringValue)
+        loadDetailData(detailData["id"].intValue)
+
+    }
+//    @IBAction func askTutorButtonTouched(_ sender: UIButton) {
+//        
+//        let alert = UIAlertController.init(title: "튜터에게 문의하기", message: (, preferredStyle: <#T##UIAlertControllerStyle#>)
+//    }
+    @IBOutlet weak var myTableView: UITableView!
     var detailData:JSON!
     var userData:JSON!
-
+    var reloadDetailData:JSON!
+    var reviewAverage:Double!
     @IBOutlet weak var lectureRegistBt: UIButton!
-    var myData = LectureGenerator.getLecture()
-    var myLectureData:[UIImage] = [#imageLiteral(resourceName: "pac-man-logo.gif"), #imageLiteral(resourceName: "default-user-image"),#imageLiteral(resourceName: "whiteStar")]
+    var myData:[LectureInfo]!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        myTableView.reloadData()
+        
+        loadDetailData(detailData["id"].intValue)
+        
+        myData = LectureGenerator.getLecture(detailData["class_intro"].stringValue, detailData["class_intro"].stringValue)
 
-        self.navigationItem.title = self.detailData["title"].stringValue
+
+        reviewAverage = makeReviewAverageScore()
+        
+        print("Lecture ID")
+
+        
+        print("AAAA")
+        
+        
+        
+
+        self.navigationItem.title = "강의정보"
         myTableView.estimatedRowHeight = 100
         myTableView.rowHeight = UITableViewAutomaticDimension
         myTableView.reloadData()
@@ -30,10 +66,14 @@ class DetailTableViewController: UIViewController {
         myTableView.register(UINib.init(nibName: NibFile.lectureIntro, bundle: nil), forCellReuseIdentifier: CustomsTableViewCell.lectureIntro)
         myTableView.register(UINib.init(nibName: NibFile.mapLocation, bundle: nil), forCellReuseIdentifier: CustomsTableViewCell.mapLocation)
         myTableView.register(UINib.init(nibName: NibFile.lectureReivew, bundle: nil), forCellReuseIdentifier: CustomsTableViewCell.lectureReview)
-        print(userData)
+        print("Detail Data Start!!")
+        print(detailData)
+        print("Detail Data End!!!!!!")
         lectureRegistBt.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
 
         // Do any additional setup after loading the view.
+        
+        
     }
 
     
@@ -51,30 +91,45 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        var attendanceCount = detailData["total_count"].stringValue
+        
+        if attendanceCount == "" {
+            attendanceCount = "0"
+        }
+
+        
         
         if indexPath.row == 0{
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.lectureBasicInfo, for: indexPath) as! IntroductionTableViewCell
             
-            cell.setLectureInfo(self.detailData["title"].stringValue, "5.0",self.detailData["locations"][0]["location2"].stringValue, "\(self.detailData["max_member"].stringValue) 명", "회 당 \(self.detailData["price"].stringValue) 원", "주 \(self.detailData["basic_class_time"]) 회", "총 8회 16시간")
+            
+            
+            cell.setLectureInfo(self.detailData["title"].stringValue, self.detailData["locations"][0]["location2"].stringValue, "\(self.detailData["max_member"].stringValue) 명", "회 당 \(self.detailData["price"].stringValue) 원", "주 \(self.detailData["basic_class_time"]) 회", "총 8회 16시간", "\(attendanceCount) 명 참여중")
             cell.selectionStyle = .none
+            cell.attendanceCount.layer.cornerRadius = 10
+            cell.attendanceCount.textColor = .white
+            cell.attendanceCount.setBasicColor()
+            
+            print(averageReviewtotalScore / 5)
 
-        
             return cell}
         
         else if indexPath.row == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.tutorBasicInfo, for: indexPath) as! TutorInfoTableViewCell
             
-            cell.setTutor(#imageLiteral(resourceName: "default-user-image"), detailData["tutor_info"]["nickname"].stringValue, tutorComment: "하이하이 \n 이거 많이 쓰면 늘어나는거 팩트입니까? 항ㄴ훈이훈이후니우히나위 저는 IOS 개발자인데 팩맨 겁나 잘하구여 그 똥망한 영화 픽셀도 개즐겁게 본 진성 너드입니다")
+            cell.setTutor(#imageLiteral(resourceName: "default-user-image"), detailData["tutor_info"]["nickname"].stringValue, tutorComment: detailData["target_intro"].stringValue)
             cell.selectionStyle = .none
 
             
             return cell
         
-        }else if indexPath.row == 2{
+        }
+        else if indexPath.row == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.tutorDetail, for: indexPath) as! TutorDetailTableViewCell
             
-    cell.tutorBasicInfo.text = "인하대학교"
-    cell.tutorDetailInfo.text = "jsakdnaksjfbldsakfbsdkfblasdkjfbadsjkbflakjdsfbadsjkfbasjdkfbsjdk\n bfljksdfbasdjkfbadjskfbdkasfbjkdasfblajkdsfbjaldsfbl\n aksdjfbsajldkfbalsjdkfblasdjkfblasdkjfbaslkdfbaljkdsfbald\n sjfblksdjafbaksd\n fblasdkfblaskdjfblaskjdfbalsjdfbasl\n jdfblasdjkfbadlsjkfbladskfbasldjkfblasdjfb\n jadbflj"
+    cell.tutorBasicInfo.text = ""
+            cell.tutorDetailInfo.text = detailData["tutor_intro"].stringValue
+
             cell.selectionStyle = .none
 
             return cell
@@ -133,16 +188,24 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             
             cell.moveToreviewButton.addTarget(self, action: #selector(moveToReviewTableView), for: .touchUpInside)
             cell.moveReviewAddB.addTarget(self, action: #selector(moveToReviewAddView), for: .touchUpInside)
+            cell.moveToreviewButton.backgroundColor = .lightGray
+            cell.moveToreviewButton.setTitleColor(.white, for: .normal)
+            cell.moveReviewAddB.setBasicColor()
+            cell.moveReviewAddB.makeCornerRound3()
+            cell.moveToreviewButton.makeCornerRound3()
                 
             cell.reviewContents.text = representativeReviewData["content"].stringValue
             cell.countLb.text = "총 \(detailData["review_count"].intValue) 개"
-            cell.reviewScoreLb.text = " " + String(Double(representativeReviewData["curriculum_rate"].intValue))
+            cell.reviewScoreLb.text = " " + String(reviewAverage)
+            cell.reviewerName.text = representativeReviewData["author"]["username"].stringValue
+            var date = representativeReviewData["modify_date"].stringValue
                 
-            var date = detailData["modify_date"].stringValue
-                
-                date.characters.removeLast(17)
+                date.characters.removeLast(16)
                 
             cell.reviewCreateDate.text = date
+            cell.reviewStar.isEnabled = false
+            cell.reviewStar.value = CGFloat(reviewAverage)
+            
 
             }
 
@@ -217,11 +280,10 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 180
+        return 300
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(detailData["lecture_photos"].count)
         return detailData["lecture_photos"].count
     }
     
@@ -229,12 +291,6 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.lectureImage, for: indexPath) as! LectureImageCollectionViewCell
         let myImagesUrl:URL = URL(string: detailData["lecture_photos"][indexPath.item]["lecture_photo"].stringValue)!
         
-        print("URLLOG")
-        print(myImagesUrl)
-        print("AAAAAA")
-        print(detailData["lecture_photos"])
-        print("BBBBBBB")
-
         cell.lectureImage.kf.setImage(with: myImagesUrl)
         
 
@@ -249,17 +305,47 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             mv.detailData = detailData
         }
     }
+    
+    func loadDetailData(_ lectureId:Int) {
+        
+        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/detail/", method: .post, parameters: ["lecture_id":lectureId], encoding: JSONEncoding.prettyPrinted, headers: ["Content-type":"application/json"]).responseJSON { (aa) in
+            
+            
+            self.detailData = JSON(aa.result.value)
+            self.myTableView.reloadData()
+
+        }
+
+    }
+    
+    func makeReviewAverageScore() -> Double {
+        
+        
+        for (key, value) in detailData["review_average"].dictionaryValue {
+            
+            print(key, value)
+            
+            
+            let averagePoint = value.doubleValue
+            
+            averageReviewtotalScore += averagePoint
+            
+            
+            
+        }
+        
+        return averageReviewtotalScore.roundToPlaces(places: 0) / 5
+
+    }
 }
 
 class LectureInfo {
     
-    var title:String?
     var shortDescription:String?
     var longDescription:String?
     var detailShown = false
     
-    init(title:String, shortDescription:String, longDescription:String) {
-        self.title = title
+    init(shortDescription:String, longDescription:String) {
         self.shortDescription = shortDescription
         self.longDescription = longDescription
     }
@@ -267,11 +353,14 @@ class LectureInfo {
 
 class LectureGenerator {
     
-    static func getLecture() -> [LectureInfo] {
+    
+    var detailData:JSON!
+    
+    static func getLecture(_ short:String, _ long:String) -> [LectureInfo] {
         
         var allLecture = [LectureInfo]()
         
-        allLecture.append(LectureInfo(title: "팩맨", shortDescription: "좋아요!", longDescription: "이젠 괜찮니 너무 힘들었잖아 우리 그 마무리가..... 고작 이별뿐인건데 우린 참 어려웠어... 잘지낸다고 전해들었어 가끔 벌써 참 좋은 사람 만나 잘 지내고있어 굳이 내게 전하더라...잘했어 넌 못참았을거야 그 허전함을 견뎌내기엔 좋으니 사랑해서 사랑을 시작 할 때에 니가 얼마나 예쁜 지 모르지 그 모습을 아직도 못잊어 헤어나오지 못해 니 소식들린 날은 더 좋으니 그 사람 솔직히 견디기 버거워 니가 조금더 힘들면 좋겠어 진짜 조금 내 십분의 일 만이라도 아프다.................행복해줘"))
+        allLecture.append(LectureInfo(shortDescription: short, longDescription: long))
         
         return allLecture
     }

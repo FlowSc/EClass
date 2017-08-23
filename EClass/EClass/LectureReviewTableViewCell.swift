@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyStarRatingView
 
 class LectureReviewTableViewCell: UITableViewCell {
 
@@ -31,10 +32,10 @@ class LectureReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var reviewerName: UILabel!
     @IBOutlet weak var reviewContents: UILabel!
     @IBOutlet weak var titleLb: UILabel!
-    @IBOutlet weak var starView: UIStackView!
     @IBOutlet weak var countLb: UILabel!
     @IBOutlet weak var reviewScoreLb: UILabel!
     @IBOutlet weak var firstReviewRequestLb: UILabel!
+    @IBOutlet weak var reviewStar: SwiftyStarRatingView!
     
     func noReview(){
         
@@ -46,7 +47,7 @@ class LectureReviewTableViewCell: UITableViewCell {
         reviewerImage.isHidden = true
         titleLb.isHidden = true
         countLb.isHidden = true
-        starView.isHidden = true
+        reviewStar.isHidden = true
     }
     
 }

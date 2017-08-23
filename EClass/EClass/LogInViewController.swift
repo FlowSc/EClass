@@ -103,9 +103,28 @@ class LogInViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         super.viewDidLoad()
         
+        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/list/", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            guard let data = response.result.value else{return}
+            
+            let lectureData = JSON(data)
+            
+            LectureList.lectureList = lectureData
+        }
+
 
         outletSet()
         
+//        
+//        if !(UserDefaults.standard.string(forKey: "UserToken")! == "") {
+//            
+//            let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
+//            let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
+//            self.present(pushMainView, animated: false, completion: nil)
+//            
+//            
+//            
+//        }
+
         
 
         // Do any additional setup after loading the view.

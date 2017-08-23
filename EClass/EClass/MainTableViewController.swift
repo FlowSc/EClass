@@ -78,7 +78,18 @@ class MainTableViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        
+        
         super.viewDidLoad()
+        
+        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/list/", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            guard let data = response.result.value else{return}
+            
+            let lectureData = JSON(data)
+            
+            LectureList.lectureList = lectureData
+        }
+        
         sideMenus()
         customizeNavBar()
         self.myMainTableView.reloadData()
@@ -90,15 +101,10 @@ class MainTableViewController: UIViewController {
         
         
         
+        print("USERTOKEN!!!!!!")
+        
         print(currentUserNickname)
         print(currentUserToken)
-        
-        
-        
-        //        self.myMainTableView.register(UINib.init(nibName: "LectureTableViewCell"
-        //            , bundle: nil), forCellReuseIdentifier: "LectureCell")
-        
-        print("USERTOKEN!!!!!!")
         
         
         
@@ -133,12 +139,12 @@ class MainTableViewController: UIViewController {
     }
     
     
-        func customizeNavBar()
-        {
-            navigationController?.navigationBar.tintColor = UIColor(colorLiteralRed: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-            navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
-            navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        }
+    func customizeNavBar()
+    {
+        navigationController?.navigationBar.tintColor = UIColor(colorLiteralRed: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+    }
     
 }
 
@@ -166,6 +172,8 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        print(indexPath.row, indexPath.section)
+        
         
         switch indexPath.section {
         case 1:
@@ -191,8 +199,6 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             
             cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
             tableViewIndex = indexPath.section
-            
-            
             
             
             return cell
@@ -231,7 +237,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             cell.locationLabel.text = locationStrings[indexPath.row]
             cell.makeCornerRound3()
             cell.tag = indexPath.item
-
+            
             return cell
             
         case 2:
@@ -256,8 +262,15 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             
             print(myData)
             
+            var attendanceCount = myData["total_count"].stringValue
             
-            cell.setLecture(myData["lecture_photos"][0]["lecture_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, myData["target_intro"].stringValue, myData["tutor_info"]["nickname"].stringValue)
+            if attendanceCount == "" {
+                attendanceCount = "0"
+            }
+            
+            
+            
+            cell.setLecture(myData["lecture_photos"][0]["lecture_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, "\(attendanceCount) 명 참여", myData["tutor_info"]["nickname"].stringValue)
             cell.tutorImage.makeCircle()
             
             
@@ -343,6 +356,8 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
                 
                 destination.detailData = lectureShowList[indexPath]
                 destination.userData = userData
+                
+                
                 
                 print(indexPath)
             }
@@ -447,9 +462,9 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
                 
                 let destination = segue.destination as! SearchViewController
                 print(locationStrings[indexPath])
-                   destination.changedTitleforCategory = "전체선택"
+                destination.changedTitleforCategory = "전체선택"
                 destination.changedTitleforLocation = locationStrings[indexPath]
-
+                
                 
                 if locationStrings[indexPath] == "관악"             {
                     let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
@@ -457,9 +472,9 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
                     })
                     
                     destination.lectureShowList = filterList
-
+                    
                 }else{
-                
+                    
                     let filterList:[JSON] = lectureShowList
                     
                     destination.lectureShowList = filterList
