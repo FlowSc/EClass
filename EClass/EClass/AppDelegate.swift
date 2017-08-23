@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         loadLecture()
-
+        
+        
 
         
         return true

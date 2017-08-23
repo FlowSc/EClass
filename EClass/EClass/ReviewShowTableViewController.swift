@@ -61,7 +61,7 @@ class ReviewShowTableViewController: UITableViewController {
         print(showDate)
 
         
-        cell.reviewContents(showDate, cellData["content"].stringValue, reviewName: cellData["author"]["username"].stringValue)
+        cell.reviewContents(showDate, cellData["content"].stringValue, reviewName: cellData["author"]["nickname"].stringValue)
         
         return cell
     }

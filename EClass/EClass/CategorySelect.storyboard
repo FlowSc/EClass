@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bN8-fi-pL2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bN8-fi-pL2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Category Select View Controller-->
         <scene sceneID="o5c-yf-VS0">
             <objects>
-                <viewController id="bN8-fi-pL2" customClass="CategorySelectViewController" customModule="TeamProject6" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bN8-fi-pL2" customClass="CategorySelectViewController" customModule="EClass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lrd-ql-B54"/>
                         <viewControllerLayoutGuide type="bottom" id="FSG-Em-7l9"/>
@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lzG-j7-z7d">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="-4" width="375" height="671"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YYA-CY-1qB">
                                     <size key="itemSize" width="355" height="130"/>
@@ -32,29 +32,37 @@
                                     <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="Kfu-Te-SMp" customClass="CategoryCollectionViewCell" customModule="TeamProject6" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="Kfu-Te-SMp" customClass="CategoryCollectionViewCell" customModule="EClass" customModuleProvider="target">
                                         <rect key="frame" x="10" y="0.0" width="355" height="130"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pvc-Od-bjP">
+                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="130"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URq-UC-Fdu">
                                                     <rect key="frame" x="108" y="48" width="139" height="34"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Pvc-Od-bjP" secondAttribute="trailing" id="556-4z-Xbl"/>
+                                            <constraint firstItem="Pvc-Od-bjP" firstAttribute="top" secondItem="Kfu-Te-SMp" secondAttribute="top" id="Dnz-pr-Mar"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="URq-UC-Fdu" secondAttribute="trailing" constant="100" id="SAQ-7A-q2B"/>
+                                            <constraint firstItem="Pvc-Od-bjP" firstAttribute="leading" secondItem="Kfu-Te-SMp" secondAttribute="leading" id="eC3-r9-xx2"/>
                                             <constraint firstItem="URq-UC-Fdu" firstAttribute="top" secondItem="Kfu-Te-SMp" secondAttribute="topMargin" constant="40" id="edw-5d-tuy"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="URq-UC-Fdu" secondAttribute="bottom" constant="40" id="n7x-NG-S4d"/>
+                                            <constraint firstAttribute="bottom" secondItem="Pvc-Od-bjP" secondAttribute="bottom" id="rPI-14-bQw"/>
                                             <constraint firstItem="URq-UC-Fdu" firstAttribute="leading" secondItem="Kfu-Te-SMp" secondAttribute="leadingMargin" constant="100" id="vpI-hI-kyl"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="categoryLabel" destination="URq-UC-Fdu" id="ZNB-I6-HXL"/>
+                                            <outlet property="image" destination="Pvc-Od-bjP" id="rpK-ae-xhm"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -69,7 +77,7 @@
                             <constraint firstItem="FSG-Em-7l9" firstAttribute="top" secondItem="lzG-j7-z7d" secondAttribute="bottom" id="1lX-eO-Aym"/>
                             <constraint firstAttribute="trailing" secondItem="lzG-j7-z7d" secondAttribute="trailing" id="OP6-SE-eW4"/>
                             <constraint firstItem="lzG-j7-z7d" firstAttribute="leading" secondItem="Rx5-XU-hsA" secondAttribute="leading" id="Ort-e0-Z85"/>
-                            <constraint firstItem="lzG-j7-z7d" firstAttribute="top" secondItem="lrd-ql-B54" secondAttribute="bottom" id="Zma-5D-do5"/>
+                            <constraint firstItem="lzG-j7-z7d" firstAttribute="top" secondItem="lrd-ql-B54" secondAttribute="bottom" constant="-24" id="Zma-5D-do5"/>
                         </constraints>
                     </view>
                 </viewController>
