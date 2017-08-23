@@ -9,8 +9,7 @@
 import UIKit
 
 class LocationSelectViewController: UIViewController {
-    var locationStrings:[String] = ["강남", "강동", "강서", "강북", "관악", "광진", "구로", "금천", "노원"]
-
+ var locationStrings:[String] = ["강남", "강동", "강서", "강북", "관악", "광진", "구로", "금천", "노원", "도봉", "동대문", "동작", "마포", "서대문", "서초", "성동", "성북", "송파", "양천", "영등포", "용산", "은평", "종로", "중구", "중랑"]
     override func viewDidLoad() {
         super.viewDidLoad()
 

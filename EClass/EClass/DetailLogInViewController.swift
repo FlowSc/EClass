@@ -46,12 +46,14 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                 {
                     return
                 }
+                
+
 
                 let realData = JSON(data)
                 currentUserPrimaryKey = realData["user"]["user_pk"].intValue
                 currentUserToken = realData["token"].stringValue
-                currentUserTuTorPK = realData["user"]["tutor_pk"].intValue
 
+                currentUserTuTorPK = realData["user"]["tutor_pk"].intValue
 
                 if response.result.isSuccess
                 {

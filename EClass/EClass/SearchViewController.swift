@@ -188,7 +188,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                     print("data 시작점 \(myData)")
         print("~~~~~~~~~~")
         
-        cell.setLecture(myData["lecture_photos"][0]["lecture_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, "\(attendanceCount) 명 참여", myData["tutor_intro"].stringValue)
+        cell.setLecture(myData["lecture_photos"][0]["lecture_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, "\(attendanceCount) 명 참여", myData["tutor_info"]["nickname"].stringValue)
         cell.tutorImage.layer.cornerRadius = 25
         cell.tutorImage.clipsToBounds = true
         //            cell.tutorImage.layer.borderWidth = 1
