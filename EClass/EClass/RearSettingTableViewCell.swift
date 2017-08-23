@@ -10,7 +10,7 @@ import UIKit
 
 class RearSettingTableViewCell: UITableViewCell {
 
-    let settingLabelList = ["수업 검색","수업 목록","FAQ","수업 등록"]
+    let settingLabelList = ["수업 검색","수업 목록","FAQ","수업 등록","튜터 등록","비밀번호 변경","로그 아웃"]
     @IBOutlet weak var settingLabel: UILabel!
     @IBOutlet weak var settingIconOutlet: UIImageView!
     override func awakeFromNib() {

@@ -147,6 +147,11 @@ class FAQViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let font = UIFont(name: "수강생", size: 30) {
+            studentItem.setTitleTextAttributes([NSFontAttributeName: font], for: UIControlState.normal)}
+        if let font = UIFont(name: "튜터", size: 30) {
+            tutorItem.setTitleTextAttributes([NSFontAttributeName: font], for: UIControlState.normal)}
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(reloadCell(_:)))
         tv.addGestureRecognizer(tapGesture)
         

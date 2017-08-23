@@ -80,7 +80,7 @@ class MainTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         sideMenus()
-        customizeNavBar()
+//        customizeNavBar()
         self.myMainTableView.reloadData()
         
         currentUserToken = UserDefaults.standard.string(forKey: "UserToken")

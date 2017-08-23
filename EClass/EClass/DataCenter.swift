@@ -24,6 +24,21 @@ extension UIImageView
 //유저 primaryKey 회원 가입 시 +1 됨
 var currentUserPrimaryKey:Int = 0
 var currentUserToken:String = ""
+var currentUserTuTorPK:Int = 0
+
+//각종 알람
+
+func presentAlert(_ title:String, message:String, alertActionTitle:String) -> UIAlertController
+{
+    let alertController = UIAlertController.init(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+    let alertAction = UIAlertAction.init(title: alertActionTitle, style: UIAlertActionStyle.cancel, handler: nil)
+    
+    alertController.addAction(alertAction)
+    
+    return alertController
+//    
+//    self.present(alertController, animated: true, completion: nil)
+}
 
 //JSON([String:Any]) Post 함수
 func postDicToUserInfo(params:[String:String])
@@ -200,6 +215,7 @@ struct User
     var email:String?
     var name:String?
     var phone:String?
+//    var tutorPK:String?
     var profileImage:UIImage?
     var studiedLecture:[Lecture]?
     var selectedLecture:[Lecture]?

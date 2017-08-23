@@ -135,13 +135,6 @@ class DetailChangeUserInfoViewController: UIViewController, UITableViewDelegate,
         let cell3 = tv.cellForRow(at: IndexPath(row: 3, section: 0)) as! InputUserDataTableViewCell
         let cell4 = tv.cellForRow(at: IndexPath(row: 0, section: 1)) as! ChangeSelfDescriptionTableViewCell
         
-        let image = cell4.imageOutlet.image
-        
-        let imageData = UIImagePNGRepresentation(image!)
-        let imageData2 = UIImageJPEGRepresentation(image!, 1)
-//        let baseString = imageData?.base64EncodedString()
-        
-        let baseString4 = imageData2?.base64EncodedString(options: Data.Base64EncodingOptions(rawValue:0))
         
         
 //        let baseString3 = JSONEncoding(options: JSONSerialization.WritingOptions)
@@ -163,24 +156,141 @@ class DetailChangeUserInfoViewController: UIViewController, UITableViewDelegate,
 //                print("Image problem")
 //            }
 //        }
-        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/", method: .put, parameters: ["my_photo":baseString4], encoding: JSONEncoding.default, headers: ["Authorization":"Token " + "\(currentUserToken)"]).responseJSON { (response) in
-            print(JSON(response.result.value))
-            print("~~~~~~~~~~~~~")
-            print(response.result)
-        }
+        let image = cell4.imageOutlet.image
+        let imageData = UIImagePNGRepresentation(image!)
+        let imageData2 = UIImageJPEGRepresentation(image!, 1)
         
-        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/", method: .put, parameters: ["name":"\(cell0.userDataTextField.text ?? "")","nickname":"\(cell1.userDataTextField.text ?? "")","email":"\(cell2.userDataTextField.text ?? "")","phone":"\(cell3.userDataTextField.text ?? "")"], encoding: JSONEncoding.default, headers: ["Authorization":"Token " + "\(currentUserToken)"]).responseJSON { (response) in
-            if response.result.isSuccess
-            {
-                print("!!!!!!!!!!!!!")
-                currentUserData = User(with: JSON(response.result.value))
-                
-                self.navigationController?.popViewController(animated: true)
-            }
+        let baseString4 = imageData?.base64EncodedString(options: Data.Base64EncodingOptions(rawValue:0))
+        
+        let baseString5 = imageUrl2?.absoluteString
+//        Alamofire.upload(multipartFormData: { (multiPartFormData) in
+//            multiPartFormData.append(imageData2!, withName: "my_photo")
+//        }, to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/") { (encodidngResult) in
+//            switch encodidngResult {
+//            case .success(let upload, _, _):
+//                upload.responseJSON { response in
+//                    debugPrint(response)
+//                }
+//            case .failure(let encodingError):
+//                print(encodingError)
+//            }
+//        }
+//        Alamofire.upload(imageData!, to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/", method: .put, headers: ["Authorization":"Token " + "\(currentUserToken)"]).responseJSON { (response) in
+//            
+//            print("000000")
+//            print("\(response.result)")
+//            print("11111")
+//            if response.result.isSuccess
+//            {
+//                print("이미지 업로드 성공")
+//                print("\(response.value)")
+//            }else
+//            {
+//                print("이미지 업로드 실패")
+//            }
+//        }
 
-            print(response.result)
+        Alamofire.upload(multipartFormData: { (multipart) in
+            multipart.append(imageData2!, withName: "my_photo", fileName:"my_photo.png", mimeType: "image/jpeg")
+//            multipart.append(<#T##fileURL: URL##URL#>, withName: <#T##String#>, fileName: <#T##String#>, mimeType: <#T##String#>)
+//            multipart.append(self.imageUrl2!, withName: "my_photo")
+        },  to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/", method: .put, headers: ["Authorization":"Token " + "\(currentUserToken)"]) { (encodingResult) in
+            switch encodingResult {
+            case .success(let upload, _, _):
+                upload.response { response in
+                    print("이미지 업로드 성공")
+                    debugPrint(response)
+                    self.navigationController?.popViewController(animated: true)
+                }
+            case .failure(let encodingError):
+                print(encodingError)
+                print("이미지 업로드 실패")
+            }
         }
-        print(DataCenter.shared.realUser?.phone ?? "뭔가 안됨")
+    
+//        Alamofire.upload(multipartFormData: <#T##(MultipartFormData) -> Void#>, to: <#T##URLConvertible#>, encodingCompletion: <#T##((SessionManager.MultipartFormDataEncodingResult) -> Void)?##((SessionManager.MultipartFormDataEncodingResult) -> Void)?##(SessionManager.MultipartFormDataEncodingResult) -> Void#>)
+//        Alamofire.upload(multipartFormData: <#T##(MultipartFormData) -> Void#>, with: <#T##URLRequestConvertible#>, encodingCompletion: <#T##((SessionManager.MultipartFormDataEncodingResult) -> Void)?##((SessionManager.MultipartFormDataEncodingResult) -> Void)?##(SessionManager.MultipartFormDataEncodingResult) -> Void#>)
+//        Alamofire.upload(multipartFormData: <#T##(MultipartFormData) -> Void#>, usingThreshold: <#T##UInt64#>, with: <#T##URLRequestConvertible#>, encodingCompletion: <#T##((SessionManager.MultipartFormDataEncodingResult) -> Void)?##((SessionManager.MultipartFormDataEncodingResult) -> Void)?##(SessionManager.MultipartFormDataEncodingResult) -> Void#>)
+//        Alamofire.upload(imageUrl2!, to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/", method: .put, headers: ["Authorization":"Token " + "\(currentUserToken)"]).responseJSON { (response) in
+//            
+//            print("000000")
+//            print("\(response.result)")
+//            print("11111")
+//            if response.result.isSuccess
+//            {
+//                print("이미지 업로드 성공")
+//                print("\(response.value)")
+//            }else
+//            {
+//                print("이미지 업로드 실패")
+//            }
+//        }
+        
+//        Alamofire.upload(multipartFormData: { multipartFormData in
+////            let imageData = UIImagePNGRepresentation(image)
+//            multipartFormData.append(imageData!, withName: "my_photo", fileName: "file.png", mimeType: "image/png")
+//
+//            // multipartFormData.append((value.data(using: .utf8))!, withName: key)
+//            
+//        }, to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/", method: .put, headers: ["Authorization":"Token " + "\(currentUserToken)"],
+//           encodingCompletion: { encodingResult in
+//            switch encodingResult {
+//            case .success(let upload, _, _):
+//                upload.response { [weak self] response in
+//                    guard let strongSelf = self else {
+//                        return
+//                    }
+//                    debugPrint("RESPONSE IS:\(response)")
+//                }
+//            case .failure(let encodingError):
+//                print("error:\(encodingError)")
+//            }
+//        })
+//        debugPrint("request is:\(request)")
+    
+    
+
+//        Alamofire.upload(multipartFormData: { (multipartFormData) in
+//            multipartFormData.append(imageData2!, withName: "my_photo")
+//
+//        }, usingThreshold: UInt64.init(), to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/", method: .put, headers: ["Authorization":"Token " + "\(currentUserToken)"]) { (encodingResult) in
+//            print("000000")
+//            print("\(encodingResult)")
+//            print("11111")
+//            switch encodingResult {
+//                
+//            case .success(let upload, _, _):
+//                upload.responseJSON { response in
+//                    debugPrint(response)
+//                    print("이미지 업로드 성공")
+//                    print("이미지 업로드 실패")
+//                }
+//            case .failure(let encodingError):
+//                print(encodingError)
+//            }
+//        }
+//        Alamofire.upload(multipartFormData: <#T##(MultipartFormData) -> Void#>, usingThreshold: <#T##UInt64#>, with: <#T##URLRequestConvertible#>, encodingCompletion: <#T##((SessionManager.MultipartFormDataEncodingResult) -> Void)?##((SessionManager.MultipartFormDataEncodingResult) -> Void)?##(SessionManager.MultipartFormDataEncodingResult) -> Void#>)
+//        Alamofire.upload(multipartFormData: <#T##(MultipartFormData) -> Void#>, with: <#T##URLRequestConvertible#>, encodingCompletion: <#T##((SessionManager.MultipartFormDataEncodingResult) -> Void)?##((SessionManager.MultipartFormDataEncodingResult) -> Void)?##(SessionManager.MultipartFormDataEncodingResult) -> Void#>)
+//        
+//        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/", method: .put, parameters: ["my_photo":baseString4], encoding: JSONEncoding.default, headers: ["Authorization":"Token " + "\(currentUserToken)"]).responseJSON { (response) in
+//            print(JSON(response.result.value))
+//            currentUserData = User(with: JSON(response.result.value))
+//            print("~~~~~~~~~~~~~")
+//            print(response.result)
+//        }
+        
+//        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/", method: .put, parameters: ["name":"\(cell0.userDataTextField.text ?? "")","nickname":"\(cell1.userDataTextField.text ?? "")","email":"\(cell2.userDataTextField.text ?? "")","phone":"\(cell3.userDataTextField.text ?? "")"], encoding: JSONEncoding.default, headers: ["Authorization":"Token " + "\(currentUserToken)"]).responseJSON { (response) in
+//            if response.result.isSuccess
+//            {
+//                print("!!!!!!!!!!!!!")
+//                currentUserData = User(with: JSON(response.result.value))
+//                
+//                self.navigationController?.popViewController(animated: true)
+//            }
+//
+//            print(response.result)
+//        }
+//        print(DataCenter.shared.realUser?.phone ?? "뭔가 안됨")
 //        self.navigationController?.popViewController(animated: true)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -235,6 +345,7 @@ class DetailChangeUserInfoViewController: UIViewController, UITableViewDelegate,
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
+    var imageUrl2:URL?
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print(info)
@@ -244,6 +355,8 @@ class DetailChangeUserInfoViewController: UIViewController, UITableViewDelegate,
             return
             
         }
+        let imageUrl = info[UIImagePickerControllerReferenceURL] as? URL
+        imageUrl2 = imageUrl
         print(image)
         profileImage = image
         cell1?.imageOutlet.image = image
@@ -262,6 +375,7 @@ class DetailChangeUserInfoViewController: UIViewController, UITableViewDelegate,
         picker.sourceType = .photoLibrary
         picker.allowsEditing = false
         tv.delegate = self
+        
         
         // Do any additional setup after loading the view.
     }
@@ -283,6 +397,17 @@ class DetailChangeUserInfoViewController: UIViewController, UITableViewDelegate,
      */
     
 }
+
+//extension ViewController {
+//    func upload(image: UIImage,
+//                progressCompletion: @escaping (_ percent: Float) -> Void,
+//                completion: @escaping (_ tags: [String], _ colors: [PhotoColor]) -> Void) {
+//        guard let imageData = UIImageJPEGRepresentation(image, 0.5) else {
+//            print("Could not get JPEG representation of UIImage")
+//            return
+//        }
+//    }
+//}
 
 //class APIManager: NSObject {
 //    

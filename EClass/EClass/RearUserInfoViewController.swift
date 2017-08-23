@@ -13,7 +13,7 @@ class RearUserInfoViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet weak var tv: UITableView!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 8
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -80,10 +80,52 @@ class RearUserInfoViewController: UIViewController, UITableViewDelegate, UITable
             let nextVC = storyBoard1.instantiateViewController(withIdentifier: "FAQ") as! FAQViewController
             self.navigationController?.pushViewController(nextVC, animated: true)
             self.navigationController?.isNavigationBarHidden = false
-        }else{
+        }else if indexPath.row == 4{
+            
+            if currentUserTuTorPK == 0
+            {
+                self.present(presentAlert("먼저 튜터 등록을 해주세요", message: "튜터 등록 후 등록할 수 있습니다", alertActionTitle: "확인"), animated: true, completion: nil)
+            }else{
+                
+                let storyBoard1 = UIStoryboard(name: "RegisterLecture", bundle: nil)
+                let nextVC = storyBoard1.instantiateViewController(withIdentifier: "regilec") as! RegisterLectureFirstViewController
+                self.navigationController?.pushViewController(nextVC, animated: true)
+                self.navigationController?.isNavigationBarHidden = false
+            }
+        }else if indexPath.row == 5{
+            
+            if currentUserTuTorPK != 0
+            {
+                self.present(presentAlert("이미 튜터로 등록되어있습니다", message: "수업을 등록하실 수 있습니다", alertActionTitle: "확인"), animated: true, completion: nil)
+            }else{
+                
+                let storyBoard1 = UIStoryboard(name: "RegisterTutor", bundle: nil)
+                let nextVC = storyBoard1.instantiateViewController(withIdentifier: "resi") as! RegisterTutorViewController
+                self.navigationController?.pushViewController(nextVC, animated: true)
+                self.navigationController?.isNavigationBarHidden = false
+            }
+        }else if indexPath.row == 6{
+            let storyBoard1 = UIStoryboard(name: "Main2", bundle: nil)
+            let nextVC = storyBoard1.instantiateViewController(withIdentifier: "ChangePasswordViewController") as! ChangePasswordViewController
+            self.navigationController?.pushViewController(nextVC, animated: true)
+            self.navigationController?.isNavigationBarHidden = false
+        }else if indexPath.row == 7
+        {
+            
+            let storyBoard1 = UIStoryboard(name: "Main2", bundle: nil)
+            let nextVC = storyBoard1.instantiateViewController(withIdentifier: "loginNaviCon")
+            self.present(nextVC, animated: true, completion: nil)
+            currentUserToken = ""
+            currentUserData = nil
+            currentUserTuTorPK = 0
+//            self.navigationController?.navigationBar.alpha = 0.5
+            self.navigationController?.isNavigationBarHidden = false
+        }else
+        {
             let storyBoard1 = UIStoryboard(name: "Main2", bundle: nil)
             let nextVC = storyBoard1.instantiateViewController(withIdentifier: "user") as! ChangeUserInfomationViewController
             self.navigationController?.pushViewController(nextVC, animated: true)
+            self.navigationController?.navigationBar.alpha = 0.5
             self.navigationController?.isNavigationBarHidden = false
         }
         
@@ -103,6 +145,7 @@ class RearUserInfoViewController: UIViewController, UITableViewDelegate, UITable
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! RearSettingTableViewCell
             cell.set(indexPath.row)
+            
             tv.tableFooterView = UIView(frame: CGRect.zero)
             cell.selectionStyle = .none
             return cell
@@ -120,11 +163,14 @@ class RearUserInfoViewController: UIViewController, UITableViewDelegate, UITable
 //        userNameLabel.text = currentUserData?.userName
 //        emailLabel.text = currentUserData?.email
         self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.navigationBar.alpha = 1
 //        self.view.addSubview(view1)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        tv.separatorColor = .black
+//        tv.separatorStyle = .singleLine
 
         // Do any additional setup after loading the view.
     }
