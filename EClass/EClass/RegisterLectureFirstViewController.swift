@@ -11,6 +11,7 @@ import UIKit
 class RegisterLectureFirstViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     let picker = UIImagePickerController()
 
+    @IBOutlet weak var backImage: UIImageView!
     @IBOutlet weak var goNextButtonOutlet: UIButton!
     @IBOutlet weak var saveButtonOutlet: UIButton!
     @IBOutlet weak var categoryTextField: UITextField!
@@ -20,6 +21,12 @@ class RegisterLectureFirstViewController: UIViewController, UIImagePickerControl
     @IBOutlet weak var lectureTitleTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        backImage.image = UIImage(named: "register2.png")
+        backImage.alpha = 0.7
+        registerLectureCoverImage.backgroundColor = .white
+        registerLectureCoverImage.contentMode = .scaleAspectFit
+        registerLectureCoverImage.image = UIImage(named:"noImage.png")
+        registerLectureCoverImage.alpha = 0.6
         
         picker.sourceType = .photoLibrary
         picker.allowsEditing = false
@@ -54,6 +61,7 @@ class RegisterLectureFirstViewController: UIViewController, UIImagePickerControl
         guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else {
             return
         }
+        registerLectureCoverImage.alpha = 1
         registerLectureCoverImage.image = image
         self.dismiss(animated: true, completion: nil)
         

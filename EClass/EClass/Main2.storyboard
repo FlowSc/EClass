@@ -14,7 +14,7 @@
         <!--Log In View Controller-->
         <scene sceneID="NFW-Ps-Yt1">
             <objects>
-                <viewController id="ckR-vO-Yv5" customClass="LogInViewController" customModule="EClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewCon" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ckR-vO-Yv5" customClass="LogInViewController" customModule="EClass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MOa-Kk-dPb"/>
                         <viewControllerLayoutGuide type="bottom" id="LSs-yv-EEv"/>
@@ -332,8 +332,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k8p-IA-ZLU">
-                                                    <rect key="frame" x="93" y="7" width="25" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k8p-IA-ZLU">
+                                                    <rect key="frame" x="93" y="7" width="160" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="160" id="qSZ-9j-H0z"/>
+                                                    </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -671,10 +674,124 @@
             </objects>
             <point key="canvasLocation" x="1736.8" y="-61.619190404797607"/>
         </scene>
+        <!--Change Password View Controller-->
+        <scene sceneID="afT-9g-2Pa">
+            <objects>
+                <viewController storyboardIdentifier="ChangePasswordViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bla-kE-lqQ" customClass="ChangePasswordViewController" customModule="EClass" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vBj-Vp-f4f"/>
+                        <viewControllerLayoutGuide type="bottom" id="xGu-N9-VgE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V5l-am-MXX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0J1-s6-evS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NX6-i2-fVg">
+                                <rect key="frame" x="62.5" y="124" width="250" height="319"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iAN-xc-pPC">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="KOl-j8-PnU"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fl7-Hi-GRU">
+                                        <rect key="frame" x="0.0" y="50" width="250" height="29"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZE-4B-Vzy" userLabel="MarginView20">
+                                        <rect key="frame" x="0.0" y="79" width="250" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="0wG-nr-aet"/>
+                                        </constraints>
+                                    </view>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="기존 비밀번호" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kzu-Wp-NLn">
+                                        <rect key="frame" x="0.0" y="139" width="250" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zmz-NI-o4p" userLabel="MarginView20">
+                                        <rect key="frame" x="0.0" y="169" width="250" height="20"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="4wk-0u-ZrR"/>
+                                        </constraints>
+                                    </view>
+                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="새 비밀번호" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WCh-Fl-byo">
+                                        <rect key="frame" x="0.0" y="189" width="250" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cph-HF-Pfv">
+                                        <rect key="frame" x="0.0" y="219" width="250" height="20"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="itN-7Q-Zyp"/>
+                                        </constraints>
+                                    </view>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="새 비밀번호 확인" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kpX-4N-WEI">
+                                        <rect key="frame" x="0.0" y="239" width="250" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNx-HX-C4o" userLabel="MarginView20">
+                                        <rect key="frame" x="0.0" y="269" width="250" height="20"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="j4E-q9-kk3"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhF-nA-6Pg">
+                                        <rect key="frame" x="0.0" y="289" width="250" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.32448619090000003" blue="0.42025007120000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="비밀번호 변경">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="changeButtonTouched:" destination="bla-kE-lqQ" eventType="touchUpInside" id="kZk-tX-HkH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NX6-i2-fVg" firstAttribute="centerY" secondItem="V5l-am-MXX" secondAttribute="centerY" constant="-50" id="0vH-QG-Xfy"/>
+                            <constraint firstItem="0J1-s6-evS" firstAttribute="centerX" secondItem="V5l-am-MXX" secondAttribute="centerX" id="B7L-gH-HkB"/>
+                            <constraint firstItem="NX6-i2-fVg" firstAttribute="centerX" secondItem="V5l-am-MXX" secondAttribute="centerX" id="JeC-rt-3M4"/>
+                            <constraint firstItem="0J1-s6-evS" firstAttribute="height" secondItem="V5l-am-MXX" secondAttribute="height" id="NUt-ox-VYQ"/>
+                            <constraint firstItem="0J1-s6-evS" firstAttribute="width" secondItem="V5l-am-MXX" secondAttribute="width" id="mqm-ze-qXg"/>
+                            <constraint firstItem="0J1-s6-evS" firstAttribute="centerY" secondItem="V5l-am-MXX" secondAttribute="centerY" id="oAO-7q-jmq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView1" destination="0J1-s6-evS" id="olw-u4-Oke"/>
+                        <outlet property="marginView1" destination="cZE-4B-Vzy" id="TvX-7g-Djf"/>
+                        <outlet property="marginView2" destination="Zmz-NI-o4p" id="wfx-Ii-0Q4"/>
+                        <outlet property="marginView3" destination="Cph-HF-Pfv" id="L3U-VQ-cpi"/>
+                        <outlet property="marginView4" destination="dNx-HX-C4o" id="sPy-QA-iyB"/>
+                        <outlet property="newPassword1" destination="WCh-Fl-byo" id="dHv-3p-smN"/>
+                        <outlet property="newPassword2" destination="kpX-4N-WEI" id="LVt-Sl-GDI"/>
+                        <outlet property="oldPassword" destination="Kzu-Wp-NLn" id="vMk-Z1-f1F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vqs-oo-yhY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2515" y="-66"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="jnN-8e-uhO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oXw-gn-nfd" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="loginNaviCon" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oXw-gn-nfd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="D5P-ID-dzz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

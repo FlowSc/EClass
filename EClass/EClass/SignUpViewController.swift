@@ -24,12 +24,52 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         passwordCheckTextField.text == passwordTextField.text
         {
             
-            postDicToUserInfo(params: ["username":"\(userNameTextField.text!)","password":passwordTextField.text!, "email":emailTextField.text!, "confirm_password":"\(passwordCheckTextField.text!)"])
-            
-            
-            let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
-            let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
-            self.present(pushMainView, animated: true, completion: nil)
+            let params = ["username":userNameTextField.text!,"password":passwordTextField.text!,"confirm_password":passwordTextField.text!,"email":emailTextField.text!]
+            Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/signup/", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+                guard let data = response.result.value else
+                {
+                    return
+                }
+                
+                let realData = JSON(data)
+                currentUserPrimaryKey = realData["user"]["user_pk"].intValue
+                currentUserToken = realData["token"].stringValue
+                currentUserTuTorPK = realData["user"]["tutor_pk"].int ?? 0
+                
+                
+                if response.result.isSuccess
+                {
+                    if realData["detail"] == nil
+                    {
+                        DataCenter.shared.realUser = User(with: realData)
+                        
+                        let result = JSON(response.value!)
+                        
+                        
+                        let userToken = result["token"].stringValue
+                        let userName = result["user"]["username"].stringValue
+                        let userPk = result["user"]["user_pk"].intValue
+                        let userNickname = result["user"]["nickname"].stringValue
+                        
+                        
+                        UserDefaults.standard.set(userToken, forKey: "UserToken")
+                        UserDefaults.standard.set(userName, forKey: "UserName")
+                        UserDefaults.standard.set(userPk, forKey: "UserPK")
+                        UserDefaults.standard.set(userNickname, forKey: "UserNickname")
+                        
+                        
+                        if !(userToken == ""){
+                            
+                            let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
+                            let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
+                            self.present(pushMainView, animated: true, completion: nil)
+                            
+                        }
+                    }
+                }
+            }
+        
+            self.present(presentAlert("알수 없는 오류!", message: "이럴 리가 없는데", alertActionTitle: "힝"), animated: true, completion: nil)
         }
     }
     override func viewDidLoad() {
