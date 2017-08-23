@@ -22,7 +22,7 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     {
         self.lectureImage.kf.setImage(with: URL(string: (lectureImage ?? "")!))
         self.lectureName.text = lectureName
-        self.lectureInfo.text = lectureInfo
+        self.lectureInfo.text = lectureInfo + " 원"
         self.tutorImage.kf.setImage(with: URL(string: (tutorImage ?? "")))
         self.tutorName.text = tutorName
         self.tutorNickname.text = tutorNickname

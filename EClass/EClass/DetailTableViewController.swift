@@ -127,7 +127,6 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         else if indexPath.row == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.tutorDetail, for: indexPath) as! TutorDetailTableViewCell
             
-    cell.tutorBasicInfo.text = ""
             cell.tutorDetailInfo.text = detailData["tutor_intro"].stringValue
 
             cell.selectionStyle = .none
@@ -197,7 +196,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             cell.reviewContents.text = representativeReviewData["content"].stringValue
             cell.countLb.text = "총 \(detailData["review_count"].intValue) 개"
             cell.reviewScoreLb.text = " " + String(reviewAverage)
-            cell.reviewerName.text = representativeReviewData["author"]["username"].stringValue
+            cell.reviewerName.text = representativeReviewData["author"]["nickname"].stringValue
             var date = representativeReviewData["modify_date"].stringValue
                 
                 date.characters.removeLast(16)
@@ -280,7 +279,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 300
+        return 200
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

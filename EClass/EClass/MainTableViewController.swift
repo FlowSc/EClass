@@ -88,6 +88,7 @@ class MainTableViewController: UIViewController {
             let lectureData = JSON(data)
             
             LectureList.lectureList = lectureData
+            self.myMainTableView.reloadData()
         }
         
         sideMenus()
