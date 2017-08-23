@@ -54,7 +54,7 @@ extension SWRevealViewController
 class MainTableViewController: UIViewController {
     
     @IBOutlet weak var myMainTableView: UITableView!
-    var locationStrings:[String] = ["강남", "강동", "강서", "강북", "관악", "광진", "구로", "금천", "노원"]
+    var locationStrings:[String] = ["강남", "강동", "강서", "강북", "관악", "광진", "구로", "금천", "노원", "도봉", "동대문", "동작", "마포", "서대문", "서초", "성동", "성북", "송파", "양천", "영등포", "용산", "은평", "종로", "중구", "중랑"]
     
     
     var categoryStrings = ["헬스&뷰티", "외국어", "컴퓨터", "음악/미술", "스포츠", "진로/취업", "이색취미", "전체수업보기"]
@@ -466,13 +466,163 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
                 destination.changedTitleforLocation = locationStrings[indexPath]
                 
                 
-                if locationStrings[indexPath] == "관악"             {
+                if locationStrings[indexPath] == "관악"{
                     let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
                         myData["locations"][0]["location2"].stringValue == "관악"
                     })
                     
                     destination.lectureShowList = filterList
                     
+                }else if locationStrings[indexPath] == "강동" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "강동"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "강북" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "강북"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "강서" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "강서"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "강남" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "강남"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "광진" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "광진"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "구로" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "구로"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "금천" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "금천"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "노원" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "노원"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "도봉" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "도봉"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "동대문" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "동대문"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "동직" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "동작"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "마포" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "마포"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "서대문" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "서대문"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "서초" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "서초"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "성동" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "성동"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "성북" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "성북"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "송파" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "송파"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "양천" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "양천"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "영등포" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "영등포"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "용산" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "용산"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "은평" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "은평"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "종로" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "종로"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "중구" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "중구"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "중랑" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "중랑"
+                    })
+                    
+                    destination.lectureShowList = filterList
+                }else if locationStrings[indexPath] == "관악" {
+                    let filterList:[JSON] = lectureShowList.filter({ (myData) -> Bool in
+                        myData["locations"][0]["location2"].stringValue == "관악"
+                    })
+                    
+                    destination.lectureShowList = filterList
                 }else{
                     
                     let filterList:[JSON] = lectureShowList
