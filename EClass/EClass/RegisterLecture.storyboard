@@ -303,10 +303,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nl0-qD-Ic5">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="376" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nl0-qD-Ic5" id="Yh5-OB-6fo">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -425,7 +425,7 @@
                                         </state>
                                         <connections>
                                             <action selector="goNextButtonTouched:" destination="Idh-E5-uA6" eventType="touchUpInside" id="o2Q-if-Q3p"/>
-                                            <segue destination="hyz-wr-gvG" kind="show" id="cZm-Yf-db6"/>
+                                            <segue destination="zEd-UQ-7vp" kind="show" id="Sns-IX-7mg"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -469,6 +469,99 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7E-il-68s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1850" y="10"/>
+        </scene>
+        <!--Lecture Images View Controller-->
+        <scene sceneID="ebT-Tr-VUb">
+            <objects>
+                <viewController id="zEd-UQ-7vp" customClass="LectureImagesViewController" customModule="EClass" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jMk-tg-jZg"/>
+                        <viewControllerLayoutGuide type="bottom" id="qGY-qX-3mR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1wn-ra-mkg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0ux-1x-kQP">
+                                <rect key="frame" x="25" y="114" width="324" height="197"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="B4r-Fk-sZv">
+                                    <size key="itemSize" width="324" height="195"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LecturePhotoCell" id="8VH-Wk-Oqy" customClass="LecturePhotoCollectionViewCell" customModule="EClass" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="-31" width="324" height="195"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="324" height="195"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VNb-xq-GHa">
+                                                    <rect key="frame" x="8" y="8" width="308" height="179"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="VNb-xq-GHa" secondAttribute="trailing" id="36e-ky-50B"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="VNb-xq-GHa" secondAttribute="bottom" id="8Ph-SX-rVx"/>
+                                            <constraint firstItem="VNb-xq-GHa" firstAttribute="top" secondItem="8VH-Wk-Oqy" secondAttribute="topMargin" id="9Ro-56-J35"/>
+                                            <constraint firstItem="VNb-xq-GHa" firstAttribute="leading" secondItem="8VH-Wk-Oqy" secondAttribute="leadingMargin" id="zRM-yR-XXF"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="lectureImage" destination="VNb-xq-GHa" id="eHa-sJ-R0O"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="zEd-UQ-7vp" id="qlb-MU-QZZ"/>
+                                    <outlet property="delegate" destination="zEd-UQ-7vp" id="INc-Jt-H9Z"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocJ-95-bYz">
+                                <rect key="frame" x="0.0" y="632" width="375" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="다음">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goNextButtonTouched:" destination="Idh-E5-uA6" eventType="touchUpInside" id="WwE-1k-Zsq"/>
+                                    <action selector="nextStepTouched:" destination="zEd-UQ-7vp" eventType="touchUpInside" id="KsI-h0-2lo"/>
+                                    <segue destination="hyz-wr-gvG" kind="show" id="HMj-Wt-tfH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Syd-Tu-Xnd">
+                                <rect key="frame" x="120" y="340" width="134" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="이미지를 선택해주세요"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W35-XE-0U1">
+                                <rect key="frame" x="120" y="476" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ocJ-95-bYz" firstAttribute="leading" secondItem="1wn-ra-mkg" secondAttribute="leading" id="jcK-bB-9h3"/>
+                            <constraint firstItem="qGY-qX-3mR" firstAttribute="top" secondItem="ocJ-95-bYz" secondAttribute="bottom" id="npj-AL-rxT"/>
+                            <constraint firstAttribute="trailing" secondItem="ocJ-95-bYz" secondAttribute="trailing" id="zGX-XV-Q0e"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="myLecturePhotoCollectionView" destination="0ux-1x-kQP" id="WTe-Gj-0eU"/>
+                        <outlet property="noticeTf" destination="W35-XE-0U1" id="1Ls-Hc-fdt"/>
+                        <outlet property="photoPickerbuttonTouched" destination="Syd-Tu-Xnd" id="FoT-Zd-tyb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Jh-UV-4OC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2600.8000000000002" y="-358.4707646176912"/>
         </scene>
         <!--가격/인원-->
         <scene sceneID="Iwp-NG-cgX">
@@ -762,7 +855,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ce-O2-fgX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2592.8000000000002" y="8.5457271364317844"/>
+            <point key="canvasLocation" x="3380" y="9"/>
         </scene>
         <!--시간/장소-->
         <scene sceneID="XIt-BO-TTc">
@@ -949,7 +1042,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugR-LB-PmS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3285.5999999999999" y="8.5457271364317844"/>
+            <point key="canvasLocation" x="4196" y="10"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zc7-WA-C9U">

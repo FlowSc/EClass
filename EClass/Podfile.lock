@@ -6,6 +6,11 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - DKImagePickerController (3.5.7):
+    - DKImagePickerController/Camera (= 3.5.7)
+    - DKImagePickerController/ImageManager (= 3.5.7)
+  - DKImagePickerController/Camera (3.5.7)
+  - DKImagePickerController/ImageManager (3.5.7)
   - EmptyKit (3.1.2)
   - FacebookCore (0.2.0):
     - Bolts (~> 1.8)
@@ -28,6 +33,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
+  - DKImagePickerController
   - EmptyKit (~> 3.1)
   - FacebookCore
   - FacebookLogin
@@ -41,6 +47,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  DKImagePickerController: da5111f475c2fda9f932bab55519a43275bd4cf0
   EmptyKit: 3f5ad697fc610a3bc460a59e00f23547b3afaa80
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
@@ -53,6 +60,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SwiftyStarRatingView: a2b0057700e0adeb8e7442c55d99cb53b531d2f4
 
-PODFILE CHECKSUM: '0940f779d75ae9f7a737fcb24fb99b6762b2462d'
+PODFILE CHECKSUM: b6a27e82aff09f845d3a274bd2a037660fad7435
 
 COCOAPODS: 1.2.1

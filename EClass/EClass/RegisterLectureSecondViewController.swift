@@ -108,9 +108,9 @@ class RegisterLectureSecondViewController: UIViewController, UITextViewDelegate 
     }
 
     @IBAction func goNextButtonTouched(_ sender: UIButton) {
-        classMakeParameter.updateValue(introduceTutorTextView.text, forKey: "tutor_intro")
-        classMakeParameter.updateValue(introduceLectureTextView.text, forKey: "class_intro")
-        classMakeParameter.updateValue(lectureStudentTextView.text, forKey: "target_intro")
+        classMakeParameter.updateValue(introduceTutorTextView.text!, forKey: "tutor_intro")
+        classMakeParameter.updateValue(introduceLectureTextView.text!, forKey: "class_intro")
+        classMakeParameter.updateValue(lectureStudentTextView.text!, forKey: "target_intro")
     }
 
     /*
