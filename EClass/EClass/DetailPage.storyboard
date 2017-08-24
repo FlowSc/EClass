@@ -30,10 +30,10 @@
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IntroductionCell" rowHeight="419" id="xrP-pQ-mJB" customClass="IntroductionTableViewCell" customModule="EClass" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="56" width="376" height="419"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375.5" height="419"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xrP-pQ-mJB" id="ZZk-Bd-zHC">
-                                            <rect key="frame" x="0.0" y="0.0" width="376" height="418"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375.5" height="418.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qh8-Xp-2g2">
@@ -209,17 +209,17 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tutorInfoCell" rowHeight="238" id="GVh-dK-XbH" customClass="TutorInfoTableViewCell" customModule="EClass" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="475" width="376" height="238"/>
+                                        <rect key="frame" x="0.0" y="474.5" width="375.5" height="238"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GVh-dK-XbH" id="EXi-fi-nge">
-                                            <rect key="frame" x="0.0" y="0.0" width="376" height="237"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375.5" height="237.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nKc-Zu-qkP">
                                                     <rect key="frame" x="157" y="10" width="62" height="80"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waV-FT-1eo">
-                                                            <rect key="frame" x="10" y="60" width="42" height="21"/>
+                                                            <rect key="frame" x="10" y="65" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -239,7 +239,7 @@
                                                         <constraint firstItem="S4y-Yb-Hjr" firstAttribute="centerX" secondItem="nKc-Zu-qkP" secondAttribute="centerX" id="YG3-BA-yZD"/>
                                                         <constraint firstAttribute="height" constant="80" id="hPA-9q-OOY"/>
                                                         <constraint firstItem="waV-FT-1eo" firstAttribute="leading" secondItem="nKc-Zu-qkP" secondAttribute="leading" constant="10" id="rAY-4m-MT6"/>
-                                                        <constraint firstItem="waV-FT-1eo" firstAttribute="top" secondItem="S4y-Yb-Hjr" secondAttribute="bottom" id="xP7-dS-hIj"/>
+                                                        <constraint firstItem="waV-FT-1eo" firstAttribute="top" secondItem="S4y-Yb-Hjr" secondAttribute="bottom" constant="5" id="xP7-dS-hIj"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUa-Z7-wK9">
@@ -294,7 +294,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFi-vb-tQ2">
-                                                <rect key="frame" x="245" y="10" width="130" height="30"/>
+                                                <rect key="frame" x="245" y="0.0" width="130" height="50"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="130" id="ffK-C1-xds"/>
@@ -309,6 +309,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="pQV-re-Egi" firstAttribute="height" secondItem="B21-de-UgP" secondAttribute="height" id="EEb-xs-NAM"/>
+                                            <constraint firstItem="XFi-vb-tQ2" firstAttribute="height" secondItem="B21-de-UgP" secondAttribute="height" id="LJz-A7-GsH"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>

@@ -14,7 +14,6 @@ class TutorDetailTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    @IBOutlet weak var tutorBasicInfo: UILabel!
     @IBOutlet weak var tutorDetailInfo: UILabel!
 
     override func setSelected(_ selected: Bool, animated: Bool) {

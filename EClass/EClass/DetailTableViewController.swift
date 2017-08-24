@@ -14,21 +14,17 @@ import SwiftyStarRatingView
 
 class DetailTableViewController: UIViewController {
     
-    var averageReviewtotalScore:Double = 0.0
+    var averageReviewtotalScore:Double?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        myTableView.reloadData()
         
-        print(detailData["id"].stringValue)
-        loadDetailData(detailData["id"].intValue)
-
     }
-//    @IBAction func askTutorButtonTouched(_ sender: UIButton) {
-//        
-//        let alert = UIAlertController.init(title: "튜터에게 문의하기", message: (, preferredStyle: <#T##UIAlertControllerStyle#>)
-//    }
+    //    @IBAction func askTutorButtonTouched(_ sender: UIButton) {
+    //
+    //        let alert = UIAlertController.init(title: "튜터에게 문의하기", message: (, preferredStyle: <#T##UIAlertControllerStyle#>)
+    //    }
     @IBOutlet weak var myTableView: UITableView!
     var detailData:JSON!
     var userData:JSON!
@@ -40,24 +36,27 @@ class DetailTableViewController: UIViewController {
         super.viewDidLoad()
         
         
+        reloadList()
+        
+        
+        
+        myData = LectureGenerator.getLecture(detailData["class_intro"].stringValue, detailData["class_intro"].stringValue)
+        
+        
+        reviewAverage = makeReviewAverageScore()
+        loadDetailData(detailData["id"].intValue)
+        
         
         myTableView.reloadData()
         
-        loadDetailData(detailData["id"].intValue)
-        
-        myData = LectureGenerator.getLecture(detailData["class_intro"].stringValue, detailData["class_intro"].stringValue)
-
-
-        reviewAverage = makeReviewAverageScore()
-        
         print("Lecture ID")
-
+        
         
         print("AAAA")
         
         
         
-
+        
         self.navigationItem.title = "강의정보"
         myTableView.estimatedRowHeight = 100
         myTableView.rowHeight = UITableViewAutomaticDimension
@@ -70,18 +69,18 @@ class DetailTableViewController: UIViewController {
         print(detailData)
         print("Detail Data End!!!!!!")
         lectureRegistBt.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
-
+        
         // Do any additional setup after loading the view.
         
         
     }
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
- 
+    
 }
 
 extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -96,11 +95,11 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         if attendanceCount == "" {
             attendanceCount = "0"
         }
-
+        
         
         
         if indexPath.row == 0{
-        let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.lectureBasicInfo, for: indexPath) as! IntroductionTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.lectureBasicInfo, for: indexPath) as! IntroductionTableViewCell
             
             
             
@@ -110,34 +109,33 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             cell.attendanceCount.textColor = .white
             cell.attendanceCount.setBasicColor()
             
-            print(averageReviewtotalScore / 5)
-
+            print(averageReviewtotalScore ?? 0 / 5)
+            
             return cell}
-        
+            
         else if indexPath.row == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.tutorBasicInfo, for: indexPath) as! TutorInfoTableViewCell
             
             cell.setTutor(#imageLiteral(resourceName: "default-user-image"), detailData["tutor_info"]["nickname"].stringValue, tutorComment: detailData["target_intro"].stringValue)
             cell.selectionStyle = .none
-
+            
             
             return cell
-        
+            
         }
         else if indexPath.row == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.tutorDetail, for: indexPath) as! TutorDetailTableViewCell
             
-    cell.tutorBasicInfo.text = ""
             cell.tutorDetailInfo.text = detailData["tutor_intro"].stringValue
-
+            
             cell.selectionStyle = .none
-
+            
             return cell
             
         }else if indexPath.row == 3{
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.lectureIntro, for: indexPath) as! LectureIntroTableViewCell
             cell.selectionStyle = .none
-
+            
             cell.setValues(myData[indexPath.row - 3])
             
             return cell
@@ -152,16 +150,16 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             cell.timeLb.text = detailData["locations"][0]["class_time"].stringValue + "시"
             
             if cellData["class_weekday"].stringValue == "sun" {
-            cell.dayIndicateBt.setTitle("일", for: .normal)
+                cell.dayIndicateBt.setTitle("일", for: .normal)
             }
             cell.dayIndicateBt.makeCornerRound3()
             cell.dayIndicateBt.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
             cell.dayIndicateBt.setTitleColor(.white, for: .normal)
-
+            
             
             
             cell.selectionStyle = .none
-
+            
             return cell
         }else if indexPath.row == 5{
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.lectureReview, for: indexPath) as! LectureReviewTableViewCell
@@ -170,7 +168,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             
             print(representativeReviewData)
             cell.selectionStyle = .none
-
+            
             
             if detailData["review_count"].intValue == 0 {
                 cell.firstReviewButton.isHidden = false
@@ -178,37 +176,37 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
                 
                 cell.firstReviewRequestLb.text = "아직 등록된 리뷰가 없습니다. \n 첫번째 리뷰의 주인공이 되어보세요! \n \n \n 리뷰 등록하러 가기"
                 cell.firstReviewRequestLb.textColor = .white
-
+                
                 cell.firstReviewButton.backgroundColor =  UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
-
+                
                 cell.firstReviewButton.addTarget(self, action: #selector(moveToReviewAddView), for: .touchUpInside)
                 cell.noReview()
-
-            }else{
-            
-            cell.moveToreviewButton.addTarget(self, action: #selector(moveToReviewTableView), for: .touchUpInside)
-            cell.moveReviewAddB.addTarget(self, action: #selector(moveToReviewAddView), for: .touchUpInside)
-            cell.moveToreviewButton.backgroundColor = .lightGray
-            cell.moveToreviewButton.setTitleColor(.white, for: .normal)
-            cell.moveReviewAddB.setBasicColor()
-            cell.moveReviewAddB.makeCornerRound3()
-            cell.moveToreviewButton.makeCornerRound3()
                 
-            cell.reviewContents.text = representativeReviewData["content"].stringValue
-            cell.countLb.text = "총 \(detailData["review_count"].intValue) 개"
-            cell.reviewScoreLb.text = " " + String(reviewAverage)
-            cell.reviewerName.text = representativeReviewData["author"]["username"].stringValue
-            var date = representativeReviewData["modify_date"].stringValue
+            }else{
+                
+                cell.moveToreviewButton.addTarget(self, action: #selector(moveToReviewTableView), for: .touchUpInside)
+                cell.moveReviewAddB.addTarget(self, action: #selector(moveToReviewAddView), for: .touchUpInside)
+                cell.moveToreviewButton.backgroundColor = .lightGray
+                cell.moveToreviewButton.setTitleColor(.white, for: .normal)
+                cell.moveReviewAddB.setBasicColor()
+                cell.moveReviewAddB.makeCornerRound3()
+                cell.moveToreviewButton.makeCornerRound3()
+                
+                cell.reviewContents.text = representativeReviewData["content"].stringValue
+                cell.countLb.text = "총 \(detailData["review_count"].intValue) 개"
+                cell.reviewScoreLb.text = " " + String(reviewAverage)
+                cell.reviewerName.text = representativeReviewData["author"]["nickname"].stringValue
+                var date = representativeReviewData["modify_date"].stringValue
                 
                 date.characters.removeLast(16)
                 
-            cell.reviewCreateDate.text = date
-            cell.reviewStar.isEnabled = false
-            cell.reviewStar.value = CGFloat(reviewAverage)
-            
-
+                cell.reviewCreateDate.text = date
+                cell.reviewStar.isEnabled = false
+                cell.reviewStar.value = CGFloat(reviewAverage)
+                
+                
             }
-
+            
             return cell
         }
         
@@ -229,7 +227,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
     
     func moveToReviewTableView(){
         
-
+        
         let storybd = UIStoryboard(name: StoryBoardConstant.detailPage, bundle: nil)
         
         let reviewVc = storybd.instantiateViewController(withIdentifier: "ReviewShowTableViewController") as! ReviewShowTableViewController
@@ -258,21 +256,21 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         
         
         if section == 0 {
-        
-        let layout = UICollectionViewFlowLayout()
-
-        let headerView = UICollectionView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width), collectionViewLayout: layout)
-        
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        layout.itemSize = CGSize.init(width: 414, height: 180)
-        headerView.isPagingEnabled = true
-        headerView.register(UINib.init(nibName: NibFile.lectureImage, bundle: nil), forCellWithReuseIdentifier: CustomCollectionViewCell.lectureImage)
-    
-        
-        headerView.delegate = self
-        headerView.dataSource = self
-    
+            
+            let layout = UICollectionViewFlowLayout()
+            
+            let headerView = UICollectionView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width), collectionViewLayout: layout)
+            
+            layout.scrollDirection = .horizontal
+            layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+            layout.itemSize = CGSize.init(width: 414, height: 200)
+            headerView.isPagingEnabled = true
+            headerView.register(UINib.init(nibName: NibFile.lectureImage, bundle: nil), forCellWithReuseIdentifier: CustomCollectionViewCell.lectureImage)
+            
+            
+            headerView.delegate = self
+            headerView.dataSource = self
+            
             return headerView}
         
         return UIView()
@@ -280,7 +278,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 300
+        return 200
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -293,7 +291,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         
         cell.lectureImage.kf.setImage(with: myImagesUrl)
         
-
+        
         return cell
     }
     
@@ -313,12 +311,14 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             
             self.detailData = JSON(aa.result.value)
             self.myTableView.reloadData()
-
+            
         }
-
+        
     }
     
     func makeReviewAverageScore() -> Double {
+        
+        var myScore:Double = 0.0
         
         
         for (key, value) in detailData["review_average"].dictionaryValue {
@@ -328,14 +328,14 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             
             let averagePoint = value.doubleValue
             
-            averageReviewtotalScore += averagePoint
+            myScore += averagePoint
             
             
             
         }
         
-        return averageReviewtotalScore.roundToPlaces(places: 0) / 5
-
+        return myScore.roundToPlaces(places: 0) / 5
+        
     }
 }
 

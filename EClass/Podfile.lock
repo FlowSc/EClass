@@ -22,6 +22,7 @@ PODS:
   - Kingfisher (3.11.0)
   - SnapKit (3.2.0)
   - StarReview (1.0.0)
+  - SwiftyGif (3.1.0)
   - SwiftyJSON (3.1.4)
   - SwiftyStarRatingView (1.0.4)
 
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - Kingfisher (~> 3.0)
   - SnapKit (~> 3.2)
   - StarReview (~> 1.0)
+  - SwiftyGif (~> 3.1)
   - SwiftyJSON (~> 3.1)
   - SwiftyStarRatingView (~> 1.0)
 
@@ -47,9 +49,10 @@ SPEC CHECKSUMS:
   Kingfisher: c8911a7672c6217dec8c0520fb6e76ec4b7e0780
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   StarReview: '0578f61607b89b3f0ad87ab417907818c1f39532'
+  SwiftyGif: aad44b7ef0ad1d599ba83d7aa5759e916b520c42
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SwiftyStarRatingView: a2b0057700e0adeb8e7442c55d99cb53b531d2f4
 
-PODFILE CHECKSUM: d17f2cd717c7a3fece88f4159b092e6d43fd9d37
+PODFILE CHECKSUM: '0940f779d75ae9f7a737fcb24fb99b6762b2462d'
 
 COCOAPODS: 1.2.1

@@ -61,6 +61,8 @@ class RearUserInfoViewController: UIViewController, UITableViewDelegate, UITable
     func registerLectureButtonTouched(_:UIGestureRecognizer)
     {
         print("tap")
+        
+        
     }
 //    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
 //        return 50
@@ -69,7 +71,15 @@ class RearUserInfoViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        performSegue(withIdentifier: "userInfo", sender: nil)
         
-        if indexPath.row == 2
+        if indexPath.row == 1{
+            let stv = UIStoryboard.init(name: "MainPage", bundle: nil)
+            
+            let mvc = stv.instantiateViewController(withIdentifier: "SearchForTextViewController") as! SearchTextViewController
+            self.navigationController?.pushViewController(mvc, animated: true)
+            self.navigationController?.isNavigationBarHidden = false
+
+
+        }else if indexPath.row == 2
         {
             let storyBoard1 = UIStoryboard(name: "ListOfLecture", bundle: nil)
             let nextVC = storyBoard1.instantiateViewController(withIdentifier: "ListList") as! ListOfLectureViewController

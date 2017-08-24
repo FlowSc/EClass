@@ -9,13 +9,20 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-
+import SwiftyGif
 var loginSuccess:Bool = false
+
+
+
 
 class DetailLogInViewController: UIViewController, UITextFieldDelegate{
     
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    
+   
+    
+    
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         
         if textField == userNameTextField
@@ -100,19 +107,25 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
         }
     }
     
+    @IBOutlet weak var webViewBG: UIWebView!
     @IBOutlet weak var marginView4: UIView!
     @IBOutlet weak var marginView3: UIView!
     @IBOutlet weak var marginView2: UIView!
-    @IBOutlet weak var detailLoginImageView: UIImageView!
     @IBOutlet weak var marginView1: UIView!
     @IBOutlet weak var logInButtonOutlet: UIButton!
     @IBOutlet weak var passWordTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        outletSet()
+        
+        DispatchQueue.main.async {
+            self.outletSet()
+        }
         passWordTextField.delegate = self
         userNameTextField.delegate = self
+        
+      
+
         
         
         
@@ -121,13 +134,37 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
     
     func outletSet()
     {
-        detailLoginImageView.image = UIImage(named: "passion1.png")
-        detailLoginImageView.clipsToBounds = true
-        detailLoginImageView.alpha = 0.6
-        self.navigationController?.navigationBar.alpha = 0.5
+        
+        let htmlPath = Bundle.main.path(forResource: "WebViewContent", ofType: "html")
+        let htmlURL = URL(fileURLWithPath: htmlPath!)
+        let html = try? Data(contentsOf: htmlURL)
+        
+        self.webViewBG.load(html!, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: htmlURL.deletingLastPathComponent())
+
+        
+//        let gifManager = SwiftyGifManager(memoryLimit:20)
+//        let gif = UIImage(gifName: "ronaldo.gif")
+////        let imageview = UIImageView(gifImage: gif, manager: gifManager)
+////        imageview.frame = CGRect(x: 0.0, y: 5.0, width: (self.view.frame.width), height: (self.view.frame.height))
+////        imageview.alpha = 0.5
+////        view.addSubview(imageview)
+//        
+//        let filter = UIView()
+//        filter.frame = self.view.frame
+//        filter.backgroundColor = UIColor.black
+//        filter.alpha = 0.05
+//        self.detailLoginImageView.addSubview(filter)
+//
+//        detailLoginImageView = UIImageView(gifImage: gif, manager: gifManager)
+//        detailLoginImageView.clipsToBounds = true
+////        detailLoginImageView.alpha = 0.6
+        self.navigationController?.navigationBar.alpha = 0.3
         self.navigationItem.leftBarButtonItem?.tintColor = .black
+        self.navigationController?.navigationBar.barTintColor = .black
+        self.navigationController?.isNavigationBarHidden = true
+        
         //        self.navigationController?.navigationItem.backBarButtonItem?.tintColor = .black
-        logInButtonOutlet.layer.borderColor = UIColor.white.cgColor
+        logInButtonOutlet.setBasicColor()
         logInButtonOutlet.layer.cornerRadius = 5
         logInButtonOutlet.layer.borderWidth = 1
         marginView1.backgroundColor = .clear

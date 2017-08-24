@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,42 +15,35 @@
             <rect key="frame" x="0.0" y="0.0" width="365" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="365" height="149.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="365" height="150"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7gP-mJ-cGB">
                         <rect key="frame" x="20" y="0.0" width="335" height="149.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="튜터정보" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCh-Hq-Mds">
-                                <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
+                                <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="rvr-Zg-DfM"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ynb-Hr-Bxl">
-                                <rect key="frame" x="0.0" y="21" width="335" height="1"/>
+                                <rect key="frame" x="0.0" y="30" width="335" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="H1B-l3-yrv"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인하대학교" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEQ-Ir-Sgy">
-                                <rect key="frame" x="0.0" y="22" width="335" height="42.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdx-hr-ATt">
-                                <rect key="frame" x="0.0" y="64.5" width="335" height="85"/>
+                                <rect key="frame" x="0.0" y="31" width="335" height="118.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="uCh-Hq-Mds" firstAttribute="height" secondItem="BEQ-Ir-Sgy" secondAttribute="height" multiplier="1/2" id="BEq-H5-hJk"/>
-                            <constraint firstItem="Sdx-hr-ATt" firstAttribute="height" secondItem="BEQ-Ir-Sgy" secondAttribute="height" multiplier="2" id="bqw-Qz-Vye"/>
-                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
@@ -62,7 +54,6 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="tutorBasicInfo" destination="BEQ-Ir-Sgy" id="KYy-nq-UID"/>
                 <outlet property="tutorDetailInfo" destination="Sdx-hr-ATt" id="d6I-DP-Wgf"/>
             </connections>
             <point key="canvasLocation" x="56.5" y="181"/>
