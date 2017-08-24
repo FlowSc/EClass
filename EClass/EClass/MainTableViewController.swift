@@ -309,7 +309,7 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             return 370
         }
         
-        return 200
+        return 250
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

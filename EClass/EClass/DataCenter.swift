@@ -313,6 +313,7 @@ extension UIButton {
         
         self.setTitleColor(.white, for: .normal)
         self.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
+        self.layer.cornerRadius = 3
     }
 
     
@@ -325,7 +326,18 @@ extension Double { /// Rounds the double to decimal places value
         return Darwin.round(self * divisor) / divisor }
 
 }
+
+func reloadList(){
     
+    Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/list/", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+        guard let data = response.result.value else{return}
+        
+        let lectureData = JSON(data)
+        
+        LectureList.lectureList = lectureData
+}
+}
+
 
 
 

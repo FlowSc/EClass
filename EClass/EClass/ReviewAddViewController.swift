@@ -26,9 +26,9 @@ class ReviewAddViewController: UIViewController, UITextViewDelegate {
     var punctuallyScore:CGFloat!
     
     @IBOutlet weak var curriculumStar: SwiftyStarRatingView!
-   
+    
     @IBOutlet weak var preparationStar: SwiftyStarRatingView!
- 
+    
     @IBOutlet weak var kindnessStar: SwiftyStarRatingView!
     @IBOutlet weak var deliveryStar: SwiftyStarRatingView!
     @IBOutlet weak var punctuallyStar: SwiftyStarRatingView!
@@ -55,7 +55,7 @@ class ReviewAddViewController: UIViewController, UITextViewDelegate {
         deliveryScore = 3
         kindnessScore = 3
         punctuallyScore = 3
-
+        
         
         
         print("~~~~~~~~~~~~~~~~")
@@ -90,27 +90,37 @@ class ReviewAddViewController: UIViewController, UITextViewDelegate {
         
         
         let myParameter = ["lecture_id":classData["id"].intValue,"curriculum_rate":Int(curriculumScore), "delivery_rate":Int(deliveryScore), "preparation_rate":Int(preparationScore), "kindness_rate":Int(kindnessScore), "punctually_rate":Int(punctuallyScore), "content":reviewContentTextView.text] as [String : Any]
-
+        
         
         let token:HTTPHeaders = ["Authorization":"Token \(loginToken!)"]
-     
         
-       Alamofire.upload(multipartFormData: { (data) in
-        for (key, value) in myParameter {
-            if value is String || value is Int {
-                data.append("\(value)".data(using: .utf8)!, withName: key)
-                print(data)
-                print(key, value)
+        
+        Alamofire.upload(multipartFormData: { (data) in
+            for (key, value) in myParameter {
+                if value is String || value is Int {
+                    data.append("\(value)".data(using: .utf8)!, withName: key)
+                    print(data)
+                    print(key, value)
+                }
             }
-        }
-       }, usingThreshold: UInt64.init(), to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/review/make/", method: .post, headers: token) { (result) in
-        
+        }, usingThreshold: UInt64.init(), to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/review/make/", method: .post, headers: token) { (result) in
+            
             print(result)
-        
-        self.navigationController?.popViewController(animated: true)
-        
+            
+            let okAlert = UIAlertController.init(title: "리뷰가 등록되었습니다.", message: "소중한 의견 감사합니다!", preferredStyle: .alert)
+            let alertaction = UIAlertAction.init(title: "돌아가기", style: .default, handler: { (action) in
+                reloadList()
+                self.navigationController?.popViewController(animated: true)
+            })
+            
+            okAlert.addAction(alertaction)
+            self.present(okAlert, animated: true, completion: nil)
         }
-
+        
+        
+        
+        
+        
     }
     func reviewScoreForKindness() {
         print(kindnessStar.value)
@@ -147,7 +157,7 @@ class ReviewAddViewController: UIViewController, UITextViewDelegate {
         
     }
     
-  
+    
     
     //
 }

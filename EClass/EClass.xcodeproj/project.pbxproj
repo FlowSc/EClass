@@ -122,14 +122,20 @@
 		45A57FAE1F357C56001F5C1A /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A57FAD1F357C56001F5C1A /* ProfileTableViewCell.swift */; };
 		45A57FB01F357C5D001F5C1A /* DetailChangeUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A57FAF1F357C5D001F5C1A /* DetailChangeUserInfoViewController.swift */; };
 		45A57FB21F357C6F001F5C1A /* DetailLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A57FB11F357C6F001F5C1A /* DetailLogInViewController.swift */; };
+		7505F5131F4EA955007A75F2 /* enter.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7505F5121F4EA955007A75F2 /* enter.gif */; };
+		7505F5151F4EA9F2007A75F2 /* whysoserious.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7505F5141F4EA9F2007A75F2 /* whysoserious.gif */; };
 		7518F5141F468FB50088ED19 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518F5131F468FB50088ED19 /* Constant.swift */; };
 		7518F51A1F489E610088ED19 /* LetureRegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518F5191F489E610088ED19 /* LetureRegistViewController.swift */; };
 		7518F51D1F49505B0088ED19 /* LectureShowTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518F51B1F49505B0088ED19 /* LectureShowTableCell.swift */; };
 		7518F51E1F49505B0088ED19 /* LectureShowTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7518F51C1F49505B0088ED19 /* LectureShowTableCell.xib */; };
 		7518F5211F49585C0088ED19 /* ReviewShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518F51F1F49585C0088ED19 /* ReviewShowTableViewCell.swift */; };
 		7518F5221F49585C0088ED19 /* ReviewShowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7518F5201F49585C0088ED19 /* ReviewShowTableViewCell.xib */; };
+		752FEB691F4EA24400F53B2C /* WebViewContent.html in Resources */ = {isa = PBXBuildFile; fileRef = 752FEB681F4EA24400F53B2C /* WebViewContent.html */; };
+		752FEB6B1F4EA5BA00F53B2C /* railway.gif in Resources */ = {isa = PBXBuildFile; fileRef = 752FEB6A1F4EA5BA00F53B2C /* railway.gif */; };
+		752FEB6D1F4EA7A300F53B2C /* joker.gif in Resources */ = {isa = PBXBuildFile; fileRef = 752FEB6C1F4EA7A300F53B2C /* joker.gif */; };
 		75346BC71F4DB4A000F580FC /* SearchTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75346BC61F4DB4A000F580FC /* SearchTextViewController.swift */; };
 		75346BCD1F4DD9FF00F580FC /* MakeClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75346BCC1F4DD9FF00F580FC /* MakeClassViewController.swift */; };
+		75346BCF1F4E98CA00F580FC /* ronaldo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 75346BCE1F4E98CA00F580FC /* ronaldo.gif */; };
 		758D9CB91F4C1D70005B858D /* StarReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D9CB81F4C1D70005B858D /* StarReview.swift */; };
 		759155901F3C62C80010686B /* LectureIntroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7591558E1F3C62C80010686B /* LectureIntroTableViewCell.swift */; };
 		759155911F3C62C80010686B /* LectureIntroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7591558F1F3C62C80010686B /* LectureIntroTableViewCell.xib */; };
@@ -168,7 +174,6 @@
 		75D1B29E1F357CB40068C20C /* pac-man-logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 75D1B29C1F357CB40068C20C /* pac-man-logo.gif */; };
 		75D1B29F1F357CB40068C20C /* five.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 75D1B29D1F357CB40068C20C /* five.jpg */; };
 		75D1B2A11F3581D10068C20C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1B2A01F3581D10068C20C /* AppDelegate.swift */; };
-		75FB7F071F42E5C2002A422F /* MainSearchStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75FB7F061F42E5C2002A422F /* MainSearchStoryboard.storyboard */; };
 		7938897566E942ADED17E528 /* Pods_EClass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A979C041A7CCF9B1C070F361 /* Pods_EClass.framework */; };
 /* End PBXBuildFile section */
 
@@ -291,14 +296,20 @@
 		45A57FAF1F357C5D001F5C1A /* DetailChangeUserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailChangeUserInfoViewController.swift; sourceTree = "<group>"; };
 		45A57FB11F357C6F001F5C1A /* DetailLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailLogInViewController.swift; sourceTree = "<group>"; };
 		575D7D2BB1253DC83223CD2A /* Pods-EClass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EClass.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EClass/Pods-EClass.debug.xcconfig"; sourceTree = "<group>"; };
+		7505F5121F4EA955007A75F2 /* enter.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = enter.gif; sourceTree = "<group>"; };
+		7505F5141F4EA9F2007A75F2 /* whysoserious.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = whysoserious.gif; sourceTree = "<group>"; };
 		7518F5131F468FB50088ED19 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		7518F5191F489E610088ED19 /* LetureRegistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetureRegistViewController.swift; sourceTree = "<group>"; };
 		7518F51B1F49505B0088ED19 /* LectureShowTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureShowTableCell.swift; sourceTree = "<group>"; };
 		7518F51C1F49505B0088ED19 /* LectureShowTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LectureShowTableCell.xib; sourceTree = "<group>"; };
 		7518F51F1F49585C0088ED19 /* ReviewShowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewShowTableViewCell.swift; sourceTree = "<group>"; };
 		7518F5201F49585C0088ED19 /* ReviewShowTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewShowTableViewCell.xib; sourceTree = "<group>"; };
+		752FEB681F4EA24400F53B2C /* WebViewContent.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = WebViewContent.html; sourceTree = "<group>"; };
+		752FEB6A1F4EA5BA00F53B2C /* railway.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = railway.gif; sourceTree = "<group>"; };
+		752FEB6C1F4EA7A300F53B2C /* joker.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = joker.gif; sourceTree = "<group>"; };
 		75346BC61F4DB4A000F580FC /* SearchTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTextViewController.swift; sourceTree = "<group>"; };
 		75346BCC1F4DD9FF00F580FC /* MakeClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeClassViewController.swift; sourceTree = "<group>"; };
+		75346BCE1F4E98CA00F580FC /* ronaldo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ronaldo.gif; sourceTree = "<group>"; };
 		758D9CB81F4C1D70005B858D /* StarReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarReview.swift; sourceTree = "<group>"; };
 		7591558E1F3C62C80010686B /* LectureIntroTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureIntroTableViewCell.swift; sourceTree = "<group>"; };
 		7591558F1F3C62C80010686B /* LectureIntroTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LectureIntroTableViewCell.xib; sourceTree = "<group>"; };
@@ -339,7 +350,6 @@
 		75D1B29C1F357CB40068C20C /* pac-man-logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "pac-man-logo.gif"; sourceTree = "<group>"; };
 		75D1B29D1F357CB40068C20C /* five.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = five.jpg; sourceTree = "<group>"; };
 		75D1B2A01F3581D10068C20C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		75FB7F061F42E5C2002A422F /* MainSearchStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainSearchStoryboard.storyboard; sourceTree = "<group>"; };
 		A54FF905BECFE602411DC250 /* Pods-EClass.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EClass.release.xcconfig"; path = "Pods/Target Support Files/Pods-EClass/Pods-EClass.release.xcconfig"; sourceTree = "<group>"; };
 		A979C041A7CCF9B1C070F361 /* Pods_EClass.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EClass.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -516,9 +526,14 @@
 		45A57FB31F357C89001F5C1A /* LogInViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				752FEB681F4EA24400F53B2C /* WebViewContent.html */,
 				45A57FA31F357C12001F5C1A /* LogInViewController.swift */,
+				7505F5141F4EA9F2007A75F2 /* whysoserious.gif */,
 				45A57FB11F357C6F001F5C1A /* DetailLogInViewController.swift */,
 				45A57FA51F357C1D001F5C1A /* SignUpViewController.swift */,
+				7505F5121F4EA955007A75F2 /* enter.gif */,
+				752FEB6C1F4EA7A300F53B2C /* joker.gif */,
+				752FEB6A1F4EA5BA00F53B2C /* railway.gif */,
 			);
 			name = LogInViewControllers;
 			sourceTree = "<group>";
@@ -555,7 +570,6 @@
 				75D1B2931F357C8D0068C20C /* CategorySelectViewController.swift */,
 				75D1B2941F357C8D0068C20C /* SearchViewController.swift */,
 				75D1B2951F357C8D0068C20C /* LocationSelectViewController.swift */,
-				75FB7F061F42E5C2002A422F /* MainSearchStoryboard.storyboard */,
 				45264CB61F4884F600933C50 /* passion2.png */,
 				45264CBA1F48850400933C50 /* passion0.png */,
 				45264CB81F4884FE00933C50 /* passion1.png */,
@@ -615,6 +629,7 @@
 				45264BB21F3D982900933C50 /* ListOfLecture.storyboard */,
 				75D1B2831F357C6A0068C20C /* LocationTableViewCell.swift */,
 				75D1B2841F357C6A0068C20C /* LocationCollectionViewCell.swift */,
+				75346BCE1F4E98CA00F580FC /* ronaldo.gif */,
 				45264BB41F3D9ADF00933C50 /* ListOfLectureTableViewCell.swift */,
 				45264BBC1F3DAC5600933C50 /* ListOfLectureViewController.swift */,
 				45264BC61F3F5A4800933C50 /* FAQViewController.storyboard */,
@@ -756,10 +771,12 @@
 				45264C4A1F47097200933C50 /* major0.png in Resources */,
 				7518F51E1F49505B0088ED19 /* LectureShowTableCell.xib in Resources */,
 				45264C3D1F47096B00933C50 /* music5.png in Resources */,
+				752FEB6B1F4EA5BA00F53B2C /* railway.gif in Resources */,
 				45264C6D1F47097C00933C50 /* sports0.png in Resources */,
 				759155A51F3D8CD60010686B /* LectureImageCollectionViewCell.xib in Resources */,
 				451BC8041F4D64B700D11AA6 /* 7.png in Resources */,
 				45264C501F47097200933C50 /* major6.png in Resources */,
+				7505F5131F4EA955007A75F2 /* enter.gif in Resources */,
 				45264C751F47097C00933C50 /* sports8.png in Resources */,
 				45264C711F47097C00933C50 /* sports4.png in Resources */,
 				45264C6F1F47097C00933C50 /* sports2.png in Resources */,
@@ -772,6 +789,7 @@
 				45264C3F1F47096B00933C50 /* music7.png in Resources */,
 				45264C4F1F47097200933C50 /* major5.png in Resources */,
 				45264C5B1F47097700933C50 /* hobby0.png in Resources */,
+				7505F5151F4EA9F2007A75F2 /* whysoserious.gif in Resources */,
 				45264C3E1F47096B00933C50 /* music6.png in Resources */,
 				45264C3A1F47096B00933C50 /* music2.png in Resources */,
 				45264BC91F454D6C00933C50 /* RegisterLecture.storyboard in Resources */,
@@ -798,7 +816,6 @@
 				451BC80D1F4D6ACC00D11AA6 /* noImage.png in Resources */,
 				45264C191F47096100933C50 /* language4.png in Resources */,
 				451BC80B1F4D68C700D11AA6 /* register2.png in Resources */,
-				75FB7F071F42E5C2002A422F /* MainSearchStoryboard.storyboard in Resources */,
 				75D1B28E1F357C810068C20C /* DetailPage.storyboard in Resources */,
 				45264C601F47097700933C50 /* hobby5.png in Resources */,
 				45264C921F47E67A00933C50 /* 10.png in Resources */,
@@ -817,6 +834,7 @@
 				45264C381F47096B00933C50 /* music0.png in Resources */,
 				45264C071F47095300933C50 /* computer4.png in Resources */,
 				45264C051F47095300933C50 /* computer2.png in Resources */,
+				752FEB6D1F4EA7A300F53B2C /* joker.gif in Resources */,
 				45264C971F47EEB600933C50 /* elass_logo.png in Resources */,
 				45264C701F47097C00933C50 /* sports3.png in Resources */,
 				45264C5C1F47097700933C50 /* hobby1.png in Resources */,
@@ -843,11 +861,13 @@
 				45264C271F47096600933C50 /* health1.png in Resources */,
 				45264C1B1F47096100933C50 /* language6.png in Resources */,
 				45264C0B1F47095300933C50 /* computer8.png in Resources */,
+				75346BCF1F4E98CA00F580FC /* ronaldo.gif in Resources */,
 				45264B6F1F3C857500933C50 /* UserInformationPopupView.xib in Resources */,
 				45A57FA21F357BE5001F5C1A /* Main2.storyboard in Resources */,
 				45264C611F47097700933C50 /* hobby6.png in Resources */,
 				45264CBB1F48850400933C50 /* passion0.png in Resources */,
 				45264C091F47095300933C50 /* computer6.png in Resources */,
+				752FEB691F4EA24400F53B2C /* WebViewContent.html in Resources */,
 				45264C391F47096B00933C50 /* music1.png in Resources */,
 				7591559D1F3CB9CD0010686B /* LectureReviewTableViewCell.xib in Resources */,
 			);

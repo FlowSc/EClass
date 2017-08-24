@@ -10,8 +10,9 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class SearchTextViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class SearchTextViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate {
 
+    @IBOutlet weak var searchTextButton: UIButton!
     
     var searchList:JSON!
     @IBOutlet weak var myCollectionView: UICollectionView!
@@ -27,22 +28,35 @@ class SearchTextViewController: UIViewController, UICollectionViewDataSource, UI
             self.searchList = JSON(result.result.value)
             
             self.myCollectionView.reloadData()
+            self.searchWordTf.resignFirstResponder()
             
         }
         
         
     }
+    
     @IBOutlet weak var searchWordTf: UITextField!
 
     
     override func viewDidLoad() {
         
+        reloadList()
+        
         self.navigationItem.title = "키워드 검색"
+        searchTextButton.setBasicColor()
         
         searchList = []
         super.viewDidLoad()
+        
+        searchWordTf.delegate = self
 
         // Do any additional setup after loading the view.
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        self.searchButtonTouched(self)
+        return true
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,6 +78,14 @@ class SearchTextViewController: UIViewController, UICollectionViewDataSource, UI
         if attendanceCount == "" {
             attendanceCount = "0"
         }
+        
+        cell.tutorImage.layer.cornerRadius = 25
+        cell.tutorImage.clipsToBounds = true
+        //            cell.tutorImage.layer.borderWidth = 1
+        cell.tag = indexPath.item
+        //        cell.layer.borderColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1) as! CGColor
+        cell.layer.borderWidth = 1
+
         
         print("CELLDATA 출력 시작!")
 
@@ -87,6 +109,12 @@ class SearchTextViewController: UIViewController, UICollectionViewDataSource, UI
         self.navigationController?.pushViewController(mvc, animated: true)
 
     }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 412, height: 250)
+    }
+
     
 
     /*
