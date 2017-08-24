@@ -20,7 +20,7 @@ class RearProfileImageTableViewCell: UITableViewCell {
         userProfileImageOutlet.clipsToBounds = true
         userProfileImageOutlet.image = UIImage(named: "0.png")
         userEmailLabel.text = currentUserData?.email
-        userNameLabel.text = currentUserData?.userName
+        userNameLabel.text = currentUserData?.userName ?? "guest 로그인"
         userProfileImageOutlet.image = currentUserData?.profileImage
         // Initialization code
     }

@@ -21,6 +21,7 @@
 		451BC8151F4D758F00D11AA6 /* RegisterTutorTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451BC8141F4D758F00D11AA6 /* RegisterTutorTableViewCell2.swift */; };
 		451BC8171F4D813400D11AA6 /* RegisterTutorTableViewCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451BC8161F4D813400D11AA6 /* RegisterTutorTableViewCell3.swift */; };
 		451BC8191F4D935C00D11AA6 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 451BC8181F4D935C00D11AA6 /* 5.png */; };
+		451BC83D1F4E98BB00D11AA6 /* register3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 451BC83C1F4E98BB00D11AA6 /* register3.jpg */; };
 		45264B011F3C7DDB00933C50 /* InputUserGenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45264B001F3C7DDB00933C50 /* InputUserGenderTableViewCell.swift */; };
 		45264B031F3C7E5B00933C50 /* InputUserDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45264B021F3C7E5B00933C50 /* InputUserDataTableViewCell.swift */; };
 		45264B6E1F3C857500933C50 /* UserInformationPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45264B6C1F3C857500933C50 /* UserInformationPopupView.swift */; };
@@ -185,6 +186,7 @@
 		451BC8141F4D758F00D11AA6 /* RegisterTutorTableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTutorTableViewCell2.swift; sourceTree = "<group>"; };
 		451BC8161F4D813400D11AA6 /* RegisterTutorTableViewCell3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTutorTableViewCell3.swift; sourceTree = "<group>"; };
 		451BC8181F4D935C00D11AA6 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		451BC83C1F4E98BB00D11AA6 /* register3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = register3.jpg; sourceTree = "<group>"; };
 		45264B001F3C7DDB00933C50 /* InputUserGenderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputUserGenderTableViewCell.swift; sourceTree = "<group>"; };
 		45264B021F3C7E5B00933C50 /* InputUserDataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputUserDataTableViewCell.swift; sourceTree = "<group>"; };
 		45264B6C1F3C857500933C50 /* UserInformationPopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformationPopupView.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 				451BC8061F4D68C700D11AA6 /* register0.png */,
 				451BC8071F4D68C700D11AA6 /* register1.png */,
 				451BC8081F4D68C700D11AA6 /* register2.png */,
+				451BC83C1F4E98BB00D11AA6 /* register3.jpg */,
 			);
 			name = RegisterLectureImage;
 			path = sports/RegisterLectureImage;
@@ -773,6 +776,7 @@
 				45264C031F47095300933C50 /* computer0.png in Resources */,
 				45264C291F47096600933C50 /* health3.png in Resources */,
 				759155991F3CA8740010686B /* MapLocationTableViewCell.xib in Resources */,
+				451BC83D1F4E98BB00D11AA6 /* register3.jpg in Resources */,
 				45264C181F47096100933C50 /* language3.png in Resources */,
 				45264C911F47E67A00933C50 /* 9.png in Resources */,
 				75D1B29E1F357CB40068C20C /* pac-man-logo.gif in Resources */,

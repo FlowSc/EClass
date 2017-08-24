@@ -35,7 +35,7 @@ class ChangeUserInfomationViewController: UIViewController, UITableViewDataSourc
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! ProfileImageTableViewCell
-            cell.userNameLabel.text = userData?.userName
+            cell.userNameLabel.text = userData?.userName ?? "guest"
             cell.profileImageOutlet.image = currentUserData?.profileImage
             cell.selectionStyle = .none
             
