@@ -326,7 +326,7 @@ class DetailChangeUserInfoViewController: UIViewController, UITableViewDelegate,
             cell.delegate = self
             
 //            cell.imageOutlet.image = currentUserData?.profileImage ?? UIImage(named: "0.png")
-            cell.userNameLabel.text = currentUserData?.userName
+            cell.userNameLabel.text = currentUserData?.userName ?? "guest"
             return cell
         }
         

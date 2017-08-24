@@ -146,11 +146,18 @@ class RegisterTutorViewController: UIViewController, UITableViewDelegate, UITabl
     
     func registTutor(){
         
-        let token:HTTPHeaders = ["Authorization":"Token b6d8963e53f724bab5643fe0cc580e3b11949098"]
+        let token:HTTPHeaders = ["Authorization":"Token " + currentUserToken]
+        print("Token " + currentUserToken)
         
+        print(realCell?.imageOutlet.image)
+        print(realCell1?.imageOutlet.image)
         
-        let myParameter = ["my_photo":realCell?.imageOutlet.image!, "phone":textFields?[0].text!,"nickname":textFields?[1].text!,"cert_type":textFields?[2].text!, "school":textFields?[3].text!, "major":textFields?[4].text!,  "status_type":textFields?[5].text!,"cert_name":textFields?[6].text!,"cert_photo":realCell1?.imageOutlet.image] as [String:Any]
+        let myParameter = ["my_photo":realCell!.imageOutlet.image!, "phone":textFields![0].text!,"nickname":textFields![1].text!,"cert_type":textFields![2].text!, "school":textFields![3].text!, "major":textFields![4].text!,  "status_type":textFields![5].text!,"cert_name":textFields![6].text!,"cert_photo":realCell1!.imageOutlet.image!] as [String:Any]
         
+        for i in textFields!
+        {
+            print(i.text)
+        }
         
         Alamofire.upload(multipartFormData: { (data) in
             for (key, value) in myParameter {
@@ -163,51 +170,81 @@ class RegisterTutorViewController: UIViewController, UITableViewDelegate, UITabl
                     data.append(UIImagePNGRepresentation(value as! UIImage)!, withName: key, fileName: "profile", mimeType: "image/png")
                 }
             }
-        }, usingThreshold: UInt64.init(), to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/tutor/register/", method: .post, headers: token){ (result) in
-            switch result{
-            case .success(let upload,_ ,_):
-                
-                upload.responseJSON { response in
-                    if response.result.value != nil
-                    {
-                        let params = ["username":UserDefaults.standard.object(forKey: "UserName") as! String,"password":UserDefaults.standard.object(forKey: "UserPassword") as! String]
-                        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/login/", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
-                            guard let data = response.result.value else
-                            {
-                                return
-                            }
-                            
-                            let realData = JSON(data)
-                            currentUserPrimaryKey = realData["user"]["user_pk"].intValue
-                            currentUserToken = realData["token"].stringValue
-                            currentUserTuTorPK = realData["user"]["tutor_pk"].intValue
-                            
-                            
-                            if response.result.isSuccess
-                            {
-                                print("재로그인")
-                                print(response.result.value!)
-                                self.dismiss(animated: true, completion: nil)
-                                print("재로그인")
-                            }
-                        }
-                        print("튜터 등록")
-                        print(response.result.value!)
-                        print("튜터 등록")
-//                        self.dismiss(animated: true, completion: nil)
-                    }
-                }
-                
-            case .failure(let encodingError):
-                print(encodingError)
-                break
-            }
-
+        }, usingThreshold: UInt64.init(), to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/tutor/register/", method: .post, headers: token) { (result) in
+            
             print(result)
             
         }
         // Do any additional setup after loading the view, typically from a nib.
     }
+//        Alamofire.upload(multipartFormData: { (data) in
+//            for (key, value) in myParameter {
+//                if value is String || value is Int {
+//                    data.append("\(value)".data(using: .utf8)!, withName: key)
+//                    print(data)
+//                    print(key, value)
+//                }
+//                if value is UIImage {
+//                    data.append(UIImagePNGRepresentation(value as! UIImage)!, withName: key, fileName: "profile", mimeType: "image/png")
+//                }
+//            }
+//        }, usingThreshold: UInt64.init(), to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/tutor/register/", method: .post, headers: token){ (result) in
+//            switch result{
+//            case .success(let upload,_ ,_):
+//                print("일단 석세스")
+//                print(upload.response)
+//                print("일단 석세스")
+        
+        
+        
+        
+        
+        
+                
+//                upload.responseJSON { response in
+//                    
+//                    print("여긴 들어오니")
+//                    
+//                    let params = ["username":UserDefaults.standard.object(forKey: "UserName") as! String,"password":UserDefaults.standard.object(forKey: "UserPassword") as! String]
+//                    Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/login/", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+//                        guard let data = response.result.value else
+//                        {
+//                            return
+//                        }
+//                        print("제이슨")
+//                        let realData = JSON(data)
+//                        print(realData)
+//                        print("제이슨")
+//                        currentUserPrimaryKey = realData["user"]["user_pk"].intValue
+//                        currentUserToken = realData["token"].stringValue
+//                        currentUserTuTorPK = realData["user"]["tutor_pk"].intValue
+//                        
+//                        
+//                        if response.result.isSuccess
+//                        {
+//                            print("재로그인")
+//                            print(response.result.value!)
+//                            self.dismiss(animated: true, completion: nil)
+//                            print("재로그인")
+//                        }
+//                    }
+//                    print("튜터 등록")
+//    
+//                    //                        self.dismiss(animated: true, completion: nil)
+//
+//                    
+//                }
+                
+//            case .failure(let encodingError):
+//                print(encodingError)
+//                print("fail인가")
+//                break
+//            }
+
+//            print(result)
+    
+        // Do any additional setup after loading the view, typically from a nib.
+
 
     /*
     // MARK: - Navigation

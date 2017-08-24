@@ -30,15 +30,10 @@ class ChangeSelfDescriptionTableViewCell: UITableViewCell{
         imageOutlet.addGestureRecognizer(tapGesture)
         // Initialization code
     }
-//    func sendImage(data: UIImage, data1:UIImagePickerController) {
-//        print("sendImage!!!")
-//        imageOutlet.image = data
-//    }
+
     func imageOutletTouched(_ data:UITapGestureRecognizer)
     {
-//        let storyBoard1 = UIStoryboard(name: "Main2", bundle: nil)
-//        let vC = storyBoard1.instantiateViewController(withIdentifier: "DetailChangeUserInfoViewController") as! DetailChangeUserInfoViewController
-//        vC.delegate = self
+
         delegate?.imageOutletTouch()
     }
 
