@@ -69,11 +69,11 @@ class SearchTextViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! RecommendCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCollectionViewCell", for: indexPath) as! RecommendCollectionViewCell
         
-        let showData = searchList[indexPath.item]
+        let myData = searchList[indexPath.item]
 
-        var attendanceCount = showData["total_count"].stringValue
+        var attendanceCount = myData["total_count"].stringValue
         
         if attendanceCount == "" {
             attendanceCount = "0"
@@ -85,15 +85,39 @@ class SearchTextViewController: UIViewController, UICollectionViewDataSource, UI
         cell.tag = indexPath.item
         //        cell.layer.borderColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1) as! CGColor
         cell.layer.borderWidth = 1
+        
+        func makeReviewAverageScore() -> Double {
+            
+            var myScore:Double = 0.0
+            
+            
+            for (key, value) in myData["review_average"].dictionaryValue {
+                
+                print(key, value)
+                
+                
+                let averagePoint = value.doubleValue
+                
+                myScore += averagePoint
+                
+                
+                
+            }
+            
+            return myScore.roundToPlaces(places: 0) / 5
+            
+        }
+
 
         
         print("CELLDATA 출력 시작!")
 
-        print(showData)
+        print(myData)
         
         print("CELLDATA 출력 끝!")
         
-        cell.setLecture(showData["cover_photo"].stringValue, showData["title"].stringValue, showData["price"].stringValue, showData["cover_photo"].stringValue, "\(attendanceCount) 명 참여 중", showData["tutor_info"]["nickname"].stringValue)
+        cell.setLecture(myData["lecture_photos"][0]["lecture_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, "\(attendanceCount) 명 참여", myData["tutor_info"]["nickname"].stringValue, makeReviewAverageScore(), makeReviewAverageScore(), location: myData["locations"][0]["location2"].stringValue)
+
         
         return cell
     }

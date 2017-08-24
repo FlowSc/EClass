@@ -14,7 +14,7 @@ class LectureImageCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        lectureImage.contentMode = .scaleAspectFit
+        lectureImage.contentMode = .scaleToFill
         // Initialization code
     }
 

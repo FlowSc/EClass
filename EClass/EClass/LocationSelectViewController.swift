@@ -54,7 +54,7 @@ extension LocationSelectViewController:UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         print(locationStrings[indexPath.item])
-        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "LocationName"), object: nil, userInfo:["LocationName":locationStrings[indexPath.item]])
+        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "LocationName"), object: nil, userInfo:["locationName":locationStrings[indexPath.item]])
         
         self.navigationController?.popViewController(animated: true)
     }
