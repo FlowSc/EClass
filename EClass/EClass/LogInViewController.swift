@@ -100,6 +100,24 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var marginView2: UIView!
     @IBOutlet weak var marginView1: UIView!
     override func viewDidLoad() {
+        
+//        if UserDefaults.standard.string(forKey: "UserPK") != nil
+//        {
+//            currentUserPrimaryKey = UserDefaults.standard.integer(forKey: "UserPK")
+//            currentUserToken = UserDefaults.standard.string(forKey: "UserToken")!
+//            
+//            currentUserTuTorPK = UserDefaults.standard.integer(forKey: "TutorPK")
+//            
+////            currentUserName = UserDefaults.standard.string(forKey: "UserName")
+////            currentUserNickname = UserDefaults.standard.string(forKey: "UserNickname") ?? "Default"
+//            currentUserData = DataCenter.shared.realUser
+//            
+//            
+//            let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
+//            let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
+//            self.present(pushMainView, animated: false, completion: nil)
+//        }
+        
         self.navigationController?.navigationBar.isHidden = true
         super.viewDidLoad()
         

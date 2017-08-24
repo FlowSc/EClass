@@ -128,6 +128,7 @@ class RearUserInfoViewController: UIViewController, UITableViewDelegate, UITable
             currentUserToken = ""
             currentUserData = nil
             currentUserTuTorPK = 0
+            currentUserPrimaryKey = 0
 //            self.navigationController?.navigationBar.alpha = 0.5
             self.navigationController?.isNavigationBarHidden = false
         }else

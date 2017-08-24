@@ -131,7 +131,7 @@ final class DataCenter
 //유저 정보 GET
         
         Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization":"Token " + "\(currentUserToken)"]).responseJSON { (response) in
-            guard let data = response.result.value else
+            guard let data = response.value else
             {
                 return
             }

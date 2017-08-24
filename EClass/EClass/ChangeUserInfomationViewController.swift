@@ -17,7 +17,6 @@ var currentUserData = DataCenter.shared.realUser
 class ChangeUserInfomationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
 
-    var userData = DataCenter.shared.realUser
 //    func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
 //        scrollView.delegate = self
 //        scrollView.alwaysBounceVertical = false
@@ -35,7 +34,7 @@ class ChangeUserInfomationViewController: UIViewController, UITableViewDataSourc
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! ProfileImageTableViewCell
-            cell.userNameLabel.text = userData?.userName ?? "guest"
+            cell.userNameLabel.text = currentUserData?.userName ?? "guest"
             cell.profileImageOutlet.image = currentUserData?.profileImage
             cell.selectionStyle = .none
             
@@ -195,7 +194,6 @@ class ChangeUserInfomationViewController: UIViewController, UITableViewDataSourc
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        userData = DataCenter.shared.realUser
         tv.reloadData()
         
         print("viewwillappear")

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import SwiftyGif
 
 class SignUpViewController: UIViewController,UITextFieldDelegate {
 
@@ -26,7 +27,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
             
             let params = ["username":userNameTextField.text!,"password":passwordTextField.text!,"confirm_password":passwordTextField.text!,"email":emailTextField.text!]
             Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/signup/", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
-                guard let data = response.result.value else
+                guard let data = response.value else
                 {
                     return
                 }
@@ -93,9 +94,14 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     @IBOutlet weak var marginView6: UIView!
     @IBOutlet weak var marginView7: UIView!
     
+    @IBAction func backButtonTouched(_ sender: UIButton) {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
     @IBOutlet weak var marginView5: UIView!
     @IBOutlet weak var marginView4: UIView!
     @IBOutlet weak var marginView3: UIView!
@@ -103,9 +109,17 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var marginView1: UIView!
     func outletSet()
     {
-        loginImageView.image = UIImage(named: "passion0.png")
-        loginImageView.clipsToBounds = true
-        loginImageView.alpha = 0.9
+//        loginImageView.image = UIImage(named: "passion0.png")
+//        loginImageView.clipsToBounds = true
+//        loginImageView.alpha = 0.9
+        self.navigationController?.navigationBar.isHidden = true
+        let gif = UIImage(gifName: "railway.gif")
+        let gifManager = SwiftyGifManager(memoryLimit:20)
+        loginImageView.setGifImage(gif, manager: gifManager)
+        
+//        let jeremyGif = UIImage.init(gifName: "railway")
+//        loginImageView = UIImageView(image: jeremyGif)
+//        loginImageView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         marginView1.backgroundColor = .clear
         marginView2.backgroundColor = .clear
         marginView3.backgroundColor = .clear

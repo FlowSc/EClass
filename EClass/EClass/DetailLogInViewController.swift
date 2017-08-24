@@ -18,6 +18,9 @@ var loginSuccess:Bool = false
 class DetailLogInViewController: UIViewController, UITextFieldDelegate{
     
     
+    @IBAction func backButtonTouched(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
    
     
@@ -158,7 +161,9 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
 //        detailLoginImageView = UIImageView(gifImage: gif, manager: gifManager)
 //        detailLoginImageView.clipsToBounds = true
 ////        detailLoginImageView.alpha = 0.6
-        self.navigationController?.navigationBar.alpha = 0.3
+//        self.navigationController?.navigationBar.backgroundColor = .clear
+//        self.navigationController?.navigationBar.alpha = 0.3
+        
         self.navigationItem.leftBarButtonItem?.tintColor = .black
         self.navigationController?.navigationBar.barTintColor = .black
         self.navigationController?.isNavigationBarHidden = true
