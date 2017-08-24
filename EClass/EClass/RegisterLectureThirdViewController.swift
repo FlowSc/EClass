@@ -83,13 +83,13 @@ class RegisterLectureThirdViewController: UIViewController, UIPickerViewDelegate
         
     }
     @IBAction func goNextButtonTouched(_ sender: UIButton) {
-        classMakeParameter.updateValue(price.text, forKey: "price")
-        classMakeParameter.updateValue(basicClassTime.text, forKey: "basic_class_time")
-        classMakeParameter.updateValue(locationEtcType.text, forKey: "location_etc_type")
-        classMakeParameter.updateValue(locationEtcText.text, forKey: "location_etc_text")
-        classMakeParameter.updateValue(totalCount.text, forKey: "total_count")
-        classMakeParameter.updateValue(minMember.text, forKey: "min_member")
-        classMakeParameter.updateValue(maxMember.text, forKey: "max_member")
+        classMakeParameter.updateValue(price.text!, forKey: "price")
+        classMakeParameter.updateValue(basicClassTime.text!, forKey: "basic_class_time")
+        classMakeParameter.updateValue(locationEtcType.text!, forKey: "location_etc_type")
+        classMakeParameter.updateValue(locationEtcText.text!, forKey: "location_etc_text")
+        classMakeParameter.updateValue(totalCount.text!, forKey: "total_count")
+        classMakeParameter.updateValue(minMember.text!, forKey: "min_member")
+        classMakeParameter.updateValue(maxMember.text!, forKey: "max_member")
         
         
         
