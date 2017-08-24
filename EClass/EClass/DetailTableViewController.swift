@@ -15,7 +15,7 @@ import SwiftyStarRatingView
 class DetailTableViewController: UIViewController {
     
     
-    var isWished:Bool = false
+//    var isWished:Bool = false
     
     @IBAction func wishList(_ sender: UIBarButtonItem) {
         
@@ -29,11 +29,11 @@ class DetailTableViewController: UIViewController {
         }, usingThreshold: UInt64.init(), to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/likeclass/", method: .post, headers: ["Authorization":"Token \(UserDefaults.standard.string(forKey: "UserToken")!)"]) { (result) in
             print(result)
             
-            if self.isWished == false{
-            self.isWished = true
-            }else{
-                self.isWished = false
-            }
+//            if self.isWished == false{
+//            self.isWished = true
+//            }else{
+//                self.isWished = false
+//            }
             let ac = UIAlertController.init(title: "찜하기가 완료되었습니다", message: "나의 위리스트에서 확인해보세요", preferredStyle: .alert)
             let action = UIAlertAction.init(title: "확인", style: .default, handler: nil)
             ac.addAction(action)
@@ -64,43 +64,26 @@ class DetailTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         let rightBtNotSelected:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.bookmarks, target: self, action: #selector(checkWish))
-        
-        
-        
-        let rightBtSelected:UIBarButtonItem =  UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(checkWish))
-
-
-        
-        
+         let rightBtSelected:UIBarButtonItem =  UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(checkWish))
         reloadList()
         
-        if isWished == false {
+//        if isWished == false {
             self.navigationItem.rightBarButtonItem = rightBtNotSelected
             
-        }else{
-            self.navigationItem.rightBarButtonItem = rightBtSelected
-        }
+//        }else{
+//            self.navigationItem.rightBarButtonItem = rightBtSelected
+//        }
         
-        
-        
+        var shortData = detailData["class_intro"].stringValue
         
         myData = LectureGenerator.getLecture(detailData["class_intro"].stringValue, detailData["class_intro"].stringValue)
         
-        
         reviewAverage = makeReviewAverageScore()
         loadDetailData(detailData["id"].intValue)
-        
-        
+    
         myTableView.reloadData()
-        
-        print("Lecture ID")
-        
-        
-        print("AAAA")
-        
-        
-        
         
         self.navigationItem.title = "강의정보"
         myTableView.estimatedRowHeight = 100
@@ -119,6 +102,8 @@ class DetailTableViewController: UIViewController {
         
         
     }
+    
+    
     
     
     override func didReceiveMemoryWarning() {
@@ -187,6 +172,19 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
         }else if indexPath.row == 4{
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.mapLocation, for: indexPath) as! MapLocationTableViewCell
             
+            
+            
+            let regionRadius:CLLocationDistance = 100
+            func centerMapLocation(location:CLLocation) {
+                let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+                
+                cell.locationMap.setRegion(coordinateRegion, animated: true)
+                
+            }
+            let initialLocation = CLLocation(latitude: 37.563756, longitude: 126.908421)
+
+            centerMapLocation(location:initialLocation )
+            
             let cellData = detailData["locations"][0]
             
             cell.additionalCgLb.text = detailData["locations"][0]["location_etc_text"].stringValue + " 원"
@@ -196,7 +194,22 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             
             if cellData["class_weekday"].stringValue == "sun" {
                 cell.dayIndicateBt.setTitle("일", for: .normal)
+            }else if cellData["class_weekday"].stringValue == "mon" {
+                cell.dayIndicateBt.setTitle("월", for: .normal)
+            }else if cellData["class_weekday"].stringValue == "tue" {
+                cell.dayIndicateBt.setTitle("화", for: .normal)
+            }else if cellData["class_weekday"].stringValue == "wed" {
+                cell.dayIndicateBt.setTitle("수", for: .normal)
+            }else if cellData["class_weekday"].stringValue == "thu" {
+                cell.dayIndicateBt.setTitle("목", for: .normal)
+            }else if cellData["class_weekday"].stringValue == "fri" {
+                cell.dayIndicateBt.setTitle("금", for: .normal)
+            }else if cellData["class_weekday"].stringValue == "sat" {
+                cell.dayIndicateBt.setTitle("토", for: .normal)
+            }else{
+                print("AA")
             }
+            
             cell.dayIndicateBt.makeCornerRound3()
             cell.dayIndicateBt.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
             cell.dayIndicateBt.setTitleColor(.white, for: .normal)
@@ -351,10 +364,10 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
     
     func loadDetailData(_ lectureId:Int) {
         
-        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/detail/", method: .post, parameters: ["lecture_id":lectureId], encoding: JSONEncoding.prettyPrinted, headers: ["Content-type":"application/json"]).responseJSON { (aa) in
+        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/detail/", method: .post, parameters: ["lecture_id":lectureId], encoding: JSONEncoding.prettyPrinted, headers: ["Content-type":"application/json"]).responseJSON { (data) in
             
             
-            self.detailData = JSON(aa.result.value)
+            self.detailData = JSON(data.result.value)
             self.myTableView.reloadData()
             
         }

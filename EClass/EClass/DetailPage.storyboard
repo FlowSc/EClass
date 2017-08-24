@@ -242,7 +242,7 @@
                                                         <constraint firstItem="waV-FT-1eo" firstAttribute="top" secondItem="S4y-Yb-Hjr" secondAttribute="bottom" constant="5" id="xP7-dS-hIj"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUa-Z7-wK9">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUa-Z7-wK9">
                                                     <rect key="frame" x="30" y="139.5" width="315.5" height="89"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>

@@ -23,7 +23,10 @@ class ListOfLectureViewController: UIViewController, UITabBarDelegate, UITableVi
     @IBOutlet weak var takeLectureList: UITabBarItem!
     @IBOutlet weak var tabBarOutlet: UITabBar!
     
-    func loadMyLecture(){
+    func loadMyLecture()->JSON{
+        
+        var lectureList:JSON = []
+        
         Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/class/list/", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization":"Token \(UserDefaults.standard.string(forKey: "UserToken")!)"]).responseJSON { (data) in
             var result = JSON(data.result.value)
             
@@ -32,6 +35,8 @@ class ListOfLectureViewController: UIViewController, UITabBarDelegate, UITableVi
             self.myLectureList = lectureData
         
         }
+        
+        return lectureList
     }
     
     func loadWishList(){
@@ -105,7 +110,8 @@ class ListOfLectureViewController: UIViewController, UITabBarDelegate, UITableVi
         
         tabBarOutlet.delegate = self
         loadWishList()
-        loadMyLecture()
+        myLectureList = loadMyLecture()
+        print(myLectureList)
         tv.reloadData()
 //        tabBarOutlet.selectedItem = takeLectureList
 
