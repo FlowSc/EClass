@@ -172,7 +172,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCell", for: indexPath) as! RecommendCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCollectionViewCell", for: indexPath) as! RecommendCollectionViewCell
         
         let myData = lectureShowList[indexPath.item]
 
@@ -182,18 +182,37 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         if attendanceCount == "" {
             attendanceCount = "0"
         }
+        func makeReviewAverageScore() -> Double {
+            
+            var myScore:Double = 0.0
+            
+            
+            for (key, value) in myData["review_average"].dictionaryValue {
+                
+                print(key, value)
+                
+                
+                let averagePoint = value.doubleValue
+                
+                myScore += averagePoint
+                
+                
+                
+            }
+            
+            return myScore.roundToPlaces(places: 0) / 5
+            
+        }
         
         
         print("XXXXXXX")
                     print("data 시작점 \(myData)")
         print("~~~~~~~~~~")
         
-        cell.setLecture(myData["lecture_photos"][0]["lecture_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, "\(attendanceCount) 명 참여", myData["tutor_info"]["nickname"].stringValue)
+        cell.setLecture(myData["lecture_photos"][0]["lecture_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, "\(attendanceCount) 명 참여", myData["tutor_info"]["nickname"].stringValue, makeReviewAverageScore(), makeReviewAverageScore(), location: myData["locations"][0]["location2"].stringValue)
         cell.tutorImage.layer.cornerRadius = 25
         cell.tutorImage.clipsToBounds = true
-        //            cell.tutorImage.layer.borderWidth = 1
         cell.tag = indexPath.item
-//        cell.layer.borderColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1) as! CGColor
         cell.layer.borderWidth = 1
 
 

@@ -553,8 +553,8 @@
 				45A57FA91F357C45001F5C1A /* SelfDescriptionTableViewCell.swift */,
 				451BC7FD1F4D519700D11AA6 /* ChangePasswordViewController.swift */,
 				45264B701F3C962E00933C50 /* SlideOutMenu.storyboard */,
-				45A57FAB1F357C4C001F5C1A /* ProfileImageTableViewCell.swift */,
 				45264B021F3C7E5B00933C50 /* InputUserDataTableViewCell.swift */,
+				45A57FAB1F357C4C001F5C1A /* ProfileImageTableViewCell.swift */,
 				45264B001F3C7DDB00933C50 /* InputUserGenderTableViewCell.swift */,
 				45A57FAD1F357C56001F5C1A /* ProfileTableViewCell.swift */,
 				45A57FAF1F357C5D001F5C1A /* DetailChangeUserInfoViewController.swift */,
@@ -630,6 +630,7 @@
 				75D1B27E1F357C6A0068C20C /* MainPage.storyboard */,
 				75346BC61F4DB4A000F580FC /* SearchTextViewController.swift */,
 				75D1B2A01F3581D10068C20C /* AppDelegate.swift */,
+				75D1B21D1F357C3C0068C20C /* MainTableViewController.swift */,
 				75D1B27F1F357C6A0068C20C /* RecommendCollectionViewCell.swift */,
 				75D1B2801F357C6A0068C20C /* RecommendTableViewCell.swift */,
 				75D1B2811F357C6A0068C20C /* CategoryTableViewCell.swift */,
@@ -681,7 +682,6 @@
 		75D1B2081F3575F80068C20C /* EClass */ = {
 			isa = PBXGroup;
 			children = (
-				75D1B21D1F357C3C0068C20C /* MainTableViewController.swift */,
 				75D1B2121F3575F80068C20C /* LaunchScreen.storyboard */,
 				45264C961F47EEB600933C50 /* elass_logo.png */,
 				75BC38201F3AC6D000AA9E96 /* MainPage */,

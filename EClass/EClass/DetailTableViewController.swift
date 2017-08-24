@@ -14,6 +14,35 @@ import SwiftyStarRatingView
 
 class DetailTableViewController: UIViewController {
     
+    
+    var isWished:Bool = false
+    
+    @IBAction func wishList(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    
+    func checkWish(){
+        
+        Alamofire.upload(multipartFormData: { (data) in
+            data.append(self.detailData["id"].stringValue.data(using: .utf8)!, withName: "lecture_id")
+        }, usingThreshold: UInt64.init(), to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/likeclass/", method: .post, headers: ["Authorization":"Token \(UserDefaults.standard.string(forKey: "UserToken")!)"]) { (result) in
+            print(result)
+            
+            if self.isWished == false{
+            self.isWished = true
+            }else{
+                self.isWished = false
+            }
+            let ac = UIAlertController.init(title: "찜하기가 완료되었습니다", message: "나의 위리스트에서 확인해보세요", preferredStyle: .alert)
+            let action = UIAlertAction.init(title: "확인", style: .default, handler: nil)
+            ac.addAction(action)
+            self.present(ac, animated: true, completion: nil)
+            
+        }
+
+    }
+    
     var averageReviewtotalScore:Double?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,8 +64,24 @@ class DetailTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let rightBtNotSelected:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.bookmarks, target: self, action: #selector(checkWish))
+        
+        
+        
+        let rightBtSelected:UIBarButtonItem =  UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(checkWish))
+
+
+        
         
         reloadList()
+        
+        if isWished == false {
+            self.navigationItem.rightBarButtonItem = rightBtNotSelected
+            
+        }else{
+            self.navigationItem.rightBarButtonItem = rightBtSelected
+        }
+        
         
         
         
@@ -103,7 +148,7 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             
             
             
-            cell.setLectureInfo(self.detailData["title"].stringValue, self.detailData["locations"][0]["location2"].stringValue, "\(self.detailData["max_member"].stringValue) 명", "회 당 \(self.detailData["price"].stringValue) 원", "주 \(self.detailData["basic_class_time"]) 회", "총 8회 16시간", "\(attendanceCount) 명 참여중")
+            cell.setLectureInfo(self.detailData["title"].stringValue, self.detailData["locations"][0]["location2"].stringValue, "\(self.detailData["max_member"].stringValue) 명", "회 당 \(self.detailData["price"].stringValue) 원", "주 \(self.detailData["basic_class_time"]) 회", "" , "\(attendanceCount) 명 참여중")
             cell.selectionStyle = .none
             cell.attendanceCount.layer.cornerRadius = 10
             cell.attendanceCount.textColor = .white
