@@ -45,11 +45,6 @@ class DetailTableViewController: UIViewController {
     
     var averageReviewtotalScore:Double?
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-    }
     //    @IBAction func askTutorButtonTouched(_ sender: UIButton) {
     //
     //        let alert = UIAlertController.init(title: "튜터에게 문의하기", message: (, preferredStyle: <#T##UIAlertControllerStyle#>)
@@ -64,10 +59,21 @@ class DetailTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         let rightBtNotSelected:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.bookmarks, target: self, action: #selector(checkWish))
-         let rightBtSelected:UIBarButtonItem =  UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(checkWish))
+//         let rightBtSelected:UIBarButtonItem =  UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(checkWish))
         reloadList()
+        
+        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/list/", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            guard let data = response.result.value else{return}
+            
+            let lectureData = JSON(data)
+            print("000000")
+            print(lectureData[0])
+            print("xxxxxx")
+            LectureList.lectureList = lectureData
+        }
+
+        myTableView.reloadData()
         
 //        if isWished == false {
             self.navigationItem.rightBarButtonItem = rightBtNotSelected
@@ -76,7 +82,6 @@ class DetailTableViewController: UIViewController {
 //            self.navigationItem.rightBarButtonItem = rightBtSelected
 //        }
         
-        var shortData = detailData["class_intro"].stringValue
         
         myData = LectureGenerator.getLecture(detailData["class_intro"].stringValue, detailData["class_intro"].stringValue)
         
@@ -98,13 +103,7 @@ class DetailTableViewController: UIViewController {
         print("Detail Data End!!!!!!")
         lectureRegistBt.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
         
-        // Do any additional setup after loading the view.
-        
-        
     }
-    
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -213,8 +212,6 @@ extension DetailTableViewController:UITableViewDelegate, UITableViewDataSource, 
             cell.dayIndicateBt.makeCornerRound3()
             cell.dayIndicateBt.backgroundColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1)
             cell.dayIndicateBt.setTitleColor(.white, for: .normal)
-            
-            
             
             cell.selectionStyle = .none
             
