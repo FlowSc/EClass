@@ -17,14 +17,33 @@ class RegisterLectureThirdViewController: UIViewController, UIPickerViewDelegate
     @IBOutlet weak var basicClassTime: UITextField!
     @IBOutlet weak var price: UITextField!
     @IBOutlet weak var backImage: UIImageView!
+    var keyBoardY:CGFloat?
     override func viewDidLoad() {
         super.viewDidLoad()
         minPicker.isHidden = true
         maxPicker.isHidden = true
         locationPick.isHidden = true
         set()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        keyBoardY = self.view.frame.origin.y
 
         // Do any additional setup after loading the view.
+    }
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= 40
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += 40
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,7 +101,8 @@ class RegisterLectureThirdViewController: UIViewController, UIPickerViewDelegate
         }
         
     }
-    @IBAction func goNextButtonTouched(_ sender: UIButton) {
+    @IBAction func goNextButtonTouched(_ sender: UIBarButtonItem) {
+
         classMakeParameter.updateValue(price.text!, forKey: "price")
         classMakeParameter.updateValue(basicClassTime.text!, forKey: "basic_class_time")
         classMakeParameter.updateValue(locationEtcType.text!, forKey: "location_etc_type")
@@ -90,9 +110,29 @@ class RegisterLectureThirdViewController: UIViewController, UIPickerViewDelegate
         classMakeParameter.updateValue(totalCount.text!, forKey: "total_count")
         classMakeParameter.updateValue(minMember.text!, forKey: "min_member")
         classMakeParameter.updateValue(maxMember.text!, forKey: "max_member")
+//        self.view.endEditing(true)
+//        self.view.frame.origin.y = keyBoardY!
+//        self.view.resignFirstResponder()
+        let storyBoard1 = UIStoryboard(name: "RegisterLecture", bundle: nil)
+        let nextVC = storyBoard1.instantiateViewController(withIdentifier: "RegisterLectureFourthViewController") as! RegisterLectureFourthViewController
+        self.navigationController?.pushViewController(nextVC, animated: true)
+        print("2")
+
         
         
         
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        if textField == maxMember
+        {
+            textField.resignFirstResponder()
+        }else
+        {
+            self.view.frame.origin.y -= 20
+        }
+
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == minPicker

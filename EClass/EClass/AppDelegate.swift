@@ -24,12 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        self.loadLecture()
+        print("뭐가먼저불리나")
+        
+        loadLecture()
+        
 
        
         return true
     }
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        print("궁금하군")
         return SDKApplicationDelegate.shared.application(app, open:url, options:options)
     }
 

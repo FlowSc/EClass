@@ -10,8 +10,28 @@ import UIKit
 
 class RegisterLectureSecondViewController: UIViewController, UITextViewDelegate {
 
+//    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+//        if textView.tag == 1
+//        {
+//            self.view.frame.origin.y -= 10
+//        }else if textView.tag == 2
+//        {
+//             self.view.frame.origin.y -= 10
+//        }
+//        return true
+//    }
+//    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+//        if textView.tag == 1
+//        {
+//            self.view.frame.origin.y += 10
+//        }else if textView.tag == 2
+//        {
+//            self.view.frame.origin.y += 10
+//            textView.resignFirstResponder()
+//        }
+//        return true
+//    }
     @IBOutlet weak var backImage: UIImageView!
-    @IBOutlet weak var goNextButtonOutlet: UIButton!
 
     @IBOutlet weak var lectureStudentTextView: UITextView!
     @IBOutlet weak var introduceLectureTextView: UITextView!
@@ -19,12 +39,30 @@ class RegisterLectureSecondViewController: UIViewController, UITextViewDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         set()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
         // Do any additional setup after loading the view.
     }
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= 40
+            }
+        }
+    }
+    
+//    func keyboardWillHide(notification: NSNotification) {
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y != 0{
+//                self.view.frame.origin.y += 40
+//            }
+//        }
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
         // Dispose of any resources that can be recreated.
     }
     
@@ -33,27 +71,15 @@ class RegisterLectureSecondViewController: UIViewController, UITextViewDelegate 
     {
         backImage.image = UIImage(named: "register1.png")
         backImage.alpha = 0.3
-//        goNextButtonOutlet.layer.borderColor = UIColor.black.cgColor
-//        
-//        goNextButtonOutlet.layer.borderWidth = 0.5
-//        goNextButtonOutlet.backgroundColor = .white
-//        goNextButtonOutlet.alpha = 0.8
+
         self.navigationController?.navigationBar.alpha = 0.5
         introduceLectureTextView.delegate = self
         introduceTutorTextView.delegate = self
         lectureStudentTextView.delegate = self
-//        introduceTutorTextView.layer.borderColor = UIColor.black.cgColor
-//        introduceLectureTextView.layer.borderColor = UIColor.black.cgColor
-//        lectureStudentTextView.layer.borderColor = UIColor.black.cgColor
-//        introduceTutorTextView.layer.borderWidth = 0.5
-//        introduceLectureTextView.layer.borderWidth = 0.5
-//        lectureStudentTextView.layer.borderWidth = 0.5
+
         introduceTutorTextView.layer.cornerRadius = 5
         introduceLectureTextView.layer.cornerRadius = 5
         lectureStudentTextView.layer.cornerRadius = 5
-//        introduceLectureTextView.alpha = 0.5
-//        introduceTutorTextView.alpha = 0.5
-//        lectureStudentTextView.alpha = 0.5
         
         
         
@@ -65,6 +91,7 @@ class RegisterLectureSecondViewController: UIViewController, UITextViewDelegate 
             {
                 textView.alpha = 1
                 textView.text = ""
+                self.view.frame.origin.y -= 10
             }
         }else if textView == introduceLectureTextView
         {
@@ -72,6 +99,7 @@ class RegisterLectureSecondViewController: UIViewController, UITextViewDelegate 
             {
                 textView.alpha = 1
                 textView.text = ""
+                self.view.frame.origin.y -= 10
             }
         }else
         {
@@ -79,6 +107,7 @@ class RegisterLectureSecondViewController: UIViewController, UITextViewDelegate 
             {
                 textView.alpha = 1
                 textView.text = ""
+                self.view.frame.origin.y -= 10
             }
         }
     }
@@ -89,6 +118,7 @@ class RegisterLectureSecondViewController: UIViewController, UITextViewDelegate 
             {
                 textView.alpha = 0.5
                 textView.text = "자신을 소개해 주세요!"
+                self.view.frame.origin.y += 10
             }
         }else if textView == introduceLectureTextView
         {
@@ -96,6 +126,7 @@ class RegisterLectureSecondViewController: UIViewController, UITextViewDelegate 
             {
                 textView.alpha = 0.5
                 textView.text = "어떤 수업인지 소개해주세요!"
+                self.view.frame.origin.y += 10
             }
         }else
         {
@@ -103,15 +134,24 @@ class RegisterLectureSecondViewController: UIViewController, UITextViewDelegate 
             {
                 textView.alpha = 0.5
                 textView.text = "어떤 수강생을 대상으로 하는 지 소개해주세요!"
+                self.view.frame.origin.y += 10
             }
         }
     }
 
-    @IBAction func goNextButtonTouched(_ sender: UIButton) {
-        classMakeParameter.updateValue(introduceTutorTextView.text!, forKey: "tutor_intro")
-        classMakeParameter.updateValue(introduceLectureTextView.text!, forKey: "class_intro")
-        classMakeParameter.updateValue(lectureStudentTextView.text!, forKey: "target_intro")
+    @IBAction func goGo(_ sender: UIBarButtonItem) {
+        classMakeParameter.updateValue(introduceTutorTextView.text, forKey: "tutor_intro")
+        classMakeParameter.updateValue(introduceLectureTextView.text, forKey: "class_intro")
+        classMakeParameter.updateValue(lectureStudentTextView.text, forKey: "target_intro")
+//        self.view.endEditing(true)
+//        self.view.resignFirstResponder()
+        let storyBoard1 = UIStoryboard(name: "RegisterLecture", bundle: nil)
+        let nextVC = storyBoard1.instantiateViewController(withIdentifier: "RegisterLectureThirdViewController") as! RegisterLectureThirdViewController
+        self.navigationController?.pushViewController(nextVC, animated: true)
+        print("2")
+
     }
+
 
     /*
     // MARK: - Navigation
