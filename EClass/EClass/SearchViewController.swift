@@ -51,6 +51,186 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         self.categorySelectButton.setTitle(self.changedTitleforCategory, for: .normal)
         self.locationSelectButton.setTitle(self.changedTitleforLocation, for: .normal)
         
+        NotificationCenter.default.addObserver(forName:  NSNotification.Name.init(rawValue: "LocationName"), object: nil, queue: nil) { noti in
+            
+            self.lectureShowList = self.recommendLectureList.array
+            self.changedTitleforLocation = noti.userInfo?["locationName"]! as! String
+            self.locationSelectButton.setTitle(self.changedTitleforLocation, for: .normal)
+            
+            print(self.changedTitleforLocation)
+            
+
+            
+            if self.changedTitleforLocation == "관악"{
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("관악")
+                })
+                
+                self.lectureShowList = filterList
+                
+            }else if self.changedTitleforLocation == "강동" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("강동")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "강북" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("강북")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "강서" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("강서")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "강남" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("강남")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "광진" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("광진")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "구로" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("구로")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "금천" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("금천")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "노원" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("노원")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "도봉" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("도봉")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "동대문" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("동대문")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "동작" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("마포")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "마포" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("마포")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "서대문" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("서대문")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "서초" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("서초")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "성동" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("성동")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "성북" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("성북")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "송파" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("송파")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "양천" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("양천")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "영등포" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("영등포")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "용산" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("용산")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "은평" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("은평")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "종로" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("종로")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "중구" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("중구")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "중랑" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue.contains("중랑")
+                })
+                
+                self.lectureShowList = filterList
+            }else if self.changedTitleforLocation == "관악" {
+                let filterList:[JSON] = self.lectureShowList.filter({ (myData) -> Bool in
+                    myData["locations"][0]["location2"].stringValue == "관악"
+                })
+                
+                self.lectureShowList = filterList
+            }else{
+                
+                let filterList:[JSON] = self.lectureShowList
+                
+                self.lectureShowList = filterList
+                
+            }
+            self.myCollectionView.reloadData()
+
+
+
+        }
+        
         NotificationCenter.default.addObserver(forName:  NSNotification.Name.init(rawValue: "CategoryName"), object: nil, queue: nil) { (noti) in
             
     
@@ -151,7 +331,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         NotificationCenter.default.addObserver(forName:  NSNotification.Name.init(rawValue: "LocationName"), object: nil, queue: nil) { (noti) in
             
             
-            self.changedTitleforLocation = noti.userInfo?["LocationName"]! as! String
+            self.changedTitleforLocation = noti.userInfo?["locationName"]! as! String
             self.locationSelectButton.setTitle(self.changedTitleforLocation, for: .normal)
             
             
@@ -172,7 +352,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCell", for: indexPath) as! RecommendCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCollectionViewCell", for: indexPath) as! RecommendCollectionViewCell
         
         let myData = lectureShowList[indexPath.item]
 
@@ -182,18 +362,37 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         if attendanceCount == "" {
             attendanceCount = "0"
         }
+        func makeReviewAverageScore() -> Double {
+            
+            var myScore:Double = 0.0
+            
+            
+            for (key, value) in myData["review_average"].dictionaryValue {
+                
+                print(key, value)
+                
+                
+                let averagePoint = value.doubleValue
+                
+                myScore += averagePoint
+                
+                
+                
+            }
+            
+            return myScore.roundToPlaces(places: 0) / 5
+            
+        }
         
         
         print("XXXXXXX")
                     print("data 시작점 \(myData)")
         print("~~~~~~~~~~")
         
-        cell.setLecture(myData["lecture_photos"][0]["lecture_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, "\(attendanceCount) 명 참여", myData["tutor_info"]["nickname"].stringValue)
+        cell.setLecture(myData["lecture_photos"][0]["lecture_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, "\(attendanceCount) 명 참여", myData["tutor_info"]["nickname"].stringValue, makeReviewAverageScore(), makeReviewAverageScore(), location: myData["locations"][0]["location2"].stringValue)
         cell.tutorImage.layer.cornerRadius = 25
         cell.tutorImage.clipsToBounds = true
-        //            cell.tutorImage.layer.borderWidth = 1
         cell.tag = indexPath.item
-//        cell.layer.borderColor = UIColor(red: 255/255, green: 125/255, blue: 83/255, alpha: 1) as! CGColor
         cell.layer.borderWidth = 1
 
 

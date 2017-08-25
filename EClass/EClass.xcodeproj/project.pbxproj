@@ -125,6 +125,7 @@
 		45A57FB21F357C6F001F5C1A /* DetailLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A57FB11F357C6F001F5C1A /* DetailLogInViewController.swift */; };
 		7505F5131F4EA955007A75F2 /* enter.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7505F5121F4EA955007A75F2 /* enter.gif */; };
 		7505F5151F4EA9F2007A75F2 /* whysoserious.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7505F5141F4EA9F2007A75F2 /* whysoserious.gif */; };
+		7505F5171F4EDD42007A75F2 /* LectureImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505F5161F4EDD42007A75F2 /* LectureImagesViewController.swift */; };
 		7518F5141F468FB50088ED19 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518F5131F468FB50088ED19 /* Constant.swift */; };
 		7518F51A1F489E610088ED19 /* LetureRegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518F5191F489E610088ED19 /* LetureRegistViewController.swift */; };
 		7518F51D1F49505B0088ED19 /* LectureShowTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518F51B1F49505B0088ED19 /* LectureShowTableCell.swift */; };
@@ -154,6 +155,7 @@
 		75BC382D1F3AF36600AA9E96 /* TutorDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC382B1F3AF36600AA9E96 /* TutorDetailTableViewCell.swift */; };
 		75BC382E1F3AF36600AA9E96 /* TutorDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75BC382C1F3AF36600AA9E96 /* TutorDetailTableViewCell.xib */; };
 		75BC38301F3AF56500AA9E96 /* SimpleImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC382F1F3AF56500AA9E96 /* SimpleImageTableViewCell.swift */; };
+		75C416E01F4EE5FA0025AB9E /* LecturePhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C416DF1F4EE5FA0025AB9E /* LecturePhotoCollectionViewCell.swift */; };
 		75D1B2111F3575F80068C20C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75D1B2101F3575F80068C20C /* Assets.xcassets */; };
 		75D1B2141F3575F80068C20C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D1B2121F3575F80068C20C /* LaunchScreen.storyboard */; };
 		75D1B21E1F357C3C0068C20C /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1B21D1F357C3C0068C20C /* MainTableViewController.swift */; };
@@ -300,6 +302,7 @@
 		575D7D2BB1253DC83223CD2A /* Pods-EClass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EClass.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EClass/Pods-EClass.debug.xcconfig"; sourceTree = "<group>"; };
 		7505F5121F4EA955007A75F2 /* enter.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = enter.gif; sourceTree = "<group>"; };
 		7505F5141F4EA9F2007A75F2 /* whysoserious.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = whysoserious.gif; sourceTree = "<group>"; };
+		7505F5161F4EDD42007A75F2 /* LectureImagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureImagesViewController.swift; sourceTree = "<group>"; };
 		7518F5131F468FB50088ED19 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		7518F5191F489E610088ED19 /* LetureRegistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetureRegistViewController.swift; sourceTree = "<group>"; };
 		7518F51B1F49505B0088ED19 /* LectureShowTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureShowTableCell.swift; sourceTree = "<group>"; };
@@ -329,6 +332,7 @@
 		75BC382B1F3AF36600AA9E96 /* TutorDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorDetailTableViewCell.swift; sourceTree = "<group>"; };
 		75BC382C1F3AF36600AA9E96 /* TutorDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorDetailTableViewCell.xib; sourceTree = "<group>"; };
 		75BC382F1F3AF56500AA9E96 /* SimpleImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleImageTableViewCell.swift; sourceTree = "<group>"; };
+		75C416DF1F4EE5FA0025AB9E /* LecturePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		75D1B2061F3575F80068C20C /* EClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D1B2101F3575F80068C20C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75D1B2131F3575F80068C20C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -416,6 +420,7 @@
 		45264C0C1F47096100933C50 /* language */ = {
 			isa = PBXGroup;
 			children = (
+				45264C411F47097200933C50 /* major */,
 				45264C0D1F47096100933C50 /* language0.png */,
 				45264C0E1F47096100933C50 /* language1.png */,
 				45264C0F1F47096100933C50 /* language2.png */,
@@ -471,7 +476,8 @@
 				45264C481F47097200933C50 /* major6.png */,
 				45264C491F47097200933C50 /* major7.png */,
 			);
-			path = major;
+			name = major;
+			path = ../major;
 			sourceTree = "<group>";
 		};
 		45264C521F47097700933C50 /* hobby */ = {
@@ -549,8 +555,8 @@
 				45A57FA91F357C45001F5C1A /* SelfDescriptionTableViewCell.swift */,
 				451BC7FD1F4D519700D11AA6 /* ChangePasswordViewController.swift */,
 				45264B701F3C962E00933C50 /* SlideOutMenu.storyboard */,
-				45A57FAB1F357C4C001F5C1A /* ProfileImageTableViewCell.swift */,
 				45264B021F3C7E5B00933C50 /* InputUserDataTableViewCell.swift */,
+				45A57FAB1F357C4C001F5C1A /* ProfileImageTableViewCell.swift */,
 				45264B001F3C7DDB00933C50 /* InputUserGenderTableViewCell.swift */,
 				45A57FAD1F357C56001F5C1A /* ProfileTableViewCell.swift */,
 				45A57FAF1F357C5D001F5C1A /* DetailChangeUserInfoViewController.swift */,
@@ -608,6 +614,8 @@
 				75BC38211F3ACDC000AA9E96 /* MainImageTableViewCell.swift */,
 				75BC381D1F39DCE200AA9E96 /* IntroductionTableViewCell.swift */,
 				45264BC81F454D6C00933C50 /* RegisterLecture.storyboard */,
+				75C416DF1F4EE5FA0025AB9E /* LecturePhotoCollectionViewCell.swift */,
+				7505F5161F4EDD42007A75F2 /* LectureImagesViewController.swift */,
 				75346BCC1F4DD9FF00F580FC /* MakeClassViewController.swift */,
 				45264BCC1F46245F00933C50 /* RegisterLectureSecondViewController.swift */,
 				45264BCE1F46C9EC00933C50 /* RegisterLectureThirdViewController.swift */,
@@ -624,6 +632,7 @@
 				75D1B27E1F357C6A0068C20C /* MainPage.storyboard */,
 				75346BC61F4DB4A000F580FC /* SearchTextViewController.swift */,
 				75D1B2A01F3581D10068C20C /* AppDelegate.swift */,
+				75D1B21D1F357C3C0068C20C /* MainTableViewController.swift */,
 				75D1B27F1F357C6A0068C20C /* RecommendCollectionViewCell.swift */,
 				75D1B2801F357C6A0068C20C /* RecommendTableViewCell.swift */,
 				75D1B2811F357C6A0068C20C /* CategoryTableViewCell.swift */,
@@ -645,7 +654,6 @@
 				451BC8051F4D68C700D11AA6 /* RegisterLectureImage */,
 				45264C631F47097C00933C50 /* sports */,
 				45264C521F47097700933C50 /* hobby */,
-				45264C411F47097200933C50 /* major */,
 				45264C2E1F47096B00933C50 /* music */,
 				45264C1D1F47096600933C50 /* health */,
 				45264C0C1F47096100933C50 /* language */,
@@ -675,7 +683,6 @@
 		75D1B2081F3575F80068C20C /* EClass */ = {
 			isa = PBXGroup;
 			children = (
-				75D1B21D1F357C3C0068C20C /* MainTableViewController.swift */,
 				75D1B2121F3575F80068C20C /* LaunchScreen.storyboard */,
 				45264C961F47EEB600933C50 /* elass_logo.png */,
 				75BC38201F3AC6D000AA9E96 /* MainPage */,
@@ -960,6 +967,7 @@
 				759155A41F3D8CD60010686B /* LectureImageCollectionViewCell.swift in Sources */,
 				451BC80F1F4D733F00D11AA6 /* RegisterTutorViewController.swift in Sources */,
 				75BC38301F3AF56500AA9E96 /* SimpleImageTableViewCell.swift in Sources */,
+				75C416E01F4EE5FA0025AB9E /* LecturePhotoCollectionViewCell.swift in Sources */,
 				7518F5141F468FB50088ED19 /* Constant.swift in Sources */,
 				75D1B2891F357C6A0068C20C /* CategoryCollectionViewCell.swift in Sources */,
 				75D1B2881F357C6A0068C20C /* CategoryTableViewCell.swift in Sources */,
@@ -988,6 +996,7 @@
 				7518F51D1F49505B0088ED19 /* LectureShowTableCell.swift in Sources */,
 				759155981F3CA8740010686B /* MapLocationTableViewCell.swift in Sources */,
 				45A57FB01F357C5D001F5C1A /* DetailChangeUserInfoViewController.swift in Sources */,
+				7505F5171F4EDD42007A75F2 /* LectureImagesViewController.swift in Sources */,
 				758D9CB91F4C1D70005B858D /* StarReview.swift in Sources */,
 				45264BC11F3F546B00933C50 /* FAQViewController.swift in Sources */,
 				45264BAD1F3D842500933C50 /* RearUserInfoViewController.swift in Sources */,

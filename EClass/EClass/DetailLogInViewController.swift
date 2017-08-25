@@ -12,9 +12,6 @@ import SwiftyJSON
 import SwiftyGif
 var loginSuccess:Bool = false
 
-
-
-
 class DetailLogInViewController: UIViewController, UITextFieldDelegate{
     
     
@@ -25,6 +22,7 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
    
     
     
+
         func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         
@@ -127,9 +125,8 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DispatchQueue.main.async {
             self.outletSet()
-        }
+        
         passWordTextField.delegate = self
         userNameTextField.delegate = self
         
@@ -177,7 +174,6 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
         //        self.navigationController?.navigationItem.backBarButtonItem?.tintColor = .black
         logInButtonOutlet.setBasicColor()
         logInButtonOutlet.layer.cornerRadius = 5
-        logInButtonOutlet.layer.borderWidth = 1
         marginView1.backgroundColor = .clear
         marginView2.backgroundColor = .clear
         marginView3.backgroundColor = .clear

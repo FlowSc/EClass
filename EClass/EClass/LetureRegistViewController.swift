@@ -9,6 +9,8 @@
 import UIKit
 import SwiftyJSON
 import Kingfisher
+import Alamofire
+
 
 class LetureRegistViewController: UIViewController, UITextViewDelegate{
     
@@ -52,6 +54,43 @@ class LetureRegistViewController: UIViewController, UITextViewDelegate{
     }
     
     @IBAction func lectureRegistButtonTouched(_ sender: Any) {
+        
+        print("CCCCCC")
+        print("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/lecture/register/\(detailData["id"].intValue)")
+        print("XXXXXX")
+        
+        
+            
+            let ac = UIAlertController.init(title: "수강신청", message: "수강신청하시겠어요?", preferredStyle: .alert)
+            let okAction = UIAlertAction.init(title: "넵!", style: .default, handler: { (action) in
+                print(action)
+                
+                Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/lecture/register/\(self.detailData["id"].intValue)/", method: .post, parameters: ["to_tutor":self.userCommentTfv.text!], encoding: JSONEncoding.default, headers: ["Authorization":"Token \(UserDefaults.standard.string(forKey: "UserToken")!)"]).responseJSON { (result) in
+                    print("-------")
+                    print(result)
+                    print(result.result.value)
+                    print("-------")
+                    
+                }
+                let doneAlert = UIAlertController.init(title: "신청이 완료되었습니다", message: "나의 강의목록에서 확인해보세요!", preferredStyle: .alert)
+                let doneAction = UIAlertAction.init(title: "돌아가기", style: .default, handler: { (go) in
+                    self.navigationController?.popViewController(animated: true)
+                })
+                doneAlert.addAction(doneAction)
+                self.present(doneAlert, animated: true, completion: nil)
+                
+            })
+            let cancelAction = UIAlertAction.init(title: "다시 생각해볼게요", style: .cancel
+                , handler: nil)
+            
+            ac.addAction(okAction)
+            ac.addAction(cancelAction)
+            
+            self.present(ac, animated: true, completion: nil)
+            
+            
+
+        }
     }
     /*
      // MARK: - Navigation
@@ -63,4 +102,4 @@ class LetureRegistViewController: UIViewController, UITextViewDelegate{
      }
      */
     
-}
+

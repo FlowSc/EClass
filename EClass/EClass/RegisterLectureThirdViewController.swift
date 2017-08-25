@@ -102,6 +102,7 @@ class RegisterLectureThirdViewController: UIViewController, UIPickerViewDelegate
         
     }
     @IBAction func goNextButtonTouched(_ sender: UIBarButtonItem) {
+
         classMakeParameter.updateValue(price.text!, forKey: "price")
         classMakeParameter.updateValue(basicClassTime.text!, forKey: "basic_class_time")
         classMakeParameter.updateValue(locationEtcType.text!, forKey: "location_etc_type")
@@ -116,6 +117,7 @@ class RegisterLectureThirdViewController: UIViewController, UIPickerViewDelegate
         let nextVC = storyBoard1.instantiateViewController(withIdentifier: "RegisterLectureFourthViewController") as! RegisterLectureFourthViewController
         self.navigationController?.pushViewController(nextVC, animated: true)
         print("2")
+
         
         
         

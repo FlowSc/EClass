@@ -65,9 +65,6 @@ class MainTableViewController: UIViewController {
     var currentUserName:String!
     var currentUserPK:Int!
     var currentUserNickname:String?
-    
-    
-    
     var userData:JSON!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,43 +82,36 @@ class MainTableViewController: UIViewController {
 //        }
     }
     
+    func reloadData(){
     
+    Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/list/", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+    guard let data = response.result.value else{return}
+    
+    let lectureData = JSON(data)
+        print(response.result)
+        print(data)
+    
+    LectureList.lectureList = lectureData
+        }
+    }
+
     
     override func viewDidLoad() {
         
         
         super.viewDidLoad()
         
-        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/list/", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
-            guard let data = response.result.value else{return}
-            
-            let lectureData = JSON(data)
-            
-            LectureList.lectureList = lectureData
-            self.myMainTableView.reloadData()
-        }
-        
         sideMenus()
-//        customizeNavBar()
         self.myMainTableView.reloadData()
+        let rightBt:UIBarButtonItem = UIBarButtonItem.init(title: "Reload", style: .plain, target: self, action: #selector(reloadData))
+        
+        
+        self.navigationItem.rightBarButtonItem = rightBt
         
         currentUserToken = UserDefaults.standard.string(forKey: "UserToken")
         currentUserPK = UserDefaults.standard.integer(forKey: "UserPK")
         currentUserName = UserDefaults.standard.string(forKey: "UserName")
         currentUserNickname = UserDefaults.standard.string(forKey: "UserNickname") ?? "Default"
-        
-        
-        
-        print("USERTOKEN!!!!!!")
-        
-        print(currentUserNickname)
-        print(currentUserToken)
-        
-        
-        
-        
-        print("##########")
-        
         myMainTableView.allowsSelection = false
         
         recommendLectureList = LectureList.lectureList
@@ -280,12 +270,38 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             }
             
             
+            func makeReviewAverageScore() -> Double {
+                
+                var myScore:Double = 0.0
+                
+                
+                for (key, value) in myData["review_average"].dictionaryValue {
+                    
+                    print(key, value)
+                    
+                    
+                    let averagePoint = value.doubleValue
+                    
+                    myScore += averagePoint
+                    
+                    
+                    
+                }
+                
+                return myScore.roundToPlaces(places: 0) / 5
+                
+            }
             
-            cell.setLecture(myData["lecture_photos"][0]["lecture_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, "\(attendanceCount) 명 참여", myData["tutor_info"]["nickname"].stringValue)
+        
+            
+            
+            cell.setLecture(myData["lecture_photos"][0]["lecture_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, "\(attendanceCount) 명 참여", myData["tutor_info"]["nickname"].stringValue, makeReviewAverageScore(), makeReviewAverageScore(), location: myData["locations"][0]["location2"].stringValue)
             cell.tutorImage.makeCircle()
             
             
             cell.tag = indexPath.item
+            
+
             
             
             return cell
@@ -296,6 +312,8 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         
         
     }
+    
+    
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

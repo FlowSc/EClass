@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="594" height="677"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="594" height="677"/>
+                <rect key="frame" x="0.0" y="0.0" width="594" height="676.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="linea_51(2)_32" translatesAutoresizingMaskIntoConstraints="NO" id="1OG-l4-S6n">
@@ -27,8 +27,8 @@
                             <constraint firstAttribute="height" constant="36" id="m3S-LJ-vnK"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="장소를 선택하고" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIb-VJ-RU3">
-                        <rect key="frame" x="243.5" y="69" width="107.5" height="20.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="장소와" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIb-VJ-RU3">
+                        <rect key="frame" x="275" y="69" width="44.5" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -54,7 +54,7 @@
                         <state key="normal" title="Button"/>
                     </button>
                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mu0-Um-i9L">
-                        <rect key="frame" x="10" y="488.5" width="574" height="31"/>
+                        <rect key="frame" x="10" y="487.5" width="574" height="31"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="dYv-ar-cvK"/>
                         </constraints>
@@ -214,6 +214,7 @@
                     <constraint firstAttribute="trailing" secondItem="mu0-Um-i9L" secondAttribute="trailing" constant="10" id="3J5-gn-g2W"/>
                     <constraint firstAttribute="bottomMargin" secondItem="mK9-OW-mMy" secondAttribute="bottom" id="3oy-UY-zRx"/>
                     <constraint firstItem="AkS-zi-4ZF" firstAttribute="top" secondItem="ywT-v3-83I" secondAttribute="bottom" constant="30" id="BC6-wV-wzs"/>
+                    <constraint firstItem="bBq-R4-n8t" firstAttribute="top" secondItem="BwD-ul-aHO" secondAttribute="bottom" constant="70" id="DMG-u1-IDf"/>
                     <constraint firstItem="ywT-v3-83I" firstAttribute="top" secondItem="dIb-VJ-RU3" secondAttribute="bottom" constant="10" id="Ie1-O1-bNd"/>
                     <constraint firstAttribute="trailingMargin" secondItem="AkS-zi-4ZF" secondAttribute="trailing" id="JmC-Kk-FBt"/>
                     <constraint firstItem="ywT-v3-83I" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="LpX-dp-gHu"/>
@@ -231,6 +232,11 @@
                     <constraint firstItem="mu0-Um-i9L" firstAttribute="top" secondItem="BwD-ul-aHO" secondAttribute="bottom" constant="10" id="vOy-3S-P5V"/>
                     <constraint firstItem="mK9-OW-mMy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="zJ6-eh-7Dm"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="subviews">
+                        <exclude reference="mu0-Um-i9L"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="additionalCgLb" destination="ICM-dU-Cjo" id="NeN-9u-tjh"/>

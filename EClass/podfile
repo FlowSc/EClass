@@ -14,7 +14,7 @@ pod 'FacebookCore'
   pod 'SnapKit', '~> 3.2'
   pod 'SwiftyStarRatingView', '~> 1.0'
   pod 'SwiftyGif', '~> 3.1'
-
+  pod 'DKImagePickerController'
   # Pods for EClass
 
 end

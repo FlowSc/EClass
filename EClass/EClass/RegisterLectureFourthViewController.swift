@@ -7,21 +7,75 @@
 //
 
 import UIKit
+import SwiftyJSON
+import Alamofire
 
 class RegisterLectureFourthViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate {
 
 
     @IBAction func doneButtonTouched(_ sender: UIBarButtonItem) {
+        
+        let myToken = UserDefaults.standard.string(forKey: "UserToken")!
+        
+        print("TOKEN")
+        
+        print(myToken)
+        
+        print("~~~~")
+        
+        let token:HTTPHeaders = ["Authorization":"Token \(myToken)"]
+
         classMakeParameter.updateValue("custom", forKey: "location_option")
         classMakeParameter.updateValue(location1.text!, forKey: "location1")
         classMakeParameter.updateValue(location2.text!, forKey: "location2")
         classMakeParameter.updateValue(locationDetail.text!, forKey: "location_detail")
         classMakeParameter.updateValue(classWeekday.text!, forKey: "class_weekday")
         classMakeParameter.updateValue(classTime.text!, forKey: "class_time")
-        print(classMakeParameter)
         self.view.endEditing(true)
         self.view.resignFirstResponder()
         print("4")
+        print("MYPARAMETER")
+        print(classMakeParameter)
+        print("~~~~~~~~")
+        
+        Alamofire.upload(multipartFormData: { (data) in
+            for (key, value) in classMakeParameter {
+                if value is String || value is Int {
+                    data.append("\(value)".data(using: .utf8)!, withName: key)
+                    print(data)
+                    print(key, value)
+                }
+                
+                if key == "lecture_photo" {
+                    
+                    var lecturePhotoArray = value as! Array<UIImage>
+                    for image in lecturePhotoArray {
+                        
+                        print("imageNAME")
+                        print(String(describing: image))
+                        print("_____")
+                        data.append(UIImagePNGRepresentation(image.resized(withPercentage: 0.5)!)!, withName: key, fileName: "\(String(describing: image))", mimeType: "image/png")
+                        
+                    }
+                }
+                if key == "cover_photo" {
+                    
+                    var coverImage:UIImage = value as! UIImage
+                    
+                    data.append(UIImagePNGRepresentation(coverImage.resized(withPercentage: 0.1)!)!, withName: key, fileName: "coverPhoto", mimeType: "image/png")
+                }
+            }
+        }, usingThreshold: UInt64.init(), to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/make/", method: .post, headers: token) { (result) in
+            
+            print(result)
+            reloadList()
+            
+            let stb = UIStoryboard.init(name: "MainPage", bundle: nil)
+            let mvc = stb.instantiateViewController(withIdentifier: "reveal1")
+            self.present(mvc, animated: true, completion: nil)
+            
+        }
+        
     }
     @IBOutlet weak var classTime: UITextField!
     @IBOutlet weak var classWeekday: UITextField!

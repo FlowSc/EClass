@@ -149,6 +149,7 @@ class RegisterLectureSecondViewController: UIViewController, UITextViewDelegate 
         let nextVC = storyBoard1.instantiateViewController(withIdentifier: "RegisterLectureThirdViewController") as! RegisterLectureThirdViewController
         self.navigationController?.pushViewController(nextVC, animated: true)
         print("2")
+
     }
 
 
