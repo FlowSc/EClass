@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class RearUserInfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    var userData:User? = DataCenter.shared.realUser
 
     @IBOutlet weak var tv: UITableView!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -127,6 +130,8 @@ class RearUserInfoViewController: UIViewController, UITableViewDelegate, UITable
             self.present(nextVC, animated: true, completion: nil)
             currentUserToken = ""
             currentUserData = nil
+            userData = nil
+//            DataCenter.shared.realUser = nil
             currentUserTuTorPK = 0
             currentUserPrimaryKey = 0
 //            self.navigationController?.navigationBar.alpha = 0.5
@@ -150,6 +155,9 @@ class RearUserInfoViewController: UIViewController, UITableViewDelegate, UITable
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell0", for: indexPath) as! RearProfileImageTableViewCell
             cell.selectionStyle = .none
+            cell.userProfileImageOutlet.image = currentUserData?.profileImage
+            cell.userEmailLabel.text = currentUserData?.email
+            cell.userNameLabel.text = currentUserData?.userName
 //            cell.backgroundColor = UIColor(white: 0, alpha: 0.1)
             return cell
         }else
@@ -170,6 +178,8 @@ class RearUserInfoViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+//        currentUserData
+        
         tv.reloadData()
 //        userNameLabel.text = currentUserData?.userName
 //        emailLabel.text = currentUserData?.email

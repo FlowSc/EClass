@@ -39,42 +39,70 @@ class LogInViewController: UIViewController {
                 print("\(userInfo.appId)")
                 print("\(userInfo.userId!)")
                 
-                let params = ["username":userInfo.userId,"password":userInfo.authenticationToken]
+                let params = ["username":userInfo.userId,"token":userInfo.authenticationToken]
                 Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/login/facebook/", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
                     
+                    guard let data = response.result.value else
+                    {
+                        return
+                    }
                     
+                    let realData = JSON(data)
+                    print("제이슨")
+                    print(realData)
+                    currentUserPrimaryKey = realData["user"]["user_pk"].intValue
+                    currentUserToken = realData["token"].stringValue
+                    
+                    currentUserTuTorPK = realData["user"]["tutor_pk"].int ?? 0
                     if response.result.isSuccess
                     {
-                        print(response.description)
-                        print("response")
-                        print(response)
-                        print("data")
-                        print(JSON(response.value))
-                        print("data끝")
-                        print(JSON(response.data))
-                        print(response.timeline)
-                        print(response.metrics)
-                        print(response.request)
-                        print(response.response)
                         
-                        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/\(userInfo.userId)/", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization":"\(response.data)"]).responseJSON(completionHandler: { (response) in
-                            guard let data = response.result.value else
-                            {
-                                return
-                            }
-                            let jsonData = JSON(data)
-                            print("여기서부터제이슨")
-                            print(jsonData)
-                            print("여기까지")
-                        })
-                        print("go")
-                        let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
-                        let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
-                        self.present(pushMainView, animated: true, completion: nil)
-                    }else
-                    {
-                        print(response.result)
+                        
+                        DataCenter.shared.realUser = User(with: realData)
+                        
+                        let result = JSON(response.value!)
+                        
+                        
+                        let userToken = result["token"].stringValue
+                        let userName = result["user"]["username"].stringValue
+                        let userPk = result["user"]["user_pk"].intValue
+                        let userNickname = result["user"]["nickname"].stringValue
+                        
+                        
+                        
+//                        UserDefaults.standard.set(self.passWordTextField.text, forKey: "UserPassword")
+                        UserDefaults.standard.set(userToken, forKey: "UserToken")
+                        UserDefaults.standard.set(userName, forKey: "UserName")
+                        UserDefaults.standard.set(userPk, forKey: "UserPK")
+                        UserDefaults.standard.set(userNickname, forKey: "UserNickname")
+                        
+                        
+                        if !(userToken == ""){
+                            
+                            let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
+                            let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
+                            self.present(pushMainView, animated: true, completion: nil)
+                            //                            print("제이슨!!")
+                            //                            print(currentUserData)
+                            
+                        }
                     }
+
+                        
+//                        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/\(userInfo.userId)/", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization":"\(response.data)"]).responseJSON(completionHandler: { (response) in
+//                            guard let data = response.result.value else
+//                            {
+//                                return
+//                            }
+//                            let jsonData = JSON(data)
+//                            print("여기서부터제이슨")
+//                            print(jsonData)
+//                            print("여기까지")
+//                        })
+                    print("go")
+                    let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
+                    let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
+                    self.present(pushMainView, animated: true, completion: nil)
                     
                 }
                 

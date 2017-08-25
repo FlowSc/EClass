@@ -40,37 +40,34 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
                 
                 if response.result.isSuccess
                 {
-                    if realData["detail"] == nil
-                    {
-                        DataCenter.shared.realUser = User(with: realData)
-                        
-                        let result = JSON(response.value!)
-                        
-                        
-                        let userToken = result["token"].stringValue
-                        let userName = result["user"]["username"].stringValue
-                        let userPk = result["user"]["user_pk"].intValue
-                        let userNickname = result["user"]["nickname"].stringValue
-                        
-                        
-                        UserDefaults.standard.set(userToken, forKey: "UserToken")
-                        UserDefaults.standard.set(userName, forKey: "UserName")
-                        UserDefaults.standard.set(userPk, forKey: "UserPK")
-                        UserDefaults.standard.set(userNickname, forKey: "UserNickname")
-                        
-                        
-                        if !(userToken == ""){
-                            
-                            let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
-                            let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
-                            self.present(pushMainView, animated: true, completion: nil)
-                            
-                        }
-                    }
+                    
+                    
+                    DataCenter.shared.realUser = User(with: realData)
+                    
+                    let result = JSON(response.value!)
+                    
+                    
+                    let userToken = result["token"].stringValue
+                    let userName = result["user"]["username"].stringValue
+                    let userPk = result["user"]["user_pk"].intValue
+                    let userNickname = result["user"]["nickname"].stringValue
+                    
+                    
+                    UserDefaults.standard.set(userToken, forKey: "UserToken")
+                    UserDefaults.standard.set(userName, forKey: "UserName")
+                    UserDefaults.standard.set(userPk, forKey: "UserPK")
+                    UserDefaults.standard.set(userNickname, forKey: "UserNickname")
+                
+                    
+                    let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
+                    let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
+                    self.present(pushMainView, animated: true, completion: nil)
+                    
+                    
                 }
             }
         
-            self.present(presentAlert("알수 없는 오류!", message: "이럴 리가 없는데", alertActionTitle: "힝"), animated: true, completion: nil)
+//            self.present(presentAlert("알수 없는 오류!", message: "이럴 리가 없는데", alertActionTitle: "힝"), animated: true, completion: nil)
         }
     }
     override func viewDidLoad() {

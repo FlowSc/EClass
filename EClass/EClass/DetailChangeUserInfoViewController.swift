@@ -44,10 +44,10 @@ class DetailChangeUserInfoViewController: UIViewController, UITableViewDelegate,
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0
         {
-            return 70
+            return 55
         }else
         {
-            return 146
+            return 130
         }
         
     }

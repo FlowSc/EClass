@@ -12,6 +12,7 @@ var classMakeParameter:[String:Any] = [:]
 
 class RegisterLectureFirstViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     let picker = UIImagePickerController()
+    
 
     @IBOutlet weak var backImage: UIImageView!
 
@@ -24,6 +25,7 @@ class RegisterLectureFirstViewController: UIViewController, UIImagePickerControl
     @IBOutlet weak var lectureTitle: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         backImage.image = UIImage(named: "register0.png")
         backImage.alpha = 0.4
         registerLectureCoverImage.backgroundColor = .white
@@ -57,6 +59,23 @@ class RegisterLectureFirstViewController: UIViewController, UIImagePickerControl
 
 
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= 40
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += 40
+            }
+        }
     }
     func registerLectureImageTouched(_:UITapGestureRecognizer)
     {
@@ -77,7 +96,7 @@ class RegisterLectureFirstViewController: UIViewController, UIImagePickerControl
         registerLectureCoverImage.contentScaleFactor = 1
         registerLectureCoverImage.contentMode = .scaleAspectFill
         self.dismiss(animated: true, completion: nil)
-        
+        self.view.resignFirstResponder()
         dump(info)
     }
     var list = ["헬스&뷰티","외국어","컴퓨터","음악/미술","스포츠","전공/취업","이색취미","전체수업보기"]
@@ -85,7 +104,7 @@ class RegisterLectureFirstViewController: UIViewController, UIImagePickerControl
     var categoryString = ""
 
 
-    @IBAction func goNextButtonTouched(_ sender: UIButton) {
+    @IBAction func goNextButtonTouched(_ sender: UIBarButtonItem) {
         if classType.selectedSegmentIndex == 0
         {
             classTypeString = "onetoone"
@@ -115,10 +134,19 @@ class RegisterLectureFirstViewController: UIViewController, UIImagePickerControl
             categoryString = ""
             
         }
-        classMakeParameter.updateValue(lectureTitle.text, forKey: "title")
+        classMakeParameter.updateValue(lectureTitle.text!, forKey: "title")
         classMakeParameter.updateValue(categoryString, forKey: "category")
         classMakeParameter.updateValue(classTypeString, forKey: "class_type")
-        classMakeParameter.updateValue(registerLectureCoverImage.image, forKey: "cover_photo")
+        classMakeParameter.updateValue(registerLectureCoverImage.image!, forKey: "cover_photo")
+//        self.view.endEditing(true)
+//        self.view.resignFirstResponder()
+//        self.view.endEditing(true)
+//        self.view.frame.origin.y = keyBoardY!
+//        self.view.resignFirstResponder()
+        let storyBoard1 = UIStoryboard(name: "RegisterLecture", bundle: nil)
+        let nextVC = storyBoard1.instantiateViewController(withIdentifier: "RegisterLectureSecondViewController") as! RegisterLectureSecondViewController
+        self.navigationController?.pushViewController(nextVC, animated: true)
+        print("1")
     }
 
     override func didReceiveMemoryWarning() {

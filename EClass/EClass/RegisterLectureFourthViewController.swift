@@ -11,14 +11,17 @@ import UIKit
 class RegisterLectureFourthViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate {
 
 
-    @IBAction func doneButtonTouched(_ sender: UIButton) {
+    @IBAction func doneButtonTouched(_ sender: UIBarButtonItem) {
         classMakeParameter.updateValue("custom", forKey: "location_option")
-        classMakeParameter.updateValue(location1.text, forKey: "location1")
-        classMakeParameter.updateValue(location2.text, forKey: "location2")
-        classMakeParameter.updateValue(locationDetail.text, forKey: "location_detail")
-        classMakeParameter.updateValue(classWeekday.text, forKey: "class_weekday")
-        classMakeParameter.updateValue(classTime.text, forKey: "class_time")
+        classMakeParameter.updateValue(location1.text!, forKey: "location1")
+        classMakeParameter.updateValue(location2.text!, forKey: "location2")
+        classMakeParameter.updateValue(locationDetail.text!, forKey: "location_detail")
+        classMakeParameter.updateValue(classWeekday.text!, forKey: "class_weekday")
+        classMakeParameter.updateValue(classTime.text!, forKey: "class_time")
         print(classMakeParameter)
+        self.view.endEditing(true)
+        self.view.resignFirstResponder()
+        print("4")
     }
     @IBOutlet weak var classTime: UITextField!
     @IBOutlet weak var classWeekday: UITextField!
@@ -30,8 +33,25 @@ class RegisterLectureFourthViewController: UIViewController, UIPickerViewDataSou
         super.viewDidLoad()
         set()
         weekdayPicker.isHidden = true
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
         // Do any additional setup after loading the view.
+    }
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= 40
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += 40
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

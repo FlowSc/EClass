@@ -63,14 +63,20 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                 currentUserPrimaryKey = realData["user"]["user_pk"].intValue
                 currentUserToken = realData["token"].stringValue
 
-                currentUserTuTorPK = realData["user"]["tutor_pk"].intValue
+                currentUserTuTorPK = realData["user"]["tutor_pk"].int ?? 0
 
                 if response.result.isSuccess
                 {
                     if realData["detail"] == nil
                     {
                         DataCenter.shared.realUser = User(with: realData)
-                        
+//                        DispatchQueue.global().async {
+//                            currentUserData = DataCenter.shared.realUser
+//                        }
+//                        currentUserData = DataCenter.shared.realUser
+//                        refreshCurrentUserData()
+//                        currentUserData = DataCenter.shared.realUser
+//                        let user = currentUserData
                         let result = JSON(response.value!)
                         
                         
@@ -79,8 +85,6 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                         let userPk = result["user"]["user_pk"].intValue
                         let userNickname = result["user"]["nickname"].stringValue
                         
-                        let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
-                        let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
                         
                         
                         UserDefaults.standard.set(self.passWordTextField.text, forKey: "UserPassword")
@@ -95,6 +99,8 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                             let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
                             let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
                             self.present(pushMainView, animated: true, completion: nil)
+//                            print("제이슨!!")
+//                            print(currentUserData)
                             
                         }
                     }

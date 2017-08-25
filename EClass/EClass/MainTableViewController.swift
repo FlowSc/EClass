@@ -73,6 +73,16 @@ class MainTableViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         myMainTableView.reloadData()
+//        refreshCurrentUserData()
+//        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization":"Token " + "\(currentUserToken)"]).responseJSON { (response) in
+//            guard let data = response.value else
+//            {
+//                return
+//            }
+//            let jsonData = JSON(data)
+//            
+//            currentUserData = User(with: jsonData)
+//        }
     }
     
     

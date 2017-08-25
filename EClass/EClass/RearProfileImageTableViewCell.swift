@@ -18,10 +18,10 @@ class RearProfileImageTableViewCell: UITableViewCell {
         userProfileImageOutlet.layer.borderWidth = 1
         userProfileImageOutlet.layer.cornerRadius = 20
         userProfileImageOutlet.clipsToBounds = true
-        userProfileImageOutlet.image = UIImage(named: "0.png")
-        userEmailLabel.text = currentUserData?.email
-        userNameLabel.text = currentUserData?.userName ?? "guest 로그인"
-        userProfileImageOutlet.image = currentUserData?.profileImage
+//        userProfileImageOutlet.image = UIImage(named: "0.png")
+//        userEmailLabel.text = currentUserData?.email
+//        userNameLabel.text = currentUserData?.userName ?? "guest 로그인"
+//        userProfileImageOutlet.image = currentUserData?.profileImage
         // Initialization code
     }
 

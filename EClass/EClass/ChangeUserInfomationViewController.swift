@@ -8,11 +8,11 @@
 
 import UIKit
 
-var currentUserData = DataCenter.shared.realUser
-//func refreshCurrentUserData()
-//{
-//    currenUserData = DataCenter.shared.realUser
-//}
+
+func refreshCurrentUserData()
+{
+    currentUserData = DataCenter.shared.realUser
+}
 
 class ChangeUserInfomationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     

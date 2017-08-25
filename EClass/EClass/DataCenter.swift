@@ -21,10 +21,10 @@ extension UIImageView
 
 //전역 변수 & 함수
 
-//유저 primaryKey 회원 가입 시 +1 됨
 var currentUserPrimaryKey:Int = 0
 var currentUserToken:String = ""
 var currentUserTuTorPK:Int = 0
+var currentUserData = DataCenter.shared.realUser
 
 //각종 알람
 
@@ -131,7 +131,7 @@ final class DataCenter
 //유저 정보 GET
         
         Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization":"Token " + "\(currentUserToken)"]).responseJSON { (response) in
-            guard let data = response.value else
+            guard let data = response.result.value else
             {
                 return
             }
@@ -212,19 +212,19 @@ struct User
 {
     var userName:String
     var nickName:String?
-    var password:String?
+//    var password:String?
     var email:String?
     var name:String?
     var phone:String?
 //    var tutorPK:String?
     var profileImage:UIImage?
-    var studiedLecture:[Lecture]?
-    var selectedLecture:[Lecture]?
-    var wishedLecture:[Lecture]?
-    var selfDescription:String?
-    var tutorAuthorize:Bool = false
-    var registeredLecture:[Lecture]?
-    var careerDescription:String?
+//    var studiedLecture:[Lecture]?
+//    var selectedLecture:[Lecture]?
+//    var wishedLecture:[Lecture]?
+//    var selfDescription:String?
+//    var tutorAuthorize:Bool = false
+//    var registeredLecture:[Lecture]?
+//    var careerDescription:String?
 
     var token:String?
 
@@ -233,7 +233,7 @@ struct User
         userName = json["username"].stringValue
         nickName = json["nickname"].stringValue
         email = json["email"].stringValue
-        password = json["password"].stringValue
+//        password = json["password"].stringValue
         name = json["name"].stringValue
         phone = json["phone"].stringValue
         
@@ -248,36 +248,38 @@ struct User
             }
             
         }
-// 수강했던 목록
-        studiedLecture = json["studiedLecture"].arrayValue.map({ (json) -> Lecture in
-            return Lecture(with: json)
-        })
-        
-// 현재 수강 신청한 목록
-        selectedLecture = json["seletecLecture"].arrayValue.map({ (json) -> Lecture in
-            return Lecture(with: json)
-        })
-        
-// 찜한 목록
-        wishedLecture = json["wishedLecture"].arrayValue.map({ (json) -> Lecture in
-            return Lecture(with: json)
-        })
-        
-// 자기 소개
-        selfDescription = json["selfDescription"].stringValue
-        
-// 튜터 권한 default 는 false
-        tutorAuthorize = json["tutorAuthorize"].bool ?? false
-        
-// 개설한 강의(튜터 전용)
-        registeredLecture = json["registeredLecture"].arrayValue.map({ (json) -> Lecture in
-        return Lecture(with:json) })
-        
-// 경력 소개(튜터 전용)
-        careerDescription = json["careerDescription"].stringValue
-        
     }
 }
+//// 수강했던 목록
+//        studiedLecture = json["studiedLecture"].arrayValue.map({ (json) -> Lecture in
+//            return Lecture(with: json)
+//        })
+//        
+//// 현재 수강 신청한 목록
+//        selectedLecture = json["seletecLecture"].arrayValue.map({ (json) -> Lecture in
+//            return Lecture(with: json)
+//        })
+//
+//// 찜한 목록
+//        wishedLecture = json["wishedLecture"].arrayValue.map({ (json) -> Lecture in
+//            return Lecture(with: json)
+//        })
+//        
+//// 자기 소개
+//        selfDescription = json["selfDescription"].stringValue
+//        
+//// 튜터 권한 default 는 false
+//        tutorAuthorize = json["tutorAuthorize"].bool ?? false
+//        
+//// 개설한 강의(튜터 전용)
+//        registeredLecture = json["registeredLecture"].arrayValue.map({ (json) -> Lecture in
+//        return Lecture(with:json) })
+//        
+//// 경력 소개(튜터 전용)
+//        careerDescription = json["careerDescription"].stringValue
+//        
+//    }
+
 
 struct ReviewList {
     var description:String?
