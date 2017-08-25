@@ -72,7 +72,19 @@ class MainTableViewController: UIViewController {
         myMainTableView.reloadData()
     }
     
+    func reloadData(){
     
+    Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/list/", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+    guard let data = response.result.value else{return}
+    
+    let lectureData = JSON(data)
+        print(response.result)
+        print(data)
+    
+    LectureList.lectureList = lectureData
+        }
+    }
+
     
     override func viewDidLoad() {
         
@@ -81,6 +93,10 @@ class MainTableViewController: UIViewController {
         
         sideMenus()
         self.myMainTableView.reloadData()
+        let rightBt:UIBarButtonItem = UIBarButtonItem.init(title: "Reload", style: .plain, target: self, action: #selector(reloadData))
+        
+        
+        self.navigationItem.rightBarButtonItem = rightBt
         
         currentUserToken = UserDefaults.standard.string(forKey: "UserToken")
         currentUserPK = UserDefaults.standard.integer(forKey: "UserPK")

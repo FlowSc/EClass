@@ -34,6 +34,12 @@ class RecommendCollectionViewCell: UICollectionViewCell {
         self.reviewPoint.text = String(reviewPoint)
         self.locationLabel.text = location
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        reviewRate.isEnabled = false
+    }
  
     
 }
