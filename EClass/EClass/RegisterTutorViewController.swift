@@ -172,6 +172,39 @@ class RegisterTutorViewController: UIViewController, UITableViewDelegate, UITabl
             }
         }, usingThreshold: UInt64.init(), to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/tutor/register/", method: .post, headers: token) { (result) in
             
+            switch result{
+            case .success(let upload,_ ,_):
+                print("일단 석세스")
+                print(upload.response)
+                print("일단 석세스")
+                
+                upload.responseJSON { (response) in
+                   
+                    if response.result.isSuccess
+                    {
+                        guard let data = response.result.value else
+                        {
+                            return
+                        }
+                        print("제이슨")
+                        let realData = JSON(data)
+                        currentUserTuTorPK = realData["pk"].intValue
+                        UserDefaults.standard.set(realData["pk"].intValue, forKey: "TutorPK")
+                        self.dismiss(animated: true, completion: nil)
+                    }else
+                    {
+                        self.present( presentAlert("잘못된 양식을 입력하셨습니다.", message: "다시 확인해주세요", alertActionTitle: "확인"), animated: true, completion: nil)
+                    }
+                    
+                }
+                
+            case .failure(let encodingError):
+                self.present( presentAlert("잘못된 양식을 입력하셨습니다.", message: "다시 확인해주세요", alertActionTitle: "확인"), animated: true, completion: nil)
+                print(encodingError)
+                print("fail인가")
+                break
+            }
+            print("여긴 들어오니")
             print(result)
             
         }

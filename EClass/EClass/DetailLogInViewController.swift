@@ -12,16 +12,17 @@ import SwiftyJSON
 import SwiftyGif
 var loginSuccess:Bool = false
 
-
-
-
 class DetailLogInViewController: UIViewController, UITextFieldDelegate{
     
     
+    @IBAction func backButtonTouched(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
    
     
     
+
         func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         
@@ -60,14 +61,20 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                 currentUserPrimaryKey = realData["user"]["user_pk"].intValue
                 currentUserToken = realData["token"].stringValue
 
-                currentUserTuTorPK = realData["user"]["tutor_pk"].intValue
+                currentUserTuTorPK = realData["user"]["tutor_pk"].int ?? 0
 
                 if response.result.isSuccess
                 {
                     if realData["detail"] == nil
                     {
                         DataCenter.shared.realUser = User(with: realData)
-                        
+//                        DispatchQueue.global().async {
+//                            currentUserData = DataCenter.shared.realUser
+//                        }
+//                        currentUserData = DataCenter.shared.realUser
+//                        refreshCurrentUserData()
+//                        currentUserData = DataCenter.shared.realUser
+//                        let user = currentUserData
                         let result = JSON(response.value!)
                         
                         
@@ -76,8 +83,6 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                         let userPk = result["user"]["user_pk"].intValue
                         let userNickname = result["user"]["nickname"].stringValue
                         
-                        let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
-                        let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
                         
                         
                         UserDefaults.standard.set(self.passWordTextField.text, forKey: "UserPassword")
@@ -92,6 +97,8 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
                             let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
                             let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
                             self.present(pushMainView, animated: true, completion: nil)
+//                            print("제이슨!!")
+//                            print(currentUserData)
                             
                         }
                     }
@@ -118,9 +125,8 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DispatchQueue.main.async {
             self.outletSet()
-        }
+        
         passWordTextField.delegate = self
         userNameTextField.delegate = self
         
@@ -158,7 +164,9 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
 //        detailLoginImageView = UIImageView(gifImage: gif, manager: gifManager)
 //        detailLoginImageView.clipsToBounds = true
 ////        detailLoginImageView.alpha = 0.6
-        self.navigationController?.navigationBar.alpha = 0.3
+//        self.navigationController?.navigationBar.backgroundColor = .clear
+//        self.navigationController?.navigationBar.alpha = 0.3
+        
         self.navigationItem.leftBarButtonItem?.tintColor = .black
         self.navigationController?.navigationBar.barTintColor = .black
         self.navigationController?.isNavigationBarHidden = true
@@ -166,7 +174,6 @@ class DetailLogInViewController: UIViewController, UITextFieldDelegate{
         //        self.navigationController?.navigationItem.backBarButtonItem?.tintColor = .black
         logInButtonOutlet.setBasicColor()
         logInButtonOutlet.layer.cornerRadius = 5
-        logInButtonOutlet.layer.borderWidth = 1
         marginView1.backgroundColor = .clear
         marginView2.backgroundColor = .clear
         marginView3.backgroundColor = .clear
