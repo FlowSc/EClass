@@ -1,15 +1,65 @@
 PODS:
   - Alamofire (4.5.0)
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - DKImagePickerController (3.5.7):
+    - DKImagePickerController/Camera (= 3.5.7)
+    - DKImagePickerController/ImageManager (= 3.5.7)
+  - DKImagePickerController/Camera (3.5.7)
+  - DKImagePickerController/ImageManager (3.5.7)
+  - EmptyKit (3.1.2)
+  - FacebookCore (0.2.0):
+    - Bolts (~> 1.8)
+    - FBSDKCoreKit (~> 4.15)
+  - FacebookLogin (0.2.0):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.2)
+    - FBSDKCoreKit (~> 4.15)
+    - FBSDKLoginKit (~> 4.15)
+  - FBSDKCoreKit (4.25.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.25.0):
+    - FBSDKCoreKit
+  - Kingfisher (3.11.0)
+  - SnapKit (3.2.0)
+  - StarReview (1.0.0)
+  - SwiftyGif (3.1.0)
   - SwiftyJSON (3.1.4)
+  - SwiftyStarRatingView (1.0.4)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
+  - DKImagePickerController
+  - EmptyKit (~> 3.1)
+  - FacebookCore
+  - FacebookLogin
+  - Kingfisher (~> 3.0)
+  - SnapKit (~> 3.2)
+  - StarReview (~> 1.0)
+  - SwiftyGif (~> 3.1)
   - SwiftyJSON (~> 3.1)
+  - SwiftyStarRatingView (~> 1.0)
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  DKImagePickerController: da5111f475c2fda9f932bab55519a43275bd4cf0
+  EmptyKit: 3f5ad697fc610a3bc460a59e00f23547b3afaa80
+  FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
+  FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
+  FBSDKCoreKit: 53e3f4bfb64e80c5f229dd30ae33ff57fbbbd2d1
+  FBSDKLoginKit: f628c09684dae9c17f071cf90b014e886f5093ea
+  Kingfisher: c8911a7672c6217dec8c0520fb6e76ec4b7e0780
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  StarReview: '0578f61607b89b3f0ad87ab417907818c1f39532'
+  SwiftyGif: aad44b7ef0ad1d599ba83d7aa5759e916b520c42
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  SwiftyStarRatingView: a2b0057700e0adeb8e7442c55d99cb53b531d2f4
 
-PODFILE CHECKSUM: 0abfd98e92f884ca0eab61d097243a36a9dfc5d5
+PODFILE CHECKSUM: b6a27e82aff09f845d3a274bd2a037660fad7435
 
 COCOAPODS: 1.2.1

@@ -7,16 +7,34 @@
 //
 
 import UIKit
+import FacebookLogin
+import FacebookCore
+import Alamofire
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        
+        return true
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        print("뭐가먼저불리나")
+        
+        loadLecture()
+        
+
+       
         return true
+    }
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        print("궁금하군")
+        return SDKApplicationDelegate.shared.application(app, open:url, options:options)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -40,6 +58,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func loadLecture(){
+        
+        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/list/", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            guard let data = response.result.value else{return}
+            
+            let lectureData = JSON(data)
+            
+            LectureList.lectureList = lectureData
+            
+
+        }
+    }
+
 
 
 }

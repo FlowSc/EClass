@@ -9,39 +9,168 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-
-
+import FacebookLogin
+import FacebookCore
 
 class LogInViewController: UIViewController {
 
+    @IBOutlet weak var loginImageView: UIImageView!
     @IBAction func emailLoginButtonTouched(_ sender: UIButton) {
         
         let detailLoginViewController = storyboard?.instantiateViewController(withIdentifier: "DetailLogInViewController") as! DetailLogInViewController
         self.navigationController?.pushViewController(detailLoginViewController, animated: true)
+        self.navigationController?.navigationBar.isHidden = false
+        
 
     }
     @IBAction func faceBookLoginButtonTouched(_ sender: UIButton) {
         
+        let loginManager = LoginManager()
         
+        loginManager.logIn([.publicProfile], viewController: self) { (result) in
+            switch result {
+            case .failed(let error):
+                print(error.localizedDescription)
+            case .cancelled:
+                print("cancelled")
+            case .success(_, _, let userInfo):
+                
+                print("\(userInfo.authenticationToken)")
+                print("\(userInfo.appId)")
+                print("\(userInfo.userId!)")
+                
+                let params = ["username":userInfo.userId,"token":userInfo.authenticationToken]
+                Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/login/facebook/", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+                    
+                    guard let data = response.result.value else
+                    {
+                        return
+                    }
+                    
+                    let realData = JSON(data)
+                    print("제이슨")
+                    print(realData)
+                    currentUserPrimaryKey = realData["user"]["user_pk"].intValue
+                    currentUserToken = realData["token"].stringValue
+                    
+                    currentUserTuTorPK = realData["user"]["tutor_pk"].int ?? 0
+                    if response.result.isSuccess
+                    {
+                        
+                        
+                        DataCenter.shared.realUser = User(with: realData)
+                        
+                        let result = JSON(response.value!)
+                        
+                        
+                        let userToken = result["token"].stringValue
+                        let userName = result["user"]["username"].stringValue
+                        let userPk = result["user"]["user_pk"].intValue
+                        let userNickname = result["user"]["nickname"].stringValue
+                        
+                        
+                        
+//                        UserDefaults.standard.set(self.passWordTextField.text, forKey: "UserPassword")
+                        UserDefaults.standard.set(userToken, forKey: "UserToken")
+                        UserDefaults.standard.set(userName, forKey: "UserName")
+                        UserDefaults.standard.set(userPk, forKey: "UserPK")
+                        UserDefaults.standard.set(userNickname, forKey: "UserNickname")
+                        
+                        
+                        if !(userToken == ""){
+                            
+                            let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
+                            let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
+                            self.present(pushMainView, animated: true, completion: nil)
+                            //                            print("제이슨!!")
+                            //                            print(currentUserData)
+                            
+                        }
+                    }
+
+                        
+//                        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/\(userInfo.userId)/", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization":"\(response.data)"]).responseJSON(completionHandler: { (response) in
+//                            guard let data = response.result.value else
+//                            {
+//                                return
+//                            }
+//                            let jsonData = JSON(data)
+//                            print("여기서부터제이슨")
+//                            print(jsonData)
+//                            print("여기까지")
+//                        })
+                    print("go")
+                    let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
+                    let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
+                    self.present(pushMainView, animated: true, completion: nil)
+                    
+                }
+                
+            }
+        }
         
-        print("facebooklogin")
     }
     @IBAction func signUpButtonTouched(_ sender: UIButton) {
         
         let signUpViewController = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
         self.navigationController?.pushViewController(signUpViewController, animated: true)
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     @IBOutlet weak var emailLoginButtonOutlet: UIButton!
     @IBOutlet weak var faceBookLoginButtonOutlet: UIButton!
     
     
+    @IBOutlet weak var marginView2: UIView!
+    @IBOutlet weak var marginView1: UIView!
     override func viewDidLoad() {
+        
+//        if UserDefaults.standard.string(forKey: "UserPK") != nil
+//        {
+//            currentUserPrimaryKey = UserDefaults.standard.integer(forKey: "UserPK")
+//            currentUserToken = UserDefaults.standard.string(forKey: "UserToken")!
+//            
+//            currentUserTuTorPK = UserDefaults.standard.integer(forKey: "TutorPK")
+//            
+////            currentUserName = UserDefaults.standard.string(forKey: "UserName")
+////            currentUserNickname = UserDefaults.standard.string(forKey: "UserNickname") ?? "Default"
+//            currentUserData = DataCenter.shared.realUser
+//            
+//            
+//            let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
+//            let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
+//            self.present(pushMainView, animated: false, completion: nil)
+//        }
+        
+        self.navigationController?.navigationBar.isHidden = true
         super.viewDidLoad()
         
-//        self.navigationController?.navigationBar.isHidden = true
-        logInButtonOutletSet()
+        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/list/", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            guard let data = response.result.value else{return}
+            
+            let lectureData = JSON(data)
+            
+            LectureList.lectureList = lectureData
+        }
+
+
+        outletSet()
         
+        
+//        if !(UserDefaults.standard.string(forKey: "UserToken")! == "") {
+//            
+//            let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
+//            let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
+//            self.present(pushMainView, animated: false, completion: nil)
+//            
+//            
+//            
+//        }
+
         
 
         // Do any additional setup after loading the view.
@@ -52,11 +181,20 @@ class LogInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func logInButtonOutletSet()
+    func outletSet()
     {
+        marginView1.backgroundColor = .clear
+        marginView2.backgroundColor = .clear
+        
+        
+        
+        loginImageView.image = UIImage(named: "passion2.png")
+        loginImageView.isUserInteractionEnabled = false
+        loginImageView.alpha = 0.9
+        loginImageView.clipsToBounds = true
         faceBookLoginButtonOutlet.layer.cornerRadius = 5
         emailLoginButtonOutlet.layer.cornerRadius = 5
-        emailLoginButtonOutlet.layer.borderColor = UIColor.black.cgColor
+        emailLoginButtonOutlet.layer.borderColor = UIColor.white.cgColor
         emailLoginButtonOutlet.layer.borderWidth = 1
     }
     

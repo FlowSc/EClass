@@ -8,6 +8,12 @@
 
 import UIKit
 
+
+func refreshCurrentUserData()
+{
+    currentUserData = DataCenter.shared.realUser
+}
+
 class ChangeUserInfomationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
 
@@ -28,59 +34,77 @@ class ChangeUserInfomationViewController: UIViewController, UITableViewDataSourc
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! ProfileImageTableViewCell
+            cell.userNameLabel.text = currentUserData?.userName ?? "guest"
+            cell.profileImageOutlet.image = currentUserData?.profileImage
             cell.selectionStyle = .none
             
            
             return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! ProfileTableViewCell
-            cell.setIcon(data: indexPath.row)
-            cell.selectionStyle = .none
-            return cell
-        case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! SelfDescriptionTableViewCell
-            cell.setSelected(true, animated: false)
-            
-            
-            return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell4", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! ProfileTableViewCell
+            cell.setIcon(data: indexPath.row + 8)
+            if indexPath.row == 0
+            {
+                cell.setUserInfoLabel(data: (currentUserData?.name) ?? "이름을 알려주세요")
+            }else if indexPath.row == 1
+            {
+                cell.setUserInfoLabel(data: (currentUserData?.nickName) ?? "닉네임을 알려주세요")
+            }else if indexPath.row == 2
+            {
+                cell.setUserInfoLabel(data: (currentUserData?.email) ?? "이메일을 알려주세요")
+            }else
+            {
+                cell.setUserInfoLabel(data: (currentUserData?.phone) ?? "휴대폰 번호를 알려주세요")
+            }
             cell.selectionStyle = .none
-            
             return cell
+//        default:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! SelfDescriptionTableViewCell
+//            cell.setSelected(true, animated: false)
+//            
+//            
+//            return cell
+//        default:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "cell4", for: indexPath)
+//            cell.selectionStyle = .none
+//            
+//            return cell
             
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let main2StoryBoard = UIStoryboard(name: "Main2", bundle: nil)
-        
-//        let changeVIew = main2StoryBoard.instantiateViewController(withIdentifier: "SelfDescriptionTableViewCell") as! SelfDescriptionTableViewCell
-//        self.navigationController?.pushViewController(changeVIew, animated: true)
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let modifyAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "수정") { (action, indexPath) in
-            let storyBoard2 = UIStoryboard(name: "Main2", bundle: nil)
-            let changeView2 = storyBoard2.instantiateViewController(withIdentifier: "DetailChangeUserInfoViewController") as! DetailChangeUserInfoViewController
-            self.navigationController?.pushViewController(changeView2, animated: true)
-            
-        }
-        modifyAction.backgroundColor = .gray
-        
-        
-        return [modifyAction]
-    }
+//    @IBAction func goBackButtonTouched(_ sender: UIBarButtonItem) {
+//        
+////        self.navigationController?.popViewController(animated: true)
+//        self.dismiss(animated: true, completion: nil)
+//        print("1")
+//        
+//    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let main2StoryBoard = UIStoryboard(name: "Main2", bundle: nil)
+//        
+////        let changeVIew = main2StoryBoard.instantiateViewController(withIdentifier: "SelfDescriptionTableViewCell") as! SelfDescriptionTableViewCell
+////        self.navigationController?.pushViewController(changeVIew, animated: true)
+//    }
+//    
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        let modifyAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "수정") { (action, indexPath) in
+//            let storyBoard2 = UIStoryboard(name: "Main2", bundle: nil)
+//            let changeView2 = storyBoard2.instantiateViewController(withIdentifier: "DetailChangeUserInfoViewController") as! DetailChangeUserInfoViewController
+//            self.navigationController?.pushViewController(changeView2, animated: true)
+//            
+//        }
+//        modifyAction.backgroundColor = .gray
+//        
+//        
+//        return [modifyAction]
+//    }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
             return 180
-        case 1:
-            return 50
-        case 2:
-            return 80
         default:
             return 50
         }
@@ -126,13 +150,14 @@ class ChangeUserInfomationViewController: UIViewController, UITableViewDataSourc
         }else if section == 1
         {
             return "유저 정보"
-        }else if section == 2
-        {
-            return "자기 소개"
         }else
         {
-            return "부가 정보"
+            return "자기 소개"
         }
+//        }else
+//        {
+//            return "부가 정보"
+//        }
     }
 
     
@@ -152,22 +177,28 @@ class ChangeUserInfomationViewController: UIViewController, UITableViewDataSourc
         switch section {
         case 0:
             return 1
-        case 1:
-            return 4
-        case 2:
-            return 1
         default:
-            return 1
+            return 4
         }
         
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+//        return 4
+        return 2
     }
     func goChangeUserViewController(_ sender:UITapGestureRecognizer)
     {
         let changeVIew = storyboard?.instantiateViewController(withIdentifier: "DetailChangeUserInfoViewController") as! DetailLogInViewController
         self.navigationController?.pushViewController(changeVIew, animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tv.reloadData()
+        
+        print("viewwillappear")
+        print(currentUserData)
+        
     }
 
     override func viewDidLoad() {

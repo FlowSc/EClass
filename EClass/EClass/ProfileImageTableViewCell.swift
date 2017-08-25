@@ -17,8 +17,9 @@ class ProfileImageTableViewCell: UITableViewCell {
         super.awakeFromNib()
         profileImageOutlet.layer.borderColor = UIColor.black.cgColor
         profileImageOutlet.layer.cornerRadius = 32
+//        profileImageOutlet.clipsToBounds
         profileImageOutlet.layer.borderWidth = 1
-//        userNameLabel = 
+//        userNameLabel =
         
         // Initialization code
     }

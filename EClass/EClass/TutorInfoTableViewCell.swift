@@ -10,17 +10,17 @@ import UIKit
 
 class TutorInfoTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var tutorImage: UIButton!
-    @IBAction func tutorImageButtonTouched(_ sender: Any) {
-    }
+    @IBOutlet weak var tutorImage:UIImageView!
+
+
     @IBOutlet weak var tutorComent: UILabel!
     @IBOutlet weak var tutorName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        tutorImage.imageView?.clipsToBounds = true
+        tutorImage.clipsToBounds = true
         
-        tutorImage.layer.cornerRadius = tutorImage.layer.frame.height
+        tutorImage.layer.cornerRadius = 30
         
         // Initialization code
     }
@@ -32,7 +32,7 @@ class TutorInfoTableViewCell: UITableViewCell {
     }
     
     func setTutor(_ image:UIImage, _ tutorName:String, tutorComment:String) {
-        self.tutorImage.setBackgroundImage(image, for: .normal)
+        self.tutorImage.image = image
         self.tutorName.text = tutorName
         self.tutorComent.text = tutorComment
         

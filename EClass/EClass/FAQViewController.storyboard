@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ok0-Xn-put">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--FAQ-->
+        <scene sceneID="3tw-Sn-sGv">
+            <objects>
+                <viewController storyboardIdentifier="FAQ" title="FAQ" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8jt-xB-cks" customClass="FAQViewController" customModule="EClass" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c58-Kt-6tF"/>
+                        <viewControllerLayoutGuide type="bottom" id="eXY-7t-O39"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WFa-TU-6hH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fc3-Mu-ZKc">
+                                <rect key="frame" x="0.0" y="64" width="375" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem title="수강생" id="RfC-8K-YFa">
+                                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-20"/>
+                                    </tabBarItem>
+                                    <tabBarItem tag="1" title="튜터" id="fFp-gi-dUx">
+                                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-20"/>
+                                    </tabBarItem>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="8jt-xB-cks" id="RYg-aP-VNq"/>
+                                </connections>
+                            </tabBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e68-6W-TYa">
+                                <rect key="frame" x="0.0" y="113" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="8jt-xB-cks" id="AgC-Br-f6e"/>
+                                    <outlet property="delegate" destination="8jt-xB-cks" id="aqq-4O-b6G"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eXY-7t-O39" firstAttribute="top" secondItem="e68-6W-TYa" secondAttribute="bottom" id="UCw-sf-FTW"/>
+                            <constraint firstAttribute="trailing" secondItem="e68-6W-TYa" secondAttribute="trailing" id="VJH-aD-5aG"/>
+                            <constraint firstItem="fc3-Mu-ZKc" firstAttribute="leading" secondItem="WFa-TU-6hH" secondAttribute="leading" id="X1g-YR-GJO"/>
+                            <constraint firstAttribute="trailing" secondItem="fc3-Mu-ZKc" secondAttribute="trailing" id="XzI-th-iJE"/>
+                            <constraint firstItem="e68-6W-TYa" firstAttribute="top" secondItem="fc3-Mu-ZKc" secondAttribute="bottom" id="ekr-Yz-WEW"/>
+                            <constraint firstItem="fc3-Mu-ZKc" firstAttribute="top" secondItem="c58-Kt-6tF" secondAttribute="bottom" id="kqA-9x-564"/>
+                            <constraint firstItem="e68-6W-TYa" firstAttribute="leading" secondItem="WFa-TU-6hH" secondAttribute="leading" id="rRN-FR-Sj6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="RSL-OB-fUe"/>
+                    <connections>
+                        <outlet property="studentItem" destination="RfC-8K-YFa" id="t07-Ob-Yux"/>
+                        <outlet property="studentOrTutorTabBar" destination="fc3-Mu-ZKc" id="XQR-4F-7fw"/>
+                        <outlet property="tutorItem" destination="fFp-gi-dUx" id="qB5-LD-etg"/>
+                        <outlet property="tv" destination="e68-6W-TYa" id="ijV-9j-Vfw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D2Q-ev-dmo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="975.20000000000005" y="135.38230884557723"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zes-HZ-fpz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ok0-Xn-put" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="T8D-oB-nCg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8jt-xB-cks" kind="relationship" relationship="rootViewController" id="dwK-XD-gHb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6po-6x-wPJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="36" y="135.38230884557723"/>
+        </scene>
+    </scenes>
+</document>

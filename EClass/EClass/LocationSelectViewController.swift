@@ -9,8 +9,7 @@
 import UIKit
 
 class LocationSelectViewController: UIViewController {
-    var locationStrings:[String] = ["강남", "강동", "강서", "강북", "관악", "광진", "구로", "금천", "노원"]
-
+ var locationStrings:[String] = ["강남", "강동", "강서", "강북", "관악", "광진", "구로", "금천", "노원", "도봉", "동대문", "동작", "마포", "서대문", "서초", "성동", "성북", "송파", "양천", "영등포", "용산", "은평", "종로", "중구", "중랑"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,7 +42,10 @@ extension LocationSelectViewController:UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationCell", for: indexPath) as! LocationCollectionViewCell
-        
+        cell.image.image = UIImage(named: "location" + "\(indexPath.item)")
+//        cell.locationLabel.textColor = .white
+
+
         cell.locationLabel.text = locationStrings[indexPath.item]
         cell.layer.borderWidth = 1
         return cell
@@ -52,7 +54,7 @@ extension LocationSelectViewController:UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         print(locationStrings[indexPath.item])
-        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "LocationName"), object: nil, userInfo:["LocationName":locationStrings[indexPath.item]])
+        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "LocationName"), object: nil, userInfo:["locationName":locationStrings[indexPath.item]])
         
         self.navigationController?.popViewController(animated: true)
     }

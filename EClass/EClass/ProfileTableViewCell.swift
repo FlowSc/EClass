@@ -19,9 +19,9 @@ class ProfileTableViewCell: UITableViewCell {
     }
     func setOutlet()
     {
-        iconOutlet.layer.borderWidth = 1
+//        iconOutlet.layer.borderWidth = 1
 //        iconOutlet.layer.borderColor = UIColor.black.cgColor
-        iconOutlet.borderColorBlack()
+//        iconOutlet.borderColorBlack()
         iconOutlet.layer.cornerRadius = 15
     }
     

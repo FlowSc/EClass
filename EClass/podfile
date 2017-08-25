@@ -4,9 +4,17 @@
 target 'EClass' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
+pod 'FacebookLogin'
+pod 'FacebookCore'
   pod 'Alamofire', '~> 4.5'
   pod 'SwiftyJSON', '~> 3.1'
-
+  pod 'Kingfisher', '~> 3.0'
+  pod 'EmptyKit', '~> 3.1'
+  pod 'StarReview', '~> 1.0'
+  pod 'SnapKit', '~> 3.2'
+  pod 'SwiftyStarRatingView', '~> 1.0'
+  pod 'SwiftyGif', '~> 3.1'
+  pod 'DKImagePickerController'
   # Pods for EClass
 
 end

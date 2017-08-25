@@ -16,47 +16,26 @@ class RecommendTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
     }
-
-   }
-
-extension RecommendTableViewCell:UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCell", for: indexPath) as! RecommendCollectionViewCell
-        
-//        let myData = lectureList?[indexPath.item] 이건 나중에 데이터 받으면 각각 쏴주는걸로..
-        
-        cell.lectureName.text = "스타 ㄲ"
-        cell.lectureInfo.text = "3만원"
-        cell.lectureImage.image = #imageLiteral(resourceName: "five.jpg")
-        cell.tutorImage.image = #imageLiteral(resourceName: "five.jpg")
-        cell.tutorName.text = "나나"
-        cell.tutorNickname.text = "한량"
-        cell.tutorImage.layer.cornerRadius = (cell.tutorImage.image?.size.width)! / 2
-        cell.tutorImage.backgroundColor = .red
-        cell.tutorImage.layer.borderWidth = 1
-        cell.backgroundColor = .red
-
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
-        
-    }
-    
-
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 414, height: 170)
-//    }
     
 }
+
+extension RecommendTableViewCell {
+
+    
+    func setCollectionViewDataSourceDelegate
+        <D: UICollectionViewDataSource & UICollectionViewDelegate>
+        (dataSourceDelegate: D, forRow row: Int) {
+        
+        collectionView.delegate = dataSourceDelegate
+        collectionView.dataSource = dataSourceDelegate
+        collectionView.tag = row
+        collectionView.reloadData()
+    }
+    
+    
+}
+
+
+
+
