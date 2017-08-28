@@ -40,7 +40,7 @@ class RegisterLectureSecondViewController: UIViewController, UITextViewDelegate 
         super.viewDidLoad()
         set()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
         // Do any additional setup after loading the view.
     }
@@ -52,13 +52,16 @@ class RegisterLectureSecondViewController: UIViewController, UITextViewDelegate 
         }
     }
     
-//    func keyboardWillHide(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y != 0{
-//                self.view.frame.origin.y += 40
-//            }
-//        }
-//    }
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += 40
+            }
+        }
+        lectureStudentTextView.resignFirstResponder()
+        introduceLectureTextView.resignFirstResponder()
+        introduceTutorTextView.resignFirstResponder()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

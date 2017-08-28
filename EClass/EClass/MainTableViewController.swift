@@ -55,9 +55,10 @@ class MainTableViewController: UIViewController {
     
     @IBOutlet weak var myMainTableView: UITableView!
     var locationStrings:[String] = ["강남", "강동", "강서", "강북", "관악", "광진", "구로", "금천", "노원", "도봉", "동대문", "동작", "마포", "서대문", "서초", "성동", "성북", "송파", "양천", "영등포", "용산", "은평", "종로", "중구", "중랑"]
+    var categoryStrings = ["헬스&뷰티", "외국어", "컴퓨터", "음악, 미술", "스포츠", "진로/취업", "이색취미", "전체수업보기"]
+
     
     
-    var categoryStrings = ["헬스&뷰티", "외국어", "컴퓨터", "음악/미술", "스포츠", "진로/취업", "이색취미", "전체수업보기"]
     var tableViewIndex:Int?
     var recommendLectureList:JSON!
     var lectureShowList:[JSON]!
@@ -70,16 +71,6 @@ class MainTableViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         myMainTableView.reloadData()
-//        refreshCurrentUserData()
-//        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/" + "\(currentUserPrimaryKey)/", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization":"Token " + "\(currentUserToken)"]).responseJSON { (response) in
-//            guard let data = response.value else
-//            {
-//                return
-//            }
-//            let jsonData = JSON(data)
-//            
-//            currentUserData = User(with: jsonData)
-//        }
     }
     
     func reloadData(){
@@ -149,8 +140,12 @@ class MainTableViewController: UIViewController {
     
 }
 
-extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
+extension MainTableViewController:UITableViewDelegate, UITableViewDataSource
+
+
+//UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+{
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
@@ -180,27 +175,27 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         case 1:
             
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.location, for: indexPath) as! LocationTableViewCell
-            tableViewIndex = indexPath.section
-            cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
+//            tableViewIndex = indexPath.section
+//            cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
             
             return cell
             
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.category, for: indexPath) as! CategoryTableViewCell
-            cell.makeCornerRound3()
-            cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
-            
-            tableViewIndex = indexPath.section
-            
+//            cell.makeCornerRound3()
+//            cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
+//            
+//            tableViewIndex = indexPath.section
+//            
             
             return cell
             
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomsTableViewCell.lectureDetail, for: indexPath) as! RecommendTableViewCell
             
-            cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
-            tableViewIndex = indexPath.section
-            
+//            cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
+//            tableViewIndex = indexPath.section
+//            
             
             return cell
             
@@ -210,122 +205,122 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch tableViewIndex! {
-        case 1:
-            return locationStrings.count
-        case 2:
-            return categoryStrings.count
-        case 3:
-            return 7
-        default:
-            return 4
-        }
-    }
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        switch tableViewIndex! {
+////        case 1:
+////            return locationStrings.count
+//////        case 2:
+//////            return categoryStrings.count
+////        case 3:
+////            return 7
+////        default:
+////            return 4
+////        }
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        
+//        
+//        switch tableViewIndex!{
+//            
+//            
+//        case 1:
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.location, for: indexPath) as! LocationCollectionViewCell
+//            
+//            
+//            cell.image.image = UIImage(named: "location" + "\(indexPath.item)")
+//            
+//            cell.locationLabel.text = locationStrings[indexPath.row]
+//            cell.makeCornerRound3()
+//            cell.tag = indexPath.item
+//            
+//            return cell
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        
-        switch tableViewIndex!{
+//        case 2:
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.category, for: indexPath) as! CategoryCollectionViewCell
+//            
+//            cell.categoryLabel.text = categoryStrings[indexPath.item]
+//            
+//            cell.image.image = UIImage(named: "category" + "\(indexPath.item)")
+//            
+//            cell.makeCornerRound3()
+//            cell.tag = indexPath.item
+//            cell.backgroundColor = UIColor.white
+//            
+//            
+//            return cell
             
-            
-        case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.location, for: indexPath) as! LocationCollectionViewCell
-            
-            
-            cell.image.image = UIImage(named: "location" + "\(indexPath.item)")
-            
-            cell.locationLabel.text = locationStrings[indexPath.row]
-            cell.makeCornerRound3()
-            cell.tag = indexPath.item
-            
-            return cell
-            
-        case 2:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.category, for: indexPath) as! CategoryCollectionViewCell
-            
-            cell.categoryLabel.text = categoryStrings[indexPath.item]
-            
-            cell.image.image = UIImage(named: "category" + "\(indexPath.item)")
-            
-            cell.makeCornerRound3()
-            cell.tag = indexPath.item
-            cell.backgroundColor = UIColor.white
-            
-            
-            return cell
-            
-        case 3:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.lectureDetail, for: indexPath) as! RecommendCollectionViewCell
-            
-            
-            let myData = recommendLectureList[indexPath.item]
-            
-            print(myData)
-            
-            var attendanceCount = myData["total_count"].stringValue
-            
-            if attendanceCount == "" {
-                attendanceCount = "0"
-            }
-            
-            
-            func makeReviewAverageScore() -> Double {
-                
-                var myScore:Double = 0.0
-                
-                
-                for (key, value) in myData["review_average"].dictionaryValue {
-                    
-                    print(key, value)
-                    
-                    
-                    let averagePoint = value.doubleValue
-                    
-                    myScore += averagePoint
-                    
-                    
-                    
-                }
-                
-                return myScore.roundToPlaces(places: 0) / 5
-                
-            }
-            
-        
-            
-            
-            cell.setLecture(myData["lecture_photos"][0]["lecture_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, "\(attendanceCount) 명 참여", myData["tutor_info"]["nickname"].stringValue, makeReviewAverageScore(), makeReviewAverageScore(), location: myData["locations"][0]["location2"].stringValue)
-            cell.tutorImage.makeCircle()
-            
-            
-            cell.tag = indexPath.item
-            
-
-            
-            
-            return cell
-        default:
-            return UICollectionViewCell()
-            
-        }
-        
-        
-    }
-    
-    
+//        case 3:
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.lectureDetail, for: indexPath) as! RecommendCollectionViewCell
+//            
+//            
+//            let myData = recommendLectureList[indexPath.item]
+//            
+//            print(myData)
+//            
+//            var attendanceCount = myData["total_count"].stringValue
+//            
+//            if attendanceCount == "" {
+//                attendanceCount = "0"
+//            }
+//            
+//            
+//            func makeReviewAverageScore() -> Double {
+//                
+//                var myScore:Double = 0.0
+//                
+//                
+//                for (key, value) in myData["review_average"].dictionaryValue {
+//                    
+//                    print(key, value)
+//                    
+//                    
+//                    let averagePoint = value.doubleValue
+//                    
+//                    myScore += averagePoint
+//                    
+//                    
+//                    
+//                }
+//                
+//                return myScore.roundToPlaces(places: 0) / 5
+//                
+//            }
+//            
+//        
+//            
+//            
+//            cell.setLecture(myData["lecture_photos"][0]["lecture_photo"].stringValue, myData["title"].stringValue, myData["price"].stringValue, myData["cover_photo"].stringValue, "\(attendanceCount) 명 참여", myData["tutor_info"]["nickname"].stringValue, makeReviewAverageScore(), makeReviewAverageScore(), location: myData["locations"][0]["location2"].stringValue)
+//            cell.tutorImage.makeCircle()
+//            
+//            
+//            cell.tag = indexPath.item
+//            
+//
+//            
+//            
+//            return cell
+//        default:
+//            return UICollectionViewCell()
+//            
+//        }
+//        
+//        
+//    }
     
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch tableViewIndex!{
-        case 1:
-            return CGSize(width: 410, height: 200)
-        case 2:
-            return CGSize.init(width: 190, height: 80)
-        default:
-            return CGSize(width: 412, height: 250)
-        }
-    }
+    
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        switch tableViewIndex!{
+//        case 1:
+//            return CGSize(width: 410, height: 200)
+////        case 2:
+////            return CGSize.init(width: 190, height: 80)
+//        default:
+//            return CGSize(width: 412, height: 250)
+//        }
+//    }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -372,8 +367,6 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
         
         
         if segue.identifier == SegueIdentifier.detailSegue {
