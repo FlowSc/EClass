@@ -309,8 +309,6 @@ extension MainTableViewController:UITableViewDelegate, UITableViewDataSource, UI
             return UICollectionViewCell()
             
         }
-        
-        
     }
     
     
