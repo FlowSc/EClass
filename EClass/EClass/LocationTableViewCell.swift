@@ -69,8 +69,8 @@ extension LocationTableViewCell:UICollectionViewDataSource, UICollectionViewDele
         
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: ((self.window?.bounds.size.width)! - 10), height: 170)
+        return CGSize.init(width: 412, height: 250)
     }
+
 }

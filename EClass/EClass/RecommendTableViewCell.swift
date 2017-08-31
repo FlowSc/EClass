@@ -96,6 +96,10 @@ extension RecommendTableViewCell:UICollectionViewDataSource, UICollectionViewDel
         return cell
 
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize.init(width: 412, height: 250)
+    }
 }
 
 
