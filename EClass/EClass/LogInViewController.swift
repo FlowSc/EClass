@@ -88,17 +88,6 @@ class LogInViewController: UIViewController {
                         }
                     }
 
-                        
-//                        Alamofire.request("http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/member/profile/\(userInfo.userId)/", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization":"\(response.data)"]).responseJSON(completionHandler: { (response) in
-//                            guard let data = response.result.value else
-//                            {
-//                                return
-//                            }
-//                            let jsonData = JSON(data)
-//                            print("여기서부터제이슨")
-//                            print(jsonData)
-//                            print("여기까지")
-//                        })
                     print("go")
                     let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
                     let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
@@ -128,23 +117,7 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var marginView2: UIView!
     @IBOutlet weak var marginView1: UIView!
     override func viewDidLoad() {
-        
-//        if UserDefaults.standard.string(forKey: "UserPK") != nil
-//        {
-//            currentUserPrimaryKey = UserDefaults.standard.integer(forKey: "UserPK")
-//            currentUserToken = UserDefaults.standard.string(forKey: "UserToken")!
-//            
-//            currentUserTuTorPK = UserDefaults.standard.integer(forKey: "TutorPK")
-//            
-////            currentUserName = UserDefaults.standard.string(forKey: "UserName")
-////            currentUserNickname = UserDefaults.standard.string(forKey: "UserNickname") ?? "Default"
-//            currentUserData = DataCenter.shared.realUser
-//            
-//            
-//            let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
-//            let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
-//            self.present(pushMainView, animated: false, completion: nil)
-//        }
+
         
         self.navigationController?.navigationBar.isHidden = true
         super.viewDidLoad()
@@ -156,23 +129,8 @@ class LogInViewController: UIViewController {
             
             LectureList.lectureList = lectureData
         }
-
-
         outletSet()
         
-        
-//        if !(UserDefaults.standard.string(forKey: "UserToken")! == "") {
-//            
-//            let mainStoryBoard = UIStoryboard(name: "MainPage", bundle: nil)
-//            let pushMainView = mainStoryBoard.instantiateViewController(withIdentifier: "reveal1")
-//            self.present(pushMainView, animated: false, completion: nil)
-//            
-//            
-//            
-//        }
-
-        
-
         // Do any additional setup after loading the view.
     }
 
@@ -197,16 +155,4 @@ class LogInViewController: UIViewController {
         emailLoginButtonOutlet.layer.borderColor = UIColor.white.cgColor
         emailLoginButtonOutlet.layer.borderWidth = 1
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

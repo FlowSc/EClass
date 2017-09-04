@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="oXw-gn-nfd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="DYx-yI-V1f">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -113,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CtE-vf-JZd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1072.8" y="150.67466266866569"/>
+            <point key="canvasLocation" x="1271" y="151"/>
         </scene>
         <!--user-->
         <scene sceneID="14b-R4-jUG">
@@ -691,7 +691,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPn-Nn-uSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1736.8" y="-61.619190404797607"/>
+            <point key="canvasLocation" x="2042" y="151"/>
         </scene>
         <!--Change Password View Controller-->
         <scene sceneID="afT-9g-2Pa">
@@ -805,25 +805,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vqs-oo-yhY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2515" y="-66"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="jnN-8e-uhO">
-            <objects>
-                <navigationController storyboardIdentifier="loginNaviCon" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oXw-gn-nfd" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="D5P-ID-dzz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ckR-vO-Yv5" kind="relationship" relationship="rootViewController" id="EBe-tH-w7n"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Z3O-M0-hvF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="133.59999999999999" y="150.67466266866569"/>
+            <point key="canvasLocation" x="2886" y="151"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="I7l-b9-7Bk">
@@ -843,5 +825,58 @@
             </objects>
             <point key="canvasLocation" x="2216.8000000000002" y="1059.2203898050975"/>
         </scene>
+        <!--Start View Controller-->
+        <scene sceneID="AU0-Vw-0df">
+            <objects>
+                <viewController id="Ie5-A4-isi" customClass="StartViewController" customModule="EClass" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AY2-TS-buz"/>
+                        <viewControllerLayoutGuide type="bottom" id="POJ-kk-JVn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Huk-Mh-A1Q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="elass_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="DO9-Hh-Jqv">
+                                <rect key="frame" x="104" y="163.5" width="166" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="DO9-Hh-Jqv" secondAttribute="height" multiplier="15:9" id="C5T-94-5XC"/>
+                                    <constraint firstAttribute="height" constant="100" id="hHE-d2-hPY"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="DO9-Hh-Jqv" firstAttribute="centerY" secondItem="Huk-Mh-A1Q" secondAttribute="centerY" constant="-120" id="DbP-06-w93"/>
+                            <constraint firstItem="DO9-Hh-Jqv" firstAttribute="centerX" secondItem="Huk-Mh-A1Q" secondAttribute="centerX" id="kf9-33-CX6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="l8X-Ra-e58"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wWp-as-dEH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2208.8000000000002" y="-526.6866566716642"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MNL-oe-5ha">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DYx-yI-V1f" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OVQ-Sn-8j8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ie5-A4-isi" kind="relationship" relationship="rootViewController" id="FVY-9O-gZN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HVS-pF-ttk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1269.5999999999999" y="-526.6866566716642"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="elass_logo.png" width="1809" height="648"/>
+    </resources>
 </document>

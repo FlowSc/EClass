@@ -31,7 +31,7 @@ var currentUserData = DataCenter.shared.realUser
 func presentAlert(_ title:String, message:String, alertActionTitle:String) -> UIAlertController
 {
     let alertController = UIAlertController.init(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-    let alertAction = UIAlertAction.init(title: alertActionTitle, style: UIAlertActionStyle.cancel, handler: nil)
+    let alertAction = UIAlertAction.init(title: alertActionTitle, style: UIAlertActionStyle.cancel, handler: nil)   
     
     alertController.addAction(alertAction)
     

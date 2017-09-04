@@ -48,13 +48,13 @@ class RegisterLectureFourthViewController: UIViewController, UIPickerViewDataSou
                 
                 if key == "lecture_photo" {
                     
-                    var lecturePhotoArray = value as! Array<UIImage>
+                    let lecturePhotoArray = value as! Array<UIImage>
                     for image in lecturePhotoArray {
                         
                         print("imageNAME")
                         print(String(describing: image))
                         print("_____")
-                        data.append(UIImagePNGRepresentation(image.resized(withPercentage: 0.5)!)!, withName: key, fileName: "\(String(describing: image))", mimeType: "image/png")
+                        data.append(UIImageJPEGRepresentation(image, 0.5)!, withName: key, fileName: "\(String(describing: image))", mimeType: "image/jpg")
                         
                     }
                 }
@@ -62,7 +62,7 @@ class RegisterLectureFourthViewController: UIViewController, UIPickerViewDataSou
                     
                     var coverImage:UIImage = value as! UIImage
                     
-                    data.append(UIImagePNGRepresentation(coverImage.resized(withPercentage: 0.1)!)!, withName: key, fileName: "coverPhoto", mimeType: "image/png")
+                    data.append(UIImageJPEGRepresentation(coverImage, 0.4)!, withName: key, fileName: "coverPhoto", mimeType: "image/jpg")
                 }
             }
         }, usingThreshold: UInt64.init(), to: "http://eb-yykdev-taling-dev.ap-northeast-2.elasticbeanstalk.com/regiclass/class/make/", method: .post, headers: token) { (result) in

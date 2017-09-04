@@ -138,6 +138,7 @@
 		75346BC71F4DB4A000F580FC /* SearchTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75346BC61F4DB4A000F580FC /* SearchTextViewController.swift */; };
 		75346BCD1F4DD9FF00F580FC /* MakeClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75346BCC1F4DD9FF00F580FC /* MakeClassViewController.swift */; };
 		75346BCF1F4E98CA00F580FC /* ronaldo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 75346BCE1F4E98CA00F580FC /* ronaldo.gif */; };
+		756439121F5C592400223B45 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756439111F5C592400223B45 /* StartViewController.swift */; };
 		758D9CB91F4C1D70005B858D /* StarReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D9CB81F4C1D70005B858D /* StarReview.swift */; };
 		759155901F3C62C80010686B /* LectureIntroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7591558E1F3C62C80010686B /* LectureIntroTableViewCell.swift */; };
 		759155911F3C62C80010686B /* LectureIntroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7591558F1F3C62C80010686B /* LectureIntroTableViewCell.xib */; };
@@ -315,6 +316,7 @@
 		75346BC61F4DB4A000F580FC /* SearchTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTextViewController.swift; sourceTree = "<group>"; };
 		75346BCC1F4DD9FF00F580FC /* MakeClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeClassViewController.swift; sourceTree = "<group>"; };
 		75346BCE1F4E98CA00F580FC /* ronaldo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ronaldo.gif; sourceTree = "<group>"; };
+		756439111F5C592400223B45 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		758D9CB81F4C1D70005B858D /* StarReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarReview.swift; sourceTree = "<group>"; };
 		7591558E1F3C62C80010686B /* LectureIntroTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureIntroTableViewCell.swift; sourceTree = "<group>"; };
 		7591558F1F3C62C80010686B /* LectureIntroTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LectureIntroTableViewCell.xib; sourceTree = "<group>"; };
@@ -698,6 +700,7 @@
 				45264B741F3C972B00933C50 /* SWRevealViewController.m */,
 				45A57FB31F357C89001F5C1A /* LogInViewControllers */,
 				45A57FA11F357BE5001F5C1A /* Main2.storyboard */,
+				756439111F5C592400223B45 /* StartViewController.swift */,
 				45A57F9F1F357BB0001F5C1A /* DataCenter.swift */,
 				45264B6C1F3C857500933C50 /* UserInformationPopupView.swift */,
 				45264B6D1F3C857500933C50 /* UserInformationPopupView.xib */,
@@ -989,6 +992,7 @@
 				45A57FAE1F357C56001F5C1A /* ProfileTableViewCell.swift in Sources */,
 				75346BCD1F4DD9FF00F580FC /* MakeClassViewController.swift in Sources */,
 				45A57FA01F357BB0001F5C1A /* DataCenter.swift in Sources */,
+				756439121F5C592400223B45 /* StartViewController.swift in Sources */,
 				7518F5211F49585C0088ED19 /* ReviewShowTableViewCell.swift in Sources */,
 				45A57FA81F357C26001F5C1A /* ChangeUserInfomationViewController.swift in Sources */,
 				75D1B2A11F3581D10068C20C /* AppDelegate.swift in Sources */,
